@@ -1,0 +1,4 @@
+# Ignore logs with specific extensions
+logs_in_csv/
+logs_in_xes/
+How-To-Write/
