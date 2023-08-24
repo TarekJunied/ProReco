@@ -2,8 +2,9 @@ import pm4py
 import sklearn
 from filehelper import *
 import numpy as np
+import pickle
 
-algorithm_portfolio = ["alpha","heuristic","ILP","inductive"]
+algorithm_portfolio = ["alpha","heuristic","inductive"]
 features_list = ["no_distinct_traces","no_total_traces","avg_trace_length","avg_event_repetition_intra_trace","no_distinct_events"
                  ,"no_events_total","no_distinct_start","no_distinct_end","entropy","concurrency","density","length-one-loops"]
 
@@ -13,33 +14,100 @@ selected_features =  ["no_distinct_traces","no_total_traces","avg_trace_length",
 models = {}
 log_paths = []
 logs = {}
+cached_variables = {}
+y = [None] * len(log_paths)
 
-def load_all_logs():
-    log_paths = gather_all_xes("./")
-    for log_path in log_paths:
-        read_log(log_path)
+X = np.empty((len(log_paths), len(selected_features)))
+
+
+def load_all_logs_into_cache():
+    global log_paths
+    log_paths = gather_all_xes("./")[:5]
+    y = [None] * len(log_paths)
+    for i in range(0,5):
+        read_log(log_paths[i])
+
+    cached_variables["logs"] = logs
+    cached_variables["log_paths"] = log_paths
+
+    with open("cache.pkl", "wb") as file:
+        pickle.dump(cached_variables, file)
+
+def load_all_logs_from_cache():
+    global cached_variables, log_paths, logs
+    log_paths = gather_all_xes("./")[:5]
+    if os.path.getsize("cache.pkl") == 0:
+        load_all_logs_into_cache()
+    else:
+        with open("cache.pkl", "rb") as file:
+            cached_variables = pickle.load(file)
+        log_paths = cached_variables["log_paths"]
+        logs = cached_variables["logs"]
+
 
 def compute_all_models():
     for discovery_algorithm in algorithm_portfolio:
         for log_path in log_paths:
             read_model(log_path,discovery_algorithm)
 
+
 def compute_feature(log_index, feature_index):
+    log_path = log_paths[log_index]
+    if selected_features[feature_index] == "no_distinct_traces":
+        feature_no_distinct_traces(log_path)
+    elif selected_features[feature_index] == "no_total_traces":
+        feature_no_total_traces(log_path)
+    elif selected_features[feature_index] == "avg_trace_length":
+        feature_avg_trace_length(log_path)
+    elif selected_features[feature_index] == "no_distinct_events":
+        feature_no_distinct_events(log_path)
+    elif selected_features[feature_index] == "no_events_total":
+        feature_no_events_total(log_path)
+    elif selected_features[feature_index] == "no_distinct_start":
+        feature_no_distinct_start(log_path)
+    elif selected_features[feature_index] == "no_distinct_end":
+        feature_no_distinct_end(log_path)
+    else:
+        print("Invalid feature name")
+
 
 
 def init_feature_matrix():
+    global X
     X = np.empty((len(log_paths), len(selected_features)))
-    for i in range(len(log_paths)):
-        for j in range(len(selected_features)):
-            X[i,j] = compute_feature(log_index, feature_index)
+    for log_index in range(len(log_paths)):
+        for feature_index in range(len(selected_features)):
+            X[log_index,feature_index] = compute_feature(log_index, feature_index)
 
-
+def init_target(log_path,log_index):
+    global y
+    cur_fit = float("-inf")
+    for discovery_algorithm in algorithm_portfolio:
+        algo_fit = fitness_token_based_replay(log_path,discovery_algorithm)
+        if( algo_fit > cur_fit):
+            cur_fit = algo_fit
+            y[log_index] = discovery_algorithm
 
 
 def init():
-    load_all_logs()
-    compute_all_models()
+    global y
+
+    load_all_logs_from_cache()
+    print("now finished loading all logs from cache")
+    
     init_feature_matrix()
+    print("now finished initializing feature matrix")
+    # determine the best algorithm for all logs
+    for i in range(len(log_paths)):
+        init_target(log_paths[i], i)
+    print("now finsihed initializing target vector")
+
+    matrix_string = np.array2string(X, separator=', ', formatter={'all': lambda x: f'{x:.2f}'}, suppress_small=True)
+    print("now printing feature matrix")
+    print(matrix_string)
+    print("now printing y:")
+    print(y)
+
 
 
 
@@ -204,7 +272,17 @@ def classification(new_log_path):
     sklearn.neighbors.KNeighborsClassifier(n_neighbors=5, weights='uniform', algorithm='auto', 
                                             p=2, metric="minkowski")
 
+def fitness_token_based_replay(log_path,discovery_algorithm):
+    log = read_log(log_path)
+    petri_net,initial_marking,final_marking = read_model(log_path,discovery_algorithm)
+    result = pm4py.conformance.fitness_token_based_replay(log, petri_net,initial_marking, final_marking)
+    print(discovery_algorithm, result["average_trace_fitness"])
+    return result["average_trace_fitness"]
 
 
 
 init()
+
+
+
+
