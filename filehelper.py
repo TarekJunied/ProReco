@@ -1,5 +1,5 @@
 import os
-
+from globals import log_paths
 
 def gather_all_xes(dir_path):
     xes_files = []
@@ -10,3 +10,15 @@ def gather_all_xes(dir_path):
 
     return xes_files
 
+
+def select_smallest_k_logs(k):
+        # Create a list of tuples containing (file_path, file_size)
+        files_with_sizes = [(file_path, os.path.getsize(file_path)) for file_path in log_paths]
+
+        # Sort the list of tuples by file size
+        sorted_files = sorted(files_with_sizes, key=lambda x: x[1])
+
+        # Extract the sorted file paths from the sorted list of tuples
+        sorted_file_paths = [file_path for file_path, _ in sorted_files]
+
+        return sorted_file_paths[:k]
