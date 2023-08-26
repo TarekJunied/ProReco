@@ -1,6 +1,8 @@
 import pm4py
+import time
+import pickle
 from filehelper import gather_all_xes
-from globals import logs
+from globals import logs, models, runtime
 
 
 def print_distinct_traces(log_path):
@@ -15,20 +17,32 @@ def print_distinct_traces(log_path):
 def read_model(log_path, discovery_algorithm):
     if (log_path, discovery_algorithm) not in models:
         log = read_log(log_path)
+        start_time = time.time()
         if discovery_algorithm == "alpha":
-            net, initial_marking, final_marking = pm4py.discover_petri_net_alpha(log)
-            models[log_path, discovery_algorithm] = (net, initial_marking, final_marking)
+            net, initial_marking, final_marking = pm4py.discover_petri_net_alpha(
+                log)
+            models[log_path, discovery_algorithm] = (
+                net, initial_marking, final_marking)
 
         elif discovery_algorithm == "heuristic":
-            net, initial_marking, final_marking = pm4py.discover_petri_net_heuristics(log)
-            models[log_path, discovery_algorithm] = (net, initial_marking, final_marking)
+            net, initial_marking, final_marking = pm4py.discover_petri_net_heuristics(
+                log)
+            models[log_path, discovery_algorithm] = (
+                net, initial_marking, final_marking)
         elif discovery_algorithm == "ILP":
-            net, initial_marking, final_marking = pm4py.discover_petri_net_ilp(log)
-            models[log_path, discovery_algorithm] = (net, initial_marking, final_marking)
+            net, initial_marking, final_marking = pm4py.discover_petri_net_ilp(
+                log)
+            models[log_path, discovery_algorithm] = (
+                net, initial_marking, final_marking)
 
         elif discovery_algorithm == "inductive":
-            net, initial_marking, final_marking = pm4py.discover_petri_net_inductive(log)
-            models[log_path, discovery_algorithm] = (net, initial_marking, final_marking)
+            net, initial_marking, final_marking = pm4py.discover_petri_net_inductive(
+                log)
+            models[log_path, discovery_algorithm] = (
+                net, initial_marking, final_marking)
+        end_time = time.time()
+
+        runtime[log_path, discovery_algorithm] = end_time - start_time
 
     return models[log_path, discovery_algorithm]
 

@@ -1,16 +1,15 @@
 import pm4py
-from filehelper import gather_all_xes,select_smallest_k_logs
+from filehelper import gather_all_xes, select_smallest_k_logs
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
-from globals import log_paths, algorithm_portfolio, selected_features,logs
+from globals import log_paths, algorithm_portfolio, selected_features, logs, measures
 from features import (
     feature_avg_event_repetition_intra_trace,
     compute_features_of_log,
     compute_feature,
     feature_density, feature_causality_strength, feature_length_one_loops,
 )
-from measures import (fitness_token_based_replay
-, precision_token_based_replay)
+from measures import compute_measure
 
 from utils import read_log, read_model, load_all_logs_from_cache
 
@@ -26,7 +25,8 @@ def init_feature_matrix():
     X = np.empty((len(log_paths), len(selected_features)))
     for log_index in range(len(log_paths)):
         for feature_index in range(len(selected_features)):
-            X[log_index, feature_index] = compute_feature(log_index, feature_index)
+            X[log_index, feature_index] = compute_feature(
+                log_index, feature_index)
 
 
 def init_target(log_path, log_index):
@@ -58,13 +58,12 @@ def init():
 
     print("now finished initializing target vector")
 
-    matrix_string = np.array2string(X, separator=', ', formatter={'all': lambda x: f'{x:.2f}'}, suppress_small=True)
+    matrix_string = np.array2string(X, separator=', ', formatter={
+                                    'all': lambda x: f'{x:.2f}'}, suppress_small=True)
     print("now printing feature matrix")
     print(matrix_string)
     print("now printing y:")
     print(y)
-
-
 
 
 def classification(new_log_path):
@@ -80,7 +79,6 @@ def classification(new_log_path):
 
 
 log_paths = gather_all_xes("./")
-for i in range(1,4):
-    X = compute_features_of_log(log_paths[i])
-    print(X)
-    print("#################################")
+log = read_log(log_paths[1])
+for measure_name in measures:
+    print(compute_measure(log_paths[1], "alpha", measure_name))
