@@ -1,6 +1,6 @@
 import pm4py
 from utils import read_log
-from globals import selected_features, log_paths
+from globals import selected_features, training_logs_paths,pickled_variables
 import numpy as np
 
 def init_causal_matrix(matrix, activities):
@@ -194,12 +194,23 @@ def feature_length_one_loops(log_path):
 
 
 def compute_features_of_log(log_path):
-    X_test = np.empty((1, len(selected_features)))
+    feature_vector = np.empty((1, len(selected_features)))
     for feature_index in range(len(selected_features)):
-        X_test[0, feature_index] = compute_feature_log_path(log_path, feature_index)
+        feature_vector[0, feature_index] = compute_feature_log_path(log_path, feature_index)
 
-    print(X_test)
-    return X_test
+    return feature_vector
+
+
+
+def init_feature_matrix():
+    global X
+    X = np.empty((len(training_logs_paths), len(selected_features)))
+    for log_index in range(len(training_logs_paths)):
+        for feature_index in range(len(selected_features)):
+            X[log_index, feature_index] = compute_feature(
+                log_index, feature_index)
+
+    pickled_variables["X"] = X
 
 
 def compute_feature_log_path(log_path, feature_index):
@@ -232,5 +243,5 @@ def compute_feature_log_path(log_path, feature_index):
 
 
 def compute_feature(log_index, feature_index):
-    log_path = log_paths[log_index]
+    log_path = training_logs_paths[log_index]
     return compute_feature_log_path(log_path,feature_index)

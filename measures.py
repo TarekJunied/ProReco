@@ -1,7 +1,7 @@
 from utils import read_model, read_log
 import pm4py
 import sys
-from globals import runtime
+from globals import runtime,algorithm_portfolio,measures,training_logs_paths, pickled_variables
 
 
 # Fitness measures
@@ -107,3 +107,37 @@ def compute_measure(log_path, discovery_algorithm, measure_name):
         return measure_used_memory(log_path, discovery_algorithm)
     else:
         raise ValueError("Invalid measure name")
+
+def init_max_target_vector(log_path,log_index,measure_name):
+    global y
+    cur_max = float("-inf")
+    for discovery_algorithm in algorithm_portfolio:
+        algo_val = compute_measure(log_path, discovery_algorithm, measure_name)
+        if algo_val > cur_max:
+            cur_max = algo_val
+            y[log_index] = discovery_algorithm
+
+def init_min_target_vector(log_path,log_index,measure_name):
+    global y, target_vectors
+    cur_min = float("-inf")
+    for discovery_algorithm in algorithm_portfolio:
+        algo_val = compute_measure(log_path, discovery_algorithm, measure_name)
+        if algo_val < cur_min:
+            cur_min = algo_val
+            y[log_index] = discovery_algorithm
+    target_vectors[log_path,measure_name] = y[log_index]
+
+def init_target_entry(log_path, log_index,measure_name):
+    global y
+    y = [None] * len(training_logs_paths)
+    if measures[measure_name] == "max":
+        init_max_target_vector(log_path,log_index,measure_name)
+    if measures[measure_name] == "min":
+        init_min_target_vector(log_path,log_index,measure_name)
+    target_vectors[log_path, measure_name] = y[log_index]
+
+def init_target_vector(measure_name):
+    global target_vectors
+    for i in range(len(training_logs_paths)):
+        init_target_entry(training_logs_paths[i],i,measure_name)
+    pickled_variables["target_vectors"] = target_vectors

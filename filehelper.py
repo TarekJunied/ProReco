@@ -1,5 +1,5 @@
 import os
-from globals import log_paths
+from globals import training_logs_paths
 
 def gather_all_xes(dir_path):
     xes_files = []
@@ -13,7 +13,8 @@ def gather_all_xes(dir_path):
 
 def select_smallest_k_logs(k):
         # Create a list of tuples containing (file_path, file_size)
-        files_with_sizes = [(file_path, os.path.getsize(file_path)) for file_path in log_paths]
+        training_logs_paths = gather_all_xes("./")
+        files_with_sizes = [(file_path, os.path.getsize(file_path)) for file_path in training_logs_paths]
 
         # Sort the list of tuples by file size
         sorted_files = sorted(files_with_sizes, key=lambda x: x[1])

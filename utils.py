@@ -1,8 +1,9 @@
+import importlib
+
 import pm4py
 import time
 import pickle
-from filehelper import gather_all_xes
-from globals import logs, models, runtime
+from globals import algorithm_portfolio, pickled_variables, models, training_logs_paths, feature_vectors, logs, target_vectors, runtime, X, y, cache_file
 
 
 def print_distinct_traces(log_path):
@@ -59,31 +60,53 @@ def read_log(log_path):
             print("The log does not exist !")
 
 
-def load_all_logs_into_cache():
-    global log_paths, no_logs, log, algorithm_portfolio, cached_variables, y
-    log_paths = gather_all_xes("./")[:no_logs]
-    y = [None] * len(log_paths)
-    for i in range(no_logs):
-        read_log(log_paths[i])
+def read_logs():
+    global training_logs_paths
+    input(training_logs_paths)
+    for log_path in training_logs_paths:
+        try:
+            log = pm4py.read_xes(log_path)
+            logs[log_path] = log
+        except Exception:
+            print("The log does not exist!")
+
+    pickled_variables["training_logs_paths"] = training_logs_paths
+    pickled_variables["logs"] = logs
+
+
+def compute_models():
+    for log_path in training_logs_paths:
         for discovery_algorithm in algorithm_portfolio:
-            read_model(log_paths[i], discovery_algorithm)
+            read_model(log_path, discovery_algorithm)
 
-    cached_variables["models"] = models
-    cached_variables["logs"] = logs
-    cached_variables["log_paths"] = log_paths
-
-    with open("cache.pkl", "wb") as file:
-        pickle.dump(cached_variables, file)
+    pickled_variables["runtime"] = runtime
+    pickled_variables["models"] = models
 
 
-def load_all_logs_from_cache():
-    global cached_variables, log_paths, logs, models
-    log_paths = gather_all_xes("./")[:no_logs]
-    if os.path.getsize("cache.pkl") == 0:
-        load_all_logs_into_cache()
-    else:
-        with open("cache.pkl", "rb") as file:
-            cached_variables = pickle.load(file)
-        log_paths = cached_variables["log_paths"]
-        logs = cached_variables["logs"]
-        models = cached_variables["models"]
+def pickle_dump():
+    global pickled_variables
+
+    with open(cache_file, "wb") as f:
+        pickle.dump(pickled_variables, f)
+        print("Data cached.")
+
+
+def pickle_retrieve():
+    global pickled_variables
+    try:
+        with open(cache_file, "rb") as f:
+            pickled_variables = pickle.load(f)
+        print("Cached data loaded.")
+    except FileNotFoundError:
+        pickled_variables = None
+        print("No pickle file found")
+
+
+def load_all_globals_from_cache():
+    global pickled_variables, models, training_logs_paths, feature_vectors, logs, target_vectors, runtime, X, y
+    models = pickled_variables["models"]
+    training_logs_paths = pickled_variables["training_log_paths"]
+    feature_vectors = pickled_variables["logs"]
+    logs = pickled_variables["logs"]
+    target_vectors = pickled_variables["target_vectors"]
+    runtime = pickled_variables["runtime"]
