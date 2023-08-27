@@ -15,7 +15,7 @@ from utils import read_logs, compute_models, pickle_retrieve, pickle_dump, load_
 
 
 def init():
-    globals.training_logs_paths = gather_all_xes("./")
+    globals.training_logs_paths = gather_all_xes("../logs")
     if os.path.getsize(globals.cache_file) == 0:
         read_logs()
         print("Now finished reading logs")
