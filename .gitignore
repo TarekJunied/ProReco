@@ -1,5 +1,8 @@
 # Ignore logs with specific extensions
-logs_in_csv/
-logs_in_xes/
+logs/
 How-To-Write/
+.idea
+.vscode
+__pycache__
 cache.pkl
+.DS_store
