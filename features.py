@@ -1,6 +1,6 @@
 import pm4py
 from utils import read_log
-from globals import selected_features, training_logs_paths,pickled_variables
+import globals
 import numpy as np
 
 def init_causal_matrix(matrix, activities):
@@ -194,8 +194,8 @@ def feature_length_one_loops(log_path):
 
 
 def compute_features_of_log(log_path):
-    feature_vector = np.empty((1, len(selected_features)))
-    for feature_index in range(len(selected_features)):
+    feature_vector = np.empty((1, len(globals.selected_features)))
+    for feature_index in range(len(globals.selected_features)):
         feature_vector[0, feature_index] = compute_feature_log_path(log_path, feature_index)
 
     return feature_vector
@@ -203,38 +203,37 @@ def compute_features_of_log(log_path):
 
 
 def init_feature_matrix():
-    global X
-    X = np.empty((len(training_logs_paths), len(selected_features)))
-    for log_index in range(len(training_logs_paths)):
-        for feature_index in range(len(selected_features)):
-            X[log_index, feature_index] = compute_feature(
+    globals.X = np.empty((len(globals.training_logs_paths), len(globals.selected_features)))
+    for log_index in range(len(globals.training_logs_paths)):
+        for feature_index in range(len(globals.selected_features)):
+            globals.X[log_index, feature_index] = compute_feature(
                 log_index, feature_index)
 
-    pickled_variables["X"] = X
+    globals.pickled_variables["X"] = globals.X
 
 
 def compute_feature_log_path(log_path, feature_index):
-    if selected_features[feature_index] == "no_distinct_traces":
+    if globals.selected_features[feature_index] == "no_distinct_traces":
         ret = feature_no_distinct_traces(log_path)
-    elif selected_features[feature_index] == "no_total_traces":
+    elif globals.selected_features[feature_index] == "no_total_traces":
         ret = feature_no_total_traces(log_path)
-    elif selected_features[feature_index] == "avg_trace_length":
+    elif globals.selected_features[feature_index] == "avg_trace_length":
         ret = feature_avg_trace_length(log_path)
-    elif selected_features[feature_index] == "avg_event_repetition_intra_trace":
+    elif globals.selected_features[feature_index] == "avg_event_repetition_intra_trace":
         ret = feature_avg_event_repetition_intra_trace(log_path)
-    elif selected_features[feature_index] == "no_distinct_events":
+    elif globals.selected_features[feature_index] == "no_distinct_events":
         ret = feature_no_distinct_events(log_path)
-    elif selected_features[feature_index] == "no_events_total":
+    elif globals.selected_features[feature_index] == "no_events_total":
         ret = feature_no_events_total(log_path)
-    elif selected_features[feature_index] == "no_distinct_start":
+    elif globals.selected_features[feature_index] == "no_distinct_start":
         ret = feature_no_distinct_start(log_path)
-    elif selected_features[feature_index] == "no_distinct_end":
+    elif globals.selected_features[feature_index] == "no_distinct_end":
         ret = feature_no_distinct_end(log_path)
-    elif selected_features[feature_index] == "causality_strength":
+    elif globals.selected_features[feature_index] == "causality_strength":
         ret = feature_causality_strength(log_path)
-    elif selected_features[feature_index] == "density":
+    elif globals.selected_features[feature_index] == "density":
         ret = feature_density(log_path)
-    elif selected_features[feature_index] == "length_one_loops":
+    elif globals.selected_features[feature_index] == "length_one_loops":
         ret = feature_length_one_loops(log_path)
     else:
         ret = None
@@ -243,5 +242,5 @@ def compute_feature_log_path(log_path, feature_index):
 
 
 def compute_feature(log_index, feature_index):
-    log_path = training_logs_paths[log_index]
+    log_path = globals.training_logs_paths[log_index]
     return compute_feature_log_path(log_path,feature_index)
