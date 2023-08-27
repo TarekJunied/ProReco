@@ -11,12 +11,11 @@ from features import (
 from measures import (
     init_target_vector
 )
-from utils import read_logs, compute_models, pickle_retrieve, pickle_dump,load_all_globals_from_cache
-
+from utils import read_logs, compute_models, pickle_retrieve, pickle_dump, load_all_globals_from_cache
 
 
 def init():
-    globals.training_logs_paths = select_smallest_k_logs(3)
+    globals.training_logs_paths = gather_all_xes("./")
     if os.path.getsize(globals.cache_file) == 0:
         read_logs()
         print("Now finished reading logs")
@@ -48,7 +47,7 @@ def init():
 
         print("Now finished computing feature matrix")
         print(np.array2string(globals.X, separator=', ', formatter={
-        'all': lambda x: f'{x:.2f}'}, suppress_small=True))
+            'all': lambda x: f'{x:.2f}'}, suppress_small=True))
 
         globals.y = [None] * len(globals.training_logs_paths)
         if (globals.training_logs_paths[0], globals.selected_measure) not in globals.target_vectors:
@@ -56,13 +55,11 @@ def init():
             init_target_vector(globals.selected_measure)
         else:
             for i in range(len(globals.training_logs_paths)):
-                globals.y[i] = globals.target_vectors[globals.training_logs_paths[i], globals.selected_measure]
+                globals.y[i] = globals.target_vectors[globals.training_logs_paths[i],
+                                                      globals.selected_measure]
 
         print("now finished computing target_vector")
         print(globals.y)
-
-
-
 
 
 def classification(new_log_path):
@@ -76,6 +73,5 @@ def classification(new_log_path):
 
     return prediction
 
+
 init()
-log_paths = gather_all_xes("./")
-classification(log_paths[4])
