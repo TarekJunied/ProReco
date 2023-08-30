@@ -1,18 +1,22 @@
 import pm4py
+from filehelper import gather_all_xes, select_smallest_k_logs
 import os
 import numpy as np
-import globals
-from filehelper import gather_all_xes, select_smallest_k_logs
 from sklearn.neighbors import KNeighborsClassifier
-from features import compute_features_of_log, init_feature_matrix
-from measures import init_target_vector
+import globals
+from features import (
+    compute_features_of_log,
+    init_feature_matrix
+)
+from measures import (
+    init_target_vector
+)
 from utils import read_logs, compute_models, pickle_retrieve, pickle_dump, load_all_globals_from_cache
-from log_generator import init_training_logs
 
 
 def init():
-    init_training_logs(100)
-    globals.training_logs_paths = gather_all_xes("../logs/training_logs")
+    globals.training_logs_paths = gather_all_xes("../logs")
+    globals.training_logs_paths = select_smallest_k_logs(5)
     if os.path.getsize(globals.cache_file) == 0:
         read_logs()
         print("Now finished reading logs")

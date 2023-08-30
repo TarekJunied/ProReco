@@ -5,7 +5,6 @@ import time
 import pickle
 import globals
 
-
 def print_distinct_traces(log_path):
     log = read_log(log_path)
     variants = pm4py.stats.get_variants(log)
@@ -76,8 +75,7 @@ def compute_models():
     for log_path in globals.training_logs_paths:
         for discovery_algorithm in globals.algorithm_portfolio:
             read_model(log_path, discovery_algorithm)
-            print(
-                f"model by {discovery_algorithm} for {log_path} has been discovered")
+
     globals.pickled_variables["runtime"] = globals.runtime
     globals.pickled_variables["models"] = globals.models
 
