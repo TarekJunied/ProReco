@@ -3,6 +3,8 @@ import pm4py
 import time
 import pickle
 import globals
+from discovery.splitminer.split_miner import discover_petri_net_split
+from discovery.structuredminer.fodina_miner import discover_petri_net_fodina
 
 
 def print_distinct_traces(log_path):
@@ -43,10 +45,13 @@ def read_model(log_path, discovery_algorithm):
                 net, initial_marking, final_marking)
             
         elif discovery_algorithm == "split":
-            #TODO:
-            return
-
-
+            net,initial_marking,final_marking = discover_petri_net_split(log_path, "./")
+            globals.models[log_path, discovery_algorithm] = (
+                net, initial_marking, final_marking)
+        elif discovery_algorithm = "fodina":
+            net,initial_marking,final_marking = discover_petri_net_fodina(log_path, log_path+"_model")
+            globals.models[log_path, discovery_algorithm] = (
+                net, initial_marking, final_marking)
         end_time = time.time()
 
         globals.runtime[log_path, discovery_algorithm] = end_time - start_time

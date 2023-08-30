@@ -21,6 +21,3 @@ def discover_petri_net_split(log_path, model_destination, parallelism_threshold=
     file_dest = model_destination + ".pnml"
     net, im, fm = pm4py.read.read_pnml(file_dest)
     return (net, im, fm)
-
-
-discover_petri_net_split("hi1.xes", "./hello2")
