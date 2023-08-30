@@ -1,5 +1,4 @@
-import importlib
-
+import subprocess
 import pm4py
 import time
 import pickle
@@ -13,6 +12,7 @@ def print_distinct_traces(log_path):
 
     for trace in trace_variants:
         print(trace)
+
 
 
 def read_model(log_path, discovery_algorithm):
@@ -41,6 +41,12 @@ def read_model(log_path, discovery_algorithm):
                 log)
             globals.models[log_path, discovery_algorithm] = (
                 net, initial_marking, final_marking)
+            
+        elif discovery_algorithm == "split":
+            #TODO:
+            return
+
+
         end_time = time.time()
 
         globals.runtime[log_path, discovery_algorithm] = end_time - start_time
@@ -114,3 +120,5 @@ def load_target_vector_into_y():
     for i in range(len(globals.training_logs_paths)):
         globals.y[i] = globals.target_vectors[globals.training_logs_paths[i],
                                               globals.selected_measure]
+
+

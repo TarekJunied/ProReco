@@ -1,4 +1,4 @@
-algorithm_portfolio = ["alpha", "heuristic", "inductive", "ILP"]
+algorithm_portfolio = ["alpha", "heuristic", "inductive", "ILP", "split"]
 features_list = ["no_distinct_traces", "no_total_traces", "avg_trace_length", "avg_event_repetition_intra_trace",
                  "no_distinct_events", "no_events_total", "no_distinct_start", "no_distinct_end", "causality_strength", "density", "length_one_loops"]
 
