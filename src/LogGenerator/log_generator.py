@@ -1,7 +1,5 @@
 import subprocess
-import time
-
-command_without_args = "/Library/Java/JavaVirtualMachines/jdk-18.0.1.1.jdk/Contents/Home/bin/java -Dfile.encoding=UTF-8 -classpath /Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/bin:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/jython/jython-standalone-2.5.3.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/jdom/jdom-2.0.5.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/multiline-string-0.1.1.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/commons-io/commons-io-2.4.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/colt/colt.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/colt/concurrent.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/OpenXES/guava-16.0.1.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/OpenXES/OpenXES-XStream.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/OpenXES/OpenXES.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/OpenXES/xpp3_min-1.1.4c.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/OpenXES/xstream-1.3.1.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/reflections-0.10-SNAPSHOT.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/OpenXES/Spex.jar:/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/PLG/libPlg/lib/camunda-bpmn-model-7.5.0.jar -XX:+ShowCodeDetailsInExceptionMessages plg.loggenerator.ProcGenerator"
+import datetime
 
 
 def create_random_process(and_branches=5,
@@ -14,51 +12,65 @@ def create_random_process(and_branches=5,
                           xor_weight=0.3,
                           max_depth=3,
                           data_object_probability=0.1):
+    storage_path = "./processes/process_" + \
+        str(datetime.datetime.now().time()) + ".plg"
 
-    command = (
-        str(command_without_args) + " " +
-        str(and_branches) + " " +
-        str(xor_branches) + " " +
-        str(loop_weight) + " " +
-        str(single_activity_weight) + " " +
-        str(skip_weight) + " " +
-        str(sequence_weight) + " " +
-        str(and_weight) + " " +
-        str(xor_weight) + " " +
-        str(max_depth) + " " +
-        str(data_object_probability)
-    )
+    command_list = ["java", "-jar", "ProcessGenerator.jar",
+                    "-ab", str(and_branches), "-xb", str(xor_branches),
+                    "-l", str(loop_weight), "-sa", str(single_activity_weight),
+                    "-sw", str(skip_weight), "-sq", str(sequence_weight),
+                    "-aw", str(and_weight), "-xw", str(xor_weight),
+                    "-md", str(max_depth), "-dop", str(data_object_probability),
+                    "-fd", storage_path]
 
-    result = subprocess.run(
-        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-
-    # TODO: return path of model as string
-
-    print("Output:")
-    print(result.stdout)
-
-    print("Errors:")
-    print(result.stderr)
-
-
-def create_log_from_model(model_path, no_traces=1000):
-    command = "java -jar /Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/LogGenerator.jar "
-    command += "-l" + " " + "./logs/log_" + str(time.time()) + " "
-    command += "-m" + " " + model_path + " "
-    command += "-c" + " " + str(no_traces) + " "
-
+    command = " ".join(map(str, command_list))
     print(command)
 
     result = subprocess.run(
         command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
     print("Output:")
-    print(result.stdout)
+    output = result.stdout
+    error = result.stderr
+    print(output)
 
-    print("Errors:")
-    print(result.stderr)
+    if len(error) == 0:
+        print(f"Success: process stored to {storage_path}")
+    else:
+        print("An error has occured.")
+        print("Errors:")
+        print(error)
+
+    return storage_path
 
 
-create_random_process()
+def create_log_from_model(model_path, no_traces=1000):
+    storage_path = "./logs/log_" + str(datetime.datetime.now().time()) + ".xes"
 
-# create_log_from_model("/Users/tarekjunied/Documents/Universität/BachelorThesis/src/LogGenerator/processes/process_2023-08-29T19:06:38.961248Z.plg")
+    command_list = [
+        "java", "-jar", "LogGenerator.jar",
+        "-l", storage_path,
+        "-m", model_path,
+        "-c", str(no_traces)
+    ]
+    command = " ".join(map(str, command_list))
+    print(command)
+    result = subprocess.run(
+        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+    print("Output:")
+    output = result.stdout
+    error = result.stderr
+    print(output)
+
+    if len(error) == 0:
+        print(f"Success: process stored to {storage_path}")
+    else:
+        print("An error has occured.")
+        print("Errors:")ç
+        print(error)
+
+
+process_path = create_random_process()
+for i in range(100):
+    create_log_from_model(process_path, 100)

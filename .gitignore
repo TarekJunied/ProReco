@@ -1,9 +1,14 @@
 # Ignore logs with specific extensions
-logs/
 How-To-Write/
 .idea
 .vscode
 __pycache__
 cache.pkl
 .DS_Store
-/.metadata/
+/src/cache.pkl
+/src/__pycache__
+/src/LogGenerator/logs/*
+/src/LogGenerator/processes/*
+/src/LogGenerator/.metadata
+.metadata
+/logs/
