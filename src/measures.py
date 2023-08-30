@@ -107,7 +107,8 @@ def compute_measure(log_path, discovery_algorithm, measure_name):
     else:
         raise ValueError("Invalid measure name")
 
-def init_max_target_vector(log_path,log_index,measure_name):
+
+def init_max_target_vector(log_path, log_index, measure_name):
     cur_max = float("-inf")
     for discovery_algorithm in globals.algorithm_portfolio:
         algo_val = compute_measure(log_path, discovery_algorithm, measure_name)
@@ -116,25 +117,28 @@ def init_max_target_vector(log_path,log_index,measure_name):
             globals.y[log_index] = discovery_algorithm
     globals.target_vectors[log_path, measure_name] = globals.y[log_index]
 
-def init_min_target_vector(log_path,log_index,measure_name):
-    cur_min = float("-inf")
+
+def init_min_target_vector(log_path, log_index, measure_name):
+    cur_min = float("inf")
     for discovery_algorithm in globals.algorithm_portfolio:
         algo_val = compute_measure(log_path, discovery_algorithm, measure_name)
         if algo_val < cur_min:
             cur_min = algo_val
             globals.y[log_index] = discovery_algorithm
-    globals.target_vectors[log_path,measure_name] = globals.y[log_index]
-
-def init_target_entry(log_path, log_index,measure_name):
-    if globals.measures[measure_name] == "max":
-        init_max_target_vector(log_path,log_index,measure_name)
-    if globals.measures[measure_name] == "min":
-        init_min_target_vector(log_path,log_index,measure_name)
     globals.target_vectors[log_path, measure_name] = globals.y[log_index]
+
+
+def init_target_entry(log_path, log_index, measure_name):
+    if globals.measures[measure_name] == "max":
+        init_max_target_vector(log_path, log_index, measure_name)
+    if globals.measures[measure_name] == "min":
+        init_min_target_vector(log_path, log_index, measure_name)
+    globals.target_vectors[log_path, measure_name] = globals.y[log_index]
+
 
 def init_target_vector(measure_name):
     globals.y = [None] * len(globals.training_logs_paths)
     n = len(globals.training_logs_paths)
     for i in range(n):
-        init_target_entry(globals.training_logs_paths[i],i,measure_name)
+        init_target_entry(globals.training_logs_paths[i], i, measure_name)
     globals.pickled_variables["target_vectors"] = globals.target_vectors

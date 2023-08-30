@@ -1,22 +1,18 @@
 import pm4py
-from filehelper import gather_all_xes, select_smallest_k_logs
 import os
 import numpy as np
-from sklearn.neighbors import KNeighborsClassifier
 import globals
-from features import (
-    compute_features_of_log,
-    init_feature_matrix
-)
-from measures import (
-    init_target_vector
-)
-from utils import read_logs, compute_models, pickle_retrieve, pickle_dump, load_all_globals_from_cache
+from filehelper import gather_all_xes, select_smallest_k_logs
+from sklearn.neighbors import KNeighborsClassifier
+from features import compute_features_of_log, init_feature_matrix
+from measures import init_target_vector, init_target_entry
+from utils import read_logs, compute_models, pickle_retrieve, pickle_dump, load_all_globals_from_cache, load_target_vector_into_y
 
 
 def init():
-    globals.training_logs_paths = gather_all_xes("../logs")
-    globals.training_logs_paths = select_smallest_k_logs(5)
+    globals.training_logs_paths = gather_all_xes("./LogGenerator/logs")
+    globals.training_logs_paths = select_smallest_k_logs(
+        20, "./LogGenerator/Logs")
     if os.path.getsize(globals.cache_file) == 0:
         read_logs()
         print("Now finished reading logs")
@@ -24,11 +20,9 @@ def init():
         print(globals.logs)
         compute_models()
         print("Now finished computing models and runtime")
-        print(globals.models)
         init_feature_matrix()
         print("Now finished computing feature matrix")
-        print(np.array2string(globals.X, separator=', ', formatter={
-            'all': lambda x: f'{x:.2f}'}, suppress_small=True))
+
         init_target_vector(globals.selected_measure)
         print("now finished computing target_vector")
         print(globals.y)
@@ -41,34 +35,24 @@ def init():
 
         print("Now finished reading logs")
         print(globals.training_logs_paths)
-        print(globals.logs)
 
         print("Now finished computing models and runtime")
-        print(globals.models)
 
         print("Now finished computing feature matrix")
-        print(np.array2string(globals.X, separator=', ', formatter={
-            'all': lambda x: f'{x:.2f}'}, suppress_small=True))
 
-        globals.y = [None] * len(globals.training_logs_paths)
-        if (globals.training_logs_paths[0], globals.selected_measure) not in globals.target_vectors:
-
-            init_target_vector(globals.selected_measure)
-        else:
-            for i in range(len(globals.training_logs_paths)):
-                globals.y[i] = globals.target_vectors[globals.training_logs_paths[i],
-                                                      globals.selected_measure]
-
+        load_target_vector_into_y()
         print("now finished computing target_vector")
         print(globals.y)
 
 
 def classification(new_log_path):
-    knn = KNeighborsClassifier(n_neighbors=1, weights='uniform', algorithm='auto',
+    knn = KNeighborsClassifier(n_neighbors=5, weights='uniform', algorithm='auto',
                                p=2, metric="minkowski")
     knn.fit(globals.X, globals.y)
 
     prediction = knn.predict(compute_features_of_log(new_log_path))
+
+    globals.predictions[new_log_path] = prediction
 
     print("predicition is ", prediction)
 
@@ -76,3 +60,17 @@ def classification(new_log_path):
 
 
 init()
+correct = 0
+n = len(globals.training_logs_paths)
+for i in range(n):
+    log_path = globals.training_logs_paths[i]
+    init_target_entry(
+        log_path, i, globals.selected_measure)
+    prediction = classification(log_path)
+
+    if globals.target_vectors[log_path, globals.selected_measure] == prediction:
+        correct += 1
+
+print(correct)
+print(n)
+print(correct/n)

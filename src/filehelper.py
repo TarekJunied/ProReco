@@ -12,9 +12,9 @@ def gather_all_xes(dir_path):
     return xes_files
 
 
-def select_smallest_k_logs(k):
+def select_smallest_k_logs(k, dir_path):
     # Create a list of tuples containing (file_path, file_size)
-    globals.training_logs_paths = gather_all_xes("../logs")
+    globals.training_logs_paths = gather_all_xes(dir_path)
     files_with_sizes = [(file_path, os.path.getsize(file_path))
                         for file_path in globals.training_logs_paths]
 
