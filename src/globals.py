@@ -1,3 +1,4 @@
+home_dir = "/Users/tarekjunied/Documents/Universität/BachelorThesis"
 algorithm_portfolio = ["alpha", "heuristic",
                        "inductive", "ILP", "split", "fodina"]
 features_list = ["no_distinct_traces", "no_total_traces", "avg_trace_length", "avg_event_repetition_intra_trace",

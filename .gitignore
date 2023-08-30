@@ -11,4 +11,5 @@ cache.pkl
 /src/LogGenerator/processes/*
 /src/LogGenerator/.metadata
 .metadata
+/src/discovery/models
 /logs/

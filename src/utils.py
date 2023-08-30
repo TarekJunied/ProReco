@@ -2,6 +2,7 @@ import subprocess
 import pm4py
 import time
 import pickle
+import os
 import globals
 from discovery.splitminer.split_miner import discover_petri_net_split
 from discovery.structuredminer.fodina_miner import discover_petri_net_fodina
@@ -14,7 +15,6 @@ def print_distinct_traces(log_path):
 
     for trace in trace_variants:
         print(trace)
-
 
 
 def read_model(log_path, discovery_algorithm):
@@ -43,13 +43,17 @@ def read_model(log_path, discovery_algorithm):
                 log)
             globals.models[log_path, discovery_algorithm] = (
                 net, initial_marking, final_marking)
-            
+
         elif discovery_algorithm == "split":
-            net,initial_marking,final_marking = discover_petri_net_split(log_path, "./")
+            current_path = os.getcwd()
+            net, initial_marking, final_marking = discover_petri_net_split(
+                current_path+ "/" + log_path)
             globals.models[log_path, discovery_algorithm] = (
                 net, initial_marking, final_marking)
-        elif discovery_algorithm = "fodina":
-            net,initial_marking,final_marking = discover_petri_net_fodina(log_path, log_path+"_model")
+        elif discovery_algorithm == "fodina":
+            current_path = os.getcwd()
+            net, initial_marking, final_marking = discover_petri_net_fodina(
+                current_path+ "/" + log_path)
             globals.models[log_path, discovery_algorithm] = (
                 net, initial_marking, final_marking)
         end_time = time.time()
@@ -125,5 +129,3 @@ def load_target_vector_into_y():
     for i in range(len(globals.training_logs_paths)):
         globals.y[i] = globals.target_vectors[globals.training_logs_paths[i],
                                               globals.selected_measure]
-
-

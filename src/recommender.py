@@ -10,7 +10,8 @@ from utils import read_logs, compute_models, pickle_retrieve, pickle_dump, load_
 
 
 def init():
-    globals.training_logs_paths = gather_all_xes("./LogGenerator/logs")
+    globals.training_logs_paths = select_smallest_k_logs(
+        3, "./LogGenerator/logs")
     if os.path.getsize(globals.cache_file) == 0:
         read_logs()
         print("Now finished reading logs")
@@ -59,9 +60,9 @@ def classification(new_log_path):
 
 init()
 correct = 0
-log_paths = gather_all_xes("../logs")
+log_paths = gather_all_xes("../logs/logs_in_xes")
 n = len(log_paths)
-for i in range(n):
+for i in range(5):
     log_path = log_paths[i]
     init_target_entry(
         log_paths[i], i, globals.selected_measure)

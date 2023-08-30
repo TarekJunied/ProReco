@@ -25,3 +25,9 @@ def select_smallest_k_logs(k, dir_path):
     sorted_file_paths = [file_path for file_path, _ in sorted_files]
 
     return sorted_file_paths[:k]
+
+
+def remove_extension(filename):
+    base = os.path.basename(filename)  # Get the filename without path
+    name_without_extension = os.path.splitext(base)[0]  # Remove the extension
+    return name_without_extension
