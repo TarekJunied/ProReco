@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+
+WARNING: Do not manually edit this file, unless you know what you are doing!
+
+This file has been generated with libPlg v.2.0.6.
+Check https://github.com/delas/plg for sources and other stuff.
+
+ -->
+<process>
+	<!-- This is the list of all meta-attributes of the process -->
+	<meta>
+		<LibPLG_NAME>libPlg</LibPLG_NAME>
+		<libPLG_VERSION>2.0.6</libPLG_VERSION>
+		<name>test</name>
+		<id>qdu8ii6k8d3ob81hdfne9osq53</id>
+	</meta>
+	<!-- This is the list of all actual process elements -->
+	<elements>
+		<startEvent id="0"/>
+		<task id="65" name="Activity U">
+			<script/>
+		</task>
+		<task id="2" name="Activity A">
+			<script/>
+		</task>
+		<task id="68" name="Activity V">
+			<script/>
+		</task>
+		<task id="5" name="Activity B">
+			<script/>
+		</task>
+		<task id="69" name="Activity W">
+			<script/>
+		</task>
+		<task id="6" name="Activity C">
+			<script/>
+		</task>
+		<task id="72" name="Activity X">
+			<dataObject id="75" direction="REQUIRED"/>
+			<script/>
+		</task>
+		<task id="9" name="Activity D">
+			<script/>
+		</task>
+		<task id="10" name="Activity E">
+			<script/>
+		</task>
+		<task id="13" name="Activity F">
+			<script/>
+		</task>
+		<task id="14" name="Activity G">
+			<script/>
+		</task>
+		<task id="17" name="Activity H">
+			<script/>
+		</task>
+		<task id="81" name="Activity Y">
+			<script/>
+		</task>
+		<task id="20" name="Activity I">
+			<dataObject id="21" direction="GENERATED"/>
+			<script/>
+		</task>
+		<task id="84" name="Activity Z">
+			<script/>
+		</task>
+		<task id="85" name="Activity AA">
+			<script/>
+		</task>
+		<task id="88" name="Activity AB">
+			<script/>
+		</task>
+		<task id="89" name="Activity AC">
+			<script/>
+		</task>
+		<task id="28" name="Activity J">
+			<dataObject id="29" direction="GENERATED"/>
+			<script/>
+		</task>
+		<task id="92" name="Activity AD">
+			<dataObject id="93" direction="GENERATED"/>
+			<script/>
+		</task>
+		<task id="30" name="Activity K">
+			<script/>
+		</task>
+		<task id="34" name="Activity L">
+			<script/>
+		</task>
+		<task id="35" name="Activity M">
+			<script/>
+		</task>
+		<task id="100" name="Activity AE">
+			<script/>
+		</task>
+		<task id="101" name="Activity AF">
+			<script/>
+		</task>
+		<task id="39" name="Activity N">
+			<dataObject id="40" direction="GENERATED"/>
+			<script/>
+		</task>
+		<task id="41" name="Activity O">
+			<script/>
+		</task>
+		<task id="105" name="Activity AG">
+			<script/>
+		</task>
+		<task id="106" name="Activity AH">
+			<script/>
+		</task>
+		<task id="110" name="Activity AI">
+			<script/>
+		</task>
+		<task id="49" name="Activity P">
+			<script/>
+		</task>
+		<task id="113" name="Activity AJ">
+			<script/>
+		</task>
+		<task id="114" name="Activity AK">
+			<script/>
+		</task>
+		<task id="52" name="Activity Q">
+			<script/>
+		</task>
+		<task id="53" name="Activity R">
+			<dataObject id="54" direction="GENERATED"/>
+			<script/>
+		</task>
+		<task id="117" name="Activity AL">
+			<script/>
+		</task>
+		<task id="120" name="Activity AM">
+			<script/>
+		</task>
+		<task id="57" name="Activity S">
+			<script/>
+		</task>
+		<task id="60" name="Activity T">
+			<script/>
+		</task>
+		<gateway id="66" type="ExclusiveGateway"/>
+		<gateway id="3" type="ExclusiveGateway"/>
+		<gateway id="67" type="ExclusiveGateway"/>
+		<gateway id="4" type="ExclusiveGateway"/>
+		<gateway id="7" type="ExclusiveGateway"/>
+		<gateway id="8" type="ExclusiveGateway"/>
+		<gateway id="11" type="ExclusiveGateway"/>
+		<gateway id="12" type="ExclusiveGateway"/>
+		<gateway id="111" type="ParallelGateway"/>
+		<gateway id="112" type="ParallelGateway"/>
+		<gateway id="50" type="ParallelGateway"/>
+		<gateway id="82" type="ParallelGateway"/>
+		<gateway id="51" type="ParallelGateway"/>
+		<gateway id="83" type="ParallelGateway"/>
+		<gateway id="86" type="ParallelGateway"/>
+		<gateway id="87" type="ParallelGateway"/>
+		<endEvent id="1"/>
+		<sequenceFlow id="128" sourceRef="83" targetRef="84"/>
+		<sequenceFlow id="129" sourceRef="3" targetRef="81"/>
+		<sequenceFlow id="130" sourceRef="84" targetRef="4"/>
+		<sequenceFlow id="131" sourceRef="2" targetRef="3"/>
+		<sequenceFlow id="132" sourceRef="4" targetRef="5"/>
+		<sequenceFlow id="133" sourceRef="0" targetRef="2"/>
+		<sequenceFlow id="134" sourceRef="5" targetRef="1"/>
+		<sequenceFlow id="15" sourceRef="11" targetRef="14"/>
+		<sequenceFlow id="16" sourceRef="14" targetRef="12"/>
+		<sequenceFlow id="18" sourceRef="11" targetRef="17"/>
+		<sequenceFlow id="19" sourceRef="17" targetRef="12"/>
+		<sequenceFlow id="22" sourceRef="11" targetRef="20"/>
+		<sequenceFlow id="23" sourceRef="20" targetRef="12"/>
+		<sequenceFlow id="24" sourceRef="10" targetRef="11"/>
+		<sequenceFlow id="25" sourceRef="12" targetRef="13"/>
+		<sequenceFlow id="26" sourceRef="7" targetRef="10"/>
+		<sequenceFlow id="27" sourceRef="13" targetRef="8"/>
+		<sequenceFlow id="31" sourceRef="28" targetRef="30"/>
+		<sequenceFlow id="32" sourceRef="7" targetRef="28"/>
+		<sequenceFlow id="33" sourceRef="30" targetRef="8"/>
+		<sequenceFlow id="36" sourceRef="34" targetRef="35"/>
+		<sequenceFlow id="37" sourceRef="7" targetRef="34"/>
+		<sequenceFlow id="38" sourceRef="35" targetRef="8"/>
+		<sequenceFlow id="42" sourceRef="39" targetRef="41"/>
+		<sequenceFlow id="43" sourceRef="7" targetRef="39"/>
+		<sequenceFlow id="44" sourceRef="41" targetRef="8"/>
+		<sequenceFlow id="45" sourceRef="6" targetRef="7"/>
+		<sequenceFlow id="46" sourceRef="8" targetRef="9"/>
+		<sequenceFlow id="47" sourceRef="3" targetRef="6"/>
+		<sequenceFlow id="48" sourceRef="9" targetRef="4"/>
+		<sequenceFlow id="55" sourceRef="50" targetRef="53"/>
+		<sequenceFlow id="56" sourceRef="53" targetRef="51"/>
+		<sequenceFlow id="58" sourceRef="50" targetRef="57"/>
+		<sequenceFlow id="59" sourceRef="57" targetRef="51"/>
+		<sequenceFlow id="61" sourceRef="50" targetRef="60"/>
+		<sequenceFlow id="62" sourceRef="60" targetRef="51"/>
+		<sequenceFlow id="63" sourceRef="49" targetRef="50"/>
+		<sequenceFlow id="64" sourceRef="51" targetRef="52"/>
+		<sequenceFlow id="70" sourceRef="66" targetRef="69"/>
+		<sequenceFlow id="71" sourceRef="69" targetRef="67"/>
+		<sequenceFlow id="73" sourceRef="66" targetRef="72"/>
+		<sequenceFlow id="74" sourceRef="72" targetRef="67"/>
+		<sequenceFlow id="76" sourceRef="65" targetRef="66"/>
+		<sequenceFlow id="77" sourceRef="67" targetRef="68"/>
+		<sequenceFlow id="78" sourceRef="52" targetRef="65"/>
+		<sequenceFlow id="79" sourceRef="3" targetRef="49"/>
+		<sequenceFlow id="80" sourceRef="68" targetRef="4"/>
+		<sequenceFlow id="90" sourceRef="86" targetRef="89"/>
+		<sequenceFlow id="91" sourceRef="89" targetRef="87"/>
+		<sequenceFlow id="94" sourceRef="86" targetRef="92"/>
+		<sequenceFlow id="95" sourceRef="92" targetRef="87"/>
+		<sequenceFlow id="96" sourceRef="85" targetRef="86"/>
+		<sequenceFlow id="97" sourceRef="87" targetRef="88"/>
+		<sequenceFlow id="98" sourceRef="82" targetRef="85"/>
+		<sequenceFlow id="99" sourceRef="88" targetRef="83"/>
+		<sequenceFlow id="102" sourceRef="100" targetRef="101"/>
+		<sequenceFlow id="103" sourceRef="82" targetRef="100"/>
+		<sequenceFlow id="104" sourceRef="101" targetRef="83"/>
+		<sequenceFlow id="107" sourceRef="105" targetRef="106"/>
+		<sequenceFlow id="108" sourceRef="82" targetRef="105"/>
+		<sequenceFlow id="109" sourceRef="106" targetRef="83"/>
+		<sequenceFlow id="115" sourceRef="111" targetRef="114"/>
+		<sequenceFlow id="116" sourceRef="114" targetRef="112"/>
+		<sequenceFlow id="118" sourceRef="111" targetRef="117"/>
+		<sequenceFlow id="119" sourceRef="117" targetRef="112"/>
+		<sequenceFlow id="121" sourceRef="111" targetRef="120"/>
+		<sequenceFlow id="122" sourceRef="120" targetRef="112"/>
+		<sequenceFlow id="123" sourceRef="110" targetRef="111"/>
+		<sequenceFlow id="124" sourceRef="112" targetRef="113"/>
+		<sequenceFlow id="125" sourceRef="82" targetRef="110"/>
+		<sequenceFlow id="126" sourceRef="113" targetRef="83"/>
+		<sequenceFlow id="127" sourceRef="81" targetRef="82"/>
+		<dataObject id="21" owner="20" name="variable_a" value="q01uegaipf5t7" type="DataObject"/>
+		<dataObject id="54" owner="53" name="variable_d" value="n8m1vd02ktlgc" type="DataObject"/>
+		<dataObject id="40" owner="39" name="variable_c" value="6ep93utj5v029" type="DataObject"/>
+		<dataObject id="75" owner="72" name="variable_e" value="47971dnfpjtbf" type="DataObject"/>
+		<dataObject id="29" owner="28" name="variable_b" value="6blke7r931dln" type="DataObject"/>
+		<dataObject id="93" owner="92" name="variable_f" value="avrcc6mtresr6" type="DataObject"/>
+	</elements>
+</process>

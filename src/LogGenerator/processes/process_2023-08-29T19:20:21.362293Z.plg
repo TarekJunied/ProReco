@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+
+WARNING: Do not manually edit this file, unless you know what you are doing!
+
+This file has been generated with libPlg v.2.0.6.
+Check https://github.com/delas/plg for sources and other stuff.
+
+ -->
+<process>
+	<!-- This is the list of all meta-attributes of the process -->
+	<meta>
+		<LibPLG_NAME>libPlg</LibPLG_NAME>
+		<libPLG_VERSION>2.0.6</libPLG_VERSION>
+		<name>test</name>
+		<id>cdcbkk7d94bubqgdhplcb43l61</id>
+	</meta>
+	<!-- This is the list of all actual process elements -->
+	<elements>
+		<startEvent id="0"/>
+		<task id="33" name="Activity K">
+			<script/>
+		</task>
+		<task id="2" name="Activity A">
+			<script/>
+		</task>
+		<task id="36" name="Activity L">
+			<script/>
+		</task>
+		<task id="5" name="Activity B">
+			<script/>
+		</task>
+		<task id="37" name="Activity M">
+			<dataObject id="38" direction="GENERATED"/>
+			<script/>
+		</task>
+		<task id="6" name="Activity C">
+			<script/>
+		</task>
+		<task id="9" name="Activity D">
+			<script/>
+		</task>
+		<task id="41" name="Activity N">
+			<script/>
+		</task>
+		<task id="10" name="Activity E">
+			<script/>
+		</task>
+		<task id="44" name="Activity O">
+			<script/>
+		</task>
+		<task id="13" name="Activity F">
+			<script/>
+		</task>
+		<task id="16" name="Activity G">
+			<dataObject id="17" direction="GENERATED"/>
+			<script/>
+		</task>
+		<task id="20" name="Activity H">
+			<script/>
+		</task>
+		<task id="30" name="Activity I">
+			<script/>
+		</task>
+		<task id="31" name="Activity J">
+			<script/>
+		</task>
+		<gateway id="34" type="ExclusiveGateway"/>
+		<gateway id="3" type="ExclusiveGateway"/>
+		<gateway id="35" type="ExclusiveGateway"/>
+		<gateway id="4" type="ExclusiveGateway"/>
+		<gateway id="7" type="ParallelGateway"/>
+		<gateway id="8" type="ParallelGateway"/>
+		<endEvent id="1"/>
+		<sequenceFlow id="11" sourceRef="7" targetRef="10"/>
+		<sequenceFlow id="12" sourceRef="10" targetRef="8"/>
+		<sequenceFlow id="14" sourceRef="7" targetRef="13"/>
+		<sequenceFlow id="15" sourceRef="13" targetRef="8"/>
+		<sequenceFlow id="18" sourceRef="7" targetRef="16"/>
+		<sequenceFlow id="19" sourceRef="16" targetRef="8"/>
+		<sequenceFlow id="21" sourceRef="7" targetRef="20"/>
+		<sequenceFlow id="22" sourceRef="20" targetRef="8"/>
+		<sequenceFlow id="23" sourceRef="6" targetRef="7"/>
+		<sequenceFlow id="24" sourceRef="8" targetRef="9"/>
+		<sequenceFlow id="25" sourceRef="3" targetRef="6"/>
+		<sequenceFlow id="26" sourceRef="9" targetRef="4"/>
+		<sequenceFlow id="27" sourceRef="4" targetRef="3"/>
+		<sequenceFlow id="28" sourceRef="2" targetRef="3"/>
+		<sequenceFlow id="29" sourceRef="4" targetRef="5"/>
+		<sequenceFlow id="32" sourceRef="30" targetRef="31"/>
+		<sequenceFlow id="39" sourceRef="34" targetRef="37"/>
+		<sequenceFlow id="40" sourceRef="37" targetRef="35"/>
+		<sequenceFlow id="42" sourceRef="34" targetRef="41"/>
+		<sequenceFlow id="43" sourceRef="41" targetRef="35"/>
+		<sequenceFlow id="45" sourceRef="34" targetRef="44"/>
+		<sequenceFlow id="46" sourceRef="44" targetRef="35"/>
+		<sequenceFlow id="47" sourceRef="33" targetRef="34"/>
+		<sequenceFlow id="48" sourceRef="35" targetRef="36"/>
+		<sequenceFlow id="49" sourceRef="31" targetRef="33"/>
+		<sequenceFlow id="50" sourceRef="5" targetRef="30"/>
+		<sequenceFlow id="51" sourceRef="0" targetRef="2"/>
+		<sequenceFlow id="52" sourceRef="36" targetRef="1"/>
+		<dataObject id="17" owner="16" name="variable_a" value="mih4jbvf5r7ro" type="DataObject"/>
+		<dataObject id="38" owner="37" name="variable_b" value="ig25v6lm97v0d" type="DataObject"/>
+	</elements>
+</process>

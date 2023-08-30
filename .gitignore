@@ -6,3 +6,4 @@ How-To-Write/
 __pycache__
 cache.pkl
 .DS_Store
+/.metadata/
