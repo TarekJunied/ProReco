@@ -11,7 +11,7 @@ from utils import read_logs, compute_models, pickle_retrieve, pickle_dump, load_
 
 def init():
     globals.training_logs_paths = select_smallest_k_logs(
-        3, "./LogGenerator/logs")
+        50, "./LogGenerator/logs")
     if os.path.getsize(globals.cache_file) == 0:
         read_logs()
         print("Now finished reading logs")
