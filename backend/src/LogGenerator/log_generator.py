@@ -87,7 +87,7 @@ def create_log_from_model(model_path, no_traces=1000):
     print(output)
 
     if len(error) == 0:
-        print(f"Success: process stored to {storage_path}")
+        print(f"Success: log stored to {storage_path}")
     else:
         print("An error has occured.")
         print("Errors:")
@@ -117,5 +117,4 @@ for i in range(0, 100):
                                      xor_weight=random_xor_weight,
                                      max_depth=random_max_depth,
                                      data_object_probability=random_data_object_probability)
-
     create_log_from_model(cur_proc, random.randint(1000, 2000))

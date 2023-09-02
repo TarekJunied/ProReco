@@ -6,42 +6,28 @@ from filehelper import gather_all_xes, select_smallest_k_logs
 from sklearn.neighbors import KNeighborsClassifier
 from features import compute_features_of_log, init_feature_matrix
 from measures import init_target_vector, init_target_entry
-from utils import read_logs, compute_models, pickle_retrieve, pickle_dump, load_all_globals_from_cache, load_target_vector_into_y
+from utils import read_logs, pickle_retrieve, pickle_dump, load_all_globals_from_cache, load_target_vector_into_y, read_models
 
 
 def init():
     globals.training_logs_paths = select_smallest_k_logs(
-        50, "./LogGenerator/logs")
-    if os.path.getsize(globals.cache_file) == 0:
-        read_logs()
-        print("Now finished reading logs")
-        print(globals.training_logs_paths)
-        print(globals.logs)
-        compute_models()
-        print("Now finished computing models and runtime")
-        init_feature_matrix()
-        print("Now finished computing feature matrix")
+        10, "./LogGenerator/logs")
 
-        init_target_vector(globals.selected_measure)
-        print("now finished computing target_vector")
-        print(globals.y)
-        pickle_dump()
+    read_logs("./LogGenerator/logs")
 
-    else:
-        pickle_retrieve()
-        load_all_globals_from_cache()
-        print("Now we retrieved everything from cache, let's check if everything was cached properly")
+    print("Now finished reading logs")
 
-        print("Now finished reading logs")
-        print(globals.training_logs_paths)
+    read_models("./LogGenerator/logs")
 
-        print("Now finished computing models and runtime")
+    print("Now finished computing models and runtime")
+    log_paths = gather_all_xes("./LogGenerator/logs")
 
-        print("Now finished computing feature matrix")
+    init_feature_matrix(log_paths, globals.selected_features)
+    # print("Now finished computing feature matrix")
 
-        load_target_vector_into_y()
-        print("now finished computing target_vector")
-        print(globals.y)
+    # init_target_vector(globals.selected_measure)
+    # print("now finished computing target_vector")
+    # print(globals.y)
 
 
 def classification(new_log_path):
@@ -58,7 +44,11 @@ def classification(new_log_path):
     return prediction
 
 
-init()
+# init()
+read_models("./LogGenerator/logs")
+
+
+""""
 correct = 0
 log_paths = gather_all_xes("../logs/logs_in_xes")
 n = len(log_paths)
@@ -83,3 +73,4 @@ for i in range(5):
 print(correct)
 print(n)
 print(correct/n)
+"""

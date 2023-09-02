@@ -12,7 +12,10 @@ backend/src/LogGenerator/processes/*
 backend/src/LogGenerator/.metadata
 backend/.metadata
 backend/src/discovery/models
-backend/logs/
+backend/logs/*
+backend/models/*
+backend/src/LogGenerator/logs/*
+backend/src/cache/*
 misc/
 .metadata
 .DS_Store

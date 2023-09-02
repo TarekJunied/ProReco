@@ -1,12 +1,13 @@
 import pm4py
-from utils import read_log
+from utils import read_log, generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable
 import globals
 import numpy as np
+
 
 def init_causal_matrix(matrix, activities):
     for a in activities:
         for b in activities:
-            matrix[a,b] = 0
+            matrix[a, b] = 0
 
 
 def feature_causality_strength(log_path):
@@ -16,26 +17,28 @@ def feature_causality_strength(log_path):
 
     for i in range(len(activities)):
         for j in range(i+1, len(activities)):
-            if abs(matrix[activities[i],activities[j]]) > cur_max:
-                cur_max = abs(matrix[activities[i],activities[j]])
+            if abs(matrix[activities[i], activities[j]]) > cur_max:
+                cur_max = abs(matrix[activities[i], activities[j]])
 
     return cur_max
 
-def causal_transform_diagonal_entries(matrix,activities):
-    for a in activities:
-        v = matrix[a,a]
-        matrix[a,a] = v / (v+1)
 
-def causal_transform_nondiagonal_entries(matrix,activities):
+def causal_transform_diagonal_entries(matrix, activities):
+    for a in activities:
+        v = matrix[a, a]
+        matrix[a, a] = v / (v+1)
+
+
+def causal_transform_nondiagonal_entries(matrix, activities):
     list_activities = list(activities)
-    for i in range(0,len(list_activities)):
+    for i in range(0, len(list_activities)):
         for j in range(i+1, len(list_activities)):
             a = list_activities[i]
             b = list_activities[j]
-            a_b = matrix[a,b]
-            b_a = matrix[b,a]
-            matrix[a,b] = (a_b - b_a) / (a_b + b_a + 1)
-            matrix[b,a] = -matrix[a,b]
+            a_b = matrix[a, b]
+            b_a = matrix[b, a]
+            matrix[a, b] = (a_b - b_a) / (a_b + b_a + 1)
+            matrix[b, a] = -matrix[a, b]
 
 
 def causal_matrix(log_path):
@@ -46,23 +49,18 @@ def causal_matrix(log_path):
     activities = get_all_activities_of_log(log_path)
     matrix = {}
 
-    init_causal_matrix(matrix,activities)
+    init_causal_matrix(matrix, activities)
 
     # do the counting
     for trace in trace_variants:
-        for i in range(0,len(trace)-1):
-            matrix[trace[i],trace[i+1]] += variants[trace]
+        for i in range(0, len(trace)-1):
+            matrix[trace[i], trace[i+1]] += variants[trace]
 
+    causal_transform_diagonal_entries(matrix, activities)
 
-    causal_transform_diagonal_entries(matrix,activities)
-
-
-    causal_transform_nondiagonal_entries(matrix,activities)
-
+    causal_transform_nondiagonal_entries(matrix, activities)
 
     return matrix
-
-
 
 
 def get_all_activities_of_log(log_path):
@@ -77,7 +75,6 @@ def get_all_activities_of_log(log_path):
             if activity not in activities:
                 activities.add(activity)
     return list(activities)
-
 
 
 def feature_no_distinct_start(log_path):
@@ -164,6 +161,7 @@ def feature_avg_trace_length(log_path):
 
     return sum_of_all_trace_lengths / feature_no_total_traces(log_path)
 
+
 def feature_density(log_path):
     activities = get_all_activities_of_log(log_path)
     n = len(activities)
@@ -173,8 +171,8 @@ def feature_density(log_path):
 
     for a in activities:
         for b in activities:
-            if matrix[a,b] != 0:
-                non_zero_count +=1
+            if matrix[a, b] != 0:
+                non_zero_count += 1
 
     return non_zero_count / (n**2)
 
@@ -186,28 +184,49 @@ def feature_length_one_loops(log_path):
 
     counter = 0
     for a in activities:
-        if matrix[a,a] > 0:
+        if matrix[a, a] > 0:
             counter += 1
 
-    return counter/ n
+    return counter / n
 
 
-
-def compute_features_of_log(log_path):
-    feature_vector = np.empty((1, len(globals.selected_features)))
+def compute_feature_vector(log_path):
+    feature_vector = np.empty(1, len(selected_features))
     for feature_index in range(len(globals.selected_features)):
-        feature_vector[0, feature_index] = compute_feature_log_path(log_path, feature_index)
+        try:
+            feature_vector[1, feature_index] = compute_feature_log_path(
+                log_path, feature_index)
+        except Exception:
+            print(
+                f"Could not compute feature {globals.selected_features[feature_index]} for {log_path}.")
+            print("Setting value to np.nan")
+            feature_vector[1, feature_index] = np.nan
 
+
+def read_feature_vector(log_path):
+    log_id = generate_log_id(log_path)
+    cache_file_path = generate_cache_file(
+        f"./cache/features/feature_{log_id}.pkl")
+    try:
+        feature_vector = load_cache_variable(cache_file_path)
+    except Exception:
+        print("No cached feature vector found, now computing feature vector")
+        feature_vector = compute_feature_vector(log_path)
+        store_cache_variable(feature_vector, cache_file_path)
     return feature_vector
 
 
-
-def init_feature_matrix():
-    globals.X = np.empty((len(globals.training_logs_paths), len(globals.selected_features)))
-    for log_index in range(len(globals.training_logs_paths)):
-        for feature_index in range(len(globals.selected_features)):
-            globals.X[log_index, feature_index] = compute_feature(
-                log_index, feature_index)
+def init_feature_matrix(log_paths):
+    globals.X = np.empty((len(log_paths),
+                         len(globals.selected_features)))
+    for log_index in range(len(log_paths)):
+        for feature_index in range(globals.selected_features):
+            try:
+                globals.X[log_index, feature_index] = compute_feature(
+                    log_index, feature_index)
+            except Exception:
+                print(
+                    f"Could not compute feature {globals.selected_features[feature_index]} for {log_paths[log_index]}")
 
     globals.pickled_variables["X"] = globals.X
 
@@ -243,4 +262,4 @@ def compute_feature_log_path(log_path, feature_index):
 
 def compute_feature(log_index, feature_index):
     log_path = globals.training_logs_paths[log_index]
-    return compute_feature_log_path(log_path,feature_index)
+    return compute_feature_log_path(log_path, feature_index)
