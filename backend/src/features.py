@@ -1,5 +1,6 @@
 import pm4py
 from utils import read_log, generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable
+from filehelper import gather_all_xes
 import globals
 import numpy as np
 
@@ -191,16 +192,17 @@ def feature_length_one_loops(log_path):
 
 
 def compute_feature_vector(log_path):
-    feature_vector = np.empty(1, len(selected_features))
+    feature_vector = np.empty((1, len(globals.selected_features)))
     for feature_index in range(len(globals.selected_features)):
         try:
-            feature_vector[1, feature_index] = compute_feature_log_path(
+            feature_vector[0, feature_index] = compute_feature_log_path(
                 log_path, feature_index)
         except Exception:
             print(
                 f"Could not compute feature {globals.selected_features[feature_index]} for {log_path}.")
             print("Setting value to np.nan")
-            feature_vector[1, feature_index] = np.nan
+            feature_vector[0, feature_index] = np.nan
+    return feature_vector
 
 
 def read_feature_vector(log_path):
@@ -216,19 +218,11 @@ def read_feature_vector(log_path):
     return feature_vector
 
 
-def init_feature_matrix(log_paths):
+def read_feature_matrix(log_paths):
     globals.X = np.empty((len(log_paths),
                          len(globals.selected_features)))
     for log_index in range(len(log_paths)):
-        for feature_index in range(globals.selected_features):
-            try:
-                globals.X[log_index, feature_index] = compute_feature(
-                    log_index, feature_index)
-            except Exception:
-                print(
-                    f"Could not compute feature {globals.selected_features[feature_index]} for {log_paths[log_index]}")
-
-    globals.pickled_variables["X"] = globals.X
+        globals.X[log_index, :] = read_feature_vector(log_paths[log_index])
 
 
 def compute_feature_log_path(log_path, feature_index):
@@ -263,3 +257,4 @@ def compute_feature_log_path(log_path, feature_index):
 def compute_feature(log_index, feature_index):
     log_path = globals.training_logs_paths[log_index]
     return compute_feature_log_path(log_path, feature_index)
+

@@ -12,8 +12,12 @@ def remove_extension(filename):
 def discover_petri_net_fodina(log_path,timeout_minutes=2):
 
     log_name = remove_extension(log_path)
+    modified_log_path =  f"{home_dir}/backend/src/{log_path}"
+
+    model_path =  f"{home_dir}/src/discovery/models/fodina_{log_name}"
     command_cd = "cd discovery/structuredminer"
-    command = f"java -jar StructuredMiner.jar fo {str(timeout_minutes)} {log_path} {home_dir}/src/discovery/models/{log_name}"
+
+    command = f"java -jar StructuredMiner.jar fo {str(timeout_minutes)} {modified_log_path} {model_path}"
     command_cd_back = "cd ..;cd .."
     print(command)
     result = subprocess.run(

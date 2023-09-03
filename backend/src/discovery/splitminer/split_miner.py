@@ -1,7 +1,7 @@
 import subprocess
 import pm4py
 import os
-home_dir = "/Users/tarekjunied/Documents/Universität/BachelorThesis"
+home_dir = "~/Documents/Universität/BachelorThesis"
 
 
 def remove_extension(filename):
@@ -13,26 +13,28 @@ def remove_extension(filename):
 def discover_petri_net_split(log_path, parallelism_threshold=0.1, frequency_threshold=0.4, remove_or_joins=False):
 
     log_name = remove_extension(log_path)
-    command_cd = "cd discovery/splitminer"
-    command = f"java -cp splitminer.jar:./lib/* au.edu.unimelb.services.ServiceProvider SMPN {parallelism_threshold} {frequency_threshold}\
-    {remove_or_joins} {log_path} ../models/{log_name}"
-    command_cd_back = "cd ..;cd .."
+
+    model_path = f"./discovery/models/split_{log_name}"
+
+    command = f"java -cp discovery/splitminer/splitminer.jar:./discovery/splitminer/lib/* au.edu.unimelb.services.ServiceProvider SMPN {parallelism_threshold} {frequency_threshold}\
+    {remove_or_joins} {log_path} {model_path}"
     print(command)
 
     result = subprocess.run(
-        f"{command_cd};{command};{command_cd_back}", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
     print("Output:")
     output = result.stdout
     error = result.stderr
     print(output)
-    print("Error:")
-    print(error)
+    if len(error) != 0:
+        print("Error:")
+        print(error)
 
-    dest = f"{home_dir}/src/discovery/models/{log_name}.pnml"
+    dest = f"{model_path}.pnml"
 
     print(f"Success: model stored to {dest}")
 
-    net, im, fm = pm4py.read.read_pnml(
-        f"{home_dir}/src/discovery/models/{log_name}.pnml")
+    net, im, fm = pm4py.read.read_pnml(dest)
+
     return net, im, fm

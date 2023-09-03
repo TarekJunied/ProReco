@@ -2,8 +2,12 @@ from utils import read_model, read_log
 import pm4py
 import sys
 import globals
+from utils import generate_cache_file, generate_log_id, store_cache_variable, load_cache_variable, compute_model
+from filehelper import gather_all_xes
 
+import sys
 # Fitness measures
+sys.setrecursionlimit(5000)
 
 
 def measure_token_fitness(log_path, discovery_algorithm):
@@ -108,37 +112,52 @@ def compute_measure(log_path, discovery_algorithm, measure_name):
         raise ValueError("Invalid measure name")
 
 
-def init_max_target_vector(log_path, log_index, measure_name):
+def read_max_target_vector(log_path,  measure_name):
     cur_max = float("-inf")
+    cur_algo = None
     for discovery_algorithm in globals.algorithm_portfolio:
-        algo_val = compute_measure(log_path, discovery_algorithm, measure_name)
+        algo_val = read_measure_entry(
+            log_path, discovery_algorithm, measure_name)
         if algo_val > cur_max:
             cur_max = algo_val
-            globals.y[log_index] = discovery_algorithm
-    globals.target_vectors[log_path, measure_name] = globals.y[log_index]
+            cur_algo = discovery_algorithm
+
+    return cur_algo
 
 
-def init_min_target_vector(log_path, log_index, measure_name):
+def read_min_target_vector(log_path, measure_name):
     cur_min = float("inf")
+    cur_algo = None
     for discovery_algorithm in globals.algorithm_portfolio:
-        algo_val = compute_measure(log_path, discovery_algorithm, measure_name)
+        algo_val = read_measure_entry(
+            log_path, discovery_algorithm, measure_name)
         if algo_val < cur_min:
             cur_min = algo_val
-            globals.y[log_index] = discovery_algorithm
-    globals.target_vectors[log_path, measure_name] = globals.y[log_index]
+            cur_algo = discovery_algorithm
+
+    return cur_algo
 
 
-def init_target_entry(log_path, log_index, measure_name):
+def read_measure_entry(log_path, discovery_algorithm, measure_name):
+    log_id = generate_log_id(log_path)
+    cache_file_path = generate_cache_file(
+        f"./cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl")
+    try:
+        measure_entry = load_cache_variable(cache_file_path)
+    except Exception:
+        print("No cached measure entry found, now computing measure")
+        measure_entry = compute_measure(
+            log_path, discovery_algorithm, measure_name)
+        store_cache_variable(measure_entry, cache_file_path)
+    return measure_entry
+
+
+def read_target_entry(log_path, measure_name):
     if globals.measures[measure_name] == "max":
-        init_max_target_vector(log_path, log_index, measure_name)
+        target_entry = read_max_target_vector(log_path, measure_name)
+        return target_entry
     if globals.measures[measure_name] == "min":
-        init_min_target_vector(log_path, log_index, measure_name)
-    globals.target_vectors[log_path, measure_name] = globals.y[log_index]
+        target_entry = read_min_target_vector(log_path, measure_name)
+        return target_entry
 
-
-def init_target_vector(measure_name):
-    globals.y = [None] * len(globals.training_logs_paths)
-    n = len(globals.training_logs_paths)
-    for i in range(n):
-        init_target_entry(globals.training_logs_paths[i], i, measure_name)
-    globals.pickled_variables["target_vectors"] = globals.target_vectors
+    return None

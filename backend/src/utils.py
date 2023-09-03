@@ -31,6 +31,7 @@ def print_distinct_traces(log_path):
 
 def compute_model(log_path, discovery_algorithm):
     log = read_log(log_path)
+    print(f"Start compute_model using {discovery_algorithm}")
     if discovery_algorithm == "alpha":
         net, initial_marking, final_marking = pm4py.discover_petri_net_alpha(
             log)
@@ -44,14 +45,12 @@ def compute_model(log_path, discovery_algorithm):
         net, initial_marking, final_marking = pm4py.discover_petri_net_inductive(
             log)
     elif discovery_algorithm == "split":
-        current_path = os.getcwd()
         net, initial_marking, final_marking = discover_petri_net_split(
-            current_path + "/" + log_path)
+            log_path)
 
     elif discovery_algorithm == "fodina":
-        current_path = os.getcwd()
         net, initial_marking, final_marking = discover_petri_net_fodina(
-            current_path + "/" + log_path)
+            log_path)
 
     return net, initial_marking, final_marking
 
@@ -73,10 +72,10 @@ def read_model(log_path, discovery_algorithm):
         end_time = time.time()
 
         globals.models[log_path, discovery_algorithm] = model
-        generate_cache_file(
-            f"./cache/models/runtime/runtime_{discovery_algorithm}_{log_id}.pkl")
-        store_cache_variable(
-            end_time-start_time, f"./cache/measures/runtime/runtime_{discovery_algorithm}_{log_id}")
+        # generate_cache_file(
+        #    f"./cache/models/runtime/runtime_{discovery_algorithm}_{log_id}.pkl")
+        # store_cache_variable(
+        # end_time-start_time, f"./cache/measures/runtime/runtime_{discovery_algorithm}_{log_id}")
         store_cache_variable(model, cache_file_path)
     return model
 
@@ -98,14 +97,11 @@ def load_cache_variable(cache_file_path):
 
 
 def generate_cache_file(cache_filepath):
-
-    if not os.path.isfile(cache_filepath):
-        try:
-            # Attempt to create the file
-            with open(cache_filepath, 'w') as new_file:
-                pass
-        except Exception as e:
-            print(f"An error occurred: {e}")
+    if not os.path.exists(cache_filepath):
+        print("Cache file does not exist.")
+        with open(cache_filepath, 'w') as file:
+            pass
+        print(f"File '{cache_filepath}' created.")
     return cache_filepath
 
 
@@ -129,16 +125,17 @@ def read_logs(logs_dir):
         read_log(log_path)
 
 
-def read_models(log_paths_dir):
-    for log_path in log_paths_dir:
+def read_models(log_paths):
+    for log_path in log_paths:
         for discovery_algorithm in globals.algorithm_portfolio:
             print(
                 f"Now start discovery of {log_path} using {discovery_algorithm}")
             try:
                 read_model(log_path, discovery_algorithm)
-            except Exception:
+            except Exception as e:
                 print(
-                    f"Could not discover {log_path} using {discovery_algorithm} ")
+                    f"Could not discover {log_path} using {discovery_algorithm}, because: ")
+                print("An error occurred:", e)
 
 
 def pickle_dump():
@@ -175,9 +172,16 @@ def load_target_vector_into_y():
                                               globals.selected_measure]
 
 
-log_paths = gather_all_xes("./LogGenerator/logs")
-for log_path in log_paths:
-    read_log(log_path)
+def split_list(input_list, n):
+    # Calculate the length of each sublist
+    sublist_length = len(input_list) // n
 
-for log_path in log_paths:
-    read_model(log_path, "alpha")
+    # Initialize the list of sublists
+    sublists = []
+
+    # Split the input_list into sublists
+    for i in range(0, len(input_list), sublist_length):
+        sublist = input_list[i:i+sublist_length]
+        sublists.append(sublist)
+
+    return sublists

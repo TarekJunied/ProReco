@@ -1,17 +1,18 @@
 import pm4py
 import os
 import numpy as np
+import sys
 import globals
 from filehelper import gather_all_xes, select_smallest_k_logs
+import multiprocessing
 from sklearn.neighbors import KNeighborsClassifier
-from features import compute_features_of_log, init_feature_matrix
-from measures import init_target_vector, init_target_entry
-from utils import read_logs, pickle_retrieve, pickle_dump, load_all_globals_from_cache, load_target_vector_into_y, read_models
+from features import read_feature_matrix
+from utils import read_logs, pickle_retrieve, pickle_dump, load_all_globals_from_cache, load_target_vector_into_y, read_models, read_model, split_list
+import sys
+# Fitness measures
 
 
 def init():
-    globals.training_logs_paths = select_smallest_k_logs(
-        10, "./LogGenerator/logs")
 
     read_logs("./LogGenerator/logs")
 
@@ -22,10 +23,10 @@ def init():
     print("Now finished computing models and runtime")
     log_paths = gather_all_xes("./LogGenerator/logs")
 
-    init_feature_matrix(log_paths, globals.selected_features)
-    # print("Now finished computing feature matrix")
+    read_feature_matrix(log_paths)
+    print("Now finished computing feature matrix")
 
-    # init_target_vector(globals.selected_measure)
+    # read_target_vector(globals.selected_measure)
     # print("now finished computing target_vector")
     # print(globals.y)
 
@@ -44,33 +45,27 @@ def classification(new_log_path):
     return prediction
 
 
-# init()
-read_models("./LogGenerator/logs")
+if __name__ == "__main__":
+    sys.setrecursionlimit(5000)
 
+    all_log_paths = gather_all_xes("./LogGenerator/logs")
 
-""""
-correct = 0
-log_paths = gather_all_xes("../logs/logs_in_xes")
-n = len(log_paths)
-for i in range(5):
-    log_path = log_paths[i]
-    init_target_entry(
-        log_paths[i], i, globals.selected_measure)
-    prediction = classification(log_path)
+    # list_of_log_paths = split_list(all_log_paths, number_of_nodes)
 
-    if globals.target_vectors[log_path, globals.selected_measure] == prediction:
-        correct += 1
-        print("correct")
-        print(correct)
-        print(n)
-        print(correct/n)
-    else:
-        print("wrong")
-        print(correct)
-        print(n)
-        print(correct/n)
+    node_id = int(os.environ.get("SLURM_NODEID", 0))
+    total_nodes = int(os.environ.get("SLURM_NNODES", 1))
+    total_files = len(all_log_paths)
 
-print(correct)
-print(n)
-print(correct/n)
-"""
+    # Calculate the number of files each node should process
+    files_per_node = total_files // total_nodes
+    remainder = total_files % total_nodes
+
+    # Calculate the start and end indices for this node's files
+    start_index = node_id * files_per_node + min(node_id, remainder)
+    end_index = start_index + files_per_node + \
+        (1 if node_id < remainder else 0)
+
+    # Extract the subset of files for this node
+    selected_log_paths = all_log_paths[start_index:end_index]
+
+    read_models(selected_log_paths)
