@@ -4,17 +4,15 @@ import numpy as np
 import sys
 import globals
 from filehelper import gather_all_xes, select_smallest_k_logs
-import multiprocessing
 from sklearn.neighbors import KNeighborsClassifier
 from features import read_feature_matrix
 from utils import read_logs, pickle_retrieve, pickle_dump, load_all_globals_from_cache, load_target_vector_into_y, read_models, read_model, split_list
-import sys
 # Fitness measures
 
 
 def init():
 
-    read_logs("./LogGenerator/logs")
+    read_models("./LogGenerator/logs")
 
     print("Now finished reading logs")
 
