@@ -15,7 +15,10 @@ backend/src/discovery/models
 backend/logs/*
 backend/models/*
 backend/src/LogGenerator/logs/*
-backend/src/cache/*
+backend/src/cache/features/*
+backend/src/cache/logs/*
+backend/src/cache/measures/*
+backend/src/cache/models/*
 misc/
 .metadata
 .DS_Store
