@@ -3,6 +3,7 @@ import os
 import numpy as np
 import sys
 import globals
+import multiprocessing
 from filehelper import gather_all_xes, select_smallest_k_logs
 from sklearn.neighbors import KNeighborsClassifier
 from features import read_feature_matrix
@@ -48,7 +49,12 @@ if __name__ == "__main__":
 
     all_log_paths = gather_all_xes("./LogGenerator/logs")
 
-    # list_of_log_paths = split_list(all_log_paths, number_of_nodes)
+    number_of_processes = len(all_log_paths)
+
+    list_of_log_paths = split_list(all_log_paths, number_of_processes)
+
+    # with multiprocessing.Pool(processes=len(all_log_paths)) as pool:
+    #    pool.map(read_models, list_of_log_paths)
 
     node_id = int(os.environ.get("SLURM_NODEID", 0))
     total_nodes = int(os.environ.get("SLURM_NNODES", 1))
