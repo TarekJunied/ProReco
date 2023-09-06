@@ -118,8 +118,7 @@ def read_log(log_path):
     return log
 
 
-def read_logs(logs_dir):
-    log_paths = gather_all_xes(logs_dir)
+def read_logs(log_paths):
 
     for log_path in log_paths:
         read_log(log_path)

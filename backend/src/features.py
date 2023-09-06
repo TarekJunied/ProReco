@@ -225,6 +225,11 @@ def read_feature_matrix(log_paths):
         globals.X[log_index, :] = read_feature_vector(log_paths[log_index])
 
 
+def read_subset_features(log_paths):
+    for log_index in range(len(log_paths)):
+        globals.X[log_index, :] = read_feature_vector(log_paths[log_index])
+
+
 def compute_feature_log_path(log_path, feature_index):
     if globals.selected_features[feature_index] == "no_distinct_traces":
         ret = feature_no_distinct_traces(log_path)

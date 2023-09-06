@@ -19,6 +19,7 @@ backend/src/cache/features/*
 backend/src/cache/logs/*
 backend/src/cache/measures/*
 backend/src/cache/models/*
+backend/src/outputs/*
 misc/
 .metadata
 .DS_Store
