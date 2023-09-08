@@ -161,3 +161,12 @@ def read_target_entry(log_path, measure_name):
         return target_entry
 
     return None
+
+def read_target_entries(log_paths, measure_name):
+    for log_path in log_paths:
+        try:
+            read_target_entry(log_path, measure_name)
+        except Exception as e:
+            print(f"Sorry couldn't compute certain measure:{measure_name}")
+            print(e)
+

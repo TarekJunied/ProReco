@@ -219,10 +219,11 @@ def read_feature_vector(log_path):
 
 
 def read_feature_matrix(log_paths):
-    globals.X = np.empty((len(log_paths),
+    x = np.empty((len(log_paths),
                          len(globals.selected_features)))
     for log_index in range(len(log_paths)):
-        globals.X[log_index, :] = read_feature_vector(log_paths[log_index])
+        x[log_index, :] = read_feature_vector(log_paths[log_index])
+    return x
 
 
 def read_subset_features(log_paths):

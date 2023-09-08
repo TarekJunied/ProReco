@@ -20,6 +20,8 @@ backend/src/cache/logs/*
 backend/src/cache/measures/*
 backend/src/cache/models/*
 backend/src/outputs/*
+backend/src/real_output/*
+backend/src/training_output/*
 misc/
 .metadata
 .DS_Store

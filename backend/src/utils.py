@@ -72,10 +72,10 @@ def read_model(log_path, discovery_algorithm):
         end_time = time.time()
 
         globals.models[log_path, discovery_algorithm] = model
-        # generate_cache_file(
-        #    f"./cache/models/runtime/runtime_{discovery_algorithm}_{log_id}.pkl")
-        # store_cache_variable(
-        # end_time-start_time, f"./cache/measures/runtime/runtime_{discovery_algorithm}_{log_id}")
+        generate_cache_file(
+            f"./cache/measures/{discovery_algorithm}_runtime_{log_id}")
+        store_cache_variable(
+        end_time-start_time, f"./cache/measures/{discovery_algorithm}_runtime_{log_id}")
         store_cache_variable(model, cache_file_path)
     return model
 
@@ -174,13 +174,22 @@ def load_target_vector_into_y():
 def split_list(input_list, n):
     # Calculate the length of each sublist
     sublist_length = len(input_list) // n
+    remainder = len(input_list) % n  # Calculate the remainder
 
     # Initialize the list of sublists
     sublists = []
 
     # Split the input_list into sublists
-    for i in range(0, len(input_list), sublist_length):
-        sublist = input_list[i:i+sublist_length]
+    start = 0
+    for i in range(n):
+        if i < remainder:
+            end = start + sublist_length + 1
+        else:
+            end = start + sublist_length
+
+        sublist = input_list[start:end]
         sublists.append(sublist)
+        start = end
 
     return sublists
+
