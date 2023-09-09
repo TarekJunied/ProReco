@@ -154,15 +154,6 @@ def pickle_retrieve():
             print("Empty pickle. No pickled variables found.")
 
 
-def load_all_globals_from_cache():
-    globals.models = globals.pickled_variables["models"]
-    globals.X = globals.pickled_variables["X"]
-    globals.training_logs_paths = globals.pickled_variables["training_logs_paths"]
-    globals.feature_vectors = globals.pickled_variables["logs"]
-    globals.logs = globals.pickled_variables["logs"]
-    globals.target_vectors = globals.pickled_variables["target_vectors"]
-    globals.runtime = globals.pickled_variables["runtime"]
-
 
 def load_target_vector_into_y():
     globals.y = [None] * len(globals.training_logs_paths)
@@ -193,3 +184,30 @@ def split_list(input_list, n):
 
     return sublists
 
+def all_files_exist(file_list):
+
+    for file_path in file_list:
+        if not os.path.exists(file_path):
+            return False
+    return True
+
+
+
+
+def get_all_ready_logs(log_paths,measure_name):
+    ready_logs = []
+    for log_path in log_paths:
+        file_list = []
+        log_id = generate_log_id(log_path)
+        log_cache = f"./cache/logs/{log_id}.pkl"
+        features_cache=f"./cache/features/feature_{log_id}.pkl"
+        file_list += [log_cache,features_cache]
+        for discovery_algorithm in globals.algorithm_portfolio:
+            model_path = f"./cache/models/{discovery_algorithm}_{log_id}.pkl"
+            measure_cache=f"./cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl"
+            file_list +=[model_path,measure_cache]
+        
+        if all_files_exist(file_list):
+            ready_logs += [log_path]
+
+    return ready_logs

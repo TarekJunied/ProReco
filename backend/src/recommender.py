@@ -13,7 +13,7 @@ import multiprocessing
 from filehelper import gather_all_xes, select_smallest_k_logs
 from sklearn.neighbors import KNeighborsClassifier
 from features import read_feature_matrix,read_feature_vector
-from utils import read_logs, pickle_retrieve, pickle_dump, load_all_globals_from_cache, load_target_vector_into_y, read_models, read_model, split_list,read_log
+from utils import read_logs, load_target_vector_into_y, read_models,split_list,get_all_ready_logs
 from measures import read_target_entry,read_target_entries
 # Fitness measures
 
@@ -53,17 +53,12 @@ def classification(new_log_path,X,y):
 
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
-
-
-
     training_log_paths = gather_all_xes("./LogGenerator/logs")
     testing_logpaths = gather_all_xes("../logs/logs_in_xes")
-
-
-
+    
     node_id = int(sys.argv[1])
     total_nodes = int(sys.argv[2])
-
+    
 
     list_of_lists = split_list(testing_logpaths, total_nodes)
     selected_logpaths = list_of_lists[node_id]

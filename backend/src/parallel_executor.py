@@ -6,7 +6,7 @@ import subprocess
 def generate_job_script(jobscript_path,number_of_tasks,outputs_path,code_to_execute_path,job_name):
     script="#!/usr/bin/zsh\n"
     script+=f"#SBATCH --ntasks={number_of_tasks}\n"
-    script+="#SBATCH --time=04:00:00\n"
+    script+="#SBATCH --time=10:00:00\n"
     script+=f"#SBATCH --array=0-{number_of_tasks-1}\n"
     script+=f"#SBATCH --mem-per-cpu=5000M\n"
     script+=f"#SBATCH --job-name={job_name}\n"
@@ -91,11 +91,14 @@ def start_monitoring(outputs_path, number_of_tasks):
     output_files_list = find_text_files(outputs_path)
     cur_no_fertig_tasks = 0
     cur_no_error_tasks = 0
+    
 
     while cur_no_fertig_tasks != number_of_tasks:
+        list_of_error = []
         output_files_list = sorted(find_text_files(outputs_path))
         cur_no_fertig_tasks = 0
         cur_no_error_tasks = 0
+        
         for output_file in output_files_list:
             print(f"Output file: {output_file}")
             status = get_status_of_output(output_file)
@@ -104,20 +107,25 @@ def start_monitoring(outputs_path, number_of_tasks):
                 cur_no_fertig_tasks += 1
             if status == "ERROR":
                 cur_no_error_tasks += 1
+                list_of_error += [output_file]
                 os.system("clear")
+                """"
                 print_lines_around_error(output_file,"error")
                 print_lines_around_error(output_file,"err")
                 print_lines_around_error(output_file,"errno")
                 time.sleep(30)
+                """
         
         print("Summary:")
         print("Total done: ", cur_no_fertig_tasks)
         print("Out of: ", number_of_tasks)
         print("Errors: ", cur_no_error_tasks)
+        for error_file in list_of_error:
+            print(error_file)
         time.sleep(20)
         os.system('clear')
 
 
 
-execute_parallel_with_multiple_jobs("./real_script.sh",14,"./real_output","recommender.py","real_logs")
-start_monitoring("./real_output",14)
+#execute_parallel_with_multiple_jobs("./real_script.sh",14,"./real_output","recommender.py","real_logs")
+start_monitoring("./training_output",95)
