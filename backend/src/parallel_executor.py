@@ -1,7 +1,7 @@
 import os
 import time
 import subprocess
-
+from filehelper import gather_all_xes
 
 def generate_job_script(jobscript_path,number_of_tasks,outputs_path,code_to_execute_path,job_name):
     script="#!/usr/bin/zsh\n"
@@ -87,17 +87,21 @@ def print_lines_around_error(filename, error_keyword):
             print(f"{i + 1}: {lines[i].strip()}")
 
 
-def start_monitoring(outputs_path, number_of_tasks):
+def start_monitoring(outputs_path):
+
     output_files_list = find_text_files(outputs_path)
     cur_no_fertig_tasks = 0
     cur_no_error_tasks = 0
-    
+    number_of_tasks = -1
+
 
     while cur_no_fertig_tasks != number_of_tasks:
+    
         list_of_error = []
         output_files_list = sorted(find_text_files(outputs_path))
         cur_no_fertig_tasks = 0
         cur_no_error_tasks = 0
+        number_of_tasks = len(output_files_list)
         
         for output_file in output_files_list:
             print(f"Output file: {output_file}")
@@ -126,6 +130,6 @@ def start_monitoring(outputs_path, number_of_tasks):
         os.system('clear')
 
 
-
-#execute_parallel_with_multiple_jobs("./real_script.sh",14,"./real_output","recommender.py","real_logs")
-start_monitoring("./training_output",95)
+n = len(gather_all_xes("../logs/Process_Discovery_Contests/training"))
+execute_parallel_with_multiple_jobs("./training_script.sh",80,"./real_output","training.py","procdisc")
+start_monitoring("./training_output")

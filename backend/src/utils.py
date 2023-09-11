@@ -11,6 +11,19 @@ from filehelper import gather_all_xes
 from discovery.splitminer.split_miner import discover_petri_net_split
 from discovery.structuredminer.fodina_miner import discover_petri_net_fodina
 
+def no_total_traces(log_path):
+    log = read_log(log_path)
+    variants = pm4py.stats.get_variants(log)
+    trace_variants = list(variants.keys())
+
+    sum = 0
+    for trace in trace_variants:
+        sum += variants[trace]
+
+    return sum
+
+
+
 
 def generate_log_id(log_path):
     sha256 = hashlib.sha256()
@@ -211,3 +224,19 @@ def get_all_ready_logs(log_paths,measure_name):
             ready_logs += [log_path]
 
     return ready_logs
+
+
+def filter_infrequent_logs(log_path,no_of_occurences):
+    unfiltered_log = read_log(log_path)
+
+    no_of_traces = no_total_traces(log_path)
+    
+    percentage = no_of_occurences / no_of_traces
+
+    print("Now start filtering")
+    filtered_log = pm4py.filter_variants_by_coverage_percentage(unfiltered_log,percentage)
+
+
+    return filtered_log
+
+

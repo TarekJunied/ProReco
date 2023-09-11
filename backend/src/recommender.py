@@ -12,9 +12,12 @@ import globals
 import multiprocessing
 from filehelper import gather_all_xes, select_smallest_k_logs
 from sklearn.neighbors import KNeighborsClassifier
-from features import read_feature_matrix,read_feature_vector
-from utils import read_logs, load_target_vector_into_y, read_models,split_list,get_all_ready_logs
+from features import read_feature_matrix,read_feature_vector,feature_no_total_traces
+from utils import read_logs,read_models,split_list,get_all_ready_logs,filter_infrequent_logs,read_log
 from measures import read_target_entry,read_target_entries
+from init import *
+
+
 # Fitness measures
 
 
@@ -53,20 +56,25 @@ def classification(new_log_path,X,y):
 
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
+    #num_cores = multiprocessing.cpu_count()
+    #pool = multiprocessing.Pool(processes=num_cores)
+    
     training_log_paths = gather_all_xes("./LogGenerator/logs")
     testing_logpaths = gather_all_xes("../logs/logs_in_xes")
-    
-    node_id = int(sys.argv[1])
-    total_nodes = int(sys.argv[2])
-    
 
-    list_of_lists = split_list(testing_logpaths, total_nodes)
-    selected_logpaths = list_of_lists[node_id]
-    print("Hi I am node: ", node_id)
-    print(selected_logpaths)
-    read_logs(selected_logpaths)
-    read_models(selected_logpaths)
-    read_target_entries(selected_logpaths, "token_precision")
+    num_cores = multiprocessing.cpu_count()
+    pool = multiprocessing.Pool(processes=num_cores)
 
-    print("CODE 23092002")    
+
+    input_data = []
+
+    for log_path in testing_logpaths:
+        input_data += [(log_path,"token_precision")]
+
+    results = pool.starmap(init_log, input_data)
+
+    print(results)
+    pool.close()
+    pool.join()
+
     
