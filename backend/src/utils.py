@@ -227,6 +227,7 @@ def get_all_ready_logs(log_paths,measure_name):
 
 
 def filter_infrequent_logs(log_path,no_of_occurences):
+    print("start filtering")
     unfiltered_log = read_log(log_path)
 
     no_of_traces = no_total_traces(log_path)
@@ -235,8 +236,12 @@ def filter_infrequent_logs(log_path,no_of_occurences):
 
     print("Now start filtering")
     filtered_log = pm4py.filter_variants_by_coverage_percentage(unfiltered_log,percentage)
-
+    print("done filtering !")
 
     return filtered_log
 
 
+def filter_log_path(log_path,no_of_occurences):
+    filtered_log = filter_infrequent_logs(log_path, no_of_occurences)
+
+    pm4py.write.write_xes(filtered_log,log_path)

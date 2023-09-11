@@ -1,7 +1,7 @@
-from utils import read_logs, read_models,read_model,read_log
+from utils import read_logs, read_models,read_model,read_log,filter_log_path
 from features import read_feature_matrix,read_feature_vector
 from measures import read_target_entries, read_target_entry
-
+import globals
 
 def init(training_log_paths,testing_log_paths,list_of_measure_names):
 
@@ -33,9 +33,11 @@ def init_testing_logs(testing_log_paths, list_of_measure_names):
             read_target_entry(testing_log_paths[i],measure_name)
 
 def init_log(log_path,list_of_measure_names):
-    read_log(log_path)
+    filter_log_path(log_path,10)
 
-    read_model(log_path)
+    read_log(log_path)
+    for discovery_algorithm in globals.algorithm_portfolio:
+        read_model(log_path,discovery_algorithm)
 
     read_feature_vector(log_path)
 
