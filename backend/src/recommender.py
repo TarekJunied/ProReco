@@ -17,29 +17,6 @@ from utils import read_logs,read_models,split_list,get_all_ready_logs,filter_inf
 from measures import read_target_entry,read_target_entries
 from init import *
 
-
-# Fitness measures
-
-
-def init():
-    log_paths = gather_all_xes("./LogGenerator/logs")
-    read_models(log_paths)
-
-    print("Now finished reading logs")
-
-    read_models(log_paths)
-
-    print("Now finished computing models and runtime")
-   
-
-    x = read_feature_matrix(log_paths)
-    print("Now finished computing feature matrix")
-
-  
-    # print("now finished computing target_vector")
-    # print(globals.y)
-
-
 def classification(new_log_path,X,y):
     knn = KNeighborsClassifier(n_neighbors=5, weights='uniform', algorithm='auto',
                                p=2, metric="minkowski")
@@ -56,25 +33,36 @@ def classification(new_log_path,X,y):
 
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
-    #num_cores = multiprocessing.cpu_count()
-    #pool = multiprocessing.Pool(processes=num_cores)
     
     training_log_paths = gather_all_xes("./LogGenerator/logs")
     testing_logpaths = gather_all_xes("../logs/logs_in_xes")
 
-    num_cores = multiprocessing.cpu_count()
-    pool = multiprocessing.Pool(processes=num_cores)
+    ready_training = get_all_ready_logs(training_log_paths,"token_precision")
 
+    ready_testing = get_all_ready_logs(testing_logpaths,"token_precision")
 
-    input_data = []
+    x = read_feature_matrix(ready_training)
+    
+    y = [None]*len(ready_training)
+    i = 0
+    for log_path in ready_training:
+        y[i] = read_target_entry(log_path,"token_precision")
+        i += 1
 
-    for log_path in testing_logpaths:
-        input_data += [(log_path,"token_precision")]
+    correct = 0
+    for log_path in ready_testing:
+        actual = read_target_entry(log_path,"token_precision")
+        prediction = classification(log_path, x, y)
+        print("ACUTAL: ", actual)
+        print("PREDICTION: ", prediction)
 
-    results = pool.starmap(init_log, input_data)
+        if actual == prediction: 
+            correct +=1
 
-    print(results)
-    pool.close()
-    pool.join()
+    print("TOTAL CORRECT: ", correct)
+    print("OUT OF ", len(ready_training))
+    print(correct/len(ready_training))
+
+   
 
     
