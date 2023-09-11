@@ -197,9 +197,10 @@ def compute_feature_vector(log_path):
         try:
             feature_vector[0, feature_index] = compute_feature_log_path(
                 log_path, feature_index)
-        except Exception:
+        except Exception as e:
             print(
                 f"Could not compute feature {globals.selected_features[feature_index]} for {log_path}.")
+            print(e)
             print("Setting value to np.nan")
             feature_vector[0, feature_index] = np.nan
     return feature_vector
