@@ -93,20 +93,17 @@ def create_log_from_model(model_path, no_traces=1000):
         print("Errors:")
         print(error)
 
-
-clear_folder("./processes")
-clear_folder("./logs")
-
-for i in range(0, 100):
-    random_and_branches = random.randint(0, 7)
-    random_xor_branches = random.randint(0, 5)
-    random_loop_weight = random.uniform(0, 0.5)
-    random_single_activity_weight = random.uniform(0,  0.3)
-    random_sequence_weight = random.uniform(0.2, 1)
-    random_and_weight = random.uniform(0, 0.5)
-    random_xor_weight = random.uniform(0, 0.5)
-    random_max_depth = random.randint(1, 7)
-    random_data_object_probability = random.uniform(0, 0.4)
+if __name__ == "__main__":
+    for i in range(0, 100):
+        random_and_branches = random.randint(0, 7)
+        random_xor_branches = random.randint(0, 5)
+        random_loop_weight = random.uniform(0, 0.5)
+        random_single_activity_weight = random.uniform(0,  0.3)
+        random_sequence_weight = random.uniform(0.2, 1)
+        random_and_weight = random.uniform(0, 0.5)
+        random_xor_weight = random.uniform(0, 0.5)
+        random_max_depth = random.randint(1, 7)
+        random_data_object_probability = random.uniform(0, 0.4)
 
     cur_proc = create_random_process(and_branches=random_and_branches,
                                      xor_branches=random_xor_branches,
