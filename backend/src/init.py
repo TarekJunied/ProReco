@@ -36,16 +36,20 @@ def init_testing_logs(testing_log_paths, list_of_measure_names):
             read_target_entry(testing_log_paths[i],measure_name)
 
 def init_log(log_path,list_of_measure_names):
+    try:
     filter_log_path(log_path,10)
 
     read_log(log_path)
     for discovery_algorithm in globals.algorithm_portfolio:
-        read_model(log_path,discovery_algorithm)
+            read_model(log_path,discovery_algorithm)
+
 
     read_feature_vector(log_path)
 
     for measure_name in list_of_measure_names:
         read_target_entry(log_path,measure_name)
+    except Exception as e:
+        print(e)
 
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
