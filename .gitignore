@@ -12,4 +12,6 @@ misc/
 *.DS_Store
 logs.zip
 *.xes
-.zip
+*.zip
+*.xml
+*.gz

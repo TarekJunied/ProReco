@@ -5,13 +5,30 @@ import pickle
 import os
 import random
 import globals
-from filehelper import *
+import hashlib
+from filehelper import gather_all_xes
 from discovery.splitminer.split_miner import discover_petri_net_split
 from discovery.structuredminer.fodina_miner import discover_petri_net_fodina
 
+def no_total_traces(log_path):
+    log = read_log(log_path)
+    variants = pm4py.stats.get_variants(log)
+    trace_variants = list(variants.keys())
+
+    sum = 0
+    for trace in trace_variants:
+        sum += variants[trace]
+
+    return sum
+
 
 def generate_log_id(log_path):
-    return get_file_name(log_path)
+    sha256 = hashlib.sha256()
+    sha256.update(log_path.encode('utf-8'))
+    hash_hex = sha256.hexdigest()
+    hash_bits = int(hash_hex[:32 // 4], 16)
+    return str(hash_bits)
+
 
 def print_distinct_traces(log_path):
     log = read_log(log_path)
@@ -66,7 +83,7 @@ def read_model(log_path, discovery_algorithm):
 
         globals.models[log_path, discovery_algorithm] = model
         generate_cache_file(
-            f"./cache/measures/{discovery_algorithm}_runtime_{log_id}")
+            f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl")
         store_cache_variable(
         end_time-start_time, f"./cache/measures/{discovery_algorithm}_runtime_{log_id}")
         store_cache_variable(model, cache_file_path)
@@ -130,6 +147,30 @@ def read_models(log_paths):
                 print("An error occurred:", e)
 
 
+def pickle_dump():
+
+    with open(globals.cache_file, "wb") as f:
+        pickle.dump(globals.pickled_variables, f)
+        print("Data cached.")
+
+
+def pickle_retrieve():
+    with open(globals.cache_file, "rb") as f:
+        try:
+            globals.pickled_variables = pickle.load(f)
+            print("Cached data loaded.")
+        except Exception:
+            globals.pickled_variables = {}
+            print("Empty pickle. No pickled variables found.")
+
+
+
+def load_target_vector_into_y():
+    globals.y = [None] * len(globals.training_logs_paths)
+    for i in range(len(globals.training_logs_paths)):
+        globals.y[i] = globals.target_vectors[globals.training_logs_paths[i],
+                                              globals.selected_measure]
+
 
 def split_list(input_list, n):
     # Calculate the length of each sublist
@@ -153,9 +194,54 @@ def split_list(input_list, n):
 
     return sublists
 
+def all_files_exist(file_list):
+
+    for file_path in file_list:
+        if not os.path.exists(file_path):
+            return False
+    return True
 
 
 
+
+def get_all_ready_logs(log_paths,measure_name):
+    ready_logs = []
+    for log_path in log_paths:
+        file_list = []
+        log_id = generate_log_id(log_path)
+        log_cache = f"./cache/logs/{log_id}.pkl"
+        features_cache=f"./cache/features/feature_{log_id}.pkl"
+        file_list += [log_cache,features_cache]
+        for discovery_algorithm in globals.algorithm_portfolio:
+            model_path = f"./cache/models/{discovery_algorithm}_{log_id}.pkl"
+            measure_cache=f"./cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl"
+            file_list +=[model_path,measure_cache]
+        
+        if all_files_exist(file_list):
+            ready_logs += [log_path]
+
+    return ready_logs
+
+
+def filter_infrequent_logs(log_path,no_of_occurences):
+    print("start filtering")
+    unfiltered_log = read_log(log_path)
+
+    no_of_traces = no_total_traces(log_path)
+    
+    percentage = no_of_occurences / no_of_traces
+
+    print("Now start filtering")
+    filtered_log = pm4py.filter_variants_by_coverage_percentage(unfiltered_log,percentage)
+    print("done filtering !")
+
+    return filtered_log
+
+
+def filter_log_path(log_path,no_of_occurences):
+    filtered_log = filter_infrequent_logs(log_path, no_of_occurences)
+
+    pm4py.write.write_xes(filtered_log,log_path)
 
 def split_data(data, ratio=0.8, seed=None):
     """
@@ -184,38 +270,8 @@ def split_data(data, ratio=0.8, seed=None):
 
     return training_data, testing_data
 
-
-
-#TODO : can be deleted later once, naming convention is clear
-def fix_pkl_names(log_paths):
-
-    for log_path in log_paths:
-
-        log_id = generate_log_id(log_path)
-
-        if contains_space(log_path):
-            input("stop now")
-       
-        cur_pkls = find_files_with_substring("./cache",log_id)
-
-        file_name = get_file_name(log_path)
-
-        for cur_file in cur_pkls:
-            replace_substring_and_rename_file(cur_file, log_id,file_name)
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
-    log_paths = gather_all_xes("../logs/logs_in_xes") + gather_all_xes("./LogGenerator/logs")
-
-
-    
-
-        
-
-    
+    log_paths = gather_all_xes("../logs/logs_in_xes")
+    for log_path in log_paths:
+        log = read_log(log_path)
+        pm4py.write.write_xes(log,"../logs")

@@ -3,7 +3,20 @@ import datetime
 import os
 import shutil
 import random
+import hashlib
 # TODO remove relative paths and perhaps add more flexiblity by visting java project again
+
+
+def generate_32bit_sha_hash(input_string):
+    # Compute the SHA-256 hash
+    sha256_hash = hashlib.sha256(input_string.encode()).hexdigest()
+
+    # Take the first 8 characters (32 bits) of the hash and convert them to an integer in decimal form
+    truncated_hash = int(sha256_hash[:8], 16)
+
+    return truncated_hash
+
+
 
 
 def clear_folder(folder_path):
@@ -68,7 +81,10 @@ def create_random_process(and_branches=5,
 
 
 def create_log_from_model(model_path, no_traces=1000):
-    storage_path = "./logs/log_" + str(datetime.datetime.now().time()) + ".xes"
+
+    log_id = generate_32bit_sha_hash(str(datetime.datetime.now().time()) )
+
+    storage_path = f"../../logs/log_{log_id}.xes"
 
     command_list = [
         "java", "-jar", "LogGenerator.jar",
@@ -95,7 +111,7 @@ def create_log_from_model(model_path, no_traces=1000):
 
 if __name__ == "__main__":
     for i in range(0, 100):
-        random_and_branches = random.randint(0, 7)
+        random_and_branches = random.randint(0, 5)
         random_xor_branches = random.randint(0, 5)
         random_loop_weight = random.uniform(0, 0.5)
         random_single_activity_weight = random.uniform(0,  0.3)
