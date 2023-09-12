@@ -169,4 +169,11 @@ def read_target_entries(log_paths, measure_name):
         except Exception as e:
             print(f"Sorry couldn't compute certain measure:{measure_name}")
             print(e)
+def read_target_vector(log_paths, measure_name):
+    n = len(log_paths)
+    y = [None]*n
+
+    for i in range(n):
+        y[i] = read_target_entry(log_paths[i], measure_name)
+    return y
 

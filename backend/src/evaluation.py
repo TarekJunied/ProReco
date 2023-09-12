@@ -1,46 +1,41 @@
 import sys
+import sklearn
 from utils import get_all_ready_logs,split_data
 from recommender import classification
 from filehelper import gather_all_xes
-from measures import read_target_entries,read_target_entry
+from measures import read_target_entries,read_target_entry,read_target_vector
 from features import read_feature_matrix
 from init import init_testing_logs
 
 
+
+
+
+
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
+
+    testing_logpaths = gather_all_xes("../logs/testing/")
+    training_logppaths = gather_all_xes("../logs/training/")
+
+    ready_for_testingpaths = get_all_ready_logs(testing_logpaths,"token_precison")
+    ready_for_trainingpaths = get_all_ready_logs(training_logppaths,"token_precision")
+
+    y_true = [None]*(len(ready_for_testingpaths))
+    y_pred = [None]*(len(ready_for_testingpaths))
+
+    x_train = read_feature_matrix(ready_for_trainingpaths)
+    y_train = read_target_vector(ready_for_trainingpaths, "token_precision")
     
-    all_log_paths = gather_all_xes("./LogGenerator/logs") + gather_all_xes("../logs/Process_Discovery_Contests/testing") 
 
-    all_ready_logs_paths = get_all_ready_logs(all_log_paths,"token_precision")
 
-    ready_training,ready_testing = split_data(all_ready_logs_paths,0.7)
+    for i in range(len(ready_for_testingpaths)):
+        y_true[i] = read_target_entry(ready_for_testingpaths[i],"token_precision")
+        y_pred[i] = classification(ready_for_testingpaths[i],x_train, y_train)
 
-    x = read_feature_matrix(ready_training)
-    
-    ready_testing = ready_testing
-   
-    y = [None]*len(ready_training)
-    i = 0
-    for log_path in ready_training:
-        y[i] = read_target_entry(log_path,"token_precision")
-        i += 1
+    input("wait")
 
-    correct = 0
-    for log_path in ready_testing:
-        actual = read_target_entry(log_path,"token_precision")
-        prediction = classification(log_path, x, y)[0]
-        print("ACUTAL: ", actual)
-        print("PREDICTION: ", prediction)
-
-        if actual == prediction: 
-            correct +=1
-            print("Correct")
-        else:
-            print("Wrong")
-
-    print("TOTAL CORRECT: ", correct)
-    print("OUT OF ", len(ready_testing))
-    print(correct/len(ready_testing))
+    print("ACCURACY: ",sklearn.metrics.accuracy_score(y_true,y_pred))
+    print("AVG PRECISION SCORE: ", sklearn.metrics.average_precision_score(y_true, y_pred))
 
    

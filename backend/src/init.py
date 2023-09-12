@@ -1,6 +1,6 @@
 from utils import read_logs, read_models,read_model,read_log,load_cache_variable,store_cache_variable,generate_log_id, generate_cache_file,split_file_path,read_log
 from features import read_feature_matrix,read_feature_vector,feature_no_distinct_traces
-from measures import read_target_entries, read_target_entry
+from measures import read_target_entries, read_target_entry, read_target_vector
 from filehelper import gather_all_xes,select_smallest_k_logs
 import globals
 import math
@@ -39,7 +39,6 @@ def init_testing_logs(testing_log_paths, list_of_measure_names):
 
 def init_log(log_path,list_of_measure_names):
     try:
-        filter_log_path(log_path,10)
 
         read_log(log_path)
         for discovery_algorithm in globals.algorithm_portfolio:
@@ -81,13 +80,15 @@ def keep_top_percentage_traces(log_path, top_k):
 
 def split_logpath(log_path, train_percentage):
 
-    log = read_log(log_path)
-
+    
     log_id = generate_log_id(log_path)
 
     
     train_log_filename = f"{log_id}_train"
     test_log_filename = f"{log_id}_test"
+
+    train_xes_filepath = f"../logs/training/{train_log_filename}.xes"
+    test_xes_filepath = f"../logs/testing/{test_log_filename}.xes"
 
 
     train_cache_filepath = generate_cache_file(f"./cache/logs/{train_log_filename}.pkl")
@@ -98,15 +99,16 @@ def split_logpath(log_path, train_percentage):
         test_log = read_log(test_cache_filepath)
         return train_log,test_log
     except Exception:
+        log = read_log(log_path)
         print("No cache file existing for split logs. Now splitting logs.")
 
-    train_log, test_log = pm4py.split_train_test(log, train_percentage)
+        train_log, test_log = pm4py.split_train_test(log, train_percentage)
 
-    pm4py.write.write_xes(train_log,f"../logs/training/{train_log_filename}.xes")
-    pm4py.write.write_xes(test_log,f"../logs/testing/{test_log_filename}.xes")
+        pm4py.write.write_xes(train_log,train_xes_filepath)
+        pm4py.write.write_xes(test_log,test_xes_filepath)
 
-    store_cache_variable(train_log,train_cache_filepath)
-    store_cache_variable(test_log,test_cache_filepath)
+        store_cache_variable(train_log,train_cache_filepath)
+        store_cache_variable(test_log,test_cache_filepath)
 
     return train_log,test_log
 
@@ -123,8 +125,8 @@ if __name__ == "__main__":
     new_real_logs = []
     for log_path in reallife_logpaths:
         try:
-            train_log, test_log = split_logpath(log_path, 0.7)
-            new_real_logs += [(train_log,["token_precision"]),(test_log,["token_precision"])]
+            train_logpath, test_logpath = split_logpath(log_path, 0.7)
+            new_real_logs += [(train_logpath,["token_precision"]),(test_logpath,["token_precision"])]
         except Exception as e:
             print(e)
             print("skipping this log")

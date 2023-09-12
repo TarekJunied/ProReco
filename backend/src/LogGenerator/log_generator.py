@@ -4,6 +4,7 @@ import sys
 import os
 import shutil
 import random
+import multiprocessing
 import hashlib
 # TODO remove relative paths and perhaps add more flexiblity by visting java project again
 
@@ -87,7 +88,7 @@ def create_log_from_model(model_path, mode, no_traces=1000):
         return
     log_id = generate_32bit_sha_hash(str(datetime.datetime.now().time()) )
 
-    storage_path = f"../../logs/{mode}/log_{log_id}.xes"
+    storage_path = f"../../logs/{mode}/{log_id}.xes"
 
     command_list = [
         "java", "-jar", "LogGenerator.jar",
@@ -111,24 +112,22 @@ def create_log_from_model(model_path, mode, no_traces=1000):
         print("An error has occured.")
         print("Errors:")
         print(error)
-
-if __name__ == "__main__":
-    mode = sys.argv[1]
-    for i in range(0, 100):
     
+def create_random_log(index):
+    mode = "testing"
+    print(f"this is the {index}-th log")
 
-    
-        random_and_branches = random.randint(0, 5)
-        random_xor_branches = random.randint(0, 5)
-        random_loop_weight = random.uniform(0, 0.5)
-        random_single_activity_weight = random.uniform(0, 0.3)
-        random_sequence_weight = random.uniform(0.2, 1)
-        random_and_weight = random.uniform(0, 0.5)
-        random_xor_weight = random.uniform(0, 0.5)
-        random_max_depth = random.randint(1, 7)
-        random_data_object_probability = random.uniform(0, 0.4)
+    random_and_branches = random.randint(0, 4)
+    random_xor_branches = random.randint(0, 4)
+    random_loop_weight = random.uniform(0, 0.5)
+    random_single_activity_weight = random.uniform(0, 0.3)
+    random_sequence_weight = random.uniform(0.2, 1)
+    random_and_weight = random.uniform(0, 0.5)
+    random_xor_weight = random.uniform(0, 0.5)
+    random_max_depth = random.randint(1, 5)
+    random_data_object_probability = random.uniform(0, 0.4)
 
-        cur_proc = create_random_process(and_branches=random_and_branches,
+    cur_proc = create_random_process(and_branches=random_and_branches,
                                          xor_branches=random_xor_branches,
                                          loop_weight=random_loop_weight,
                                          single_activity_weight=random_single_activity_weight,
@@ -137,4 +136,17 @@ if __name__ == "__main__":
                                          xor_weight=random_xor_weight,
                                          max_depth=random_max_depth,
                                          data_object_probability=random_data_object_probability)
-        create_log_from_model(cur_proc, mode, random.randint(1000, 2000))
+    create_log_from_model(cur_proc, mode, random.randint(1000, 1500))
+
+if __name__ == "__main__":
+    num_instances = 100
+
+    # Create a multiprocessing Pool
+    pool = multiprocessing.Pool(processes=num_instances)
+
+    # Use the Pool to run the instances in parallel
+    pool.map(create_random_log, range(num_instances))
+
+    # Close the Pool to release resources
+    pool.close()
+    pool.join()

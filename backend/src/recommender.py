@@ -13,7 +13,7 @@ import multiprocessing
 from filehelper import gather_all_xes, select_smallest_k_logs
 from sklearn.neighbors import KNeighborsClassifier
 from features import read_feature_matrix,read_feature_vector,feature_no_total_traces
-from utils import read_logs,read_models,split_list,get_all_ready_logs,filter_infrequent_logs,read_log,split_data
+from utils import read_logs,read_models,split_list,get_all_ready_logs,read_log,split_data
 from measures import read_target_entry,read_target_entries
 from init import *
 
