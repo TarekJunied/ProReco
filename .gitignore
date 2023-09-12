@@ -1,10 +1,7 @@
 # Ignore logs with specific extensions
-How-To-Write/
 .idea
 .vscode
 __pycache__
-cache.pkl
-backend/.DS_Store
 backend/src/cache.pkl
 backend/src/__pycache__
 backend/src/LogGenerator/logs/*
@@ -22,6 +19,10 @@ backend/src/cache/models/*
 backend/src/outputs/*
 backend/src/real_output/*
 backend/src/training_output/*
+backend/src/.DS_Store
+backend/src/LogGenrator/.DS_Store
+backend/src/LogGenerator/logs.zip
 misc/
 .metadata
-.DS_Store
+**/.DS_Store
+logs.zip
