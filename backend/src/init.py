@@ -85,16 +85,25 @@ def split_logpath(log_path, train_percentage):
 
     log_id = generate_log_id(log_path)
 
-    train_log, test_log = pm4py.split_train_test(log, train_percentage)
-
+    
     train_log_filename = f"{log_id}_train"
     test_log_filename = f"{log_id}_test"
 
-    pm4py.write.write_xes(train_log,f"../logs/training/{train_log_filename}.xes")
-    pm4py.write.write_xes(test_log,f"../logs/testing/{test_log_filename}.xes")
 
     train_cache_filepath = generate_cache_file(f"./cache/logs/{train_log_filename}.pkl")
     test_cache_filepath = generate_cache_file(f"./cache/logs/{test_log_filename}.pkl")
+
+    try:
+        train_log  = read_log(train_cache_filepath)
+        test_log = read_log(test_cache_filepath)
+        return train_log,test_log
+    except Exception:
+        print("No cache file existing for split logs. Now splitting logs.")
+
+    train_log, test_log = pm4py.split_train_test(log, train_percentage)
+
+    pm4py.write.write_xes(train_log,f"../logs/training/{train_log_filename}.xes")
+    pm4py.write.write_xes(test_log,f"../logs/testing/{test_log_filename}.xes")
 
     store_cache_variable(train_log,train_cache_filepath)
     store_cache_variable(test_log,test_cache_filepath)
@@ -113,8 +122,12 @@ if __name__ == "__main__":
 
     new_real_logs = []
     for log_path in reallife_logpaths:
-        train_log, test_log = split_logpath(log_path, 0.7)
-        new_real_logs += [(train_log,["token_precision"]),(test_log,["token_precision"])]
+        try:
+            train_log, test_log = split_logpath(log_path, 0.7)
+            new_real_logs += [(train_log,["token_precision"]),(test_log,["token_precision"])]
+        except Exception as e:
+            print(e)
+            print("skipping this log")
 
     num_cores = multiprocessing.cpu_count()
     pool = multiprocessing.Pool(processes=num_cores)
