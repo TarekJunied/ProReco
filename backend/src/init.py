@@ -1,8 +1,9 @@
-from utils import read_logs, read_models,read_model,read_log,filter_log_path,load_cache_variable,store_cache_variable,generate_log_id, generate_cache_file
-from features import read_feature_matrix,read_feature_vector
+from utils import read_logs, read_models,read_model,read_log,load_cache_variable,store_cache_variable,generate_log_id, generate_cache_file,split_file_path,read_log
+from features import read_feature_matrix,read_feature_vector,feature_no_distinct_traces
 from measures import read_target_entries, read_target_entry
 from filehelper import gather_all_xes,select_smallest_k_logs
 import globals
+import math
 import multiprocessing
 import sys
 import pm4py
@@ -53,6 +54,30 @@ def init_log(log_path,list_of_measure_names):
         print(e)
 
 
+def keep_top_percentage_traces(log_path, top_k):
+
+    no_traces = feature_no_distinct_traces(log_path)
+
+    #k = math.ceil(no_traces*percentage)
+
+    unfiltered_log = read_log(log_path)
+
+    filtered_log = pm4py.filtering.filter_variants_top_k(unfiltered_log, top_k)
+
+    split_dic = split_file_path(log_path)
+
+    log_path_dir = split_dic["directory"]
+
+    log_path_filename = split_dic["filename"]
+
+    pm4py.write.write_xes(filtered_log,f"{log_path_dir}/filtered_{log_path_filename}.xes")
+
+    
+    cache_filepath = generate_cache_file(f"./cache/logs/filtered_{log_path_filename}.pkl")
+
+    store_cache_variable(filtered_log,cache_filepath)
+
+    return filtered_log
 
 def split_logpath(log_path, train_percentage):
 
@@ -81,16 +106,26 @@ def split_logpath(log_path, train_percentage):
 
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
-    #num_cores = multiprocessing.cpu_count()
-    #pool = multiprocessing.Pool(processes=num_cores)
-    
 
     training_log_paths = gather_all_xes("./LogGenerator/logs")
     reallife_logpaths = gather_all_xes("../logs/real_life_logs")
     proc_disc = gather_all_xes("../logs/Process_Discovery_Contests")
 
+    new_real_logs = []
     for log_path in reallife_logpaths:
-        split_logpath(log_path, 0.7)
+        train_log, test_log = split_logpath(log_path, 0.7)
+        new_real_logs += [(train_log,["token_precision"]),(test_log,["token_precision"])]
+
+    num_cores = multiprocessing.cpu_count()
+    pool = multiprocessing.Pool(processes=num_cores)
+
+    results = pool.starmap(init_log, new_real_logs)
+
+    pool.close()
+    pool.join
+    
+
+
 
     
     

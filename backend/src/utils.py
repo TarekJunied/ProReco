@@ -9,25 +9,11 @@ import hashlib
 from filehelper import gather_all_xes
 from discovery.splitminer.split_miner import discover_petri_net_split
 from discovery.structuredminer.fodina_miner import discover_petri_net_fodina
-
-def no_total_traces(log_path):
-    log = read_log(log_path)
-    variants = pm4py.stats.get_variants(log)
-    trace_variants = list(variants.keys())
-
-    sum = 0
-    for trace in trace_variants:
-        sum += variants[trace]
-
-    return sum
+from filehelper import split_file_path
 
 
 def generate_log_id(log_path):
-    sha256 = hashlib.sha256()
-    sha256.update(log_path.encode('utf-8'))
-    hash_hex = sha256.hexdigest()
-    hash_bits = int(hash_hex[:32 // 4], 16)
-    return str(hash_bits)
+    return split_file_path(log_path)["filename"]
 
 
 def print_distinct_traces(log_path):
@@ -147,29 +133,6 @@ def read_models(log_paths):
                 print("An error occurred:", e)
 
 
-def pickle_dump():
-
-    with open(globals.cache_file, "wb") as f:
-        pickle.dump(globals.pickled_variables, f)
-        print("Data cached.")
-
-
-def pickle_retrieve():
-    with open(globals.cache_file, "rb") as f:
-        try:
-            globals.pickled_variables = pickle.load(f)
-            print("Cached data loaded.")
-        except Exception:
-            globals.pickled_variables = {}
-            print("Empty pickle. No pickled variables found.")
-
-
-
-def load_target_vector_into_y():
-    globals.y = [None] * len(globals.training_logs_paths)
-    for i in range(len(globals.training_logs_paths)):
-        globals.y[i] = globals.target_vectors[globals.training_logs_paths[i],
-                                              globals.selected_measure]
 
 
 def split_list(input_list, n):
@@ -223,38 +186,8 @@ def get_all_ready_logs(log_paths,measure_name):
     return ready_logs
 
 
-def filter_infrequent_logs(log_path,no_of_occurences):
-    print("start filtering")
-    unfiltered_log = read_log(log_path)
-
-    no_of_traces = no_total_traces(log_path)
-    
-    percentage = no_of_occurences / no_of_traces
-
-    print("Now start filtering")
-    filtered_log = pm4py.filter_variants_by_coverage_percentage(unfiltered_log,percentage)
-    print("done filtering !")
-
-    return filtered_log
-
-
-def filter_log_path(log_path,no_of_occurences):
-    filtered_log = filter_infrequent_logs(log_path, no_of_occurences)
-
-    pm4py.write.write_xes(filtered_log,log_path)
-
 def split_data(data, ratio=0.8, seed=None):
-    """
-    Splits a list of data into training and testing sets based on the given ratio.
 
-    Parameters:
-    - data: The list of instances to be split.
-    - ratio: The ratio of data to be included in the training set (default is 0.8).
-    - seed: Random seed for reproducibility (optional).
-
-    Returns:
-    - A tuple containing two lists: (training_data, testing_data).
-    """
     if seed is not None:
         random.seed(seed)
 

@@ -1,6 +1,17 @@
 import os
 import globals
 
+def split_file_path(file_path):
+    # Split the file path into directory, filename, and extension
+    directory, file_name_with_extension = os.path.split(file_path)
+    file_name, file_extension = os.path.splitext(file_name_with_extension)
+
+    return {
+        'directory': directory,
+        'filename': file_name,
+        'extension': file_extension
+    }
+
 def generate_log_id(log_path):
     return get_file_name(log_path)
 
