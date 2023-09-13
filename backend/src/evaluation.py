@@ -27,13 +27,13 @@ if __name__ == "__main__":
     x_train = read_feature_matrix(ready_for_trainingpaths)
     y_train = read_target_vector(ready_for_trainingpaths, "token_precision")
     
-
+    input(len(ready_for_trainingpaths))
 
     for i in range(len(ready_for_testingpaths)):
         y_true[i] = read_target_entry(ready_for_testingpaths[i],"token_precision")
         y_pred[i] = classification(ready_for_testingpaths[i],x_train, y_train)
 
-    input("wait")
+
 
     print("ACCURACY: ",sklearn.metrics.accuracy_score(y_true,y_pred))
     print("AVG PRECISION SCORE: ", sklearn.metrics.average_precision_score(y_true, y_pred))

@@ -50,8 +50,9 @@ def create_random_process(and_branches=5,
                           xor_weight=0.3,
                           max_depth=3,
                           data_object_probability=0.1):
+    process_id = str(generate_32bit_sha_hash(str(datetime.datetime.now().time())))
     storage_path = "./processes/process_" + \
-        str(datetime.datetime.now().time()) + ".plg"
+        process_id + ".plg"
 
     command_list = ["java", "-jar", "ProcessGenerator.jar",
                     "-ab", str(and_branches), "-xb", str(xor_branches),
@@ -139,7 +140,7 @@ def create_random_log(index):
     create_log_from_model(cur_proc, mode, random.randint(1000, 1500))
 
 if __name__ == "__main__":
-    num_instances = 100
+    num_instances = 50
 
     # Create a multiprocessing Pool
     pool = multiprocessing.Pool(processes=num_instances)

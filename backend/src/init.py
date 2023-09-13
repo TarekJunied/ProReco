@@ -55,7 +55,7 @@ def init_log(log_path,list_of_measure_names):
 
 def keep_top_percentage_traces(log_path, top_k):
 
-    no_traces = feature_no_distinct_traces(log_path)
+    #no_traces = feature_no_distinct_traces(log_path)
 
     #k = math.ceil(no_traces*percentage)
 
@@ -78,7 +78,7 @@ def keep_top_percentage_traces(log_path, top_k):
 
     return filtered_log
 
-def split_logpath(log_path, train_percentage):
+def split_logpath(log_path, train_percentage= 0.7):
 
     
     log_id = generate_log_id(log_path)
@@ -97,7 +97,7 @@ def split_logpath(log_path, train_percentage):
     try:
         train_log  = read_log(train_cache_filepath)
         test_log = read_log(test_cache_filepath)
-        return train_log,test_log
+        return train_xes_filepath,test_xes_filepath
     except Exception:
         log = read_log(log_path)
         print("No cache file existing for split logs. Now splitting logs.")
@@ -110,7 +110,7 @@ def split_logpath(log_path, train_percentage):
         store_cache_variable(train_log,train_cache_filepath)
         store_cache_variable(test_log,test_cache_filepath)
 
-    return train_log,test_log
+    return train_xes_filepath,test_xes_filepath
 
 
 
@@ -123,6 +123,7 @@ if __name__ == "__main__":
     proc_disc = gather_all_xes("../logs/Process_Discovery_Contests")
 
     new_real_logs = []
+    paths_to_be_split = []
     for log_path in reallife_logpaths:
         try:
             train_logpath, test_logpath = split_logpath(log_path, 0.7)
@@ -130,11 +131,11 @@ if __name__ == "__main__":
         except Exception as e:
             print(e)
             print("skipping this log")
-
     num_cores = multiprocessing.cpu_count()
     pool = multiprocessing.Pool(processes=num_cores)
 
     results = pool.starmap(init_log, new_real_logs)
+
 
     pool.close()
     pool.join

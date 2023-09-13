@@ -71,7 +71,7 @@ def read_model(log_path, discovery_algorithm):
         generate_cache_file(
             f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl")
         store_cache_variable(
-        end_time-start_time, f"./cache/measures/{discovery_algorithm}_runtime_{log_id}")
+        end_time-start_time, f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl")
         store_cache_variable(model, cache_file_path)
     return model
 
@@ -94,7 +94,7 @@ def load_cache_variable(cache_file_path):
 
 def generate_cache_file(cache_filepath):
     if not os.path.exists(cache_filepath):
-        print("Cache file does not exist.")
+        print("Cache file does not exist yet.")
         with open(cache_filepath, 'w') as file:
             pass
         print(f"File '{cache_filepath}' created.")
