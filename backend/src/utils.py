@@ -56,9 +56,12 @@ def read_model(log_path, discovery_algorithm):
     log_id = generate_log_id(log_path)
     cache_file_path = generate_cache_file(
         f"./cache/models/{discovery_algorithm}_{log_id}.pkl")
+    runtime_cache_file_path = generate_cache_file(
+        f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl")
     try:
         print(cache_file_path)
         model = load_cache_variable(cache_file_path)
+        runtime = load_cache_variable(runtime_cache_file_path)
     except Exception:
         print(
             f"No cached model found, now computing model for {log_path} using {discovery_algorithm}.")
@@ -67,11 +70,8 @@ def read_model(log_path, discovery_algorithm):
         model = compute_model(log_path, discovery_algorithm)
         end_time = time.time()
 
-        globals.models[log_path, discovery_algorithm] = model
-        generate_cache_file(
-            f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl")
         store_cache_variable(
-        end_time-start_time, f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl")
+            end_time-start_time, runtime_cache_file_path)
         store_cache_variable(model, cache_file_path)
     return model
 
@@ -133,8 +133,6 @@ def read_models(log_paths):
                 print("An error occurred:", e)
 
 
-
-
 def split_list(input_list, n):
     # Calculate the length of each sublist
     sublist_length = len(input_list) // n
@@ -157,6 +155,7 @@ def split_list(input_list, n):
 
     return sublists
 
+
 def all_files_exist(file_list):
 
     for file_path in file_list:
@@ -165,21 +164,19 @@ def all_files_exist(file_list):
     return True
 
 
-
-
-def get_all_ready_logs(log_paths,measure_name):
+def get_all_ready_logs(log_paths, measure_name):
     ready_logs = []
     for log_path in log_paths:
         file_list = []
         log_id = generate_log_id(log_path)
         log_cache = f"./cache/logs/{log_id}.pkl"
-        features_cache=f"./cache/features/feature_{log_id}.pkl"
-        file_list += [log_cache,features_cache]
+        features_cache = f"./cache/features/feature_{log_id}.pkl"
+        file_list += [log_cache, features_cache]
         for discovery_algorithm in globals.algorithm_portfolio:
             model_path = f"./cache/models/{discovery_algorithm}_{log_id}.pkl"
-            measure_cache=f"./cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl"
-            file_list +=[model_path,measure_cache]
-        
+            measure_cache = f"./cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl"
+            file_list += [model_path, measure_cache]
+
         if all_files_exist(file_list):
             ready_logs += [log_path]
 
@@ -203,8 +200,9 @@ def split_data(data, ratio=0.8, seed=None):
 
     return training_data, testing_data
 
+
 if __name__ == "__main__":
     log_paths = gather_all_xes("../logs/logs_in_xes")
     for log_path in log_paths:
         log = read_log(log_path)
-        pm4py.write.write_xes(log,"../logs")
+        pm4py.write.write_xes(log, "../logs")

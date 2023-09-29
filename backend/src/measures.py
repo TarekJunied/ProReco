@@ -1,7 +1,8 @@
-from utils import read_model, read_log
 import pm4py
 import sys
 import globals
+import os
+from utils import read_model, read_log
 from utils import generate_cache_file, generate_log_id, store_cache_variable, load_cache_variable, compute_model
 from filehelper import gather_all_xes
 
@@ -82,8 +83,16 @@ def measure_node_arc_degree(log_path, discovery_algorithm):
 
 # performance measures
 def measure_runtime(log_path, discovery_algorithm):
-    model = read_model(log_path, discovery_algorithm)
-    return globals.runtime[log_path, discovery_algorithm]
+    log_id = generate_log_id(log_path)
+    runtime_cache_file = f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl"
+    read_model(log_path, discovery_algorithm)
+    try:
+        runtime = load_cache_variable(runtime_cache_file)
+    except Exception as e:
+        print(e)
+        print("Runtime somehow couldn't be computed")
+
+    return runtime
 
 
 def measure_used_memory(log_path, discovery_algorithm):
@@ -162,6 +171,7 @@ def read_target_entry(log_path, measure_name):
 
     return None
 
+
 def read_target_entries(log_paths, measure_name):
     for log_path in log_paths:
         try:
@@ -169,6 +179,8 @@ def read_target_entries(log_paths, measure_name):
         except Exception as e:
             print(f"Sorry couldn't compute certain measure:{measure_name}")
             print(e)
+
+
 def read_target_vector(log_paths, measure_name):
     n = len(log_paths)
     y = [None]*n
@@ -176,4 +188,3 @@ def read_target_vector(log_paths, measure_name):
     for i in range(n):
         y[i] = read_target_entry(log_paths[i], measure_name)
     return y
-
