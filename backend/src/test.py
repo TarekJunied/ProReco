@@ -1,15 +1,14 @@
 import globals
 import time
 import os
+import pm4py
 from measures import compute_measure, read_measure_entry
 from filehelper import select_smallest_k_logs
-from utils import read_models
+from utils import read_models, read_model
 
 if __name__ == "__main__":
-    log_paths = select_smallest_k_logs(50, "../logs/training")
-    """"
+    log_paths = select_smallest_k_logs(10, "../logs/training")
     output_str = "HIII \n"
-
 
     read_models(log_paths)
 
@@ -28,8 +27,6 @@ if __name__ == "__main__":
         output_str += f"measure name: {measure_name}\n"
         output_str += f"avg_time: {avg_time}\n"
 
-
-    input(f"skipped {skipped}")
+        input(f"finished measure {measure_name}")
     os.system('clear')
     print(output_str)
-    """
