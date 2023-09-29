@@ -9,7 +9,7 @@ selected_features = ["no_distinct_traces", "no_total_traces", "avg_trace_length"
 
 
 measures = {"token_fitness": "max", "alignment_fitness": "max", "token_precision": "max",
-            "alignment_precision": "max", "no_total_elements": "min", "node_arc_degree": "min", "runtime": "min", "used_memory": "min"}
+            "alignment_precision": "max", "no_total_elements": "min", "node_arc_degree": "min", "runtime": "min", "used_memory": "min", "generalization": "max"}
 cache_file = "./cache.pkl"
 selected_measure = "token_precision"
 working_dir = "/Users/tarekjunied/Documents/Universität/BachelorThesis"

@@ -1,4 +1,7 @@
 import pm4py
+from pm4py.algo.evaluation.generalization import algorithm as generalization_evaluator
+from pm4py.algo.evaluation.simplicity import algorithm as simplicity_evaluator
+
 import sys
 import globals
 import os
@@ -100,6 +103,18 @@ def measure_used_memory(log_path, discovery_algorithm):
     return sys.getsizeof(model)
 
 
+def measure_generalization(log_path, discovery_algorithm):
+    net, im, fm = read_model(log_path, discovery_algorithm)
+    log = read_log(log_path)
+    return generalization_evaluator.apply(log, net, im, fm)
+
+
+def measure_pm4py_simplicity(log_path, discovery_algorithm):
+    net, im, fm = read_model(log_path, discovery_algorithm)
+    log = read_log(log_path)
+    return simplicity_evaluator.apply(net)
+
+
 def compute_measure(log_path, discovery_algorithm, measure_name):
     if measure_name == "token_fitness":
         return measure_token_fitness(log_path, discovery_algorithm)
@@ -117,6 +132,10 @@ def compute_measure(log_path, discovery_algorithm, measure_name):
         return measure_runtime(log_path, discovery_algorithm)
     elif measure_name == "used_memory":
         return measure_used_memory(log_path, discovery_algorithm)
+    elif measure_name == "generalization":
+        return measure_generalization(log_path, discovery_algorithm)
+    elif measure_name == "pm4py_simplicity":
+        return measure_pm4py_simplicity(log_path, discovery_algorithm)
     else:
         raise ValueError("Invalid measure name")
 
