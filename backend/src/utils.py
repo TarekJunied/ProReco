@@ -115,7 +115,7 @@ def read_log(log_path):
 
 
 def read_logs(log_paths):
-
+    # TODO: remove deleting
     for log_path in log_paths:
         read_log(log_path)
 

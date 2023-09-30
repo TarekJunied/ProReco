@@ -194,15 +194,8 @@ def feature_length_one_loops(log_path):
 def compute_feature_vector(log_path):
     feature_vector = np.empty((1, len(globals.selected_features)))
     for feature_index in range(len(globals.selected_features)):
-        try:
-            feature_vector[0, feature_index] = compute_feature_log_path(
-                log_path, feature_index)
-        except Exception as e:
-            print(
-                f"Could not compute feature {globals.selected_features[feature_index]} for {log_path}.")
-            print(e)
-            print("Setting value to np.nan")
-            feature_vector[0, feature_index] = np.nan
+        feature_vector[0, feature_index] = compute_feature_log_path(
+            log_path, feature_index)
     return feature_vector
 
 
@@ -221,7 +214,7 @@ def read_feature_vector(log_path):
 
 def read_feature_matrix(log_paths):
     x = np.empty((len(log_paths),
-                         len(globals.selected_features)))
+                  len(globals.selected_features)))
     for log_index in range(len(log_paths)):
         x[log_index, :] = read_feature_vector(log_paths[log_index])
     return x
@@ -264,4 +257,3 @@ def compute_feature_log_path(log_path, feature_index):
 def compute_feature(log_index, feature_index):
     log_path = globals.training_logs_paths[log_index]
     return compute_feature_log_path(log_path, feature_index)
-

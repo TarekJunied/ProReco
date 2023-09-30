@@ -19,8 +19,6 @@ def generate_32bit_sha_hash(input_string):
     return truncated_hash
 
 
-
-
 def clear_folder(folder_path):
     try:
         # Check if the folder exists
@@ -50,7 +48,8 @@ def create_random_process(and_branches=5,
                           xor_weight=0.3,
                           max_depth=3,
                           data_object_probability=0.1):
-    process_id = str(generate_32bit_sha_hash(str(datetime.datetime.now().time())))
+    process_id = str(generate_32bit_sha_hash(
+        str(datetime.datetime.now().time())))
     storage_path = "./processes/process_" + \
         process_id + ".plg"
 
@@ -87,7 +86,7 @@ def create_log_from_model(model_path, mode, no_traces=1000):
     if mode != "testing" and mode != "training":
         print("wrong mode mfer")
         return
-    log_id = generate_32bit_sha_hash(str(datetime.datetime.now().time()) )
+    log_id = generate_32bit_sha_hash(str(datetime.datetime.now().time()))
 
     storage_path = f"../../logs/{mode}/{log_id}.xes"
 
@@ -113,7 +112,8 @@ def create_log_from_model(model_path, mode, no_traces=1000):
         print("An error has occured.")
         print("Errors:")
         print(error)
-    
+
+
 def create_random_log(index):
     mode = "testing"
     print(f"this is the {index}-th log")
@@ -129,21 +129,23 @@ def create_random_log(index):
     random_data_object_probability = random.uniform(0, 0.4)
 
     cur_proc = create_random_process(and_branches=random_and_branches,
-                                         xor_branches=random_xor_branches,
-                                         loop_weight=random_loop_weight,
-                                         single_activity_weight=random_single_activity_weight,
-                                         sequence_weight=random_sequence_weight,
-                                         and_weight=random_and_weight,
-                                         xor_weight=random_xor_weight,
-                                         max_depth=random_max_depth,
-                                         data_object_probability=random_data_object_probability)
+                                     xor_branches=random_xor_branches,
+                                     loop_weight=random_loop_weight,
+                                     single_activity_weight=random_single_activity_weight,
+                                     sequence_weight=random_sequence_weight,
+                                     and_weight=random_and_weight,
+                                     xor_weight=random_xor_weight,
+                                     max_depth=random_max_depth,
+                                     data_object_probability=random_data_object_probability)
     create_log_from_model(cur_proc, mode, random.randint(1000, 1500))
+
 
 if __name__ == "__main__":
     num_instances = 50
 
+    num_cores = multiprocessing.cpu_count()
     # Create a multiprocessing Pool
-    pool = multiprocessing.Pool(processes=num_instances)
+    pool = multiprocessing.Pool(processes=num_cores)
 
     # Use the Pool to run the instances in parallel
     pool.map(create_random_log, range(num_instances))
