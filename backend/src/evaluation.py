@@ -20,7 +20,7 @@ def evaluate_measure_accuracy(training_logs, testing_logs, measure_name, classif
 
     print(f"We have {len(training_logs)} training logs")
     print(f"We have {len(testing_logs)} testing logs")
-
+    input(measure_name)
     for i in range(len(testing_logs)):
         y_true[i] = read_target_entry(
             testing_logs[i], measure_name)
@@ -35,7 +35,7 @@ def evaluate_measure_accuracy(training_logs, testing_logs, measure_name, classif
         y_true, y_pred, average=None, labels=globals.algorithm_portfolio)
 
     os.system("clear")
-    input(measure_name)
+    
     print("ACCURACY: ", accuracy_score(y_true, y_pred))
     print("PRECISION: ", precision_per_class)
     print("RECALL: ", recall_per_class)
@@ -58,6 +58,7 @@ if __name__ == "__main__":
         testing_logpaths, selected_measure)
     ready_for_trainingpaths = get_all_ready_logs(
         training_logppaths, selected_measure)
+
 
     selected_measures = ["node_arc_degree", "no_total_elements",
                          "used_memory", "pm4py_simplicity", "runtime"]
