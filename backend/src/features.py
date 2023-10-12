@@ -90,14 +90,7 @@ def feature_no_distinct_end(log_path):
 
 def feature_no_events_total(log_path):
     log = read_log(log_path)
-    variants = pm4py.stats.get_variants(log)
-    trace_variants = list(variants.keys())
-
-    sum = 0
-    for trace in trace_variants:
-        sum += variants[trace] * len(trace)
-
-    return sum
+    return len(log)
 
 
 def feature_no_distinct_events(log_path):
