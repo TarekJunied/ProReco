@@ -1,5 +1,6 @@
 import subprocess
 import datetime
+import Math
 import sys
 import os
 import shutil
@@ -114,8 +115,7 @@ def create_log_from_model(model_path, mode, no_traces=1000):
         print(error)
 
 
-def create_random_log(index):
-    mode = "testing"
+def create_random_log(index, mode):
     print(f"this is the {index}-th log")
 
     random_and_branches = random.randint(0, 4)
@@ -141,15 +141,13 @@ def create_random_log(index):
 
 
 if __name__ == "__main__":
-    num_instances = 50
+    num_instances = 100
 
-    num_cores = multiprocessing.cpu_count()
-    # Create a multiprocessing Pool
-    pool = multiprocessing.Pool(processes=num_cores)
+    training_num = Math.floor(num_instances *0.7)
+    testing_num =   num_instances - training_num
 
-    # Use the Pool to run the instances in parallel
-    pool.map(create_random_log, range(num_instances))
 
-    # Close the Pool to release resources
-    pool.close()
-    pool.join()
+    for i in range(training_num):
+        create_random_log(i, "training")
+    for i in range(testing_num):
+        create_random_log(i, "testing")
