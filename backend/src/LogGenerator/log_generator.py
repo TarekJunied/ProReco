@@ -1,6 +1,6 @@
 import subprocess
 import datetime
-import Math
+import math
 import sys
 import os
 import shutil
@@ -143,7 +143,7 @@ def create_random_log(index, mode):
 if __name__ == "__main__":
     num_instances = 100
 
-    training_num = Math.floor(num_instances *0.7)
+    training_num = math.floor(num_instances *0.7)
     testing_num =   num_instances - training_num
 
 

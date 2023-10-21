@@ -8,7 +8,6 @@ def generate_job_script(jobscript_path,number_of_tasks,outputs_path,code_to_exec
     script+=f"#SBATCH --ntasks={number_of_tasks}\n"
     script+="#SBATCH --time=10:00:00\n"
     script+=f"#SBATCH --array=0-{number_of_tasks-1}\n"
-    script+=f"#SBATCH --mem-per-cpu=5000M\n"
     script+=f"#SBATCH --job-name={job_name}\n"
     script+=f"#SBATCH --output={outputs_path}/output_%a.txt\n"
     script+=f"echo \"Now starting {job_name}\" \n"

@@ -1,7 +1,8 @@
 from utils import read_logs, read_models, read_model, read_log, load_cache_variable, store_cache_variable, generate_log_id, generate_cache_file, split_file_path, read_log
 from features import read_feature_matrix, read_feature_vector, feature_no_events_total
-from measures import read_target_entries, read_target_entry, read_target_vector
-from filehelper import gather_all_xes, select_smallest_k_logs
+from measures import read_target_entries, read_target_entry, read_target_vector,read_measure_entry
+from filehelper import gather_all_xes, select_smallest_k_logs, get_all_ready_logs
+import multiprocessing
 import globals
 import random
 import sys
@@ -35,20 +36,26 @@ def init_real_life_logs(real_life_log_paths, list_of_measure_names):
         init_log(test_xes,list_of_measure_names)
 
 
-def init_log(log_path, list_of_measure_names):
-    try:
+def init_log(log_path):
+    list_of_measure_names = globals.measures
+  
 
-        read_log(log_path)
+    read_log(log_path)
+    for discovery_algorithm in globals.algorithm_portfolio:
+        read_model(log_path, discovery_algorithm)
+
+    read_feature_vector(log_path)
+
+    for measure in list_of_measure_names:
         for discovery_algorithm in globals.algorithm_portfolio:
-            read_model(log_path, discovery_algorithm)
+            try:
+                read_measure_entry(log_path, discovery_algorithm,measure)
+            except Exception as e:
+                print(e)
 
-        read_feature_vector(log_path)
-
-        for measure_name in list_of_measure_names:
-            read_target_entry(log_path, measure_name)
-    except Exception as e:
-        print(e)
-
+    for measure_name in list_of_measure_names:
+        read_target_entry(log_path, measure_name)
+ 
 
 def keep_top_percentage_traces(log_path, top_k):
 
@@ -177,8 +184,20 @@ def break_up_logpath(log_path):
         j += 1
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
+    training_log_paths = gather_all_xes("../logs/training")
 
-    real_life_logs = gather_all_xes("/Users/tarekjunied/Documents/Universität/BachelorThesis/backend/logs/real_life_logs")
 
-    init_real_life_logs(real_life_logs, "runtime")
 
+
+
+    input("stop")
+    
+
+    num_processes = len(training_log_paths)
+
+    pool = multiprocessing.Pool(processes = num_processes)
+
+    pool.map(init_log, training_log_paths)
+
+    pool.close()
+    pool.join()

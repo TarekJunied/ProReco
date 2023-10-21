@@ -1,7 +1,7 @@
 from utils import read_logs, read_models, split_list, get_all_ready_logs, read_log, split_data
 from filehelper import gather_all_xes, get_all_ready_logs
 from features import read_feature_matrix, read_feature_vector, feature_no_total_traces
-from measures import read_target_entry, read_target_entries
+from measures import read_target_entry, read_target_entries,read_measure_entry
 from init import *
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import StandardScaler
@@ -70,10 +70,20 @@ if __name__ == "__main__":
 
     measure_name = "runtime"
 
+    input(len(gather_all_xes("../logs/training")))
+
+    for measure in globals.measures:
+        print(measure)
+        input(len(get_all_ready_logs(gather_all_xes("../logs/training"),measure)))
+
+
+
+    input("done")
     training = get_all_ready_logs(
         gather_all_xes("../logs/training"), "runtime")
     testing = get_all_ready_logs(
-        gather_all_xes("../logs/testing"), "runtime")[:10]
+        gather_all_xes("../logs/testing"), "runtime")
+
 
     x_train = read_feature_matrix(training)
     y_train = read_target_vector(training, measure_name)

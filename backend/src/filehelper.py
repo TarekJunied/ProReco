@@ -22,6 +22,8 @@ def all_files_exist(file_list):
 
     for file_path in file_list:
         if not os.path.exists(file_path):
+            print("File missing:")
+            print(file_path)
             return False
     return True
 

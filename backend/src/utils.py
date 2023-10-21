@@ -59,7 +59,6 @@ def read_model(log_path, discovery_algorithm):
     runtime_cache_file_path = generate_cache_file(
         f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl")
     try:
-        print(cache_file_path)
         model = load_cache_variable(cache_file_path)
         runtime = load_cache_variable(runtime_cache_file_path)
     except Exception:
