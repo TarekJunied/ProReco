@@ -185,12 +185,6 @@ def break_up_logpath(log_path):
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
     training_log_paths = gather_all_xes("../logs/training")
-
-
-
-
-
-    input("stop")
     
 
     num_processes = len(training_log_paths)

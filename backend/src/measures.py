@@ -207,3 +207,9 @@ def read_target_vector(log_paths, measure_name):
     for i in range(n):
         y[i] = read_target_entry(log_paths[i], measure_name)
     return y
+
+
+def rank(log_path, discovery_algorithm, measure_weight)
+
+
+

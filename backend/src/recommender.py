@@ -60,7 +60,38 @@ def classification(log_path, X, y, classification_method):
         if label not in label_probabilities:
             label_probabilities[label] = 0
 
-    return label_probabilities
+    rank = {}
+    sorted_labels = dict(sorted(label_probabilities.items(), key=lambda item: item[1]))
+
+    i = 1
+    for key in sorted_labels:
+        rank[key] = i
+        i += 1
+
+    return label_probabilities,rank
+
+
+
+def rank(log_path, discovery_algorithm, measure):
+    print("lmao")
+    label_probabilites_dict = classification(log_path,)
+
+
+
+def score(log_path, discovery_algorithm, measure_weight):
+    """ computes the score used for the final ranking
+
+    Args:
+        log_path: the log path used
+        discovery_algorithm: the discovery algorithm used
+        measure_weight: a dictionary that uses the measure names as key and 
+        the weights of the measures selected as values
+    """
+    for measure in globals.measures:
+        print("lmao")
+
+
+
 
 
 if __name__ == "__main__":
@@ -69,7 +100,7 @@ if __name__ == "__main__":
                          "used_memory", "pm4py_simplicity", "runtime"]
 
     measure_name = "runtime"
-
+    """"
     input(len(gather_all_xes("../logs/training")))
 
     for measure in globals.measures:
@@ -79,6 +110,7 @@ if __name__ == "__main__":
 
 
     input("done")
+    """
     training = get_all_ready_logs(
         gather_all_xes("../logs/training"), "runtime")
     testing = get_all_ready_logs(
@@ -89,5 +121,7 @@ if __name__ == "__main__":
     y_train = read_target_vector(training, measure_name)
 
     for classification_method in classification_methods:
-        print(classification(testing[0], x_train,
-              y_train, classification_method))
+        input(classification(testing[0], x_train,
+              y_train, classification_method)[0])
+        input(classification(testing[0], x_train,
+              y_train, classification_method)[1])
