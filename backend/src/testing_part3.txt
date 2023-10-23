@@ -1,0 +1,295 @@
+Variable loaded from cache file: ./cache/logs/1073685811.pkl
+Variable loaded from cache file: ./cache/models/alpha_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1073685811.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1073685811.pkl
+Variable loaded from cache file: ./cache/models/inductive_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1073685811.pkl
+Variable loaded from cache file: ./cache/models/ILP_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_1073685811.pkl
+Variable loaded from cache file: ./cache/models/split_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_1073685811.pkl
+Variable loaded from cache file: ./cache/features/feature_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/alpha_token_fitness_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_token_fitness_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/inductive_token_fitness_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/ILP_token_fitness_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/split_token_fitness_1073685811.pkl
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1073685811.pkl
+Variable loaded from cache file: ./cache/models/alpha_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1073685811.pkl
+trying to apply alignments on a Petri net that is not a easy sound net!!
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1073685811.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1073685811.pkl
+Variable loaded from cache file: ./cache/logs/319913825.pkl
+Variable loaded from cache file: ./cache/models/alpha_319913825.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/models/heuristic_319913825.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/models/inductive_319913825.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/models/ILP_319913825.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/models/split_319913825.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/features/feature_319913825.pkl
+Variable loaded from cache file: ./cache/measures/alpha_token_fitness_319913825.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_token_fitness_319913825.pkl
+Variable loaded from cache file: ./cache/measures/inductive_token_fitness_319913825.pkl
+Variable loaded from cache file: ./cache/measures/ILP_token_fitness_319913825.pkl
+Variable loaded from cache file: ./cache/measures/split_token_fitness_319913825.pkl
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/319913825.pkl
+Variable loaded from cache file: ./cache/models/alpha_319913825.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_319913825.pkl
+trying to apply alignments on a Petri net that is not a easy sound net!!
+Variable loaded from cache file: ./cache/measures/heuristic_alignment_fitness_319913825.pkl
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/319913825.pkl
+Variable loaded from cache file: ./cache/models/inductive_319913825.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/logs/3226145893.pkl
+Variable loaded from cache file: ./cache/models/alpha_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3226145893.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3226145893.pkl
+Variable loaded from cache file: ./cache/models/inductive_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3226145893.pkl
+Variable loaded from cache file: ./cache/models/ILP_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_3226145893.pkl
+Variable loaded from cache file: ./cache/models/split_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_3226145893.pkl
+Variable loaded from cache file: ./cache/features/feature_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/alpha_token_fitness_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_token_fitness_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/inductive_token_fitness_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/ILP_token_fitness_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/split_token_fitness_3226145893.pkl
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/3226145893.pkl
+Variable loaded from cache file: ./cache/models/alpha_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3226145893.pkl
+trying to apply alignments on a Petri net that is not a easy sound net!!
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/3226145893.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3226145893.pkl
+trying to apply alignments on a Petri net that is not a easy sound net!!
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/3226145893.pkl
+Variable loaded from cache file: ./cache/models/inductive_3226145893.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3226145893.pkl
+Variable loaded from cache file: ./cache/logs/2916169857.pkl
+Variable loaded from cache file: ./cache/models/alpha_2916169857.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2916169857.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2916169857.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2916169857.pkl
+Variable loaded from cache file: ./cache/models/inductive_2916169857.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2916169857.pkl
+No cached model found, now computing model for ../logs/testing/2916169857.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2916169857.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/226063071.pkl
+Variable loaded from cache file: ./cache/models/alpha_226063071.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_226063071.pkl
+Variable loaded from cache file: ./cache/models/heuristic_226063071.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_226063071.pkl
+Variable loaded from cache file: ./cache/models/inductive_226063071.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_226063071.pkl
+Variable loaded from cache file: ./cache/models/ILP_226063071.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_226063071.pkl
+Variable loaded from cache file: ./cache/models/split_226063071.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_226063071.pkl
+Variable loaded from cache file: ./cache/features/feature_226063071.pkl
+Variable loaded from cache file: ./cache/measures/alpha_token_fitness_226063071.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_token_fitness_226063071.pkl
+Variable loaded from cache file: ./cache/measures/inductive_token_fitness_226063071.pkl
+Variable loaded from cache file: ./cache/measures/ILP_token_fitness_226063071.pkl
+Variable loaded from cache file: ./cache/measures/split_token_fitness_226063071.pkl
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/226063071.pkl
+Variable loaded from cache file: ./cache/models/alpha_226063071.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_226063071.pkl
+trying to apply alignments on a Petri net that is not a easy sound net!!
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/226063071.pkl
+Variable loaded from cache file: ./cache/models/heuristic_226063071.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_226063071.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/alpha_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1606294804.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1606294804.pkl
+Variable loaded from cache file: ./cache/models/inductive_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1606294804.pkl
+Variable loaded from cache file: ./cache/models/ILP_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_1606294804.pkl
+No cached model found, now computing model for ../logs/testing/1606294804.xes using split.
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Start compute_model using split
+java -cp discovery/splitminer/splitminer.jar:./discovery/splitminer/lib/* au.edu.unimelb.services.ServiceProvider SMPN 0.1 0.4    False ../logs/testing/1606294804.xes ./discovery/models/split_1606294804
+Output:
+DFGP - settings > 0.4 : 0.1 : FWG
+eTIME - 247.149s
+
+Error:
+Picked up JAVA_TOOL_OPTIONS: -Xmx2048m
+
+Success: model stored to ./discovery/models/split_1606294804.pnml
+Variable stored in cache file: ./cache/measures/split_runtime_1606294804.pkl
+Variable stored in cache file: ./cache/models/split_1606294804.pkl
+Cache file does not exist yet.
+File './cache/features/feature_1606294804.pkl' created.
+No cached feature vector found, now computing feature vector
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable stored in cache file: ./cache/features/feature_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/alpha_token_fitness_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/alpha_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1606294804.pkl
+alpha 0.8949451296324403
+Variable stored in cache file: ./cache/measures/alpha_token_fitness_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/heuristic_token_fitness_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1606294804.pkl
+heuristic 0.9664137462132264
+Variable stored in cache file: ./cache/measures/heuristic_token_fitness_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/inductive_token_fitness_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/inductive_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1606294804.pkl
+inductive 1.0
+Variable stored in cache file: ./cache/measures/inductive_token_fitness_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/ILP_token_fitness_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/ILP_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_1606294804.pkl
+ILP 1.0
+Variable stored in cache file: ./cache/measures/ILP_token_fitness_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/split_token_fitness_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/split_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_1606294804.pkl
+split 0.9006325205196541
+Variable stored in cache file: ./cache/measures/split_token_fitness_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/alpha_alignment_fitness_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/alpha_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1606294804.pkl
+trying to apply alignments on a Petri net that is not a easy sound net!!
+Cache file does not exist yet.
+File './cache/measures/heuristic_alignment_fitness_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1606294804.pkl
+heuristic 0.958176174269095
+Variable stored in cache file: ./cache/measures/heuristic_alignment_fitness_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/inductive_alignment_fitness_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/inductive_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1606294804.pkl
+inductive 1.0
+Variable stored in cache file: ./cache/measures/inductive_alignment_fitness_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/ILP_alignment_fitness_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/ILP_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_1606294804.pkl
+ILP 1.0
+Variable stored in cache file: ./cache/measures/ILP_alignment_fitness_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/split_alignment_fitness_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/split_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_1606294804.pkl
+split 0.0
+Variable stored in cache file: ./cache/measures/split_alignment_fitness_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/alpha_token_precision_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/alpha_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1606294804.pkl
+alpha 0.5044716660080805
+Variable stored in cache file: ./cache/measures/alpha_token_precision_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/heuristic_token_precision_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1606294804.pkl
+heuristic 0.8855149321495233
+Variable stored in cache file: ./cache/measures/heuristic_token_precision_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/inductive_token_precision_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/inductive_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1606294804.pkl
+inductive 0.35070931558399177
+Variable stored in cache file: ./cache/measures/inductive_token_precision_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/ILP_token_precision_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/ILP_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_1606294804.pkl
+ILP 0.41937675252218654
+Variable stored in cache file: ./cache/measures/ILP_token_precision_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/split_token_precision_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/split_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_1606294804.pkl
+split 1.0
+Variable stored in cache file: ./cache/measures/split_token_precision_1606294804.pkl
+Cache file does not exist yet.
+File './cache/measures/alpha_alignment_precision_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/alpha_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1606294804.pkl
+trying to apply Align-ETConformance on a Petri net that is not a easy sound net!!
+Cache file does not exist yet.
+File './cache/measures/heuristic_alignment_precision_1606294804.pkl' created.
+No cached measure entry found, now computing measure
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1606294804.pkl

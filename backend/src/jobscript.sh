@@ -1,11 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=training_16_tasks
-#SBATCH --output=training_part2.txt
-#SBATCH --error=error_training_part2.txt
+#SBATCH --job-name=experiments
+#SBATCH --output=experiments.txt
+#SBATCH --error=error_experiments.txt
 #SBATCH --nodes=1
-#SBATCH --ntasks=16
+#SBATCH --ntasks=4
+#SBATCH --mem=10G
 #SBATCH --account=thes1569
-#SBATCH --time=04:00:00
+#SBATCH --time=12:00:00
 
 
 start_time=$(date +"%Y-%m-%d %H:%M:%S")

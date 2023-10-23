@@ -11,7 +11,14 @@ selected_features = ["no_distinct_traces", "no_total_traces", "avg_trace_length"
 measures = {"token_fitness": "max", "alignment_fitness": "max", "token_precision": "max",
             "alignment_precision": "max", "no_total_elements": "min", "node_arc_degree": "min", "runtime": "min", "used_memory": "min", "generalization": "max", "pm4py_simplicity": "max"}
 
-cache_file = "./cache.pkl"
+
+normalisierbare_measures = {"token_fitness": "max", "alignment_fitness": "max", "token_precision": "max",
+            "alignment_precision": "max",  "generalization": "max", "pm4py_simplicity": "max"}
+
+
+classification_methods = ["decision_tree", "knn", "svm",
+                          "random_forest", "logistic_regression", "gradient_boosting"]
+
 selected_measure = "token_precision"
 working_dir = "/Users/tarekjunied/Documents/Universität/BachelorThesis"
 models = {}

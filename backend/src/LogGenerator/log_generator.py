@@ -89,7 +89,8 @@ def create_log_from_model(model_path, mode, no_traces=1000):
         return
     log_id = generate_32bit_sha_hash(str(datetime.datetime.now().time()))
 
-    storage_path = f"../../logs/{mode}/{log_id}.xes"
+    #TODO CHANGE THIS back to {mode}
+    storage_path = f"../../logs/experiments/{log_id}.xes"
 
     command_list = [
         "java", "-jar", "LogGenerator.jar",
@@ -142,6 +143,14 @@ def create_random_log(index, mode):
 
 if __name__ == "__main__":
     num_instances = 100
+
+    for i in range(10):
+        create_random_log(i,"training")
+    
+
+    input("stop")
+
+
 
     training_num = math.floor(num_instances *0.7)
     testing_num =   num_instances - training_num
