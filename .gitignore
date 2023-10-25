@@ -1,4 +1,4 @@
-# Ignore logs with specific extensions
+#backend
 .idea
 .vscode
 __pycache__
@@ -17,3 +17,5 @@ logs.zip
 *.gz
 *.txts
 used_eventlogs
+
+
