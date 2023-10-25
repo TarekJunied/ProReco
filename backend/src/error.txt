@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/src/init.py", line 193, in <module>
-    input("stop")
-EOFError: EOF when reading a line

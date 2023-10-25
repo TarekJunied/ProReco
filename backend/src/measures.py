@@ -209,7 +209,13 @@ def read_target_vector(log_paths, measure_name):
     return y
 
 
-def rank(log_path, discovery_algorithm, measure_weight)
+def read_worst_entry(log_path, measure_name):
+    if globals.measures[measure_name] == "min":
+        target_entry = read_max_target_vector(log_path, measure_name)
+        return target_entry
+    if globals.measures[measure_name] == "max":
+        target_entry = read_min_target_vector(log_path, measure_name)
+        return target_entry
 
-
+    return None
 

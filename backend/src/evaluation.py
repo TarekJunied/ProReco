@@ -1,68 +1,132 @@
 import sys
-import os
+import matplotlib.pyplot as plt
+import numpy as np
+import time
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
 import numpy as np
 import globals
-from utils import get_all_ready_logs, split_data
+from utils import get_all_ready_logs,load_cache_variable
 from recommender import classification
-from filehelper import gather_all_xes, select_smallest_k_logs
-from measures import read_target_entries, read_target_entry, read_target_vector
+from filehelper import gather_all_xes, select_smallest_k_logs,split_file_path
+from measures import read_target_entries, read_target_entry, read_target_vector,  read_worst_entry
 from features import read_feature_matrix
-from init import init_testing_logs
+
+def get_number_one(input_dict):
+    for key, value in input_dict.items():
+        if value == 1:
+            return key
+    return None  # Return None if no key with value 1 is found
 
 
-def evaluate_measure_accuracy(training_logs, testing_logs, measure_name, classification_method="knn"):
-    y_true = [None]*(len(training_logs))
-    y_pred = [None]*(len(testing_logs))
 
-    x_train = read_feature_matrix(ready_for_trainingpaths)
-    y_train = read_target_vector(ready_for_trainingpaths, measure_name)
+def create_evaluation_plot(training_log_paths, testing_log_paths, selected_measures, classification_method="knn"):
+    values = []
+    categories = selected_measures
+    display_str = ""
+    for measure in selected_measures:
+            
+        
+        ready_testing = get_all_ready_logs(testing_log_paths,measure)
+        ready_training = get_all_ready_logs(training_log_paths,measure)
 
-    print(f"We have {len(training_logs)} training logs")
-    print(f"We have {len(testing_logs)} testing logs")
-    input(measure_name)
-    for i in range(len(testing_logs)):
-        y_true[i] = read_target_entry(
-            testing_logs[i], measure_name)
-        y_pred[i] = classification(
-            testing_logs[i], x_train, y_train, classification_method)
+        display_str += f" {len(ready_testing)} "
+        values += [evaluate_measure_accuracy(ready_training,ready_testing,measure,classification_method)]
 
-    precision_per_class = precision_score(
-        y_true, y_pred, average=None, labels=globals.algorithm_portfolio)
-    recall_per_class = recall_score(
-        y_true, y_pred, average=None, labels=globals.algorithm_portfolio)
-    f1_score_per_class = f1_score(
-        y_true, y_pred, average=None, labels=globals.algorithm_portfolio)
 
-    os.system("clear")
+    plt.figure(figsize=(8, 6))  # Adjust the figure size if needed
+    plt.bar(categories, values, color='royalblue')
+    plt.xlabel('Categories')
+    plt.ylabel('Values')
+    plt.title(display_str)
+    plt.grid(True, axis='y', linestyle='--', alpha=0.7)  # Add a horizontal grid
+    plt.xticks(rotation=90)
     
-    print("ACCURACY: ", accuracy_score(y_true, y_pred))
-    print("PRECISION: ", precision_per_class)
-    print("RECALL: ", recall_per_class)
-    print("F1 SCORE: ", f1_score_per_class)
+    plt.savefig(f'../evaluation/{classification_method}_accuracy_{int(time.time())}.png', dpi=300, bbox_inches='tight')
+
+
+
+
+
+
+
+def evaluate_measure_accuracy(training_log_paths, testing_log_paths, measure_name, classification_method="knn"):
+
+    if measure_name not in globals.normalisierbare_measures:
+        print("Can't evaluate accuracy for this measure")
+        return False
+
+    
+    y_best = [None]*(len(testing_log_paths))
+    y_worst = [None]*(len(testing_log_paths))
+    y_pred = [None]*(len(testing_log_paths))
+
+    x_train = read_feature_matrix(training_log_paths)
+
+    training_log_paths = get_all_ready_logs(training_log_paths, measure_name)
+    y_train = read_target_vector(training_log_paths, measure_name)
+
+  
+
+    print(f"We have {len(training_log_paths)} training logs")
+    print(f"We have {len(testing_log_paths)} testing logs")
+
+    sum = 0
+
+    for i in range(len(testing_log_paths)):
+
+        y_best[i] = read_target_entry(
+            testing_log_paths[i], measure_name)
+        y_worst[i] =  read_worst_entry(testing_log_paths[i], measure_name)
+        y_pred[i] = get_number_one(classification(
+            testing_log_paths[i], x_train, y_train, classification_method)[1])
+
+        cur_name_log = split_file_path(testing_log_paths[i])["filename"]
+
+        cur_max_val = load_cache_variable(f"./cache/measures/{y_best[i]}_{measure_name}_{cur_name_log}.pkl")
+        cur_min_val = load_cache_variable(f"./cache/measures/{y_worst[i]}_{measure_name}_{cur_name_log}.pkl")
+        if y_best[i] == y_worst[i]:
+            print("wtf")
+        cur_pred_val = load_cache_variable(f"./cache/measures/{y_pred[i]}_{measure_name}_{cur_name_log}.pkl")
+
+        if cur_max_val == cur_min_val:
+            cur_min_max = 1
+        else:
+            cur_min_max = (cur_pred_val - cur_min_val) / (cur_max_val - cur_min_val)
+
+
+        sum += cur_min_max
+      
+    return sum / len(testing_log_paths)
 
 
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
 
-    selected_measure = "runtime"
+    selected_measures = ['token_fitness', 'alignment_fitness', 'token_precision', 'alignment_precision','generalization', 'pm4py_simplicity']
+
+
 
     testing_logpaths = gather_all_xes("../logs/testing/")
-    training_logppaths = gather_all_xes("../logs/training/")
-
-    # selected_logs = testing_logpaths + \
-    #        select_smallest_k_logs(70, "../logs/training")
-    # init_testing_logs(selected_logs, [selected_measure])
-
-    ready_for_testingpaths = get_all_ready_logs(
-        testing_logpaths, selected_measure)
-    ready_for_trainingpaths = get_all_ready_logs(
-        training_logppaths, selected_measure)
+    training_logpaths = gather_all_xes("../logs/training/")
 
 
-    selected_measures = ["node_arc_degree", "no_total_elements",
-                         "used_memory", "pm4py_simplicity", "runtime"]
+
+    for classification_method in globals.classification_methods:
+        create_evaluation_plot(training_logpaths, testing_logpaths, selected_measures,classification_method=classification_method)
+
+
+
+
+    input("stop")
+
+    selected_measures = globals.measures
 
     for measure_name in selected_measures:
+        ready_for_testingpaths = get_all_ready_logs(
+        testing_logpaths,measure_name)
+        ready_for_trainingpaths = get_all_ready_logs(
+        training_logppaths, measure_name)
+
+
         evaluate_measure_accuracy(ready_for_trainingpaths,
                                   ready_for_testingpaths, measure_name, "knn")

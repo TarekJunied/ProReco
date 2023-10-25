@@ -158,7 +158,9 @@ def split_list(input_list, n):
 def all_files_exist(file_list):
 
     for file_path in file_list:
-        if not os.path.exists(file_path):
+        try:
+            load_cache_variable(file_path)
+        except Exception:
             return False
     return True
 

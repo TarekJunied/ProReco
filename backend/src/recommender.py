@@ -27,8 +27,7 @@ label_to_index = {label: index for index,
 
 all_labels = list(label_to_index.keys())
 
-classification_methods = ["decision_tree", "knn", "svm",
-                          "random_forest", "logistic_regression", "gradient_boosting"]
+
 
 
 def classification(log_path, X, y, classification_method):
@@ -74,7 +73,7 @@ def classification(log_path, X, y, classification_method):
 
 def rank(log_path, discovery_algorithm, measure):
     print("lmao")
-    label_probabilites_dict = classification(log_path,)
+
 
 
 
@@ -99,18 +98,20 @@ if __name__ == "__main__":
     selected_measures = ["node_arc_degree", "no_total_elements",
                          "used_memory", "pm4py_simplicity", "runtime"]
 
+
+    mode = "training"
     measure_name = "runtime"
-    """"
-    input(len(gather_all_xes("../logs/training")))
+    
+    input(len(gather_all_xes(f"../logs/{mode}")))
 
     for measure in globals.measures:
         print(measure)
-        input(len(get_all_ready_logs(gather_all_xes("../logs/training"),measure)))
+        input(len(get_all_ready_logs(gather_all_xes(f"../logs/{mode}"),measure)))
 
 
 
     input("done")
-    """
+
     training = get_all_ready_logs(
         gather_all_xes("../logs/training"), "runtime")
     testing = get_all_ready_logs(
