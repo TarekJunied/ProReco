@@ -2,12 +2,10 @@
 import LandingPage from "./pages/LandingPage"
 import "./index.css"
 
-
 const App = () => {
   return (
-    <div>
-      <LandingPage />
-    </div>
+    <LandingPage />
+
   );
 }
 

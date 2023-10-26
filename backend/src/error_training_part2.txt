@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/src/init.py", line 3, in <module>
-    from measures import read_target_entries, read_target_entry, read_target_vector,read_measure_entry
-  File "/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/src/measures.py", line 212
-    def rank(log_path, discovery_algorithm, measure_weight)
-                                                           ^
-SyntaxError: invalid syntax
-slurmstepd: error: *** JOB 40275740 ON ncm0830 CANCELLED AT 2023-10-21T13:13:24 DUE TO TIME LIMIT ***

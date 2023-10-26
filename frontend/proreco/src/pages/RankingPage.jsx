@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import ChooseLayout from "../layout/ChooseLayout"
@@ -6,8 +6,24 @@ import RankSlider from "../components/RankSlider"
 import StartButton from "../components/StartButton"
 import { measures } from "../constants"
 
+
 const RankingPage = () => {
+    const sessionToken = localStorage.getItem('sessionToken');
+
+
+
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!sessionToken) {
+            // Alert the user and navigate to /start immediately
+            alert("Session token is missing. Please upload an event log first.");
+            navigate("/start");
+        }
+        else {
+            console.log("Session token found:", sessionToken)
+        }
+    }, [sessionToken, navigate]);
     const [sliderValues, setSliderValues] = useState(Array(measures.length).fill(0));
 
     const handleSliderChange = (index, value) => {
@@ -18,15 +34,23 @@ const RankingPage = () => {
     };
 
     const handleButtonClick = () => {
+
+        const requestData = {
+            sliderValues,
+            sessionToken,
+        };
+
+
+
+
         console.log({ sliderValues })
         // Send the slider values to the backend
-        axios.post("http://localhost:8000/api/submitWeights", { sliderValues })
+        axios.post("http://localhost:8000/api/submitWeights", { requestData })
             .then((response) => {
-                // Assuming a successful response from the backend
-                console.log("Data sent to the backend:", response.data);
 
-                // Navigate to the next page
-                navigate("/loading");
+                console.log('Successfully sent weights:', response.data);
+
+                navigate('/recommendation');
             })
             .catch((error) => {
                 console.error("Error sending data to the backend:", error);

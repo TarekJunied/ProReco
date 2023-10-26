@@ -22,8 +22,11 @@ const StartPage = () => {
                     },
                 })
                 .then((response) => {
+
                     console.log('File uploaded successfully:', response.data);
-                    navigate('/loading');
+
+                    localStorage.setItem('sessionToken', response.data.sessionToken);
+                    navigate(`/ranking?sessionToken=${response.data.sessionToken}`);
                 })
                 .catch((error) => {
                     console.error('Error uploading file:', error);
