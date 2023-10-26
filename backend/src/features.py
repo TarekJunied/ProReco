@@ -1,7 +1,7 @@
 import pm4py
-from utils import read_log, generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable
-from filehelper import gather_all_xes
-import globals
+from src.utils import read_log, generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable
+from src.filehelper import gather_all_xes
+from src import globals
 import numpy as np
 
 

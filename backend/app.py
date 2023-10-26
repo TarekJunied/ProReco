@@ -8,7 +8,7 @@ from flask import Flask,  jsonify, session, redirect, render_template, Response,
 from flask_cors import CORS
 from flask_session import Session
 from src.utils import read_log
-from src.recommender
+from src.recommender import classification_test
 sys.path.append("src")
 
 
@@ -22,15 +22,12 @@ def generate_token(length=32):
     return secrets.token_hex(length)
 
 
-def get_log_of_session(session_token):
+def get_logpath_of_session(session_token):
     log_dir = "./logs/frontend"
 
     log_path = f"{log_dir}/{session_token}.xes"
-    os.chdir('src')
 
-    from utils import read_log
-
-    log = pm4py.read.read_xes(log_path)
+    return log_path
 
 
 app = Flask(__name__)
@@ -50,11 +47,10 @@ def submit_weights():
 
         slider_values = parsed_data['requestData']['sliderValues']
         session_token = parsed_data['requestData']['sessionToken']
+        print("nice slider values: ", slider_values)
+        print("soon we will make use of them")
 
-        print(slider_values)
-        print(session_token)
-
-        return session_token
+        return classification_test(get_logpath_of_session(session_token), "token_precision")
     else:
         return "This route only accepts POST requests."
 

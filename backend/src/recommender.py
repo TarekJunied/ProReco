@@ -1,8 +1,8 @@
-from utils import read_logs, read_models, split_list, get_all_ready_logs, read_log, split_data
-from filehelper import gather_all_xes, get_all_ready_logs
-from features import read_feature_matrix, read_feature_vector, feature_no_total_traces
-from measures import read_target_entry, read_target_entries,read_measure_entry
-from init import *
+from src.utils import read_logs, read_models, split_list, get_all_ready_logs, read_log, split_data
+from src.filehelper import gather_all_xes, get_all_ready_logs, get_all_ready_logs_multiple
+from src.features import read_feature_matrix, read_feature_vector, feature_no_total_traces
+from src.measures import read_target_entry, read_target_entries, read_measure_entry
+from src.init import *
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
@@ -10,9 +10,8 @@ from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
-from filehelper import gather_all_xes, select_smallest_k_logs
 import multiprocessing
-import globals
+from src import globals
 import numpy as np
 import os
 import pm4py
@@ -28,9 +27,24 @@ label_to_index = {label: index for index,
 all_labels = list(label_to_index.keys())
 
 
+def classification_test(log_path, measure_name):
+    return "alpha miner"
+    measure_name = "token_precision"
+    training = get_all_ready_logs_multiple(gather_all_xes("../logs"))
+    x_train = read_feature_matrix(training)
+    y_train = read_target_vector(training, measure_name)
+
+    return classification(log_path, x_train, y_train, "knn")
 
 
 def classification(log_path, X, y, classification_method):
+
+    training = get_all_ready_logs_multiple("../logs")
+
+    x_train = read_feature_matrix(training)
+    measure_name ="doesn't matter anyway"
+    y_train = read_target_vector(training, measure_name)
+
     if classification_method == "decision_tree":
         clf = DecisionTreeClassifier()
     elif classification_method == "knn":
@@ -60,21 +74,19 @@ def classification(log_path, X, y, classification_method):
             label_probabilities[label] = 0
 
     rank = {}
-    sorted_labels = dict(sorted(label_probabilities.items(), key=lambda item: item[1]))
+    sorted_labels = dict(
+        sorted(label_probabilities.items(), key=lambda item: item[1]))
 
     i = 1
     for key in sorted_labels:
         rank[key] = i
         i += 1
 
-    return label_probabilities,rank
-
+    return label_probabilities, rank
 
 
 def rank(log_path, discovery_algorithm, measure):
     print("lmao")
-
-
 
 
 def score(log_path, discovery_algorithm, measure_weight):
@@ -90,25 +102,20 @@ def score(log_path, discovery_algorithm, measure_weight):
         print("lmao")
 
 
-
-
-
 if __name__ == "__main__":
 
     selected_measures = ["node_arc_degree", "no_total_elements",
                          "used_memory", "pm4py_simplicity", "runtime"]
 
-
     mode = "training"
     measure_name = "runtime"
-    
+
     input(len(gather_all_xes(f"../logs/{mode}")))
 
     for measure in globals.measures:
         print(measure)
-        input(len(get_all_ready_logs(gather_all_xes(f"../logs/{mode}"),measure)))
-
-
+        input(len(get_all_ready_logs(
+            gather_all_xes(f"../logs/{mode}"), measure)))
 
     input("done")
 
@@ -116,7 +123,6 @@ if __name__ == "__main__":
         gather_all_xes("../logs/training"), "runtime")
     testing = get_all_ready_logs(
         gather_all_xes("../logs/testing"), "runtime")
-
 
     x_train = read_feature_matrix(training)
     y_train = read_target_vector(training, measure_name)

@@ -1,9 +1,9 @@
-from utils import read_logs, read_models, read_model, read_log, load_cache_variable, store_cache_variable, generate_log_id, generate_cache_file, split_file_path, read_log
-from features import read_feature_matrix, read_feature_vector, feature_no_events_total
-from measures import read_target_entries, read_target_entry, read_target_vector,read_measure_entry
-from filehelper import gather_all_xes, select_smallest_k_logs, get_all_ready_logs
+from src.utils import read_logs, read_models, read_model, read_log, load_cache_variable, store_cache_variable, generate_log_id, generate_cache_file,  read_log
+from src.features import read_feature_matrix, read_feature_vector, feature_no_events_total
+from src.measures import read_target_entries, read_target_entry, read_target_vector,read_measure_entry
+from src.filehelper import gather_all_xes, split_file_path
 import multiprocessing
-import globals
+from src import globals
 import random
 import sys
 import pm4py

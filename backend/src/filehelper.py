@@ -124,10 +124,10 @@ def remove_extension(filename):
 
 
 def get_all_ready_logs_multiple(log_paths):
-    current = log_paths
+    current = set(log_paths)
     
     for measure in globals.measures:
-        current = current.intersection(get_all_ready_logs(current, measure))
+        current = current.intersection(set(get_all_ready_logs(current, measure)))
 
     return current
         

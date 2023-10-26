@@ -9,6 +9,7 @@ import {
 import StartPage from './pages/StartPage.jsx';
 import LoadingPage from './pages/LoadingPage.jsx';
 import RankingPage from './pages/RankingPage.jsx';
+import RecommendPage from "./pages/RecommendPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/ranking",
     element: <RankingPage />,
+  },
+  {
+    path: "/recommend",
+    element: <RecommendPage />,
   },
 ]);
 

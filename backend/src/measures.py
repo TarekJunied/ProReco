@@ -3,11 +3,11 @@ from pm4py.algo.evaluation.generalization import algorithm as generalization_eva
 from pm4py.algo.evaluation.simplicity import algorithm as simplicity_evaluator
 
 import sys
-import globals
+from src import globals
 import os
-from utils import read_model, read_log
-from utils import generate_cache_file, generate_log_id, store_cache_variable, load_cache_variable, compute_model
-from filehelper import gather_all_xes
+from src.utils import read_model, read_log
+from src.utils import generate_cache_file, generate_log_id, store_cache_variable, load_cache_variable, compute_model
+from src.filehelper import gather_all_xes
 
 import sys
 # Fitness measures

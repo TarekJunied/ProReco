@@ -48,9 +48,11 @@ const RankingPage = () => {
         axios.post("http://localhost:8000/api/submitWeights", { requestData })
             .then((response) => {
 
-                console.log('Successfully sent weights:', response.data);
+                console.log('Successfully sent weights:');
+                console.log("this is what we got back, it should be a recommendation: ", response.data)
 
-                navigate('/recommendation');
+                // maybe clean the data
+                navigate(`/recommend?recommendation=${response.data}`);
             })
             .catch((error) => {
                 console.error("Error sending data to the backend:", error);
