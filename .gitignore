@@ -17,5 +17,8 @@ logs.zip
 *.gz
 *.txts
 used_eventlogs
+.jpeg
+.psd
+.7
 
 
