@@ -1,13 +1,14 @@
 
-import LandingPage from "./components/LandingPage"
+import LandingPage from "./pages/LandingPage"
 import "./index.css"
+
 
 const App = () => {
   return (
     <div>
       <LandingPage />
     </div>
-  )
+  );
 }
 
 

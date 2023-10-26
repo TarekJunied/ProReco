@@ -4,9 +4,9 @@ nav {
     justify-content: space-between;
     background: transparent;
     padding-top: 20px;
-    padding-right: 80px;
+    padding-right: 250px;
     padding-bottom: 0px;
-    padding-left: 80px;
+    padding-left: 20px;
 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
