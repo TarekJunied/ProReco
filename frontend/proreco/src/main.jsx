@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -10,11 +9,15 @@ import StartPage from './pages/StartPage.jsx';
 import LoadingPage from './pages/LoadingPage.jsx';
 import RankingPage from './pages/RankingPage.jsx';
 import RecommendPage from "./pages/RecommendPage.jsx";
-
+import LandingPage from './pages/LandingPage.jsx';
 const router = createBrowserRouter([
   {
+    path: '', // Empty path for the default route
+    element: <LandingPage />,
+  },
+  {
     path: "/",
-    element: <App />,
+    element: <LandingPage />,
   },
   {
     path: "/start",
@@ -34,9 +37,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+
   </React.StrictMode>,
 )
+

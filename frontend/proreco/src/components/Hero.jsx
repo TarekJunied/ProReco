@@ -1,7 +1,15 @@
 import styles from "../styles.js"
 import Button from "./Button.jsx"
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
+    const navigate = useNavigate();
+
+    const handleClickNavigate = (page) => {
+        navigate(page)
+    }
+
+
     return (
         <div className={`${styles.flexStart} mb-10`}>
             <div className={`${styles.boxWidth}`}>
@@ -29,8 +37,8 @@ const Hero = () => {
                         </p>
 
                         <div className={`justify-between mt-10 ${styles.flexCenter} space-x-16`}>
-                            <Button text="Get started" styles="bg-dark-gradient-reversed" />
-                            <Button text="Learn more" styles="border-4 border-orange-800" />
+                            <Button text="Get started" styles="bg-dark-gradient-reversed" onClick={() => handleClickNavigate("start")} />
+                            <Button text="Learn more" styles="border-4 border-orange-800" onClick={() => handleClickNavigate("processmining")} />
 
                         </div>
 
