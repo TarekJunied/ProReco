@@ -1,0 +1,7 @@
+.landingpage {
+    background-image: url(../../assets/background.png);
+    background-size: cover;
+    background-position: top;
+    width: 100vw;
+    min-height: 100vh;
+}
