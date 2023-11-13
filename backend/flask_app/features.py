@@ -196,6 +196,8 @@ def read_feature_vector(log_path):
     log_id = generate_log_id(log_path)
     cache_file_path = generate_cache_file(
         f"./cache/features/feature_{log_id}.pkl")
+    if log_path in globals.features:
+        return globals.features[log_path]
     try:
         feature_vector = load_cache_variable(cache_file_path)
     except Exception:

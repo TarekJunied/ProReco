@@ -70,19 +70,24 @@ def read_model(log_path, discovery_algorithm):
     runtime_cache_file_path = generate_cache_file(
         f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl")
     try:
-        model = load_cache_variable(cache_file_path)
+        model = globals.models[log_path, discovery_algorithm]
         runtime = load_cache_variable(runtime_cache_file_path)
+
     except Exception:
-        print(
-            f"No cached model found, now computing model for {log_path} using {discovery_algorithm}.")
+        try:
+            model = load_cache_variable(cache_file_path)
+            runtime = load_cache_variable(runtime_cache_file_path)
+        except Exception:
+            print(
+                f"No cached model found, now computing model for {log_path} using {discovery_algorithm}.")
 
-        start_time = time.time()
-        model = compute_model(log_path, discovery_algorithm)
-        end_time = time.time()
+            start_time = time.time()
+            model = compute_model(log_path, discovery_algorithm)
+            end_time = time.time()
 
-        store_cache_variable(
+            store_cache_variable(
             end_time-start_time, runtime_cache_file_path)
-        store_cache_variable(model, cache_file_path)
+            store_cache_variable(model, cache_file_path)
     return model
 
 
@@ -114,18 +119,24 @@ def generate_cache_file(cache_filepath):
 def read_log(log_path):
     log_id = generate_log_id(log_path)
     cache_file_path = generate_cache_file(f"./cache/logs/{log_id}.pkl")
+    log = None
     try:
-        log = load_cache_variable(cache_file_path)
+        if log_path in globals.training_log_paths:
+            log = globals.training_log_paths[log_path]
+        elif log_path in globals.testing_log_paths:
+            log = globals.testing_log_paths[log_path]
     except Exception:
-        print("No cached log found, now parsing log.")
-        log = pm4py.read.read_xes(log_path)
-        globals.logs[log_path] = log
-        store_cache_variable(log, cache_file_path)
+        try:
+            log = load_cache_variable(cache_file_path)
+        except Exception:
+            print("No cached log found, now parsing log.")
+            log = pm4py.read.read_xes(log_path)
+            globals.logs[log_path] = log
+            store_cache_variable(log, cache_file_path)
     return log
 
 
 def read_logs(log_paths):
-    # TODO: remove deleting
     for log_path in log_paths:
         read_log(log_path)
 
@@ -133,49 +144,23 @@ def read_logs(log_paths):
 def read_models(log_paths):
     for log_path in log_paths:
         for discovery_algorithm in globals.algorithm_portfolio:
-            print(
-                f"Now start discovery of {log_path} using {discovery_algorithm}")
-            try:
-                read_model(log_path, discovery_algorithm)
-            except Exception as e:
-                print(
-                    f"Could not discover {log_path} using {discovery_algorithm}, because: ")
-                print("An error occurred:", e)
+            read_model(log_path, discovery_algorithm)
 
 
-def split_list(input_list, n):
-    # Calculate the length of each sublist
-    sublist_length = len(input_list) // n
-    remainder = len(input_list) % n  # Calculate the remainder
+def all_files_exist(file_paths):
+    """
+    Check if all files in the given list exist.
 
-    # Initialize the list of sublists
-    sublists = []
+    Parameters:
+    - file_paths (list): List of file paths to check.
 
-    # Split the input_list into sublists
-    start = 0
-    for i in range(n):
-        if i < remainder:
-            end = start + sublist_length + 1
-        else:
-            end = start + sublist_length
-
-        sublist = input_list[start:end]
-        sublists.append(sublist)
-        start = end
-
-    return sublists
+    Returns:
+    - bool: True if all files exist, False otherwise.
+    """
+    return all(os.path.exists(file_path) for file_path in file_paths)
 
 
-def all_files_exist(file_list):
-
-    for file_path in file_list:
-        try:
-            load_cache_variable(file_path)
-        except Exception:
-            return False
-    return True
-
-
+    
 def get_all_ready_logs(log_paths, measure_name):
     ready_logs = []
     for log_path in log_paths:
@@ -213,8 +198,8 @@ def split_data(data, ratio=0.8, seed=None):
     return training_data, testing_data
 
 
+
+
+
 if __name__ == "__main__":
-    log_paths = gather_all_xes("../logs/logs_in_xes")
-    for log_path in log_paths:
-        log = read_log(log_path)
-        pm4py.write.write_xes(log, "../logs")
+    print("Hi")

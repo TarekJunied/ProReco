@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --job-name=experiments
-#SBATCH --output=experiments.txt
-#SBATCH --error=error_experiments.txt
+#SBATCH --job-name=propertraining_200traininglogs
+#SBATCH --output=training.txt
+#SBATCH --error=error_training.txt
 #SBATCH --nodes=1
-#SBATCH --ntasks=4
+#SBATCH --ntasks=10
 #SBATCH --mem=10G
 #SBATCH --account=thes1569
 #SBATCH --time=12:00:00

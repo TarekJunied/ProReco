@@ -137,12 +137,12 @@ def get_all_ready_logs_multiple(log_paths):
 
     for measure in globals.measures_list:
         ready_logs =set(get_all_ready_logs(current, measure))
-        current = current & ready_logs
+        current = current.intersection(ready_logs)
 
 
     return list(current)
 
-
+#TODO: improve the computation time of this function to redc
 def get_all_ready_logs(log_paths, measure_name):
     ready_logs = []
     for log_path in log_paths:
@@ -158,9 +158,7 @@ def get_all_ready_logs(log_paths, measure_name):
 
         no_problem = True
         for file in file_list:
-            try:
-                load_cache_variable(file)
-            except Exception as e:
+            if not os.path.exists(file):
                 no_problem = False
 
         if no_problem:

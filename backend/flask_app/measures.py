@@ -4,14 +4,11 @@ from pm4py.algo.evaluation.simplicity import algorithm as simplicity_evaluator
 
 import sys
 import globals
-import os
 from utils import read_model, read_log
 from utils import generate_cache_file, generate_log_id, store_cache_variable, load_cache_variable, compute_model
 from filehelper import gather_all_xes
 
-import sys
-# Fitness measures
-sys.setrecursionlimit(5000)
+
 
 
 def measure_token_fitness(log_path, discovery_algorithm):
@@ -167,6 +164,11 @@ def read_min_target_vector(log_path, measure_name):
 
 
 def read_measure_entry(log_path, discovery_algorithm, measure_name):
+
+    if (log_path, discovery_algorithm) in globals.features:
+        return globals.features[log_path,discovery_algorithm]
+
+
     log_id = generate_log_id(log_path)
     cache_file_path = generate_cache_file(
         f"./cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl")
@@ -181,10 +183,10 @@ def read_measure_entry(log_path, discovery_algorithm, measure_name):
 
 
 def read_target_entry(log_path, measure_name):
-    if globals.measures[measure_name] == "max":
+    if globals.measures_kind[measure_name] == "max":
         target_entry = read_max_target_vector(log_path, measure_name)
         return target_entry
-    if globals.measures[measure_name] == "min":
+    if globals.measures_kind[measure_name] == "min":
         target_entry = read_min_target_vector(log_path, measure_name)
         return target_entry
 
@@ -210,10 +212,10 @@ def read_target_vector(log_paths, measure_name):
 
 
 def read_worst_entry(log_path, measure_name):
-    if globals.measures[measure_name] == "min":
+    if globals.measures_kind[measure_name] == "min":
         target_entry = read_max_target_vector(log_path, measure_name)
         return target_entry
-    if globals.measures[measure_name] == "max":
+    if globals.measures_kind[measure_name] == "max":
         target_entry = read_min_target_vector(log_path, measure_name)
         return target_entry
 

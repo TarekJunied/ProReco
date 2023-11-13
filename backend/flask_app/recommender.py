@@ -1,4 +1,4 @@
-from utils import read_logs, read_models, split_list, get_all_ready_logs, read_log, split_data
+from utils import read_logs, read_models,  get_all_ready_logs, read_log, split_data
 from filehelper import gather_all_xes, get_all_ready_logs, get_all_ready_logs_multiple
 from features import read_feature_matrix, read_feature_vector, feature_no_total_traces
 from measures import read_target_entry, read_target_entries, read_measure_entry
@@ -36,18 +36,18 @@ def classification_test(log_path, measure_name):
     return classification(log_path, x_train, y_train, "decision_tree")
 
 
-def classification(log_path, X, y, classification_method):
+def classification(log_path, classification_method,measure_name):
 
-    training = get_all_ready_logs_multiple("../logs")
+    ready_training = list(globals.training_log_paths.keys())
 
-    x_train = read_feature_matrix(training)
-    measure_name = "doesn't matter anyway"
-    y_train = read_target_vector(training, measure_name)
+    x_train = read_feature_matrix(ready_training)
+
+    y_train = read_target_vector(ready_training, measure_name)
 
     if classification_method == "decision_tree":
         clf = DecisionTreeClassifier()
     elif classification_method == "knn":
-        clf = KNeighborsClassifier()
+        clf = KNeighborsClassifier(n_neighbors=9)
     elif classification_method == "svm":
         clf = SVC(probability=True)
     elif classification_method == "random_forest":
@@ -60,7 +60,7 @@ def classification(log_path, X, y, classification_method):
         raise ValueError(
             f"Invalid classification method: {classification_method}")
 
-    clf = clf.fit(X, y)
+    clf = clf.fit(x_train, y_train)
 
     # Calculate probabilities for all labels
     probabilities = clf.predict_proba(read_feature_vector(log_path))
@@ -154,12 +154,14 @@ def score(log_path, discovery_algorithm, measure_weight):
 
 if __name__ == "__main__":
 
-    selected_measures = ["node_arc_degree", "no_total_elements",
-                         "used_memory", "pm4py_simplicity", "runtime"]
+    
+    training_logs = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
+    testing_logs = get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))
 
-    mode = "experiments"
-    measure_name = "runtime"
+    input(len(training_logs))
+    input(len(testing_logs))
 
+    input("stop")
     logs = get_all_ready_logs_multiple(gather_all_xes("../logs/experiments"))
 
     log_path = logs[0]
