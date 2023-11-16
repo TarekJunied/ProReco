@@ -1,6 +1,8 @@
 import os
 import globals
 import pickle
+import zipfile
+import tarfile
 
 
 def load_cache_variable(cache_file_path):
@@ -165,3 +167,38 @@ def get_all_ready_logs(log_paths, measure_name):
             ready_logs += [log_path]
 
     return ready_logs
+
+def unzip_all(zip_path, extract_path):
+    # Check if the provided path is a directory
+    if not os.path.isdir(extract_path):
+        os.makedirs(extract_path)
+
+    # Iterate over all files in the given directory
+    for file_name in os.listdir(zip_path):
+        file_path = os.path.join(zip_path, file_name)
+
+        # Check if the file is a zip or tar file
+        if zipfile.is_zipfile(file_path):
+            # Unzip the file
+            with zipfile.ZipFile(file_path, 'r') as zip_ref:
+                zip_ref.extractall(extract_path)
+            print(f"Unzipped: {file_path}")
+
+            # Recursively call the function for the extracted contents
+            unzip_all(os.path.join(extract_path, file_name.split('.')[0]), extract_path)
+
+        elif tarfile.is_tarfile(file_path):
+            # Untar the file
+            with tarfile.open(file_path, 'r:gz') as tar_ref:
+                tar_ref.extractall(extract_path)
+            print(f"Untarred: {file_path}")
+
+            # Recursively call the function for the extracted contents
+            unzip_all(os.path.join(extract_path, file_name.split('.')[0]), extract_path)
+
+
+
+
+
+if __name__ == "__main__":
+    unzip_all("../logs/real_life_logs","../logs/real_life_logs")

@@ -165,8 +165,9 @@ def read_min_target_vector(log_path, measure_name):
 
 def read_measure_entry(log_path, discovery_algorithm, measure_name):
 
-    if (log_path, discovery_algorithm) in globals.features:
-        return globals.features[log_path,discovery_algorithm]
+    if (log_path, discovery_algorithm,measure_name) in globals.measures:
+        return globals.measures[log_path,discovery_algorithm,measure_name]
+
 
 
     log_id = generate_log_id(log_path)

@@ -3,7 +3,7 @@
 #SBATCH --output=training.txt
 #SBATCH --error=error_training.txt
 #SBATCH --nodes=1
-#SBATCH --ntasks=10
+#SBATCH --ntasks=2
 #SBATCH --mem=10G
 #SBATCH --account=thes1569
 #SBATCH --time=12:00:00

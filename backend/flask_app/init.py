@@ -46,7 +46,7 @@ def load_measures():
         for measure in globals.measures_list:
             for discovery_algorithm in globals.algorithm_portfolio:
                 log_name = get_log_name(log_path)
-                globals.measures[log_path,measure] = load_cache_variable(f"./cache/measures/{discovery_algorithm}_{measure}_{log_name}.pkl")
+                globals.measures[log_path,discovery_algorithm, measure] = load_cache_variable(f"./cache/measures/{discovery_algorithm}_{measure}_{log_name}.pkl")
 def load_models():
     log_paths = list(globals.training_log_paths.keys()) + list(globals.testing_log_paths.keys())
     for log_path in log_paths:
@@ -58,7 +58,8 @@ def load_features():
     log_paths = list(globals.training_log_paths.keys()) + list(globals.testing_log_paths.keys())
     for log_path in log_paths:
         log_name = get_log_name(log_path)
-        globals.features[log_path] = load_cache_variable(f"./cache/features/feature_{log_name}.pkl")
+        for feature in globals.selected_features:
+            globals.features[log_path,feature] = load_cache_variable(f"./cache/features/{feature}_{log_name}.pkl")
 
 
 
@@ -246,13 +247,33 @@ def create_and_init(index,mode):
 
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
+    fix_corrupt_cache()
+    log_paths = gather_all_xes("../logs/real_life_logs")  
+
+    for log_path in log_paths:
+        init_log(log_path)
+        
+    input("stop")
+
+    """"
+    init()
+    input("okay now no more loading from cache")
+    for log_path in globals.training_log_paths:
+        log = read_log(log_path)
+
+    for log_path in globals.training_log_paths:
+        read_feature_vector(log_path)
+
+    for discovery_algorithm in globals.algorithm_portfolio:
+        for log_path in globals.training_log_paths:
+            for measure_name in globals.measures_list:
+                read_measure_entry(log_path,discovery_algorithm,measure_name)
+    input("stop")
 
 
 
 
-
-
-    """
+    
     init()
     input("init done")
     for log_path in gather_all_xes("../logs/training"):
@@ -263,10 +284,14 @@ if __name__ == "__main__":
     """
     training_log_paths = gather_all_xes(f"../logs/real_life_logs")
     
+    for log_path in training_log_paths:
+        init_log(log_path)
+
+    input("done")
 
     num_processes = len(training_log_paths)
 
-    pool = multiprocessing.Pool(processesx = num_processes)
+    pool = multiprocessing.Pool(processes = num_processes)
 
     pool.map(init_log, training_log_paths)
 

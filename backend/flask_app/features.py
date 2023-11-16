@@ -1,8 +1,11 @@
 import pm4py
-from utils import read_log, generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable
-from filehelper import gather_all_xes
+import time
 import globals
 import numpy as np
+from utils import read_log, generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable, compute_model
+from filehelper import gather_all_xes,split_file_path
+from pm4py.algo.discovery.footprints import algorithm as footprints_discovery
+
 
 
 def init_causal_matrix(matrix, activities):
@@ -10,18 +13,6 @@ def init_causal_matrix(matrix, activities):
         for b in activities:
             matrix[a, b] = 0
 
-
-def feature_causality_strength(log_path):
-    activities = get_all_activities_of_log(log_path)
-    matrix = causal_matrix(log_path)
-    cur_max = float("-Inf")
-
-    for i in range(len(activities)):
-        for j in range(i+1, len(activities)):
-            if abs(matrix[activities[i], activities[j]]) > cur_max:
-                cur_max = abs(matrix[activities[i], activities[j]])
-
-    return cur_max
 
 
 def causal_transform_diagonal_entries(matrix, activities):
@@ -171,6 +162,27 @@ def feature_density(log_path):
     return non_zero_count / (n**2)
 
 
+def feature_total_no_activities(log_path):
+    log = read_log(log_path)
+    return len(footprints_discovery.apply(log, variant=footprints_discovery.Variants.ENTIRE_EVENT_LOG)["activities"])
+
+
+def feature_percentage_concurrency(log_path):
+    log = read_log(log_path)
+    
+    no_concurrency = len(footprints_discovery.apply(log, variant=footprints_discovery.Variants.ENTIRE_EVENT_LOG)["parallel"])
+ 
+    return no_concurrency/(feature_total_no_activities(log_path)**2)
+
+
+
+def feature_percentage_sequence(log_path):
+    log = read_log(log_path)
+
+    no_sequence = len(footprints_discovery.apply(log, variant=footprints_discovery.Variants.ENTIRE_EVENT_LOG)["sequence"])
+
+    return no_sequence/(feature_total_no_activities(log_path)**2)
+
 def feature_length_one_loops(log_path):
     activities = get_all_activities_of_log(log_path)
     n = len(activities)
@@ -184,6 +196,15 @@ def feature_length_one_loops(log_path):
     return counter / n
 
 
+def feature_dfg(log_path):
+    log = read_log(log_path)
+    dfg =  pm4py.discover_dfg(log)
+    print(dfg)
+
+
+
+
+
 def compute_feature_vector(log_path):
     feature_vector = np.empty((1, len(globals.selected_features)))
     for feature_index in range(len(globals.selected_features)):
@@ -191,19 +212,29 @@ def compute_feature_vector(log_path):
             log_path, feature_index)
     return feature_vector
 
+def read_single_feature(log_path,feature_name):
+    if (log_path,feature_name) in globals.features:
+        return globals.features[log_path,feature_name]
+    try:
+        log_id = generate_log_id(log_path)
+        cache_file_path = generate_cache_file(
+        f"./cache/features/{feature_name}_{log_id}.pkl")
+        feature = load_cache_variable(cache_file_path)
+    except Exception:
+
+        print("No cached feature vector found, now computing feature vector")
+        feature = compute_feature_log_path(log_path,globals.selected_features.index(feature_name))
+        store_cache_variable(feature, cache_file_path)
+    return feature
+
+
+
+
 
 def read_feature_vector(log_path):
-    log_id = generate_log_id(log_path)
-    cache_file_path = generate_cache_file(
-        f"./cache/features/feature_{log_id}.pkl")
-    if log_path in globals.features:
-        return globals.features[log_path]
-    try:
-        feature_vector = load_cache_variable(cache_file_path)
-    except Exception:
-        print("No cached feature vector found, now computing feature vector")
-        feature_vector = compute_feature_vector(log_path)
-        store_cache_variable(feature_vector, cache_file_path)
+    feature_vector = np.empty((1,len(globals.selected_features)))
+    for feature_index in range(len(globals.selected_features)):
+        feature_vector[0,feature_index] = read_single_feature(log_path,globals.selected_features[feature_index])
     return feature_vector
 
 
@@ -237,12 +268,16 @@ def compute_feature_log_path(log_path, feature_index):
         ret = feature_no_distinct_start(log_path)
     elif globals.selected_features[feature_index] == "no_distinct_end":
         ret = feature_no_distinct_end(log_path)
-    elif globals.selected_features[feature_index] == "causality_strength":
-        ret = feature_causality_strength(log_path)
+    elif globals.selected_features[feature_index] == "total_no_activities":
+        ret = feature_total_no_activities(log_path)
     elif globals.selected_features[feature_index] == "density":
         ret = feature_density(log_path)
     elif globals.selected_features[feature_index] == "length_one_loops":
         ret = feature_length_one_loops(log_path)
+    elif globals.selected_features[feature_index] == "percentage_concurrency":
+        ret = feature_percentage_concurrency(log_path)
+    elif globals.selected_features[feature_index] == "percentage_sequence":
+        ret = feature_percentage_sequence(log_path)
     else:
         ret = None
         print("Invalid feature name")
@@ -252,3 +287,13 @@ def compute_feature_log_path(log_path, feature_index):
 def compute_feature(log_index, feature_index):
     log_path = globals.training_logs_paths[log_index]
     return compute_feature_log_path(log_path, feature_index)
+
+
+if __name__  == "__main__":
+
+
+    log_paths = gather_all_xes("../logs/training") + gather_all_xes("../logs/testing")
+
+    for log_path in log_paths:
+        read_feature_vector(log_path)
+    

@@ -36,14 +36,24 @@ def create_scikit_evaluation_plot(selected_measures, classification_method="knn"
         values += [evaluate_scikit_measure_accuracy(measure,classification_method)]
 
 
+
+
     plt.figure(figsize=(8, 6))  # Adjust the figure size if needed
     plt.bar(categories, values, color='royalblue')
     plt.xlabel('Categories')
     plt.ylabel('Values')
     plt.title(display_str)
+
+    # Set y-axis ticks and limits
+    plt.yticks([i/10 for i in range(11)])
+    plt.ylim(0, 1)
+
+    for i in range(1, 10):
+        plt.axhline(y=i/10, color='gray', linestyle='--', linewidth=0.5)
+
     plt.grid(True, axis='y', linestyle='--', alpha=0.7)  # Add a horizontal grid
     plt.xticks(rotation=90)
-    
+
     now = datetime.now()
 
     # Format the current date as a string
@@ -66,9 +76,9 @@ def evaluate_scikit_measure_accuracy(measure,classification_method):
 
     for i in range(len(ready_testing)):
         y_true[i] = read_target_entry(ready_testing[i], measure)
-        y_pred[i] = get_number_one(classification(
-            ready_testing[i],  classification_method,measure)[1])
-        
+        y_pred[i] = classification(ready_testing[i],  classification_method,measure)
+
+
     return accuracy_score(y_true, y_pred)
 
 def create_min_max_evaluation_plot(selected_measures, classification_method="knn"):
@@ -151,12 +161,9 @@ if __name__ == "__main__":
 
     selected_measures = ['token_fitness', 'token_precision', 'generalization', 'pm4py_simplicity']
 
-    #init.py
+    init()
 
-    globals.training_log_paths = {element:None for element in get_all_ready_logs_multiple(gather_all_xes("../logs/training"))}
-    globals.testing_log_paths = {element:None for element in get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))}
-
-
+    input("init done")
 
     for classification_method in globals.classification_methods:
         create_scikit_evaluation_plot(globals.measures_list,classification_method=classification_method)

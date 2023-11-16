@@ -63,31 +63,31 @@ def compute_model(log_path, discovery_algorithm):
 
 
 def read_model(log_path, discovery_algorithm):
-    # TODO don't forget runtime
+
+
+    if (log_path,discovery_algorithm) in globals.models:
+        return model
+
+
     log_id = generate_log_id(log_path)
     cache_file_path = generate_cache_file(
         f"./cache/models/{discovery_algorithm}_{log_id}.pkl")
     runtime_cache_file_path = generate_cache_file(
         f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl")
     try:
-        model = globals.models[log_path, discovery_algorithm]
-        runtime = load_cache_variable(runtime_cache_file_path)
-
-    except Exception:
-        try:
             model = load_cache_variable(cache_file_path)
             runtime = load_cache_variable(runtime_cache_file_path)
-        except Exception:
-            print(
+    except Exception:
+        print(
                 f"No cached model found, now computing model for {log_path} using {discovery_algorithm}.")
 
-            start_time = time.time()
-            model = compute_model(log_path, discovery_algorithm)
-            end_time = time.time()
+        start_time = time.time()
+        model = compute_model(log_path, discovery_algorithm)
+        end_time = time.time()
 
-            store_cache_variable(
+        store_cache_variable(
             end_time-start_time, runtime_cache_file_path)
-            store_cache_variable(model, cache_file_path)
+        store_cache_variable(model, cache_file_path)
     return model
 
 
@@ -117,22 +117,20 @@ def generate_cache_file(cache_filepath):
 
 
 def read_log(log_path):
+    if log_path in globals.training_log_paths:
+            return globals.training_log_paths[log_path]
+    elif log_path in globals.testing_log_paths:
+            return globals.testing_log_paths[log_path]
+    
     log_id = generate_log_id(log_path)
     cache_file_path = generate_cache_file(f"./cache/logs/{log_id}.pkl")
     log = None
     try:
-        if log_path in globals.training_log_paths:
-            log = globals.training_log_paths[log_path]
-        elif log_path in globals.testing_log_paths:
-            log = globals.testing_log_paths[log_path]
-    except Exception:
-        try:
             log = load_cache_variable(cache_file_path)
-        except Exception:
-            print("No cached log found, now parsing log.")
-            log = pm4py.read.read_xes(log_path)
-            globals.logs[log_path] = log
-            store_cache_variable(log, cache_file_path)
+    except Exception:
+        print("No cached log found, now parsing log.")
+        log = pm4py.read.read_xes(log_path)
+        store_cache_variable(log, cache_file_path)
     return log
 
 

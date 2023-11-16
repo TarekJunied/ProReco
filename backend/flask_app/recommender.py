@@ -27,15 +27,7 @@ label_to_index = {label: index for index,
 all_labels = list(label_to_index.keys())
 
 
-def classification_test(log_path, measure_name):
-    measure_name = "token_precision"
-    training = get_all_ready_logs_multiple(gather_all_xes("../experiments"))
-    x_train = read_feature_matrix(training)
-    y_train = read_target_vector(training, measure_name)
-
-    return classification(log_path, x_train, y_train, "decision_tree")
-
-
+#TODO: tailor this again to backend
 def classification(log_path, classification_method,measure_name):
 
     ready_training = list(globals.training_log_paths.keys())
@@ -53,7 +45,7 @@ def classification(log_path, classification_method,measure_name):
     elif classification_method == "random_forest":
         clf = RandomForestClassifier()
     elif classification_method == "logistic_regression":
-        clf = LogisticRegression()
+        clf = LogisticRegression(max_iter=1000000)
     elif classification_method == "gradient_boosting":
         clf = GradientBoostingClassifier()
     else:
@@ -62,26 +54,12 @@ def classification(log_path, classification_method,measure_name):
 
     clf = clf.fit(x_train, y_train)
 
-    # Calculate probabilities for all labels
-    probabilities = clf.predict_proba(read_feature_vector(log_path))
+    predictions = clf.predict(read_feature_vector(log_path))
 
-    label_probabilities = {label: probability for label, probability in zip(
-        all_labels, probabilities[0])}
 
-    for label in globals.algorithm_portfolio:
-        if label not in label_probabilities:
-            label_probabilities[label] = 0
 
-    rank = {}
-    sorted_labels = dict(
-        sorted(label_probabilities.items(), key=lambda item: item[1]))
-
-    i = 1
-    for key in sorted_labels:
-        rank[key] = i
-        i += 1
-
-    return label_probabilities, rank
+    return predictions[0]
+  
 
 
 def final_prediction(log_path, measure_weight):
@@ -155,12 +133,11 @@ def score(log_path, discovery_algorithm, measure_weight):
 if __name__ == "__main__":
 
     
-    training_logs = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
-    testing_logs = get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))
+    init()
 
-    input(len(training_logs))
-    input(len(testing_logs))
+    ready_testing = list(globals.testing_log_paths.keys())
 
+    print(classification(ready_testing[0],"knn","token_precision"))
     input("stop")
     logs = get_all_ready_logs_multiple(gather_all_xes("../logs/experiments"))
 
