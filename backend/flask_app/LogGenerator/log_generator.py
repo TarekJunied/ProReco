@@ -20,24 +20,6 @@ def generate_32bit_sha_hash(input_string):
     return truncated_hash
 
 
-def clear_folder(folder_path):
-    try:
-        # Check if the folder exists
-        if os.path.exists(folder_path) and os.path.isdir(folder_path):
-            # Iterate through all items in the folder
-            for item in os.listdir(folder_path):
-                item_path = os.path.join(folder_path, item)
-                if os.path.isfile(item_path):
-                    os.remove(item_path)  # Remove files
-                elif os.path.isdir(item_path):
-                    # Remove subdirectories and their contents
-                    shutil.rmtree(item_path)
-            print(f"Folder {folder_path} has been emptied.")
-        else:
-            print(f"Folder {folder_path} does not exist.")
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
 
 def create_random_process(and_branches=5,
                           xor_branches=5,
@@ -51,7 +33,7 @@ def create_random_process(and_branches=5,
                           data_object_probability=0.1):
     process_id = str(generate_32bit_sha_hash(
         str(datetime.datetime.now().time())))
-    storage_path = "./processes/process_" + \
+    storage_path = "processes/process_" + \
         process_id + ".plg"
 
     command_list = ["java", "-jar", "ProcessGenerator.jar",
@@ -89,8 +71,7 @@ def create_log_from_model(model_path, mode, no_traces=1000):
         return
     log_id = generate_32bit_sha_hash(str(datetime.datetime.now().time()))
 
-    #TODO CHANGE THIS back to {mode}
-    storage_path = f"../../logs/experiments/{log_id}.xes"
+    storage_path = f"../../logs/{mode}/{log_id}.xes"
 
     command_list = [
         "java", "-jar", "LogGenerator.jar",
@@ -110,6 +91,7 @@ def create_log_from_model(model_path, mode, no_traces=1000):
 
     if len(error) == 0:
         print(f"Success: log stored to {storage_path}")
+        return {storage_path}
     else:
         print("An error has occured.")
         print("Errors:")
@@ -138,20 +120,11 @@ def create_random_log(index, mode):
                                      xor_weight=random_xor_weight,
                                      max_depth=random_max_depth,
                                      data_object_probability=random_data_object_probability)
-    create_log_from_model(cur_proc, mode, random.randint(1000, 1500))
+    return create_log_from_model(cur_proc, mode, random.randint(1000, 1500))
 
 
 if __name__ == "__main__":
-    num_instances = 100
-
-    for i in range(10):
-        create_random_log(i,"training")
-    
-
-    input("stop")
-
-
-
+    num_instances = 150
     training_num = math.floor(num_instances *0.7)
     testing_num =   num_instances - training_num
 

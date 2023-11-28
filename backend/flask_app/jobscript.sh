@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --job-name=experiments
-#SBATCH --output=experiments.txt
-#SBATCH --error=error_experiments.txt
+#SBATCH --job-name=real_life_init
+#SBATCH --output=real_life.txt
+#SBATCH --error=error_real_life.txt
 #SBATCH --nodes=1
-#SBATCH --ntasks=4
+#SBATCH --ntasks=2
 #SBATCH --mem=10G
 #SBATCH --account=thes1569
 #SBATCH --time=12:00:00

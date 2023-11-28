@@ -1,17 +1,14 @@
 import pm4py
+import sys
+import math
+import globals
 from pm4py.algo.evaluation.generalization import algorithm as generalization_evaluator
 from pm4py.algo.evaluation.simplicity import algorithm as simplicity_evaluator
-
-import sys
-import globals
-import os
 from utils import read_model, read_log
 from utils import generate_cache_file, generate_log_id, store_cache_variable, load_cache_variable, compute_model
-from filehelper import gather_all_xes
+from filehelper import gather_all_xes,split_file_path,get_all_ready_logs
 
-import sys
-# Fitness measures
-sys.setrecursionlimit(5000)
+
 
 
 def measure_token_fitness(log_path, discovery_algorithm):
@@ -115,6 +112,19 @@ def measure_pm4py_simplicity(log_path, discovery_algorithm):
     return simplicity_evaluator.apply(net)
 
 
+def measure_log_runtime(log_path, discovery_algorithm):
+    log_id = generate_log_id(log_path)
+    runtime_cache_file = f"./cache/measures/{discovery_algorithm}_log_runtime_{log_id}.pkl"
+    read_model(log_path, discovery_algorithm)
+    try:
+        runtime = load_cache_variable(runtime_cache_file)
+    except Exception as e:
+        print(e)
+        print("Runtime somehow couldn't be computed")
+
+    return runtime
+
+
 def compute_measure(log_path, discovery_algorithm, measure_name):
     if measure_name == "token_fitness":
         return measure_token_fitness(log_path, discovery_algorithm)
@@ -167,6 +177,12 @@ def read_min_target_vector(log_path, measure_name):
 
 
 def read_measure_entry(log_path, discovery_algorithm, measure_name):
+
+    if (log_path, discovery_algorithm,measure_name) in globals.measures:
+        return globals.measures[log_path,discovery_algorithm,measure_name]
+
+
+
     log_id = generate_log_id(log_path)
     cache_file_path = generate_cache_file(
         f"./cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl")
@@ -181,10 +197,10 @@ def read_measure_entry(log_path, discovery_algorithm, measure_name):
 
 
 def read_target_entry(log_path, measure_name):
-    if globals.measures[measure_name] == "max":
+    if globals.measures_kind[measure_name] == "max":
         target_entry = read_max_target_vector(log_path, measure_name)
         return target_entry
-    if globals.measures[measure_name] == "min":
+    if globals.measures_kind[measure_name] == "min":
         target_entry = read_min_target_vector(log_path, measure_name)
         return target_entry
 
@@ -210,12 +226,21 @@ def read_target_vector(log_paths, measure_name):
 
 
 def read_worst_entry(log_path, measure_name):
-    if globals.measures[measure_name] == "min":
+    if globals.measures_kind[measure_name] == "min":
         target_entry = read_max_target_vector(log_path, measure_name)
         return target_entry
-    if globals.measures[measure_name] == "max":
+    if globals.measures_kind[measure_name] == "max":
         target_entry = read_min_target_vector(log_path, measure_name)
         return target_entry
 
     return None
 
+
+if __name__ == "__main__":
+    log_paths = get_all_ready_logs(gather_all_xes("../logs/training") + gather_all_xes("../logs/testing"),"runtime")
+
+    for log_path in log_paths:
+        for discovery_algorithm in globals.algorithm_portfolio:
+            log_name = split_file_path(log_path)["filename"]
+            current_runtime = read_measure_entry(log_path,discovery_algorithm,"log_runtime")
+            #store_cache_variable(math.log10(current_runtime),f"./cache/measures/{discovery_algorithm}_log_runtime_{log_name}.pkl")

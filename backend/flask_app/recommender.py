@@ -1,6 +1,14 @@
-from utils import read_logs, read_models, split_list, get_all_ready_logs, read_log, split_data
+import multiprocessing
+import globals
+import numpy as np
+import subprocess
+import os
+import re
+import pm4py
+import sys
+from utils import read_logs, read_models,  get_all_ready_logs, read_log, split_data
 from filehelper import gather_all_xes, get_all_ready_logs, get_all_ready_logs_multiple
-from features import read_feature_matrix, read_feature_vector, feature_no_total_traces
+from features import read_feature_matrix, read_feature_vector, feature_no_total_traces,space_out_feature_vector_string
 from measures import read_target_entry, read_target_entries, read_measure_entry
 from init import *
 from sklearn.model_selection import train_test_split, cross_val_score
@@ -10,78 +18,195 @@ from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
-import multiprocessing
-import globals
-import numpy as np
-import os
-import pm4py
-import sys
-project_dir = '/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/src'
-# Add the project directory to sys.path
-sys.path.append(project_dir)
+from sklearn.impute import SimpleImputer
+from autofolio_interface import create_performance_csv,create_feature_csv
+
 
 label_to_index = {label: index for index,
                   label in enumerate(globals.algorithm_portfolio)}
 
 
 all_labels = list(label_to_index.keys())
+def activate_smac_env():
+    subprocess.run("conda run -n SMAC",shell=True)
 
 
-def classification_test(log_path, measure_name):
-    measure_name = "token_precision"
-    training = get_all_ready_logs_multiple(gather_all_xes("../experiments"))
-    x_train = read_feature_matrix(training)
-    y_train = read_target_vector(training, measure_name)
+def extract_prediction_from_autofolio_string(autofolio_string):
+    # Define a regular expression pattern to capture the word after "('inductive',"
+    pattern = r"\('(\w+)',"
 
-    return classification(log_path, x_train, y_train, "decision_tree")
+    # Use re.search to find the first match
+    match = re.search(pattern, autofolio_string)
+
+    # Check if a match is found
+    if match:
+        # Extract and return the captured word
+        return match.group(1)
+    else:
+        # Return None if no match is found
+        return "AutoFolio Error"
+
+def read_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
+    if os.path.exists(f"./AutoFolio/af_predictors/{measure_name}_predictor.af"):
+        ret = f"./af_predictors/{measure_name}_predictor.af"
+    else:
+        ret = f"./{create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name)}"
+    return ret
 
 
-def classification(log_path, X, y, classification_method):
 
-    training = get_all_ready_logs_multiple("../logs")
 
-    x_train = read_feature_matrix(training)
-    measure_name = "doesn't matter anyway"
-    y_train = read_target_vector(training, measure_name)
+
+
+
+def create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
+
+
+
+    training_features_filename = f"{measure_name}_training_features.csv"
+    training_performance_filename =f"{measure_name}_training_performance.csv"
+    testing_features_filename = f"{measure_name}_testing_features.csv"
+    testing_performance_filename =f"{measure_name}_testing_performance.csv"
+
+
+
+    training_features_filepath = f"./AutoFolio/csv_files/{measure_name}_training_features.csv"
+    training_performance_filepath =f"./AutoFolio/csv_files/{measure_name}_training_performance.csv"
+    testing_features_filepath = f"./AutoFolio/csv_files/{measure_name}_testing_features.csv"
+    testing_performance_filepath =f"./AutoFolio/csv_files/{measure_name}_testing_performance.csv"
+
+
+    create_feature_csv(training_logpaths,training_features_filepath)
+    create_performance_csv(training_logpaths,measure_name,training_performance_filepath)
+
+    create_feature_csv(testing_logpaths,testing_features_filepath)
+    create_performance_csv(testing_logpaths,measure_name,testing_performance_filepath)
+
+    predictor_filepath = f"./af_predictors/{measure_name}_predictor.af"
+
+    if globals.measures_kind[measure_name] == "max": 
+        max_string = "--maximize"
+    elif globals.measures_kind[measure_name] == "min":
+        max_string = ""
+    else:
+        print("invalid kind of measure")
+        sys.exit(-1)
+
+
+    if measure_name == "runtime" or measure_name =="log_runtime":
+        objective_string = "runtime"
+    else:
+        objective_string = "solution_quality"
+    objective_string="solution_quality"
+
+    command = [
+    "python",
+    f"./scripts/autofolio",
+    "--performance_csv", f"./csv_files/{training_performance_filename}",
+    "--feature_csv",  f"./csv_files/{training_features_filename}",
+    "--objective ", objective_string,
+    "--tune",
+    max_string,
+    "--save", predictor_filepath,
+
+    ]
+
+    command_str = " ".join(command)
+
+
+
+    os.chdir(os.path.abspath("./AutoFolio"))
+
+    subprocess.run(command_str,shell=True)
+
+
+    os.chdir("../")
+    return predictor_filepath
+
+
+def autofolio_classification(log_path,measure_name):
+
+    
+
+    training_logpaths = list(globals.training_log_paths.keys())
+    testing_logpaths = list(globals.testing_log_paths.keys())
+
+    predictor_filepath = read_autofolio_predictor(training_logpaths,testing_logpaths,measure_name)
+
+
+    spaced_out_feature_vector_string = space_out_feature_vector_string(log_path)
+
+    command=[
+        "python",
+        "scripts/autofolio",
+        "--load",
+        predictor_filepath,
+        "--feature_vec",
+        spaced_out_feature_vector_string]
+
+
+    os.chdir("./AutoFolio")
+
+
+    try:
+        output = subprocess.check_output(command, stderr=subprocess.STDOUT, text=True)
+        print("Command output:")
+        print(output)
+    except subprocess.CalledProcessError as e:
+        print("Error executing command. Return code:", e.returncode)
+        print("Command output (if any):")
+        print(e.output)
+   
+    prediction = extract_prediction_from_autofolio_string(output)
+
+    if prediction not in globals.algorithm_portfolio:
+        input("an error occureed with autofolio")
+        return 
+    
+    os.chdir("../")
+
+    return prediction
+
+
+
+
+
+#TODO: tailor this again to backend
+def classification(log_path, classification_method,measure_name):
+
+    ready_training = list(globals.training_log_paths.keys())
+
+    x_train = read_feature_matrix(ready_training)
+
+    y_train = read_target_vector(ready_training, measure_name)
 
     if classification_method == "decision_tree":
         clf = DecisionTreeClassifier()
     elif classification_method == "knn":
-        clf = KNeighborsClassifier()
+        clf = KNeighborsClassifier(n_neighbors=9)
     elif classification_method == "svm":
         clf = SVC(probability=True)
     elif classification_method == "random_forest":
         clf = RandomForestClassifier()
     elif classification_method == "logistic_regression":
-        clf = LogisticRegression()
+        clf = LogisticRegression(max_iter=1000000)
     elif classification_method == "gradient_boosting":
-        clf = GradientBoostingClassifier()
+        clf = GradientBoostingClassifier(n_estimators=1000)
+    elif classification_method == "autofolio":
+        return autofolio_classification(log_path,measure_name)
     else:
         raise ValueError(
             f"Invalid classification method: {classification_method}")
 
-    clf = clf.fit(X, y)
 
-    # Calculate probabilities for all labels
-    probabilities = clf.predict_proba(read_feature_vector(log_path))
+    clf = clf.fit(x_train, y_train)
 
-    label_probabilities = {label: probability for label, probability in zip(
-        all_labels, probabilities[0])}
+    predictions = clf.predict(read_feature_vector(log_path))
 
-    for label in globals.algorithm_portfolio:
-        if label not in label_probabilities:
-            label_probabilities[label] = 0
 
-    rank = {}
-    sorted_labels = dict(
-        sorted(label_probabilities.items(), key=lambda item: item[1]))
 
-    i = 1
-    for key in sorted_labels:
-        rank[key] = i
-        i += 1
-
-    return label_probabilities, rank
+    return predictions[0]
+  
 
 
 def final_prediction(log_path, measure_weight):
@@ -154,22 +279,13 @@ def score(log_path, discovery_algorithm, measure_weight):
 
 if __name__ == "__main__":
 
-    selected_measures = ["node_arc_degree", "no_total_elements",
-                         "used_memory", "pm4py_simplicity", "runtime"]
 
-    mode = "experiments"
-    measure_name = "runtime"
+    training_logpaths = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
+    testing_logpaths = get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))
 
-    logs = get_all_ready_logs_multiple(gather_all_xes("../logs/experiments"))
+    for measure in globals.measures_list:
+        for log_path in testing_logpaths:
+            print(autofolio_classification(log_path,measure))
 
-    log_path = logs[0]
 
-    measure_weight = {}
-
-    for measure in globals.measures:
-        measure_weight[measure] = 0
-
-    measure_weight["runtime"] = 0.5
-    measure_weight["token_precision"] = 0.5
-
-    print(final_prediction(log_path, measure_weight))
+   

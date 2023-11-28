@@ -1,17 +1,73 @@
 from utils import read_logs, read_models, read_model, read_log, load_cache_variable, store_cache_variable, generate_log_id, generate_cache_file,  read_log
 from features import read_feature_matrix, read_feature_vector, feature_no_events_total
 from measures import read_target_entries, read_target_entry, read_target_vector,read_measure_entry
-from filehelper import gather_all_xes, split_file_path
+from filehelper import gather_all_xes, split_file_path,get_all_ready_logs_multiple
+from LogGenerator.log_generator import create_random_log
 import multiprocessing
 import globals
 import random
 import sys
 import pm4py
+import os
 
 
-def init(training_log_paths, testing_log_paths, list_of_measure_names):
+def fix_corrupt_cache():
+    cache_folder = "./cache/"
+    for folder_path, _, filenames in os.walk(cache_folder):
+        for filename in filenames:
+            if filename.endswith(".pkl"):
+                file_path = os.path.join(folder_path, filename)
+                
+                try:
+                    load_cache_variable(file_path)
+                except Exception as e:
+                    os.remove(file_path)
+                    print(f"Error loading {file_path}: {e}")
+def get_log_name(log_path):
+    return split_file_path(log_path)["filename"]
 
-    init_training_logs(training_log_paths, list_of_measure_names)
+#TODO: change util functions to try to read 
+
+def load_logs():
+    training_log_paths = get_all_ready_logs_multiple(gather_all_xes("../logs/training") )
+    testing_log_paths = get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))
+
+    for log_path in training_log_paths:
+        log_name = get_log_name(log_path)
+        globals.training_log_paths[log_path] = load_cache_variable(f"./cache/logs/{log_name}.pkl")
+
+    for log_path in testing_log_paths:
+        log_name = get_log_name(log_path)
+        globals.testing_log_paths[log_path] = load_cache_variable(f"./cache/logs/{log_name}.pkl")
+def load_measures():
+    log_paths = list(globals.training_log_paths.keys()) + list(globals.testing_log_paths.keys())
+
+    for log_path in log_paths:
+        for measure in globals.measures_list:
+            for discovery_algorithm in globals.algorithm_portfolio:
+                log_name = get_log_name(log_path)
+                globals.measures[log_path,discovery_algorithm, measure] = load_cache_variable(f"./cache/measures/{discovery_algorithm}_{measure}_{log_name}.pkl")
+def load_models():
+    log_paths = list(globals.training_log_paths.keys()) + list(globals.testing_log_paths.keys())
+    for log_path in log_paths:
+        for discovery_algorithm in globals.algorithm_portfolio:
+            log_name = get_log_name(log_path)
+            globals.models[log_path,discovery_algorithm] = load_cache_variable(f"./cache/models/{discovery_algorithm}_{log_name}.pkl")
+
+def load_features():
+    log_paths = list(globals.training_log_paths.keys()) + list(globals.testing_log_paths.keys())
+    for log_path in log_paths:
+        log_name = get_log_name(log_path)
+        for feature in globals.selected_features:
+            globals.features[log_path,feature] = load_cache_variable(f"./cache/features/{feature}_{log_name}.pkl")
+
+
+
+def init():
+    load_logs()
+    load_measures()
+    load_models()
+    load_features()
 
 
 def init_training_logs(training_log_paths, list_of_measure_names):
@@ -53,8 +109,6 @@ def init_log(log_path):
             except Exception as e:
                 print(e)
 
-    for measure_name in list_of_measure_names:
-        read_target_entry(log_path, measure_name)
  
 
 def keep_top_percentage_traces(log_path, top_k):
@@ -182,13 +236,35 @@ def break_up_logpath(log_path):
 
 
         j += 1
+
+def create_and_init(index,mode):
+
+    log_path = create_random_log(index, mode)
+
+    init_log(log_path)
+
+# Function to get the size of a file
+def get_file_size(file_path):
+    return os.path.getsize(file_path)
+
+
+
 if __name__ == "__main__":
-    sys.setrecursionlimit(5000)
+    sys.setrecursionlimit(10000)
 
-    mode = "experiments"
 
-    training_log_paths = gather_all_xes(f"../logs/{mode}")
-    
+    training_log_paths = gather_all_xes("../logs/real_life_logs")
+    training_log_paths = sorted(training_log_paths,key=get_file_size)
+
+
+    for log_path in training_log_paths:
+        try:
+            init_log(log_path)
+        except Exception as e:
+            print(e)
+
+    input("wow done")
+
 
     num_processes = len(training_log_paths)
 
@@ -198,3 +274,38 @@ if __name__ == "__main__":
 
     pool.close()
     pool.join()
+
+
+
+    """"
+    input("stop")
+
+
+    init()
+    input("okay now no more loading from cache")
+    for log_path in globals.training_log_paths:
+        log = read_log(log_path)
+
+    for log_path in globals.training_log_paths:
+        read_feature_vector(log_path)
+
+    for discovery_algorithm in globals.algorithm_portfolio:
+        for log_path in globals.training_log_paths:
+            for measure_name in globals.measures_list:
+                read_measure_entry(log_path,discovery_algorithm,measure_name)
+    input("stop")
+
+
+
+
+    
+    init()
+    input("init done")
+    for log_path in gather_all_xes("../logs/training"):
+        read_log(log_path)
+
+    input("stop")
+    mode = "experiments"
+    """
+
+
