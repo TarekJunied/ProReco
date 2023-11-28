@@ -1,456 +1,0 @@
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-parsing log, completed traces ::   0%|          | 0/1443 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1070 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1121 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1329 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1365 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1459 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1290 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1452 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1278 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1409 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1375 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1394 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1248 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1273 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1200 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1455 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1215 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1479 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1277 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1343 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1271 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1387 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1222 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1126 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1175 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1273 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1260 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1089 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1460 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1224 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1297 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1271 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1340 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1038 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1067 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1149 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1351 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1263 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1401 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1146 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1094 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1168 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1131 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1077 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1456 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1007 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1289 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1363 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1223 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1203 [00:00<?, ?it/s]/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-parsing log, completed traces ::   0%|          | 0/1050 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1330 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1021 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1325 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1028 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1224 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1002 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1294 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1031 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1010 [00:00<?, ?it/s]/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-parsing log, completed traces ::   0%|          | 0/1262 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1119 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1368 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1051 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1354 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1111 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1396 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1083 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1423 [00:00<?, ?it/s]/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-parsing log, completed traces ::   0%|          | 0/1377 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1069 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1250 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1120 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1171 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1105 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1128 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1380 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1134 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1390 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1074 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1177 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1267 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1067 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1044 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1467 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1461 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1340 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1125 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1107 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1146 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1464 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1480 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1263 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1445 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1198 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1113 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1401 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1025 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1428 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1124 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1395 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1177 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1312 [00:00<?, ?it/s]/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-parsing log, completed traces ::   0%|          | 0/1042 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1005 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1199 [00:00<?, ?it/s]/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-parsing log, completed traces ::   0%|          | 0/1458 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1222 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1416 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1050 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1128 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1465 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1150 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1423 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1484 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1396 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1190 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1042 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1295 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1436 [00:00<?, ?it/s]/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-/home/qc261227/.local/lib/python3.9/site-packages/pm4py/util/dt_parsing/parser.py:76: UserWarning: ISO8601 strings are not fully supported with strpfromiso for Python versions below 3.11
-  warnings.warn(
-parsing log, completed traces ::   0%|          | 0/1272 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1437 [00:00<?, ?it/s]parsing log, completed traces ::   0%|          | 0/1137 [00:00<?, ?it/s]/var/spool/slurm/job40752510/slurm_script: line 16: 139443 Killed                  /usr/bin/python3.9 init.py
-slurmstepd: error: Detected 5 oom-kill event(s) in StepId=40752510.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.

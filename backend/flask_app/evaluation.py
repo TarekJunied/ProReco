@@ -166,6 +166,8 @@ if __name__ == "__main__":
     input("init done")
 
     for classification_method in globals.classification_methods:
+        if classification_method == "autofolio":
+            input("wait do you want to start autofolio")
         create_scikit_evaluation_plot(globals.measures_list,classification_method=classification_method)
 
 

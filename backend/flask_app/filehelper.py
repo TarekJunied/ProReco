@@ -151,17 +151,20 @@ def get_all_ready_logs(log_paths, measure_name):
         file_list = []
         log_id = generate_log_id(log_path)
         log_cache = f"./cache/logs/{log_id}.pkl"
-        features_cache = f"./cache/features/feature_{log_id}.pkl"
-        file_list += [log_cache, features_cache]
+        file_list += [log_cache]
         for discovery_algorithm in globals.algorithm_portfolio:
             model_path = f"./cache/models/{discovery_algorithm}_{log_id}.pkl"
             measure_cache = f"./cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl"
             file_list += [model_path, measure_cache]
+        for feature in globals.selected_features:
+            feature_path = f"./cache/features/{feature}_{log_id}.pkl"
+            file_list +=[feature_path]
 
         no_problem = True
         for file in file_list:
             if not os.path.exists(file):
                 no_problem = False
+                print(f"{file} is missing")
 
         if no_problem:
             ready_logs += [log_path]

@@ -109,8 +109,6 @@ def init_log(log_path):
             except Exception as e:
                 print(e)
 
-    for measure_name in list_of_measure_names:
-        read_target_entry(log_path, measure_name)
  
 
 def keep_top_percentage_traces(log_path, top_k):
@@ -245,17 +243,44 @@ def create_and_init(index,mode):
 
     init_log(log_path)
 
-if __name__ == "__main__":
-    sys.setrecursionlimit(5000)
-    fix_corrupt_cache()
-    log_paths = gather_all_xes("../logs/real_life_logs")  
+# Function to get the size of a file
+def get_file_size(file_path):
+    return os.path.getsize(file_path)
 
-    for log_path in log_paths:
-        init_log(log_path)
-        
-    input("stop")
+
+
+if __name__ == "__main__":
+    sys.setrecursionlimit(10000)
+
+
+    training_log_paths = gather_all_xes("../logs/real_life_logs")
+    training_log_paths = sorted(training_log_paths,key=get_file_size)
+
+
+    for log_path in training_log_paths:
+        try:
+            init_log(log_path)
+        except Exception as e:
+            print(e)
+
+    input("wow done")
+
+
+    num_processes = len(training_log_paths)
+
+    pool = multiprocessing.Pool(processes = num_processes)
+
+    pool.map(init_log, training_log_paths)
+
+    pool.close()
+    pool.join()
+
+
 
     """"
+    input("stop")
+
+
     init()
     input("okay now no more loading from cache")
     for log_path in globals.training_log_paths:
@@ -282,18 +307,5 @@ if __name__ == "__main__":
     input("stop")
     mode = "experiments"
     """
-    training_log_paths = gather_all_xes(f"../logs/real_life_logs")
-    
-    for log_path in training_log_paths:
-        init_log(log_path)
 
-    input("done")
 
-    num_processes = len(training_log_paths)
-
-    pool = multiprocessing.Pool(processes = num_processes)
-
-    pool.map(init_log, training_log_paths)
-
-    pool.close()
-    pool.join()

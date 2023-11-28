@@ -6,9 +6,13 @@ import os
 import random
 import hashlib
 import globals
+import math
 from filehelper import  gather_all_xes
 from discovery.splitminer.split_miner import discover_petri_net_split
 from discovery.structuredminer.fodina_miner import discover_petri_net_fodina
+
+def get_log_name(log_path):
+    return split_file_path(log_path)["filename"]
 
 
 def split_file_path(file_path):
@@ -74,9 +78,12 @@ def read_model(log_path, discovery_algorithm):
         f"./cache/models/{discovery_algorithm}_{log_id}.pkl")
     runtime_cache_file_path = generate_cache_file(
         f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl")
+    log_runtime_cache_file_path = generate_cache_file(
+        f"./cache/measures/{discovery_algorithm}_log_runtime_{log_id}.pkl")
     try:
             model = load_cache_variable(cache_file_path)
             runtime = load_cache_variable(runtime_cache_file_path)
+            log_runtime = load_cache_variable(runtime_cache_file_path)
     except Exception:
         print(
                 f"No cached model found, now computing model for {log_path} using {discovery_algorithm}.")
@@ -88,6 +95,7 @@ def read_model(log_path, discovery_algorithm):
         store_cache_variable(
             end_time-start_time, runtime_cache_file_path)
         store_cache_variable(model, cache_file_path)
+        store_cache_variable(math.log10(end_time - start_time), log_runtime_cache_file_path)
     return model
 
 

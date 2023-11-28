@@ -1,12 +1,12 @@
 import pm4py
+import sys
+import math
+import globals
 from pm4py.algo.evaluation.generalization import algorithm as generalization_evaluator
 from pm4py.algo.evaluation.simplicity import algorithm as simplicity_evaluator
-
-import sys
-import globals
 from utils import read_model, read_log
 from utils import generate_cache_file, generate_log_id, store_cache_variable, load_cache_variable, compute_model
-from filehelper import gather_all_xes
+from filehelper import gather_all_xes,split_file_path,get_all_ready_logs
 
 
 
@@ -110,6 +110,19 @@ def measure_pm4py_simplicity(log_path, discovery_algorithm):
     net, im, fm = read_model(log_path, discovery_algorithm)
     log = read_log(log_path)
     return simplicity_evaluator.apply(net)
+
+
+def measure_log_runtime(log_path, discovery_algorithm):
+    log_id = generate_log_id(log_path)
+    runtime_cache_file = f"./cache/measures/{discovery_algorithm}_log_runtime_{log_id}.pkl"
+    read_model(log_path, discovery_algorithm)
+    try:
+        runtime = load_cache_variable(runtime_cache_file)
+    except Exception as e:
+        print(e)
+        print("Runtime somehow couldn't be computed")
+
+    return runtime
 
 
 def compute_measure(log_path, discovery_algorithm, measure_name):
@@ -222,3 +235,12 @@ def read_worst_entry(log_path, measure_name):
 
     return None
 
+
+if __name__ == "__main__":
+    log_paths = get_all_ready_logs(gather_all_xes("../logs/training") + gather_all_xes("../logs/testing"),"runtime")
+
+    for log_path in log_paths:
+        for discovery_algorithm in globals.algorithm_portfolio:
+            log_name = split_file_path(log_path)["filename"]
+            current_runtime = read_measure_entry(log_path,discovery_algorithm,"log_runtime")
+            #store_cache_variable(math.log10(current_runtime),f"./cache/measures/{discovery_algorithm}_log_runtime_{log_name}.pkl")

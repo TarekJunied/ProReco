@@ -1,3 +1,0 @@
-Job started at: 2023-11-11 09:58:37
-Job ended at:   2023-11-11 09:59:23
-Duration (minutes): 0

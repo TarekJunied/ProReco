@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=propertraining_200traininglogs
-#SBATCH --output=training.txt
-#SBATCH --error=error_training.txt
+#SBATCH --job-name=real_life_init
+#SBATCH --output=real_life.txt
+#SBATCH --error=error_real_life.txt
 #SBATCH --nodes=1
 #SBATCH --ntasks=2
 #SBATCH --mem=10G
