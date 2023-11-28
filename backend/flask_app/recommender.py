@@ -169,40 +169,52 @@ def autofolio_classification(log_path,measure_name):
 
 
 
+def read_fitted_classifier(classification_method,measure_name,ready_training):
+    classifier_filepath = f"./classifiers/{measure_name}_{classification_method}.pkl"
+    try:
+        clf = load_cache_variable(classifier_filepath)
+    except Exception:
+        print("Classifier doesn't exist yet. Computing classifier now")
+
+        x_train = read_feature_matrix(ready_training)
+
+        y_train = read_target_vector(ready_training, measure_name)
+
+        if classification_method == "decision_tree":
+            clf = DecisionTreeClassifier()
+        elif classification_method == "knn":
+            clf = KNeighborsClassifier(n_neighbors=9)
+        elif classification_method == "svm":
+            clf = SVC(probability=True)
+        elif classification_method == "random_forest":
+            clf = RandomForestClassifier()
+        elif classification_method == "logistic_regression":
+            clf = LogisticRegression()
+        elif classification_method == "gradient_boosting":
+            clf = GradientBoostingClassifier(n_estimators=100)
+        
+        else:
+            raise ValueError(
+                f"Invalid classification method: {classification_method}")
+
+
+        clf = clf.fit(x_train, y_train)
+
+        store_cache_variable(clf,classifier_filepath)
+
+    return clf
 
 
 #TODO: tailor this again to backend
-def classification(log_path, classification_method,measure_name):
-
-    ready_training = list(globals.training_log_paths.keys())
-
-    x_train = read_feature_matrix(ready_training)
-
-    y_train = read_target_vector(ready_training, measure_name)
-
-    if classification_method == "decision_tree":
-        clf = DecisionTreeClassifier()
-    elif classification_method == "knn":
-        clf = KNeighborsClassifier(n_neighbors=9)
-    elif classification_method == "svm":
-        clf = SVC(probability=True)
-    elif classification_method == "random_forest":
-        clf = RandomForestClassifier()
-    elif classification_method == "logistic_regression":
-        clf = LogisticRegression()
-    elif classification_method == "gradient_boosting":
-        clf = GradientBoostingClassifier(n_estimators=100)
-    elif classification_method == "autofolio":
+def classification(log_path, classification_method,measure_name,ready_training):
+    if classification_method == "autofolio":
         return autofolio_classification(log_path,measure_name)
-    else:
-        raise ValueError(
-            f"Invalid classification method: {classification_method}")
+ 
 
 
-    clf = clf.fit(x_train, y_train)
+    clf = read_fitted_classifier(classification_method,measure_name,ready_training)
 
     predictions = clf.predict(read_feature_vector(log_path))
-
 
 
     return predictions[0]
@@ -280,12 +292,12 @@ def score(log_path, discovery_algorithm, measure_weight):
 if __name__ == "__main__":
 
 
-    training_logpaths = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
-    testing_logpaths = get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))
+    ready_training = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
 
-    for measure in globals.measures_list:
-        for log_path in testing_logpaths:
-            print(autofolio_classification(log_path,measure))
 
+
+    for measure_name in globals.measures_list:
+        for classification_method in globals.classification_methods:
+            print(classification(ready_training[0],classification_method,measure_name,[0]))
 
    

@@ -159,8 +159,6 @@ def evaluate_min_max_measure_accuracy(testing_log_paths, measure_name, classific
 
 
 if __name__ == "__main__":
-    process = psutil.Process()
-    input(f"Initial memory usage: {process.memory_info().rss / (1024 * 1024):.2f} MB")
     sys.setrecursionlimit(5000)
 
 
@@ -173,6 +171,3 @@ if __name__ == "__main__":
 
 
 
-
-
-    print(f"Final memory usage: {process.memory_info().rss / (1024 * 1024):.2f} MB")

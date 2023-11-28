@@ -6,7 +6,7 @@ __MACOSX
 *.plg
 *.bpmn
 *.pnml
-*.pkl
+cache
 misc/
 .metadata
 *.DS_Store
@@ -21,4 +21,4 @@ used_eventlogs
 .psd
 .7
 cache copy
-
+temp

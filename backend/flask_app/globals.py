@@ -27,9 +27,9 @@ normalisierbare_measures = {"token_fitness": "max", "alignment_fitness": "max", 
                             "alignment_precision": "max",  "generalization": "max", "pm4py_simplicity": "max"}
 
 
-#logistic regression removed
+#logistic regression removed, "autofolio"
 classification_methods = ["decision_tree", "knn", "svm",
-                          "random_forest", "gradient_boosting","autofolio"]
+                          "random_forest", "gradient_boosting"]
 
 selected_measure = "token_precision"
 working_dir = "/Users/tarekjunied/Documents/Universität/BachelorThesis"
