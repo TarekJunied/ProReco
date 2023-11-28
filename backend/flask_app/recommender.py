@@ -19,7 +19,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.impute import SimpleImputer
-from autofolio import create_performance_csv,create_feature_csv
+from autofolio_interface import create_performance_csv,create_feature_csv
 
 
 label_to_index = {label: index for index,
@@ -47,10 +47,10 @@ def extract_prediction_from_autofolio_string(autofolio_string):
         return "AutoFolio Error"
 
 def read_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
-    if os.path.exists(f"./AutoFolio/{measure_name}_predictor.af"):
-        ret = f"{measure_name}_predictor.af"
+    if os.path.exists(f"./AutoFolio/af_predictors/{measure_name}_predictor.af"):
+        ret = f"./af_predictors/{measure_name}_predictor.af"
     else:
-        ret = create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name)
+        ret = f"./{create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name)}"
     return ret
 
 
@@ -82,21 +82,31 @@ def create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
     create_feature_csv(testing_logpaths,testing_features_filepath)
     create_performance_csv(testing_logpaths,measure_name,testing_performance_filepath)
 
-    predictor_filepath = f"./{measure_name}_predictor.af"
+    predictor_filepath = f"./af_predictors/{measure_name}_predictor.af"
 
     if globals.measures_kind[measure_name] == "max": 
         max_string = "--maximize"
-    else:
+    elif globals.measures_kind[measure_name] == "min":
         max_string = ""
+    else:
+        print("invalid kind of measure")
+        sys.exit(-1)
+
+
+    if measure_name == "runtime" or measure_name =="log_runtime":
+        objective_string = "runtime"
+    else:
+        objective_string = "solution_quality"
+    objective_string="solution_quality"
 
     command = [
     "python",
     f"./scripts/autofolio",
-    max_string,
     "--performance_csv", f"./csv_files/{training_performance_filename}",
     "--feature_csv",  f"./csv_files/{training_features_filename}",
-    "--performance_test-csv", f"./csv_files/{testing_performance_filename}",
-    "--feature_test_csv", f"./csv_files/{testing_features_filename}",
+    "--objective ", objective_string,
+    "--tune",
+    max_string,
     "--save", predictor_filepath,
 
     ]
@@ -122,7 +132,6 @@ def autofolio_classification(log_path,measure_name):
     testing_logpaths = list(globals.testing_log_paths.keys())
 
     predictor_filepath = read_autofolio_predictor(training_logpaths,testing_logpaths,measure_name)
-
 
 
     spaced_out_feature_vector_string = space_out_feature_vector_string(log_path)
@@ -270,23 +279,13 @@ def score(log_path, discovery_algorithm, measure_weight):
 
 if __name__ == "__main__":
 
-    real_life_logs = get_all_ready_logs_multiple(gather_all_xes("../logs/real_life_logs"))
-
-    input(len(real_life_logs))
-
-
-
-
 
     training_logpaths = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
     testing_logpaths = get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))
 
+    for measure in globals.measures_list:
+        for log_path in testing_logpaths:
+            print(autofolio_classification(log_path,measure))
 
-
-    init()
-
-    for log_path in testing_logpaths:
-        print(classification(log_path,"autofolio","token_fitness"))
-        input("next")
 
    

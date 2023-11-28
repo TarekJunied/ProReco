@@ -1,4 +1,5 @@
 import sys
+import psutil
 import matplotlib.pyplot as plt
 import numpy as np
 import time
@@ -157,21 +158,20 @@ def evaluate_min_max_measure_accuracy(testing_log_paths, measure_name, classific
 
 
 if __name__ == "__main__":
+    process = psutil.Process()
+    input(f"Initial memory usage: {process.memory_info().rss / (1024 * 1024):.2f} MB")
     sys.setrecursionlimit(5000)
 
-    selected_measures = ['token_fitness', 'token_precision', 'generalization', 'pm4py_simplicity']
 
     init()
 
-    input("init done")
 
     for classification_method in globals.classification_methods:
-        if classification_method == "autofolio":
-            input("wait do you want to start autofolio")
-        create_scikit_evaluation_plot(globals.measures_list,classification_method=classification_method)
+        if classification_method != "autofolio":
+            create_scikit_evaluation_plot(globals.measures_list, classification_method)
 
 
 
 
 
-    input("stop")
+    print(f"Final memory usage: {process.memory_info().rss / (1024 * 1024):.2f} MB")

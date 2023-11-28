@@ -18,7 +18,7 @@ selected_features = ["no_distinct_traces", "no_total_traces", "avg_trace_length"
 
 ## "alignment_precision": "max" "alignment_fitness": "max", used_memory": "min",
 measures_kind = {"token_fitness": "max", "token_precision": "max",
-            "no_total_elements": "min", "node_arc_degree": "min", "runtime": "min",  "generalization": "max", "pm4py_simplicity": "max","log_runtime":"max"}
+            "no_total_elements": "min", "node_arc_degree": "min", "runtime": "min",  "generalization": "max", "pm4py_simplicity": "max","log_runtime":"min"}
 # ,"log_runtime"
 measures_list = ["token_fitness",  "token_precision", 
                  "no_total_elements", "node_arc_degree", "runtime", "generalization", "pm4py_simplicity","log_runtime"]

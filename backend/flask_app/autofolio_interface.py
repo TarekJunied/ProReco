@@ -4,6 +4,8 @@ from features import read_single_feature
 from utils import get_log_name
 from filehelper import gather_all_xes, get_all_ready_logs_multiple
 from measures import read_measure_entry
+import numpy as np
+
 
 def create_csv_from_list(data,filepath):
     """
@@ -57,14 +59,6 @@ def create_performance_csv(log_paths,measure_name,filepath):
     
 
 
-if __name__ == "__main__":
-    log_paths = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
-    create_feature_csv(log_paths,"../AutoFolio/examples/toy_example_csv/training_features.csv")
-    create_performance_csv(log_paths,"runtime","../AutoFolio/examples/toy_example_csv/training_performacne.csv")
-
-    log_paths = get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))
-    create_feature_csv(log_paths,"../AutoFolio/examples/toy_example_csv/testing_features.csv")
-    create_performance_csv(log_paths,"runtime","../AutoFolio/examples/toy_example_csv/testing_performacne.csv")
 
 
 
