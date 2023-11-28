@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: rocky/latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
@@ -30,7 +30,7 @@ jobs:
           npm run build
 
   deploy:
-    runs-on: rocky/latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
