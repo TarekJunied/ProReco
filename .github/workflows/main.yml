@@ -1,0 +1,57 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  build:
+    runs-on: rocky/latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install Dependencies (Frontend)
+        working-directory: frontend/proreco
+        run: |
+          npm install
+
+      - name: Build Frontend
+        working-directory: frontend/proreco
+        run: |
+          npm run build
+
+  deploy:
+    runs-on: rocky/latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install Dependencies (Backend)
+        working-directory: backend
+        run: |
+          echo "Hello World, here we isntall dependencies"
+
+      - name: Run Backend Tests
+        working-directory: backend
+        run: |
+          echo "here we should actually do unittests"
+
+      - name: Deploy to Linode
+        run: |
+          ssh-keyscan -H ${{ secrets.LINODE_IP }} >> ~/.ssh/known_hosts
+          scp -r ./* ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }}:${{ secrets.LINODE_PATH }}

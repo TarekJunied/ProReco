@@ -189,9 +189,9 @@ def classification(log_path, classification_method,measure_name):
     elif classification_method == "random_forest":
         clf = RandomForestClassifier()
     elif classification_method == "logistic_regression":
-        clf = LogisticRegression(max_iter=1000000)
+        clf = LogisticRegression()
     elif classification_method == "gradient_boosting":
-        clf = GradientBoostingClassifier(n_estimators=1000)
+        clf = GradientBoostingClassifier(n_estimators=100)
     elif classification_method == "autofolio":
         return autofolio_classification(log_path,measure_name)
     else:
