@@ -20,7 +20,6 @@ jobs:
             cd ~/RecommenderSystem/frontend/proreco
             npm run build
             mv ~/RecommenderSystem/frontend/proreco/dist* /var/www/proreco.co/
-            rm -rf /var/www/proreco.co/frontend
             sudo chcon -Rt httpd_sys_content_t /var/www/proreco.co
             sudo systemctl restart nginx
             echo 'node -v' >> ~/RecommenderSystem/hi.txt
