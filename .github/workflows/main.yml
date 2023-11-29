@@ -35,11 +35,9 @@ jobs:
           echo "${{ secrets.MAC_PRIVATEKEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.LINODE_IP }} >> ~/.ssh/known_hosts
-          pwd
-          ls
-          echo "scp -r ./dist/* ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }}:${{ secrets.LINODE_PATH }}" >> secrets.txt
-          cat secrets.txt
-          echo hi
+
+          echo "scp -r ./dist/* root@139.162.188.197$:/var/www/proreco.co"
+          scp -r ./dist/* root@139.162.188.197$:/var/www/proreco.co
           scp -r ./dist/* ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }}:${{ secrets.LINODE_PATH }}
 
   deploy:
