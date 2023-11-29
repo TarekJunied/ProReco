@@ -20,7 +20,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.impute import SimpleImputer
 from autofolio_interface import create_performance_csv,create_feature_csv
+import sklearn
 
+print("scikit-learn version:", sklearn.__version__)
 
 label_to_index = {label: index for index,
                   label in enumerate(globals.algorithm_portfolio)}
@@ -217,8 +219,31 @@ def classification(log_path, classification_method,measure_name,ready_training):
     predictions = clf.predict(read_feature_vector(log_path))
 
 
-    return predictions[0]
-  
+    return predictions[0] 
+
+def ranking_classification(log_path, classification_method,ready_training):
+    if classification_method == "autofolio":
+        return autofolio_classification(log_path,measure_name)
+ 
+
+    clf = read_fitted_classifier(classification_method,measure_name,ready_training)
+
+    # Get probability estimates for each class
+    proba = clf.predict_proba(read_feature_vector(log_path))
+
+    # Assuming you want to get the rankings for each instance in X_test
+    # argsort gives the indices that would sort an array in ascending order
+
+    class_labels = clf.classes_
+
+    ranking = np.argsort(-proba, axis=1)
+
+    sorted_class_names = class_labels[ranking]
+
+    class_ranking_array = [sorted_class_names[:, i][0] for i in range(sorted_class_names.shape[1])]
+
+    return class_ranking_array
+
 
 
 def final_prediction(log_path, measure_weight):
@@ -295,9 +320,3 @@ if __name__ == "__main__":
     ready_training = gather_all_xes("../logs/training")
 
 
-
-    for measure_name in globals.measures_list:
-        for classification_method in globals.classification_methods:
-            print(classification(ready_training[0],classification_method,measure_name,[0]))
-
-   
