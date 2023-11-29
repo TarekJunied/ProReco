@@ -1,3 +1,3 @@
 
-gunicorn -b 0.0.0.0:8000 -w 3 --timeout 50 app:app --env FLASK_ENV=production
+gunicorn -b 0.0.0.0:8000 -w 3 --timeout 120 app:app --env FLASK_ENV=production
 
