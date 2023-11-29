@@ -44,8 +44,7 @@ jobs:
           username: root
           key: ${{ secrets.MAC_PRIVATEKEY }}
           script: |
-            whoami
-            ls -al
+            mv /var/www/proreco.co/frontend/proreco/dist/* /var/www/proreco.co/
 
   deploy:
     needs: build
