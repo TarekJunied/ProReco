@@ -28,15 +28,19 @@ jobs:
         run: |
           npm run build
 
-      - uses: actions/checkout@v3
-      - name: copy file via ssh password
+      - name: Tar the dist
+        working-directory: frontend/proreco
+        run: |
+          tar -cvf dist.tar ./dist
+
+      - name: Copy file via SSH password
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.LINODE_IP }}
           username: ${{ secrets.LINODE_USER }}
           password: ${{ secrets.LINODE_PASSWORD }}
-          source: "./dist/*"
-          target: /var/www/proreco.c
+          source: "./dist.tar"
+          target: "/var/www/proreco.co"
 
   deploy:
     needs: build
@@ -45,4 +49,4 @@ jobs:
     steps:
       - name: Restart Nginx
         run: |
-          ssh ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }} "sudo chcon -Rt httpd_sys_content_t /var/www/proreco.co;sudo systemctl restart nginx"
+          ssh ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }} "sudo chcon -Rt httpd_sys_content_t /var/www/proreco.co; sudo systemctl restart nginx"
