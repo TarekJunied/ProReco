@@ -21,7 +21,6 @@ jobs:
             cd ~/RecommenderSystem/frontend/proreco
             npm run build
             mv ~/RecommenderSystem/frontend/proreco/dist/* /var/www/proreco.co/
-
       - name: start front- and backendservers
         uses: appleboy/ssh-action@v1.0.0
         with:
