@@ -28,12 +28,6 @@ jobs:
         run: |
           npm run build
 
-      - name: Tar the dist
-        run: |
-          tar -cvf ~/dist.tar ./frontend/proreco/dist
-
-          tar -xvf ~/dist.tar
-
       - name: Copy file via SSH password
         uses: appleboy/scp-action@v0.1.4
         with:
@@ -42,6 +36,14 @@ jobs:
           source: "./frontend/proreco/dist"
           key: ${{ secrets.MAC_PRIVATEKEY }}
           target: "${{ secrets.LINODE_PATH}}"
+
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.MAC_PRIVATEKEY }}
+          script: whoami
 
   deploy:
     needs: build
