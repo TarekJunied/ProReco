@@ -18,6 +18,11 @@ jobs:
         with:
           node-version: 18
 
+      - name: update mui
+        working-directory: frontend/proreco
+        run: |
+          npm install @emotion/styled@latest
+
       - name: Install Dependencies (Frontend)
         working-directory: frontend/proreco
         run: |
