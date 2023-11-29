@@ -7,7 +7,6 @@ import os
 import numpy as np
 import globals
 from datetime import datetime
-from memory_profiler import profile
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
 from utils import get_all_ready_logs,load_cache_variable
 from recommender import classification
@@ -23,7 +22,6 @@ def get_number_one(input_dict):
     return None  # Return None if no key with value 1 is found
 
 
-@profile
 def create_scikit_evaluation_plot(selected_measures, classification_method="knn"):
     values = []
     categories = selected_measures

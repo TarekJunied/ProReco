@@ -2,7 +2,6 @@ from utils import read_logs, read_models, read_model, read_log, load_cache_varia
 from features import read_feature_matrix, read_feature_vector, feature_no_events_total
 from measures import read_target_entries, read_target_entry, read_target_vector,read_measure_entry
 from filehelper import gather_all_xes, split_file_path,get_all_ready_logs_multiple
-from memory_profiler import profile
 from LogGenerator.log_generator import create_random_log
 import multiprocessing
 import globals
@@ -63,7 +62,6 @@ def load_features():
             globals.features[log_path,feature] = load_cache_variable(f"./cache/features/{feature}_{log_name}.pkl")
 
 
-@profile
 def init():
     load_logs()
     load_measures()

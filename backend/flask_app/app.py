@@ -26,7 +26,7 @@ def get_logpath_of_session(session_token):
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-CORS(app)  # Add this line to enable CORS for your app
+CORS(app, origins="http://139.162.188.197", supports_credentials=True)
 
 
 @app.route("/api/submitWeights", methods=['POST'])

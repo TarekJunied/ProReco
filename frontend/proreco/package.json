@@ -4,15 +4,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3001",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "dev": "vite --port 3000",
+    "build": "vite build --emptyOutDir",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warrnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
     "@mui/icons-material": "^5.14.15",
     "@mui/material": "^5.14.15",
     "@mui/material-next": "^6.0.0-alpha.107",
+    "@mui/styled-engine": "^5.14.18",
     "axios": "^1.5.1",
     "flowbite": "^1.8.1",
     "flowbite-react": "^0.6.4",
