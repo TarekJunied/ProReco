@@ -43,8 +43,10 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.MAC_PRIVATEKEY }}
-          script: whoami
-
+          port: 22
+          script: |
+            whoami
+            ls -al
   deploy:
     needs: build
     runs-on: ubuntu-latest
