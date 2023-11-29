@@ -39,12 +39,13 @@ jobs:
           python-version: 3.9
 
       - name: Deploy to Linode
+        working-directory: frontend/proreco
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.MAC_PRIVATEKEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.LINODE_IP }} >> ~/.ssh/known_hosts
-          scp -r ./frontend/proreco/dist/* ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }}:${{ secrets.LINODE_PATH }}
+          scp -r ./dist/* ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }}:${{ secrets.LINODE_PATH }}
       - name: Restart Nginx
         run: |
           ssh ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }} "sudo chcon -Rt httpd_sys_content_t /var/www/proreco.co;sudo systemctl restart nginx"
