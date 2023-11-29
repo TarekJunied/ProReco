@@ -15,6 +15,8 @@ const StartPage = () => {
             const formData = new FormData();
             formData.append('xesFile', selectedFile);
 
+            console.log("file received but not uploaded")
+            console.log(selectedFile)
             axios
                 .post('http://localhost:8000/api/submitLog', formData, {
                     headers: {
