@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latests
 
     steps:
       - name: Checkout Repository
@@ -28,17 +28,15 @@ jobs:
         run: |
           npm run build
 
-      - name: Deploy to Linode
-        working-directory: frontend/proreco
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.MAC_PRIVATEKEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.LINODE_IP }} >> ~/.ssh/known_hosts
-
-          echo "scp -r ./dist/* root@139.162.188.197:/var/www/proreco.co"
-          scp -rfv ./dist/* root@139.162.188.197:/var/www/proreco.co
-          scp -r ./dist/* ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }}:${{ secrets.LINODE_PATH }}
+      - uses: actions/checkout@v3
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.LINODE_IP }}
+          username: ${{ secrets.LINODE_USER }}
+          password: ${{ secrets.LINODE_PASSWORD }}
+          source: "./dist/*"
+          target: /var/www/proreco.c
 
   deploy:
     needs: build
