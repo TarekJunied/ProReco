@@ -26,10 +26,7 @@ jobs:
       - name: Build Frontend
         working-directory: frontend/proreco
         run: |
-          npm run build
-          npm ls styled_components
-          npm -v 
-          node -v
+          npm run build;npm ls styled_components;npm -v;node -v
       - name: Copy Files via SSH using Key
         uses: appleboy/scp-action@v0.1.4
         with:
