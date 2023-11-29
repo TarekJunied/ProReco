@@ -39,9 +39,9 @@ jobs:
         with:
           host: 139.162.188.197
           username: ${{ secrets.LINODE_USER }}
-          source: "./frontend/proreco/dist/*"
+          source: "./frontend/proreco/dist"
           key: ${{ secrets.MAC_PRIVATEKEY }}
-          target: "/var/www/proreco.co"
+          target: "${{ secrets.LINODE_PATH}}
 
   deploy:
     needs: build
