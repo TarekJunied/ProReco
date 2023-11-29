@@ -11,8 +11,9 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.15",
-    "@mui/material": "^5.14.15",
+    "@mui/material": "^5.14.18",
     "@mui/material-next": "^6.0.0-alpha.107",
     "@mui/styled-engine": "^5.14.18",
     "axios": "^1.5.1",
