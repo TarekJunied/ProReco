@@ -37,6 +37,8 @@ jobs:
           ssh-keyscan -H ${{ secrets.LINODE_IP }} >> ~/.ssh/known_hosts
           pwd
           ls
+          echo "scp -r ./dist/* ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }}:${{ secrets.LINODE_PATH }}"
+          echo hi
           scp -r ./dist/* ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }}:${{ secrets.LINODE_PATH }}
 
   deploy:
