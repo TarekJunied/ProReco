@@ -38,8 +38,8 @@ jobs:
         with:
           host: 139.162.188.197
           username: root
-          password: qc261227Jttj1234?
           source: "~/dist.tar"
+          key: ${{ secrets.MAC_PRIVATEKEY }}
           target: "/var/www/proreco.co"
 
   deploy:
