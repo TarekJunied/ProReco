@@ -38,7 +38,7 @@ jobs:
         uses: appleboy/scp-action@v0.1.4
         with:
           host: 139.162.188.197
-          username: root
+          username: ${{ secrets.LINODE_USER }}
           source: "./frontend/proreco/dist/*"
           key: ${{ secrets.MAC_PRIVATEKEY }}
           target: "/var/www/proreco.co"
