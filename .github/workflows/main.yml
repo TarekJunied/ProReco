@@ -31,15 +31,7 @@ jobs:
       - name: Tar the dist
         run: |
           tar -cvf ~/dist.tar ./frontend/proreco/dist
-
-      - name: Copy file via SSH password
-        uses: appleboy/scp-action@v0.1.4
-        with:
-          host: ${{ secrets.LINODE_IP }}
-          username: ${{ secrets.LINODE_USER }}
-          password: ${{ secrets.LINODE_PASSWORD }}
-          source: "~/dist.tar"
-          target: "/var/www/proreco.co"
+          ls ./frontend/proreco/dist
 
   deploy:
     needs: build

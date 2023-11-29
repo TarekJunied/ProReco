@@ -1,2 +1,13 @@
 hi, now let's see if we actually copy the files
 
+
+
+      - name: Copy file via SSH password
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.LINODE_IP }}
+          username: ${{ secrets.LINODE_USER }}
+          password: ${{ secrets.LINODE_PASSWORD }}
+          port: 22
+          source: "~/dist.tar"
+          target: "/var/www/proreco.co"
