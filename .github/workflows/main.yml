@@ -32,7 +32,7 @@ jobs:
         working-directory: frontend/proreco
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.MAC_PRIVATEKEY }}" > ~/.ssh/id_rsa"
+          echo "${{ secrets.MAC_PRIVATEKEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.LINODE_IP }} >> ~/.ssh/known_hosts
           pwd
