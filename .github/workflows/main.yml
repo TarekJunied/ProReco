@@ -38,16 +38,6 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Install Dependencies (Backend)
-        working-directory: backend
-        run: |
-          echo "Hello World, here we install dependencies"
-
-      - name: Run Backend Tests
-        working-directory: backend
-        run: |
-          echo "here we should actually do unittests"
-
       - name: Deploy to Linode
         run: |
           mkdir -p ~/.ssh
