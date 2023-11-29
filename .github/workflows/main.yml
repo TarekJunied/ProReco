@@ -28,7 +28,7 @@ jobs:
         run: |
           npm run build
 
-      - name: Copy file via SSH password
+      - name: Copy file via SSH using key
         uses: appleboy/scp-action@v0.1.4
         with:
           host: 139.162.188.197
@@ -37,13 +37,12 @@ jobs:
           key: ${{ secrets.MAC_PRIVATEKEY }}
           target: "${{ secrets.LINODE_PATH}}"
 
-      - name: executing remote ssh commands using password
+      - name: executing remote ssh commands using key
         uses: appleboy/ssh-action@v1.0.0
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
+          host: 139.162.188.197
+          username: root
           key: ${{ secrets.MAC_PRIVATEKEY }}
-          port: 22
           script: |
             whoami
             ls -al
