@@ -16,12 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-
-      - name: update mui
-        working-directory: frontend/proreco
-        run: |
-          npm install @emotion/styled@latest
+          node-version: 21.2.0
 
       - name: Install Dependencies (Frontend)
         working-directory: frontend/proreco
