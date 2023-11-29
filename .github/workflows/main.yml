@@ -39,7 +39,7 @@ jobs:
         with:
           host: 139.162.188.197
           username: root
-          source: "~/dist.tar"
+          source: "./frontend/proreco/dist*"
           key: ${{ secrets.MAC_PRIVATEKEY }}
           target: "/var/www/proreco.co"
 
