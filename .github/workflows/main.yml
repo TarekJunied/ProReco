@@ -41,7 +41,7 @@ jobs:
           username: ${{ secrets.LINODE_USER }}
           source: "./frontend/proreco/dist"
           key: ${{ secrets.MAC_PRIVATEKEY }}
-          target: "${{ secrets.LINODE_PATH}}
+          target: "${{ secrets.LINODE_PATH}}"
 
   deploy:
     needs: build
