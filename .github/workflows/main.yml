@@ -29,9 +29,8 @@ jobs:
           npm run build
 
       - name: Tar the dist
-        working-directory: frontend/proreco
         run: |
-          tar -cvf dist.tar ./dist
+          tar -cvf ~/dist.tar ./frontend/proreco/dist
 
       - name: Copy file via SSH password
         uses: appleboy/scp-action@v0.1.4
@@ -39,7 +38,7 @@ jobs:
           host: ${{ secrets.LINODE_IP }}
           username: ${{ secrets.LINODE_USER }}
           password: ${{ secrets.LINODE_PASSWORD }}
-          source: "./dist.tar"
+          source: "~/dist.tar"
           target: "/var/www/proreco.co"
 
   deploy:
