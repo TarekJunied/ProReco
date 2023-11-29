@@ -55,6 +55,8 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.MAC_PRIVATEKEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          npm install
+          npm run build
           ssh-keyscan -H ${{ secrets.LINODE_IP }} >> ~/.ssh/known_hosts
           ls ./frontend/proreco
           scp -r ./frontend/proreco/dist/* ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }}:${{ secrets.LINODE_PATH }}
