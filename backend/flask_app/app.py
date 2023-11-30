@@ -33,7 +33,7 @@ allowed_origins = [
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-CORS(app, origins=allowed_origins, supports_credentials=True)
+CORS(app, origins="*", supports_credentials=True)
 
 
 @app.route("/api/submitWeights", methods=['POST'])
