@@ -17,6 +17,7 @@ jobs:
           username: root
           key: ${{ secrets.MAC_PRIVATEKEY }}
           script: |
+            git pull
             sudo find /var/www/proreco.co -mindepth 1 -delete
             cd ~/RecommenderSystem/frontend/proreco
             npm run build
