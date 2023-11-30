@@ -317,6 +317,6 @@ def score(log_path, discovery_algorithm, measure_weight):
 if __name__ == "__main__":
 
 
-    ready_training = gather_all_xes("../logs/training")
+    input(len(gather_all_xes("../logs/real_life_logs")))
 
 

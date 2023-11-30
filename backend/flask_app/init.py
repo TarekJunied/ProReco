@@ -255,7 +255,7 @@ if __name__ == "__main__":
     training_log_paths = gather_all_xes("../logs/real_life_logs")
     training_log_paths = sorted(training_log_paths,key=get_file_size)
 
-
+    """"
     for log_path in training_log_paths:
         try:
             init_log(log_path)
@@ -263,7 +263,7 @@ if __name__ == "__main__":
             print(e)
 
     input("wow done")
-
+    """
 
     num_processes = len(training_log_paths)
 

@@ -3,8 +3,8 @@
 #SBATCH --output=real_life.txt
 #SBATCH --error=error_real_life.txt
 #SBATCH --nodes=1
-#SBATCH --ntasks=2
-#SBATCH --mem=10G
+#SBATCH --ntasks=4
+#SBATCH --mem=4G
 #SBATCH --account=thes1569
 #SBATCH --time=12:00:00
 
