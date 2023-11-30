@@ -24,9 +24,16 @@ def get_logpath_of_session(session_token):
     return log_path
 
 
+allowed_origins = [
+    "http://139.162.188.197",
+    "http://www.proreco.co",
+    # Add more origins as needed
+]
+
+
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-CORS(app, origins="http://139.162.188.197", supports_credentials=True)
+CORS(app, origins=allowed_origins, supports_credentials=True)
 
 
 @app.route("/api/submitWeights", methods=['POST'])
