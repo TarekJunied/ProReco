@@ -22,7 +22,6 @@ from sklearn.impute import SimpleImputer
 from autofolio_interface import create_performance_csv,create_feature_csv
 import sklearn
 
-print("scikit-learn version:", sklearn.__version__)
 
 label_to_index = {label: index for index,
                   label in enumerate(globals.algorithm_portfolio)}
@@ -221,12 +220,12 @@ def classification(log_path, classification_method,measure_name,ready_training):
 
     return predictions[0] 
 
-def ranking_classification(log_path, classification_method,ready_training):
+def ranking_classification(log_path, classification_method,measure_name):
     if classification_method == "autofolio":
         return autofolio_classification(log_path,measure_name)
  
 
-    clf = read_fitted_classifier(classification_method,measure_name,ready_training)
+    clf = read_fitted_classifier(classification_method,measure_name,[])
 
     # Get probability estimates for each class
     proba = clf.predict_proba(read_feature_vector(log_path))
@@ -242,6 +241,9 @@ def ranking_classification(log_path, classification_method,ready_training):
 
     class_ranking_array = [sorted_class_names[:, i][0] for i in range(sorted_class_names.shape[1])]
 
+    for algo in globals.algorithm_portfolio:
+        if algo not in class_ranking_array:
+            class_ranking_array += [algo]
     return class_ranking_array
 
 
@@ -256,18 +258,15 @@ def final_prediction(log_path, measure_weight):
     Returns:
         _description_
     """
-    log_paths = get_all_ready_logs_multiple(
-        gather_all_xes("../logs/experiments"))
-
-    x_train = read_feature_matrix(log_paths)
-    y_train = [None]*len(log_paths)
-
-    for i in range(len(y_train)):
-        my_dict = final_rankings(
-            log_paths[i], measure_weight)
-        y_train[i] = max(my_dict, key=my_dict.get)
-
-    return classification(log_path, x_train, y_train, "decision_tree")[1]
+    max_measure = max(measure_weight, key=lambda k: measure_weight[k])
+    class_ranking_array = ranking_classification(log_path,"gradient_boosting",max_measure)
+    ret = {}
+    i = 1
+    for class_label in class_ranking_array:
+        ret[class_label] = i
+        i+=1
+    return ret
+    
 
 
 def final_rankings(log_path, measure_weight):

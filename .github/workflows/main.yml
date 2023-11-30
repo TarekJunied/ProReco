@@ -4,52 +4,35 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: npm build frontend
+        uses: appleboy/ssh-action@v1.0.0
         with:
-          node-version: 14
-
-      - name: Install Dependencies (Frontend)
-        working-directory: frontend/proreco
-        run: |
-          npm install
-
-      - name: Build Frontend
-        working-directory: frontend/proreco
-        run: |
-          npm run build
-
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
+          host: 139.162.188.197
+          username: root
+          key: ${{ secrets.MAC_PRIVATEKEY }}
+          script: |
+            cd ~/RecommenderSystem
+            git pull
+            sudo find /var/www/proreco.co -mindepth 1 -delete
+            cd ~/RecommenderSystem/frontend/proreco
+            npm run build
+            mv ~/RecommenderSystem/frontend/proreco/dist/* /var/www/proreco.co/
+      - name: start front- and backendservers
+        uses: appleboy/ssh-action@v1.0.0
         with:
-          python-version: 3.9
-
-      - name: Install Dependencies (Backend)
-        working-directory: backend
-        run: |
-          echo "Hello World, here we isntall dependencies"
-
-      - name: Run Backend Tests
-        working-directory: backend
-        run: |
-          echo "here we should actually do unittests"
-
-      - name: Deploy to Linode
-        run: |
-          ssh-keyscan -H ${{ secrets.LINODE_IP }} >> ~/.ssh/known_hosts
-          scp -r ./* ${{ secrets.LINODE_USER }}@${{ secrets.LINODE_IP }}:${{ secrets.LINODE_PATH }}
+          host: 139.162.188.197
+          username: root
+          key: ${{ secrets.MAC_PRIVATEKEY }}
+          script: |
+            source /root/miniconda3/bin/activate proreco
+            sudo chcon -Rt httpd_sys_content_t /var/www/proreco.co;
+            sudo systemctl restart nginx
+            cd ~/RecommenderSystem/backend/flask_app
+            sudo fuser -k 8000/tcp
+            nohup gunicorn -b 0.0.0.0:8000 -w 3 --timeout 120 app:app --env FLASK_ENV=production > /gunicorn.log  2>&1 &
