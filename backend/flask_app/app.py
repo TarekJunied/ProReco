@@ -36,8 +36,13 @@ app.secret_key = os.urandom(24)
 CORS(app, origins="*", supports_credentials=True)
 
 
+
+UPLOAD_FOLDER = '../logs/frontend'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 @app.route("/api/submitWeights", methods=['POST'])
 def submit_weights():
+
 
     if request.method == 'POST':
         print(request.data)
@@ -60,8 +65,6 @@ def submit_weights():
         return "This route only accepts POST requests."
 
 
-UPLOAD_FOLDER = '../logs/frontend'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 @app.route("/api/submitLog", methods=['POST'])
@@ -77,6 +80,7 @@ def submit_log():
             return "No selected file"
 
         if file:
+            print("file received", file)
             session_token = str(uuid.uuid4())
 
             file.filename = f"{session_token}.xes"
