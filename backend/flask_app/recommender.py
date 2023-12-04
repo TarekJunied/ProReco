@@ -8,7 +8,7 @@ import pm4py
 import sys
 from utils import read_logs, read_models,  get_all_ready_logs, read_log, split_data
 from filehelper import gather_all_xes, get_all_ready_logs, get_all_ready_logs_multiple
-from features import read_feature_matrix, read_feature_vector, feature_no_total_traces,space_out_feature_vector_string
+from features import read_feature_matrix, read_feature_vector, feature_no_total_traces, space_out_feature_vector_string
 from measures import read_target_entry, read_target_entries, read_measure_entry
 from init import *
 from sklearn.model_selection import train_test_split, cross_val_score
@@ -19,7 +19,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.impute import SimpleImputer
-from autofolio_interface import create_performance_csv,create_feature_csv
+from autofolio_interface import create_performance_csv, create_feature_csv
 import sklearn
 
 
@@ -28,8 +28,10 @@ label_to_index = {label: index for index,
 
 
 all_labels = list(label_to_index.keys())
+
+
 def activate_smac_env():
-    subprocess.run("conda run -n SMAC",shell=True)
+    subprocess.run("conda run -n SMAC", shell=True)
 
 
 def extract_prediction_from_autofolio_string(autofolio_string):
@@ -47,7 +49,8 @@ def extract_prediction_from_autofolio_string(autofolio_string):
         # Return None if no match is found
         return "AutoFolio Error"
 
-def read_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
+
+def read_autofolio_predictor(training_logpaths, testing_logpaths, measure_name):
     if os.path.exists(f"./AutoFolio/af_predictors/{measure_name}_predictor.af"):
         ret = f"./af_predictors/{measure_name}_predictor.af"
     else:
@@ -55,37 +58,29 @@ def read_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
     return ret
 
 
-
-
-
-
-
-def create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
-
-
+def create_autofolio_predictor(training_logpaths, testing_logpaths, measure_name):
 
     training_features_filename = f"{measure_name}_training_features.csv"
-    training_performance_filename =f"{measure_name}_training_performance.csv"
+    training_performance_filename = f"{measure_name}_training_performance.csv"
     testing_features_filename = f"{measure_name}_testing_features.csv"
-    testing_performance_filename =f"{measure_name}_testing_performance.csv"
-
-
+    testing_performance_filename = f"{measure_name}_testing_performance.csv"
 
     training_features_filepath = f"./AutoFolio/csv_files/{measure_name}_training_features.csv"
-    training_performance_filepath =f"./AutoFolio/csv_files/{measure_name}_training_performance.csv"
+    training_performance_filepath = f"./AutoFolio/csv_files/{measure_name}_training_performance.csv"
     testing_features_filepath = f"./AutoFolio/csv_files/{measure_name}_testing_features.csv"
-    testing_performance_filepath =f"./AutoFolio/csv_files/{measure_name}_testing_performance.csv"
+    testing_performance_filepath = f"./AutoFolio/csv_files/{measure_name}_testing_performance.csv"
 
+    create_feature_csv(training_logpaths, training_features_filepath)
+    create_performance_csv(training_logpaths, measure_name,
+                           training_performance_filepath)
 
-    create_feature_csv(training_logpaths,training_features_filepath)
-    create_performance_csv(training_logpaths,measure_name,training_performance_filepath)
-
-    create_feature_csv(testing_logpaths,testing_features_filepath)
-    create_performance_csv(testing_logpaths,measure_name,testing_performance_filepath)
+    create_feature_csv(testing_logpaths, testing_features_filepath)
+    create_performance_csv(testing_logpaths, measure_name,
+                           testing_performance_filepath)
 
     predictor_filepath = f"./af_predictors/{measure_name}_predictor.af"
 
-    if globals.measures_kind[measure_name] == "max": 
+    if globals.measures_kind[measure_name] == "max":
         max_string = "--maximize"
     elif globals.measures_kind[measure_name] == "min":
         max_string = ""
@@ -93,51 +88,46 @@ def create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
         print("invalid kind of measure")
         sys.exit(-1)
 
-
-    if measure_name == "runtime" or measure_name =="log_runtime":
+    if measure_name == "runtime" or measure_name == "log_runtime":
         objective_string = "runtime"
     else:
         objective_string = "solution_quality"
-    objective_string="solution_quality"
+    objective_string = "solution_quality"
 
     command = [
-    "python",
-    f"./scripts/autofolio",
-    "--performance_csv", f"./csv_files/{training_performance_filename}",
-    "--feature_csv",  f"./csv_files/{training_features_filename}",
-    "--objective ", objective_string,
-    "--tune",
-    max_string,
-    "--save", predictor_filepath,
+        "python",
+        f"./scripts/autofolio",
+        "--performance_csv", f"./csv_files/{training_performance_filename}",
+        "--feature_csv",  f"./csv_files/{training_features_filename}",
+        "--objective ", objective_string,
+        "--tune",
+        max_string,
+        "--save", predictor_filepath,
 
     ]
 
     command_str = " ".join(command)
 
-
-
     os.chdir(os.path.abspath("./AutoFolio"))
 
-    subprocess.run(command_str,shell=True)
-
+    subprocess.run(command_str, shell=True)
 
     os.chdir("../")
     return predictor_filepath
 
 
-def autofolio_classification(log_path,measure_name):
-
-    
+def autofolio_classification(log_path, measure_name):
 
     training_logpaths = list(globals.training_log_paths.keys())
     testing_logpaths = list(globals.testing_log_paths.keys())
 
-    predictor_filepath = read_autofolio_predictor(training_logpaths,testing_logpaths,measure_name)
+    predictor_filepath = read_autofolio_predictor(
+        training_logpaths, testing_logpaths, measure_name)
 
+    spaced_out_feature_vector_string = space_out_feature_vector_string(
+        log_path)
 
-    spaced_out_feature_vector_string = space_out_feature_vector_string(log_path)
-
-    command=[
+    command = [
         "python",
         "scripts/autofolio",
         "--load",
@@ -145,32 +135,30 @@ def autofolio_classification(log_path,measure_name):
         "--feature_vec",
         spaced_out_feature_vector_string]
 
-
     os.chdir("./AutoFolio")
 
-
     try:
-        output = subprocess.check_output(command, stderr=subprocess.STDOUT, text=True)
+        output = subprocess.check_output(
+            command, stderr=subprocess.STDOUT, text=True)
         print("Command output:")
         print(output)
     except subprocess.CalledProcessError as e:
         print("Error executing command. Return code:", e.returncode)
         print("Command output (if any):")
         print(e.output)
-   
+
     prediction = extract_prediction_from_autofolio_string(output)
 
     if prediction not in globals.algorithm_portfolio:
         input("an error occureed with autofolio")
-        return 
-    
+        return
+
     os.chdir("../")
 
     return prediction
 
 
-
-def read_fitted_classifier(classification_method,measure_name,ready_training):
+def read_fitted_classifier(classification_method, measure_name, ready_training):
     classifier_filepath = f"./classifiers/{measure_name}_{classification_method}.pkl"
     try:
         clf = load_cache_variable(classifier_filepath)
@@ -193,39 +181,36 @@ def read_fitted_classifier(classification_method,measure_name,ready_training):
             clf = LogisticRegression()
         elif classification_method == "gradient_boosting":
             clf = GradientBoostingClassifier(n_estimators=100)
-        
+
         else:
             raise ValueError(
                 f"Invalid classification method: {classification_method}")
 
-
         clf = clf.fit(x_train, y_train)
 
-        store_cache_variable(clf,classifier_filepath)
+        store_cache_variable(clf, classifier_filepath)
 
     return clf
 
 
-#TODO: tailor this again to backend
-def classification(log_path, classification_method,measure_name,ready_training):
+# TODO: tailor this again to backend
+def classification(log_path, classification_method, measure_name, ready_training):
     if classification_method == "autofolio":
-        return autofolio_classification(log_path,measure_name)
- 
+        return autofolio_classification(log_path, measure_name)
 
-
-    clf = read_fitted_classifier(classification_method,measure_name,ready_training)
+    clf = read_fitted_classifier(
+        classification_method, measure_name, ready_training)
 
     predictions = clf.predict(read_feature_vector(log_path))
 
+    return predictions[0]
 
-    return predictions[0] 
 
-def ranking_classification(log_path, classification_method,measure_name):
+def ranking_classification(log_path, classification_method, measure_name):
     if classification_method == "autofolio":
-        return autofolio_classification(log_path,measure_name)
- 
+        return autofolio_classification(log_path, measure_name)
 
-    clf = read_fitted_classifier(classification_method,measure_name,[])
+    clf = read_fitted_classifier(classification_method, measure_name, [])
 
     # Get probability estimates for each class
     proba = clf.predict_proba(read_feature_vector(log_path))
@@ -239,13 +224,13 @@ def ranking_classification(log_path, classification_method,measure_name):
 
     sorted_class_names = class_labels[ranking]
 
-    class_ranking_array = [sorted_class_names[:, i][0] for i in range(sorted_class_names.shape[1])]
+    class_ranking_array = [sorted_class_names[:, i][0]
+                           for i in range(sorted_class_names.shape[1])]
 
     for algo in globals.algorithm_portfolio:
         if algo not in class_ranking_array:
             class_ranking_array += [algo]
     return class_ranking_array
-
 
 
 def final_prediction(log_path, measure_weight):
@@ -259,14 +244,14 @@ def final_prediction(log_path, measure_weight):
         _description_
     """
     max_measure = max(measure_weight, key=lambda k: measure_weight[k])
-    class_ranking_array = ranking_classification(log_path,"gradient_boosting",max_measure)
+    class_ranking_array = ranking_classification(
+        log_path, "gradient_boosting", max_measure)
     ret = {}
     i = 1
     for class_label in class_ranking_array:
         ret[class_label] = i
-        i+=1
+        i += 1
     return ret
-    
 
 
 def final_rankings(log_path, measure_weight):
@@ -315,7 +300,4 @@ def score(log_path, discovery_algorithm, measure_weight):
 
 if __name__ == "__main__":
 
-
     input(len(gather_all_xes("../logs/real_life_logs")))
-
-

@@ -10,32 +10,45 @@ import LoadingPage from './pages/LoadingPage.jsx';
 import RankingPage from './pages/RankingPage.jsx';
 import RecommendPage from "./pages/RecommendPage.jsx";
 import LandingPage from './pages/LandingPage.jsx';
+import AboutPage from './pages/AboutPage.jsx'
+import ErrorBoundary from './components/ErrorBoundary.jsx'
 const router = createBrowserRouter([
   {
     path: '', // Empty path for the default route
-    element: <LandingPage />,
+    element: <ErrorBoundary><LandingPage /></ErrorBoundary>,
   },
   {
     path: "/",
-    element: <LandingPage />,
+    element: <ErrorBoundary><LandingPage /></ErrorBoundary>,
   },
   {
     path: "/start",
-    element: <StartPage />,
+    element: <ErrorBoundary><StartPage /></ErrorBoundary>,
   },
   {
     path: "/loading",
-    element: <LoadingPage />,
+    element: <ErrorBoundary><LoadingPage /></ErrorBoundary>,
   },
   {
     path: "/ranking",
-    element: <RankingPage />,
+    element: <ErrorBoundary><RankingPage /></ErrorBoundary>,
   },
   {
     path: "/recommend",
-    element: <RecommendPage />,
+    element: <ErrorBoundary><RecommendPage /></ErrorBoundary>,
   },
+  {
+    path: "/about",
+    element: <ErrorBoundary><AboutPage /></ErrorBoundary>,
+  },
+  {
+    // Add a wildcard route to catch all unknown paths
+    // TODO: add a NotFound Page
+    path: "*",
+    element: <ErrorBoundary><LandingPage /></ErrorBoundary>,
+  }
 ]);
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

@@ -4,18 +4,22 @@ import Footer from '../components/Footer';
 //import Newsletter from '../components/Newsletter';
 import "../components/styles/LandingPage.css";
 import backgroundImage from '../assets/background.png';
+import InfoBox from '../components/InfoBox';
 
-const MainLayout = ({ children }) => {
+const InfoLayout = ({ children }) => {
     return (
         <div style={{
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
-            backgroundPosition: "top",
+            backgroundPosition: "bottom",
             width: "100vw",
             minHeight: "100vh",
-        }}>
+            position: "relative"
+        }} >
             <NavBar />
+            <InfoBox />
             {children}
+            <InfoBox />
 
 
             <Footer />
@@ -23,8 +27,8 @@ const MainLayout = ({ children }) => {
     );
 }
 
-MainLayout.propTypes = {
+InfoLayout.propTypes = {
     children: PropTypes.node,
 };
 
-export default MainLayout;
+export default InfoLayout;
