@@ -46,6 +46,25 @@ body {
   text-fill-color: transparent;
 }
 
+.title-gradient {
+  background: radial-gradient(64.18% 64.18% at 71.16% 35.69%,
+      #FFD54F 0.89%,
+      /* Brighter yellow */
+      #FFC107 17.23%,
+      /* Brighter orange */
+      #FFA000 42.04%,
+      /* Brighter orange */
+      #FF8C00 55.12%,
+      /* Brighter dark orange */
+      #FF7700 71.54%,
+      /* Brighter dark orange */
+      #FF6300 100%);
+  /* Brighter dark orange */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .bg-orange-gradient {
   background: linear-gradient(157.81deg,
       #FFA000 -43.27%,

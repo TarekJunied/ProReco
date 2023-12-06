@@ -1,7 +1,8 @@
 import aboutText from "./aboutText"
+import tarekText from "./tarekText";
 const texts = {
-    about: aboutText
-
+    about: aboutText,
+    tarekText: tarekText
 
 }
 export default texts;
