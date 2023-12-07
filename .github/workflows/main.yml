@@ -21,7 +21,6 @@ jobs:
             git pull
             sudo find /var/www/proreco.co -mindepth 1 -delete
             cd ~/RecommenderSystem/frontend/proreco
-            npm install
             npm run build
             mv ~/RecommenderSystem/frontend/proreco/dist/* /var/www/proreco.co/
       - name: start front- and backendservers
