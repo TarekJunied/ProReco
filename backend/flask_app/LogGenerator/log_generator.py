@@ -124,7 +124,7 @@ def create_random_log(index, mode):
 
 
 if __name__ == "__main__":
-    num_instances = 10
+    num_instances = 300
     training_num = math.floor(num_instances *0.7)
     testing_num =   num_instances - training_num
 

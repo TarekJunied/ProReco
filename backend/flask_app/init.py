@@ -247,38 +247,55 @@ def get_file_size(file_path):
     return os.path.getsize(file_path)
 
 
+def get_file_size(file_path):
+    return os.path.getsize(file_path)
+
+def sort_files_by_size(file_paths):
+    return sorted(file_paths, key=get_file_size)
+
 
 if __name__ == "__main__":
-    sys.setrecursionlimit(10000)
 
 
-    training_log_paths = gather_all_xes("../logs/real_life_logs")
-    training_log_paths = sorted(training_log_paths,key=get_file_size)
+    training_log_paths = gather_all_xes("../logs/training") + gather_all_xes("../logs/testing")
+    #training_log_paths = sorted(training_log_paths, key = get_file_size)
+    #training_log_paths = sort_files_by_size(training_log_paths)
+    num_processes = len(training_log_paths)
 
     """"
+    print("starting computation")
     for log_path in training_log_paths:
+        print("now starting ", log_path)
         try:
             init_log(log_path)
         except Exception as e:
             print(e)
+            input("skipping log")
+            input(log_path)
 
-    input("wow done")
+    num_processes = 6   
     """
+    
 
-    num_processes = len(training_log_paths)
+
+   
+
+
 
     pool = multiprocessing.Pool(processes = num_processes)
 
+    print("now mapping pool")
     pool.map(init_log, training_log_paths)
 
+    print("pool map done")
     pool.close()
+    print("pool closed")
     pool.join()
+    print("pool joined")
 
-
+    print("done")
 
     """"
-    input("stop")
-
 
     init()
     input("okay now no more loading from cache")

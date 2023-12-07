@@ -1,0 +1,2211 @@
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+now mapping pool
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+No cached log found, now parsing log.
+Variable loaded from cache file: ./cache/logs/2121710656.pkl
+Variable loaded from cache file: ./cache/models/alpha_2121710656.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2121710656.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2121710656.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2121710656.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2121710656.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2121710656.pkl
+Variable loaded from cache file: ./cache/models/inductive_2121710656.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2121710656.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2121710656.pkl
+No cached model found, now computing model for ../logs/training/2121710656.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2121710656.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/1003462157.pkl
+Variable loaded from cache file: ./cache/models/alpha_1003462157.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1003462157.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1003462157.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1003462157.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1003462157.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1003462157.pkl
+Variable loaded from cache file: ./cache/models/inductive_1003462157.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1003462157.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1003462157.pkl
+No cached model found, now computing model for ../logs/training/1003462157.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1003462157.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/3128980992.pkl
+Variable loaded from cache file: ./cache/models/alpha_3128980992.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3128980992.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3128980992.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3128980992.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3128980992.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3128980992.pkl
+Variable loaded from cache file: ./cache/models/inductive_3128980992.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3128980992.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3128980992.pkl
+No cached model found, now computing model for ../logs/training/3128980992.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3128980992.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/2340737696.pkl
+Variable loaded from cache file: ./cache/models/alpha_2340737696.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2340737696.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2340737696.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2340737696.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2340737696.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2340737696.pkl
+Variable loaded from cache file: ./cache/models/inductive_2340737696.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2340737696.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2340737696.pkl
+No cached model found, now computing model for ../logs/training/2340737696.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2340737696.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/1462197977.pkl
+Variable loaded from cache file: ./cache/models/alpha_1462197977.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1462197977.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1462197977.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_1462197977.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_1462197977.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_1462197977.pkl' created.
+No cached model found, now computing model for ../logs/training/1462197977.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1462197977.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1462197977.pkl
+Variable stored in cache file: ./cache/models/heuristic_1462197977.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1462197977.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1462197977.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1462197977.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1462197977.pkl' created.
+No cached model found, now computing model for ../logs/training/1462197977.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1462197977.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1462197977.pkl
+Variable stored in cache file: ./cache/models/inductive_1462197977.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1462197977.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1462197977.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1462197977.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1462197977.pkl' created.
+No cached model found, now computing model for ../logs/training/1462197977.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1462197977.pkl
+Start compute_model using ILP
+No cached log found, now parsing log.
+Variable loaded from cache file: ./cache/logs/2342454759.pkl
+Variable loaded from cache file: ./cache/models/alpha_2342454759.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2342454759.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2342454759.pkl
+No cached model found, now computing model for ../logs/training/2342454759.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2342454759.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2342454759.pkl
+Variable stored in cache file: ./cache/models/heuristic_2342454759.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2342454759.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2342454759.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2342454759.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2342454759.pkl' created.
+No cached model found, now computing model for ../logs/training/2342454759.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2342454759.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2342454759.pkl
+Variable stored in cache file: ./cache/models/inductive_2342454759.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2342454759.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2342454759.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2342454759.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2342454759.pkl' created.
+No cached model found, now computing model for ../logs/training/2342454759.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2342454759.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/744805123.pkl
+Variable loaded from cache file: ./cache/models/alpha_744805123.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_744805123.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_744805123.pkl
+No cached model found, now computing model for ../logs/training/744805123.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/744805123.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_744805123.pkl
+Variable stored in cache file: ./cache/models/heuristic_744805123.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_744805123.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_744805123.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_744805123.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_744805123.pkl' created.
+No cached model found, now computing model for ../logs/training/744805123.xes using inductive.
+Variable loaded from cache file: ./cache/logs/744805123.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_744805123.pkl
+Variable stored in cache file: ./cache/models/inductive_744805123.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_744805123.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_744805123.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_744805123.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_744805123.pkl' created.
+No cached model found, now computing model for ../logs/training/744805123.xes using ILP.
+Variable loaded from cache file: ./cache/logs/744805123.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/2099871284.pkl
+Variable loaded from cache file: ./cache/models/alpha_2099871284.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2099871284.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2099871284.pkl
+No cached model found, now computing model for ../logs/testing/2099871284.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2099871284.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2099871284.pkl
+Variable stored in cache file: ./cache/models/heuristic_2099871284.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2099871284.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2099871284.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2099871284.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2099871284.pkl' created.
+No cached model found, now computing model for ../logs/testing/2099871284.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2099871284.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2099871284.pkl
+Variable stored in cache file: ./cache/models/inductive_2099871284.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2099871284.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2099871284.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2099871284.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2099871284.pkl' created.
+No cached model found, now computing model for ../logs/testing/2099871284.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2099871284.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/1870005657.pkl
+Variable loaded from cache file: ./cache/models/alpha_1870005657.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1870005657.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1870005657.pkl
+No cached model found, now computing model for ../logs/training/1870005657.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1870005657.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1870005657.pkl
+Variable stored in cache file: ./cache/models/heuristic_1870005657.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1870005657.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1870005657.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1870005657.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1870005657.pkl' created.
+No cached model found, now computing model for ../logs/training/1870005657.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1870005657.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1870005657.pkl
+Variable stored in cache file: ./cache/models/inductive_1870005657.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1870005657.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1870005657.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1870005657.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1870005657.pkl' created.
+No cached model found, now computing model for ../logs/training/1870005657.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1870005657.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/3296576625.pkl
+Variable loaded from cache file: ./cache/models/alpha_3296576625.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3296576625.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3296576625.pkl
+No cached model found, now computing model for ../logs/testing/3296576625.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/3296576625.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_3296576625.pkl
+Variable stored in cache file: ./cache/models/heuristic_3296576625.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_3296576625.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_3296576625.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_3296576625.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_3296576625.pkl' created.
+No cached model found, now computing model for ../logs/testing/3296576625.xes using inductive.
+Variable loaded from cache file: ./cache/logs/3296576625.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_3296576625.pkl
+Variable stored in cache file: ./cache/models/inductive_3296576625.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_3296576625.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_3296576625.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_3296576625.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_3296576625.pkl' created.
+No cached model found, now computing model for ../logs/testing/3296576625.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3296576625.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/2655819262.pkl
+Variable loaded from cache file: ./cache/models/alpha_2655819262.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2655819262.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2655819262.pkl
+No cached model found, now computing model for ../logs/training/2655819262.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2655819262.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2655819262.pkl
+Variable stored in cache file: ./cache/models/heuristic_2655819262.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2655819262.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2655819262.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2655819262.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2655819262.pkl' created.
+No cached model found, now computing model for ../logs/training/2655819262.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2655819262.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2655819262.pkl
+Variable stored in cache file: ./cache/models/inductive_2655819262.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2655819262.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2655819262.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2655819262.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2655819262.pkl' created.
+No cached model found, now computing model for ../logs/training/2655819262.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2655819262.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/3483573471.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_3483573471.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_3483573471.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_3483573471.pkl' created.
+No cached model found, now computing model for ../logs/training/3483573471.xes using alpha.
+Variable loaded from cache file: ./cache/logs/3483573471.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_3483573471.pkl
+Variable stored in cache file: ./cache/models/alpha_3483573471.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_3483573471.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_3483573471.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_3483573471.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_3483573471.pkl' created.
+No cached model found, now computing model for ../logs/training/3483573471.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/3483573471.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_3483573471.pkl
+Variable stored in cache file: ./cache/models/heuristic_3483573471.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_3483573471.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_3483573471.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_3483573471.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_3483573471.pkl' created.
+No cached model found, now computing model for ../logs/training/3483573471.xes using inductive.
+Variable loaded from cache file: ./cache/logs/3483573471.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_3483573471.pkl
+Variable stored in cache file: ./cache/models/inductive_3483573471.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_3483573471.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_3483573471.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_3483573471.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_3483573471.pkl' created.
+No cached model found, now computing model for ../logs/training/3483573471.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3483573471.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/111759690.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_111759690.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_111759690.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_111759690.pkl' created.
+No cached model found, now computing model for ../logs/training/111759690.xes using alpha.
+Variable loaded from cache file: ./cache/logs/111759690.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_111759690.pkl
+Variable stored in cache file: ./cache/models/alpha_111759690.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_111759690.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_111759690.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_111759690.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_111759690.pkl' created.
+No cached model found, now computing model for ../logs/training/111759690.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/111759690.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_111759690.pkl
+Variable stored in cache file: ./cache/models/heuristic_111759690.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_111759690.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_111759690.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_111759690.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_111759690.pkl' created.
+No cached model found, now computing model for ../logs/training/111759690.xes using inductive.
+Variable loaded from cache file: ./cache/logs/111759690.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_111759690.pkl
+Variable stored in cache file: ./cache/models/inductive_111759690.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_111759690.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_111759690.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_111759690.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_111759690.pkl' created.
+No cached model found, now computing model for ../logs/training/111759690.xes using ILP.
+Variable loaded from cache file: ./cache/logs/111759690.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/3628823439.pkl
+No cached model found, now computing model for ../logs/training/3628823439.xes using alpha.
+Variable loaded from cache file: ./cache/logs/3628823439.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_3628823439.pkl
+Variable stored in cache file: ./cache/models/alpha_3628823439.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_3628823439.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_3628823439.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_3628823439.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_3628823439.pkl' created.
+No cached model found, now computing model for ../logs/training/3628823439.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/3628823439.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_3628823439.pkl
+Variable stored in cache file: ./cache/models/heuristic_3628823439.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_3628823439.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_3628823439.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_3628823439.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_3628823439.pkl' created.
+No cached model found, now computing model for ../logs/training/3628823439.xes using inductive.
+Variable loaded from cache file: ./cache/logs/3628823439.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_3628823439.pkl
+Variable stored in cache file: ./cache/models/inductive_3628823439.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_3628823439.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_3628823439.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_3628823439.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_3628823439.pkl' created.
+No cached model found, now computing model for ../logs/training/3628823439.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3628823439.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/717452147.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_717452147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_717452147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_717452147.pkl' created.
+No cached model found, now computing model for ../logs/testing/717452147.xes using alpha.
+Variable loaded from cache file: ./cache/logs/717452147.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_717452147.pkl
+Variable stored in cache file: ./cache/models/alpha_717452147.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_717452147.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_717452147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_717452147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_717452147.pkl' created.
+No cached model found, now computing model for ../logs/testing/717452147.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/717452147.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_717452147.pkl
+Variable stored in cache file: ./cache/models/heuristic_717452147.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_717452147.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_717452147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_717452147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_717452147.pkl' created.
+No cached model found, now computing model for ../logs/testing/717452147.xes using inductive.
+Variable loaded from cache file: ./cache/logs/717452147.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_717452147.pkl
+Variable stored in cache file: ./cache/models/inductive_717452147.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_717452147.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_717452147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_717452147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_717452147.pkl' created.
+No cached model found, now computing model for ../logs/testing/717452147.xes using ILP.
+Variable loaded from cache file: ./cache/logs/717452147.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/832040822.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_832040822.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_832040822.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_832040822.pkl' created.
+No cached model found, now computing model for ../logs/testing/832040822.xes using alpha.
+Variable loaded from cache file: ./cache/logs/832040822.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_832040822.pkl
+Variable stored in cache file: ./cache/models/alpha_832040822.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_832040822.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_832040822.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_832040822.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_832040822.pkl' created.
+No cached model found, now computing model for ../logs/testing/832040822.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/832040822.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_832040822.pkl
+Variable stored in cache file: ./cache/models/heuristic_832040822.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_832040822.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_832040822.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_832040822.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_832040822.pkl' created.
+No cached model found, now computing model for ../logs/testing/832040822.xes using inductive.
+Variable loaded from cache file: ./cache/logs/832040822.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_832040822.pkl
+Variable stored in cache file: ./cache/models/inductive_832040822.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_832040822.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_832040822.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_832040822.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_832040822.pkl' created.
+No cached model found, now computing model for ../logs/testing/832040822.xes using ILP.
+Variable loaded from cache file: ./cache/logs/832040822.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/2398589848.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_2398589848.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_2398589848.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_2398589848.pkl' created.
+No cached model found, now computing model for ../logs/training/2398589848.xes using alpha.
+Variable loaded from cache file: ./cache/logs/2398589848.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_2398589848.pkl
+Variable stored in cache file: ./cache/models/alpha_2398589848.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_2398589848.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_2398589848.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_2398589848.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_2398589848.pkl' created.
+No cached model found, now computing model for ../logs/training/2398589848.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2398589848.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2398589848.pkl
+Variable stored in cache file: ./cache/models/heuristic_2398589848.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2398589848.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2398589848.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2398589848.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2398589848.pkl' created.
+No cached model found, now computing model for ../logs/training/2398589848.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2398589848.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2398589848.pkl
+Variable stored in cache file: ./cache/models/inductive_2398589848.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2398589848.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2398589848.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2398589848.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2398589848.pkl' created.
+No cached model found, now computing model for ../logs/training/2398589848.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2398589848.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/1997657145.pkl
+No cached model found, now computing model for ../logs/training/1997657145.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1997657145.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1997657145.pkl
+Variable stored in cache file: ./cache/models/alpha_1997657145.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1997657145.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_1997657145.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_1997657145.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_1997657145.pkl' created.
+No cached model found, now computing model for ../logs/training/1997657145.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1997657145.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1997657145.pkl
+Variable stored in cache file: ./cache/models/heuristic_1997657145.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1997657145.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1997657145.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1997657145.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1997657145.pkl' created.
+No cached model found, now computing model for ../logs/training/1997657145.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1997657145.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1997657145.pkl
+Variable stored in cache file: ./cache/models/inductive_1997657145.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1997657145.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1997657145.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1997657145.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1997657145.pkl' created.
+No cached model found, now computing model for ../logs/training/1997657145.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1997657145.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/1563903385.pkl
+No cached model found, now computing model for ../logs/training/1563903385.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1563903385.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1563903385.pkl
+Variable stored in cache file: ./cache/models/alpha_1563903385.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1563903385.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_1563903385.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_1563903385.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_1563903385.pkl' created.
+No cached model found, now computing model for ../logs/training/1563903385.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1563903385.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1563903385.pkl
+Variable stored in cache file: ./cache/models/heuristic_1563903385.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1563903385.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1563903385.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1563903385.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1563903385.pkl' created.
+No cached model found, now computing model for ../logs/training/1563903385.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1563903385.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1563903385.pkl
+Variable stored in cache file: ./cache/models/inductive_1563903385.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1563903385.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1563903385.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1563903385.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1563903385.pkl' created.
+No cached model found, now computing model for ../logs/training/1563903385.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1563903385.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/4234198528.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_4234198528.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_4234198528.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_4234198528.pkl' created.
+No cached model found, now computing model for ../logs/training/4234198528.xes using alpha.
+Variable loaded from cache file: ./cache/logs/4234198528.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_4234198528.pkl
+Variable stored in cache file: ./cache/models/alpha_4234198528.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_4234198528.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_4234198528.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_4234198528.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_4234198528.pkl' created.
+No cached model found, now computing model for ../logs/training/4234198528.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/4234198528.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_4234198528.pkl
+Variable stored in cache file: ./cache/models/heuristic_4234198528.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_4234198528.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_4234198528.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_4234198528.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_4234198528.pkl' created.
+No cached model found, now computing model for ../logs/training/4234198528.xes using inductive.
+Variable loaded from cache file: ./cache/logs/4234198528.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_4234198528.pkl
+Variable stored in cache file: ./cache/models/inductive_4234198528.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_4234198528.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_4234198528.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_4234198528.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_4234198528.pkl' created.
+No cached model found, now computing model for ../logs/training/4234198528.xes using ILP.
+Variable loaded from cache file: ./cache/logs/4234198528.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/2477381625.pkl
+No cached model found, now computing model for ../logs/testing/2477381625.xes using alpha.
+Variable loaded from cache file: ./cache/logs/2477381625.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_2477381625.pkl
+Variable stored in cache file: ./cache/models/alpha_2477381625.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_2477381625.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_2477381625.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_2477381625.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_2477381625.pkl' created.
+No cached model found, now computing model for ../logs/testing/2477381625.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2477381625.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2477381625.pkl
+Variable stored in cache file: ./cache/models/heuristic_2477381625.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2477381625.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2477381625.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2477381625.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2477381625.pkl' created.
+No cached model found, now computing model for ../logs/testing/2477381625.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2477381625.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2477381625.pkl
+Variable stored in cache file: ./cache/models/inductive_2477381625.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2477381625.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2477381625.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2477381625.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2477381625.pkl' created.
+No cached model found, now computing model for ../logs/testing/2477381625.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2477381625.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/2370398520.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_2370398520.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_2370398520.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_2370398520.pkl' created.
+No cached model found, now computing model for ../logs/training/2370398520.xes using alpha.
+Variable loaded from cache file: ./cache/logs/2370398520.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_2370398520.pkl
+Variable stored in cache file: ./cache/models/alpha_2370398520.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_2370398520.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_2370398520.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_2370398520.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_2370398520.pkl' created.
+No cached model found, now computing model for ../logs/training/2370398520.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2370398520.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2370398520.pkl
+Variable stored in cache file: ./cache/models/heuristic_2370398520.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2370398520.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2370398520.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2370398520.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2370398520.pkl' created.
+No cached model found, now computing model for ../logs/training/2370398520.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2370398520.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2370398520.pkl
+Variable stored in cache file: ./cache/models/inductive_2370398520.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2370398520.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2370398520.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2370398520.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2370398520.pkl' created.
+No cached model found, now computing model for ../logs/training/2370398520.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2370398520.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/2709056776.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_2709056776.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_2709056776.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_2709056776.pkl' created.
+No cached model found, now computing model for ../logs/training/2709056776.xes using alpha.
+Variable loaded from cache file: ./cache/logs/2709056776.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_2709056776.pkl
+Variable stored in cache file: ./cache/models/alpha_2709056776.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_2709056776.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_2709056776.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_2709056776.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_2709056776.pkl' created.
+No cached model found, now computing model for ../logs/training/2709056776.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2709056776.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2709056776.pkl
+Variable stored in cache file: ./cache/models/heuristic_2709056776.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2709056776.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2709056776.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2709056776.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2709056776.pkl' created.
+No cached model found, now computing model for ../logs/training/2709056776.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2709056776.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2709056776.pkl
+Variable stored in cache file: ./cache/models/inductive_2709056776.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2709056776.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2709056776.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2709056776.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2709056776.pkl' created.
+No cached model found, now computing model for ../logs/training/2709056776.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2709056776.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/227465325.pkl
+No cached model found, now computing model for ../logs/training/227465325.xes using alpha.
+Variable loaded from cache file: ./cache/logs/227465325.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_227465325.pkl
+Variable stored in cache file: ./cache/models/alpha_227465325.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_227465325.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_227465325.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_227465325.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_227465325.pkl' created.
+No cached model found, now computing model for ../logs/training/227465325.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/227465325.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_227465325.pkl
+Variable stored in cache file: ./cache/models/heuristic_227465325.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_227465325.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_227465325.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_227465325.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_227465325.pkl' created.
+No cached model found, now computing model for ../logs/training/227465325.xes using inductive.
+Variable loaded from cache file: ./cache/logs/227465325.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_227465325.pkl
+Variable stored in cache file: ./cache/models/inductive_227465325.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_227465325.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_227465325.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_227465325.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_227465325.pkl' created.
+No cached model found, now computing model for ../logs/training/227465325.xes using ILP.
+Variable loaded from cache file: ./cache/logs/227465325.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/1077288363.pkl
+No cached model found, now computing model for ../logs/training/1077288363.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1077288363.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1077288363.pkl
+Variable stored in cache file: ./cache/models/alpha_1077288363.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1077288363.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_1077288363.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_1077288363.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_1077288363.pkl' created.
+No cached model found, now computing model for ../logs/training/1077288363.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1077288363.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1077288363.pkl
+Variable stored in cache file: ./cache/models/heuristic_1077288363.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1077288363.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1077288363.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1077288363.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1077288363.pkl' created.
+No cached model found, now computing model for ../logs/training/1077288363.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1077288363.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1077288363.pkl
+Variable stored in cache file: ./cache/models/inductive_1077288363.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1077288363.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1077288363.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1077288363.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1077288363.pkl' created.
+No cached model found, now computing model for ../logs/training/1077288363.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1077288363.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/122881994.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_122881994.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_122881994.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_122881994.pkl' created.
+No cached model found, now computing model for ../logs/training/122881994.xes using alpha.
+Variable loaded from cache file: ./cache/logs/122881994.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_122881994.pkl
+Variable stored in cache file: ./cache/models/alpha_122881994.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_122881994.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_122881994.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_122881994.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_122881994.pkl' created.
+No cached model found, now computing model for ../logs/training/122881994.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/122881994.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_122881994.pkl
+Variable stored in cache file: ./cache/models/heuristic_122881994.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_122881994.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_122881994.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_122881994.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_122881994.pkl' created.
+No cached model found, now computing model for ../logs/training/122881994.xes using inductive.
+Variable loaded from cache file: ./cache/logs/122881994.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_122881994.pkl
+Variable stored in cache file: ./cache/models/inductive_122881994.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_122881994.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_122881994.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_122881994.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_122881994.pkl' created.
+No cached model found, now computing model for ../logs/training/122881994.xes using ILP.
+Variable loaded from cache file: ./cache/logs/122881994.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/1056765567.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_1056765567.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_1056765567.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_1056765567.pkl' created.
+No cached model found, now computing model for ../logs/training/1056765567.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1056765567.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1056765567.pkl
+Variable stored in cache file: ./cache/models/alpha_1056765567.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1056765567.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_1056765567.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_1056765567.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_1056765567.pkl' created.
+No cached model found, now computing model for ../logs/training/1056765567.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1056765567.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1056765567.pkl
+Variable stored in cache file: ./cache/models/heuristic_1056765567.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1056765567.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1056765567.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1056765567.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1056765567.pkl' created.
+No cached model found, now computing model for ../logs/training/1056765567.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1056765567.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1056765567.pkl
+Variable stored in cache file: ./cache/models/inductive_1056765567.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1056765567.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1056765567.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1056765567.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1056765567.pkl' created.
+No cached model found, now computing model for ../logs/training/1056765567.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1056765567.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/3258596714.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_3258596714.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_3258596714.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_3258596714.pkl' created.
+No cached model found, now computing model for ../logs/training/3258596714.xes using alpha.
+Variable loaded from cache file: ./cache/logs/3258596714.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_3258596714.pkl
+Variable stored in cache file: ./cache/models/alpha_3258596714.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_3258596714.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_3258596714.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_3258596714.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_3258596714.pkl' created.
+No cached model found, now computing model for ../logs/training/3258596714.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/3258596714.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_3258596714.pkl
+Variable stored in cache file: ./cache/models/heuristic_3258596714.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_3258596714.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_3258596714.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_3258596714.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_3258596714.pkl' created.
+No cached model found, now computing model for ../logs/training/3258596714.xes using inductive.
+Variable loaded from cache file: ./cache/logs/3258596714.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_3258596714.pkl
+Variable stored in cache file: ./cache/models/inductive_3258596714.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_3258596714.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_3258596714.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_3258596714.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_3258596714.pkl' created.
+No cached model found, now computing model for ../logs/training/3258596714.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3258596714.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/1325876744.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_1325876744.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_1325876744.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_1325876744.pkl' created.
+No cached model found, now computing model for ../logs/testing/1325876744.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1325876744.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1325876744.pkl
+Variable stored in cache file: ./cache/models/alpha_1325876744.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1325876744.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_1325876744.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_1325876744.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_1325876744.pkl' created.
+No cached model found, now computing model for ../logs/testing/1325876744.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1325876744.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1325876744.pkl
+Variable stored in cache file: ./cache/models/heuristic_1325876744.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1325876744.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1325876744.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1325876744.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1325876744.pkl' created.
+No cached model found, now computing model for ../logs/testing/1325876744.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1325876744.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1325876744.pkl
+Variable stored in cache file: ./cache/models/inductive_1325876744.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1325876744.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1325876744.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1325876744.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1325876744.pkl' created.
+No cached model found, now computing model for ../logs/testing/1325876744.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1325876744.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/2406183147.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_2406183147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_2406183147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_2406183147.pkl' created.
+No cached model found, now computing model for ../logs/testing/2406183147.xes using alpha.
+Variable loaded from cache file: ./cache/logs/2406183147.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_2406183147.pkl
+Variable stored in cache file: ./cache/models/alpha_2406183147.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_2406183147.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_2406183147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_2406183147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_2406183147.pkl' created.
+No cached model found, now computing model for ../logs/testing/2406183147.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2406183147.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2406183147.pkl
+Variable stored in cache file: ./cache/models/heuristic_2406183147.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2406183147.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2406183147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2406183147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2406183147.pkl' created.
+No cached model found, now computing model for ../logs/testing/2406183147.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2406183147.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2406183147.pkl
+Variable stored in cache file: ./cache/models/inductive_2406183147.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2406183147.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2406183147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2406183147.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2406183147.pkl' created.
+No cached model found, now computing model for ../logs/testing/2406183147.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2406183147.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/3309003093.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_3309003093.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_3309003093.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_3309003093.pkl' created.
+No cached model found, now computing model for ../logs/training/3309003093.xes using alpha.
+Variable loaded from cache file: ./cache/logs/3309003093.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_3309003093.pkl
+Variable stored in cache file: ./cache/models/alpha_3309003093.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_3309003093.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_3309003093.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_3309003093.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_3309003093.pkl' created.
+No cached model found, now computing model for ../logs/training/3309003093.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/3309003093.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_3309003093.pkl
+Variable stored in cache file: ./cache/models/heuristic_3309003093.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_3309003093.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_3309003093.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_3309003093.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_3309003093.pkl' created.
+No cached model found, now computing model for ../logs/training/3309003093.xes using inductive.
+Variable loaded from cache file: ./cache/logs/3309003093.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_3309003093.pkl
+Variable stored in cache file: ./cache/models/inductive_3309003093.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_3309003093.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_3309003093.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_3309003093.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_3309003093.pkl' created.
+No cached model found, now computing model for ../logs/training/3309003093.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3309003093.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/1502459431.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_1502459431.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_1502459431.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_1502459431.pkl' created.
+No cached model found, now computing model for ../logs/testing/1502459431.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1502459431.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1502459431.pkl
+Variable stored in cache file: ./cache/models/alpha_1502459431.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1502459431.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_1502459431.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_1502459431.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_1502459431.pkl' created.
+No cached model found, now computing model for ../logs/testing/1502459431.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1502459431.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1502459431.pkl
+Variable stored in cache file: ./cache/models/heuristic_1502459431.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1502459431.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1502459431.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1502459431.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1502459431.pkl' created.
+No cached model found, now computing model for ../logs/testing/1502459431.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1502459431.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1502459431.pkl
+Variable stored in cache file: ./cache/models/inductive_1502459431.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1502459431.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1502459431.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1502459431.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1502459431.pkl' created.
+No cached model found, now computing model for ../logs/testing/1502459431.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1502459431.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/141523169.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_141523169.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_141523169.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_141523169.pkl' created.
+No cached model found, now computing model for ../logs/training/141523169.xes using alpha.
+Variable loaded from cache file: ./cache/logs/141523169.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_141523169.pkl
+Variable stored in cache file: ./cache/models/alpha_141523169.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_141523169.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_141523169.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_141523169.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_141523169.pkl' created.
+No cached model found, now computing model for ../logs/training/141523169.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/141523169.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_141523169.pkl
+Variable stored in cache file: ./cache/models/heuristic_141523169.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_141523169.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_141523169.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_141523169.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_141523169.pkl' created.
+No cached model found, now computing model for ../logs/training/141523169.xes using inductive.
+Variable loaded from cache file: ./cache/logs/141523169.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_141523169.pkl
+Variable stored in cache file: ./cache/models/inductive_141523169.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_141523169.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_141523169.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_141523169.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_141523169.pkl' created.
+No cached model found, now computing model for ../logs/training/141523169.xes using ILP.
+Variable loaded from cache file: ./cache/logs/141523169.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/246515377.pkl
+No cached model found, now computing model for ../logs/training/246515377.xes using alpha.
+Variable loaded from cache file: ./cache/logs/246515377.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_246515377.pkl
+Variable stored in cache file: ./cache/models/alpha_246515377.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_246515377.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_246515377.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_246515377.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_246515377.pkl' created.
+No cached model found, now computing model for ../logs/training/246515377.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/246515377.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_246515377.pkl
+Variable stored in cache file: ./cache/models/heuristic_246515377.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_246515377.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_246515377.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_246515377.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_246515377.pkl' created.
+No cached model found, now computing model for ../logs/training/246515377.xes using inductive.
+Variable loaded from cache file: ./cache/logs/246515377.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_246515377.pkl
+Variable stored in cache file: ./cache/models/inductive_246515377.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_246515377.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_246515377.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_246515377.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_246515377.pkl' created.
+No cached model found, now computing model for ../logs/training/246515377.xes using ILP.
+Variable loaded from cache file: ./cache/logs/246515377.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/312752232.pkl
+No cached model found, now computing model for ../logs/training/312752232.xes using alpha.
+Variable loaded from cache file: ./cache/logs/312752232.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_312752232.pkl
+Variable stored in cache file: ./cache/models/alpha_312752232.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_312752232.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_312752232.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_312752232.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_312752232.pkl' created.
+No cached model found, now computing model for ../logs/training/312752232.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/312752232.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_312752232.pkl
+Variable stored in cache file: ./cache/models/heuristic_312752232.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_312752232.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_312752232.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_312752232.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_312752232.pkl' created.
+No cached model found, now computing model for ../logs/training/312752232.xes using inductive.
+Variable loaded from cache file: ./cache/logs/312752232.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_312752232.pkl
+Variable stored in cache file: ./cache/models/inductive_312752232.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_312752232.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_312752232.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_312752232.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_312752232.pkl' created.
+No cached model found, now computing model for ../logs/training/312752232.xes using ILP.
+Variable loaded from cache file: ./cache/logs/312752232.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/194979055.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_194979055.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_194979055.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_194979055.pkl' created.
+No cached model found, now computing model for ../logs/training/194979055.xes using alpha.
+Variable loaded from cache file: ./cache/logs/194979055.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_194979055.pkl
+Variable stored in cache file: ./cache/models/alpha_194979055.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_194979055.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_194979055.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_194979055.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_194979055.pkl' created.
+No cached model found, now computing model for ../logs/training/194979055.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/194979055.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_194979055.pkl
+Variable stored in cache file: ./cache/models/heuristic_194979055.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_194979055.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_194979055.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_194979055.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_194979055.pkl' created.
+No cached model found, now computing model for ../logs/training/194979055.xes using inductive.
+Variable loaded from cache file: ./cache/logs/194979055.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_194979055.pkl
+Variable stored in cache file: ./cache/models/inductive_194979055.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_194979055.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_194979055.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_194979055.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_194979055.pkl' created.
+No cached model found, now computing model for ../logs/training/194979055.xes using ILP.
+Variable loaded from cache file: ./cache/logs/194979055.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/1046630256.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_1046630256.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_1046630256.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_1046630256.pkl' created.
+No cached model found, now computing model for ../logs/training/1046630256.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1046630256.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1046630256.pkl
+Variable stored in cache file: ./cache/models/alpha_1046630256.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1046630256.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_1046630256.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_1046630256.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_1046630256.pkl' created.
+No cached model found, now computing model for ../logs/training/1046630256.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1046630256.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1046630256.pkl
+Variable stored in cache file: ./cache/models/heuristic_1046630256.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1046630256.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1046630256.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1046630256.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1046630256.pkl' created.
+No cached model found, now computing model for ../logs/training/1046630256.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1046630256.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1046630256.pkl
+Variable stored in cache file: ./cache/models/inductive_1046630256.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1046630256.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1046630256.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1046630256.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1046630256.pkl' created.
+No cached model found, now computing model for ../logs/training/1046630256.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1046630256.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/685024423.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_685024423.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_685024423.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_685024423.pkl' created.
+No cached model found, now computing model for ../logs/training/685024423.xes using alpha.
+Variable loaded from cache file: ./cache/logs/685024423.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_685024423.pkl
+Variable stored in cache file: ./cache/models/alpha_685024423.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_685024423.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_685024423.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_685024423.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_685024423.pkl' created.
+No cached model found, now computing model for ../logs/training/685024423.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/685024423.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_685024423.pkl
+Variable stored in cache file: ./cache/models/heuristic_685024423.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_685024423.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_685024423.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_685024423.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_685024423.pkl' created.
+No cached model found, now computing model for ../logs/training/685024423.xes using inductive.
+Variable loaded from cache file: ./cache/logs/685024423.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_685024423.pkl
+Variable stored in cache file: ./cache/models/inductive_685024423.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_685024423.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_685024423.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_685024423.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_685024423.pkl' created.
+No cached model found, now computing model for ../logs/training/685024423.xes using ILP.
+Variable loaded from cache file: ./cache/logs/685024423.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/1671069400.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_1671069400.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_1671069400.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_1671069400.pkl' created.
+No cached model found, now computing model for ../logs/testing/1671069400.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1671069400.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1671069400.pkl
+Variable stored in cache file: ./cache/models/alpha_1671069400.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1671069400.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_1671069400.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_1671069400.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_1671069400.pkl' created.
+No cached model found, now computing model for ../logs/testing/1671069400.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1671069400.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1671069400.pkl
+Variable stored in cache file: ./cache/models/heuristic_1671069400.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1671069400.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1671069400.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1671069400.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1671069400.pkl' created.
+No cached model found, now computing model for ../logs/testing/1671069400.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1671069400.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1671069400.pkl
+Variable stored in cache file: ./cache/models/inductive_1671069400.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1671069400.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1671069400.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1671069400.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1671069400.pkl' created.
+No cached model found, now computing model for ../logs/testing/1671069400.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1671069400.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/1620160616.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_1620160616.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_1620160616.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_1620160616.pkl' created.
+No cached model found, now computing model for ../logs/testing/1620160616.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1620160616.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1620160616.pkl
+Variable stored in cache file: ./cache/models/alpha_1620160616.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1620160616.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_1620160616.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_1620160616.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_1620160616.pkl' created.
+No cached model found, now computing model for ../logs/testing/1620160616.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1620160616.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1620160616.pkl
+Variable stored in cache file: ./cache/models/heuristic_1620160616.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1620160616.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1620160616.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1620160616.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1620160616.pkl' created.
+No cached model found, now computing model for ../logs/testing/1620160616.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1620160616.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1620160616.pkl
+Variable stored in cache file: ./cache/models/inductive_1620160616.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1620160616.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1620160616.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1620160616.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1620160616.pkl' created.
+No cached model found, now computing model for ../logs/testing/1620160616.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1620160616.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/938108620.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_938108620.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_938108620.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_938108620.pkl' created.
+No cached model found, now computing model for ../logs/testing/938108620.xes using alpha.
+Variable loaded from cache file: ./cache/logs/938108620.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_938108620.pkl
+Variable stored in cache file: ./cache/models/alpha_938108620.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_938108620.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_938108620.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_938108620.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_938108620.pkl' created.
+No cached model found, now computing model for ../logs/testing/938108620.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/938108620.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_938108620.pkl
+Variable stored in cache file: ./cache/models/heuristic_938108620.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_938108620.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_938108620.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_938108620.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_938108620.pkl' created.
+No cached model found, now computing model for ../logs/testing/938108620.xes using inductive.
+Variable loaded from cache file: ./cache/logs/938108620.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_938108620.pkl
+Variable stored in cache file: ./cache/models/inductive_938108620.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_938108620.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_938108620.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_938108620.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_938108620.pkl' created.
+No cached model found, now computing model for ../logs/testing/938108620.xes using ILP.
+Variable loaded from cache file: ./cache/logs/938108620.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/2168417007.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_2168417007.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_2168417007.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_2168417007.pkl' created.
+No cached model found, now computing model for ../logs/training/2168417007.xes using alpha.
+Variable loaded from cache file: ./cache/logs/2168417007.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_2168417007.pkl
+Variable stored in cache file: ./cache/models/alpha_2168417007.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_2168417007.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_2168417007.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_2168417007.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_2168417007.pkl' created.
+No cached model found, now computing model for ../logs/training/2168417007.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2168417007.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2168417007.pkl
+Variable stored in cache file: ./cache/models/heuristic_2168417007.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2168417007.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2168417007.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2168417007.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2168417007.pkl' created.
+No cached model found, now computing model for ../logs/training/2168417007.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2168417007.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2168417007.pkl
+Variable stored in cache file: ./cache/models/inductive_2168417007.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2168417007.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2168417007.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2168417007.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2168417007.pkl' created.
+No cached model found, now computing model for ../logs/training/2168417007.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2168417007.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/507683397.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_507683397.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_507683397.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_507683397.pkl' created.
+No cached model found, now computing model for ../logs/testing/507683397.xes using alpha.
+Variable loaded from cache file: ./cache/logs/507683397.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_507683397.pkl
+Variable stored in cache file: ./cache/models/alpha_507683397.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_507683397.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_507683397.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_507683397.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_507683397.pkl' created.
+No cached model found, now computing model for ../logs/testing/507683397.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/507683397.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_507683397.pkl
+Variable stored in cache file: ./cache/models/heuristic_507683397.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_507683397.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_507683397.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_507683397.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_507683397.pkl' created.
+No cached model found, now computing model for ../logs/testing/507683397.xes using inductive.
+Variable loaded from cache file: ./cache/logs/507683397.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_507683397.pkl
+Variable stored in cache file: ./cache/models/inductive_507683397.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_507683397.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_507683397.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_507683397.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_507683397.pkl' created.
+No cached model found, now computing model for ../logs/testing/507683397.xes using ILP.
+Variable loaded from cache file: ./cache/logs/507683397.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/1769866972.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_1769866972.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_1769866972.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_1769866972.pkl' created.
+No cached model found, now computing model for ../logs/training/1769866972.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1769866972.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1769866972.pkl
+Variable stored in cache file: ./cache/models/alpha_1769866972.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1769866972.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_1769866972.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_1769866972.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_1769866972.pkl' created.
+No cached model found, now computing model for ../logs/training/1769866972.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1769866972.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1769866972.pkl
+Variable stored in cache file: ./cache/models/heuristic_1769866972.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1769866972.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1769866972.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1769866972.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1769866972.pkl' created.
+No cached model found, now computing model for ../logs/training/1769866972.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1769866972.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1769866972.pkl
+Variable stored in cache file: ./cache/models/inductive_1769866972.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1769866972.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1769866972.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1769866972.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1769866972.pkl' created.
+No cached model found, now computing model for ../logs/training/1769866972.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1769866972.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/155525327.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_155525327.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_155525327.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_155525327.pkl' created.
+No cached model found, now computing model for ../logs/training/155525327.xes using alpha.
+Variable loaded from cache file: ./cache/logs/155525327.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_155525327.pkl
+Variable stored in cache file: ./cache/models/alpha_155525327.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_155525327.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_155525327.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_155525327.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_155525327.pkl' created.
+No cached model found, now computing model for ../logs/training/155525327.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/155525327.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_155525327.pkl
+Variable stored in cache file: ./cache/models/heuristic_155525327.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_155525327.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_155525327.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_155525327.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_155525327.pkl' created.
+No cached model found, now computing model for ../logs/training/155525327.xes using inductive.
+Variable loaded from cache file: ./cache/logs/155525327.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_155525327.pkl
+Variable stored in cache file: ./cache/models/inductive_155525327.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_155525327.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_155525327.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_155525327.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_155525327.pkl' created.
+No cached model found, now computing model for ../logs/training/155525327.xes using ILP.
+Variable loaded from cache file: ./cache/logs/155525327.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/149309710.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_149309710.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_149309710.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_149309710.pkl' created.
+No cached model found, now computing model for ../logs/testing/149309710.xes using alpha.
+Variable loaded from cache file: ./cache/logs/149309710.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_149309710.pkl
+Variable stored in cache file: ./cache/models/alpha_149309710.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_149309710.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_149309710.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_149309710.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_149309710.pkl' created.
+No cached model found, now computing model for ../logs/testing/149309710.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/149309710.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_149309710.pkl
+Variable stored in cache file: ./cache/models/heuristic_149309710.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_149309710.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_149309710.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_149309710.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_149309710.pkl' created.
+No cached model found, now computing model for ../logs/testing/149309710.xes using inductive.
+Variable loaded from cache file: ./cache/logs/149309710.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_149309710.pkl
+Variable stored in cache file: ./cache/models/inductive_149309710.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_149309710.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_149309710.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_149309710.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_149309710.pkl' created.
+No cached model found, now computing model for ../logs/testing/149309710.xes using ILP.
+Variable loaded from cache file: ./cache/logs/149309710.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/3823023220.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_3823023220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_3823023220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_3823023220.pkl' created.
+No cached model found, now computing model for ../logs/training/3823023220.xes using alpha.
+Variable loaded from cache file: ./cache/logs/3823023220.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_3823023220.pkl
+Variable stored in cache file: ./cache/models/alpha_3823023220.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_3823023220.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_3823023220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_3823023220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_3823023220.pkl' created.
+No cached model found, now computing model for ../logs/training/3823023220.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/3823023220.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_3823023220.pkl
+Variable stored in cache file: ./cache/models/heuristic_3823023220.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_3823023220.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_3823023220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_3823023220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_3823023220.pkl' created.
+No cached model found, now computing model for ../logs/training/3823023220.xes using inductive.
+Variable loaded from cache file: ./cache/logs/3823023220.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_3823023220.pkl
+Variable stored in cache file: ./cache/models/inductive_3823023220.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_3823023220.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_3823023220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_3823023220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_3823023220.pkl' created.
+No cached model found, now computing model for ../logs/training/3823023220.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3823023220.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/4222105654.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_4222105654.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_4222105654.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_4222105654.pkl' created.
+No cached model found, now computing model for ../logs/training/4222105654.xes using alpha.
+Variable loaded from cache file: ./cache/logs/4222105654.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_4222105654.pkl
+Variable stored in cache file: ./cache/models/alpha_4222105654.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_4222105654.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_4222105654.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_4222105654.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_4222105654.pkl' created.
+No cached model found, now computing model for ../logs/training/4222105654.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/4222105654.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_4222105654.pkl
+Variable stored in cache file: ./cache/models/heuristic_4222105654.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_4222105654.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_4222105654.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_4222105654.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_4222105654.pkl' created.
+No cached model found, now computing model for ../logs/training/4222105654.xes using inductive.
+Variable loaded from cache file: ./cache/logs/4222105654.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_4222105654.pkl
+Variable stored in cache file: ./cache/models/inductive_4222105654.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_4222105654.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_4222105654.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_4222105654.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_4222105654.pkl' created.
+No cached model found, now computing model for ../logs/training/4222105654.xes using ILP.
+Variable loaded from cache file: ./cache/logs/4222105654.pkl
+Start compute_model using ILP
+Variable stored in cache file: ./cache/logs/4037926313.pkl
+Cache file does not exist yet.
+File './cache/models/alpha_4037926313.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_runtime_4037926313.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/alpha_log_runtime_4037926313.pkl' created.
+No cached model found, now computing model for ../logs/testing/4037926313.xes using alpha.
+Variable loaded from cache file: ./cache/logs/4037926313.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_4037926313.pkl
+Variable stored in cache file: ./cache/models/alpha_4037926313.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_4037926313.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_4037926313.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_4037926313.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_4037926313.pkl' created.
+No cached model found, now computing model for ../logs/testing/4037926313.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/4037926313.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_4037926313.pkl
+Variable stored in cache file: ./cache/models/heuristic_4037926313.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_4037926313.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_4037926313.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_4037926313.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_4037926313.pkl' created.
+No cached model found, now computing model for ../logs/testing/4037926313.xes using inductive.
+Variable loaded from cache file: ./cache/logs/4037926313.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_4037926313.pkl
+Variable stored in cache file: ./cache/models/inductive_4037926313.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_4037926313.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_4037926313.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_4037926313.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_4037926313.pkl' created.
+No cached model found, now computing model for ../logs/testing/4037926313.xes using ILP.
+Variable loaded from cache file: ./cache/logs/4037926313.pkl
+Start compute_model using ILP
+Variable loaded from cache file: ./cache/logs/2853544394.pkl
+Variable loaded from cache file: ./cache/models/alpha_2853544394.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2853544394.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2853544394.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2853544394.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2853544394.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2853544394.pkl
+Variable loaded from cache file: ./cache/models/inductive_2853544394.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2853544394.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2853544394.pkl
+Variable loaded from cache file: ./cache/models/ILP_2853544394.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2853544394.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2853544394.pkl
+Variable loaded from cache file: ./cache/models/split_2853544394.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2853544394.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2853544394.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_2853544394.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_2853544394.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_2853544394.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_2853544394.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_2853544394.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_2853544394.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_2853544394.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_2853544394.pkl
+Variable loaded from cache file: ./cache/features/density_2853544394.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_2853544394.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_2853544394.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_2853544394.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_2853544394.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_2853544394.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_2853544394.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_2853544394.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_2853544394.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_2853544394.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_2853544394.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_2853544394.pkl
+Variable loaded from cache file: ./cache/logs/2366156048.pkl
+Variable loaded from cache file: ./cache/models/alpha_2366156048.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2366156048.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2366156048.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2366156048.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2366156048.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2366156048.pkl
+Variable loaded from cache file: ./cache/models/inductive_2366156048.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2366156048.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2366156048.pkl
+Variable loaded from cache file: ./cache/models/ILP_2366156048.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2366156048.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2366156048.pkl
+Variable loaded from cache file: ./cache/models/split_2366156048.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2366156048.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2366156048.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_2366156048.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_2366156048.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_2366156048.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_2366156048.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_2366156048.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_2366156048.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_2366156048.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_2366156048.pkl
+Variable loaded from cache file: ./cache/features/density_2366156048.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_2366156048.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_2366156048.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_2366156048.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_2366156048.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_2366156048.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_2366156048.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_2366156048.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_2366156048.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_2366156048.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_2366156048.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_2366156048.pkl
+Variable loaded from cache file: ./cache/logs/2042738543.pkl
+Variable loaded from cache file: ./cache/models/alpha_2042738543.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2042738543.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2042738543.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2042738543.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2042738543.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2042738543.pkl
+Variable loaded from cache file: ./cache/models/inductive_2042738543.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2042738543.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2042738543.pkl
+Variable loaded from cache file: ./cache/models/ILP_2042738543.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2042738543.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2042738543.pkl
+Variable loaded from cache file: ./cache/models/split_2042738543.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2042738543.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2042738543.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_2042738543.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_2042738543.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_2042738543.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_in

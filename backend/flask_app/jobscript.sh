@@ -1,18 +1,20 @@
-#!/bin/bash
-#SBATCH --job-name=real_life_init
-#SBATCH --output=real_life.txt
-#SBATCH --error=error_real_life.txt
+#!/usr/local_rwth/bin/zsh
+#SBATCH --job-name=301Aritficial
+#SBATCH --output=301Artificial.txt
+#SBATCH --error=301Artifical_error.txt
 #SBATCH --nodes=1
-#SBATCH --ntasks=4
-#SBATCH --mem=4G
+#SBATCH --ntasks=10
+#SBATCH --mem=10G
 #SBATCH --account=thes1569
 #SBATCH --time=12:00:00
 
 
+
 start_time=$(date +"%Y-%m-%d %H:%M:%S")
 
-# Your job commands here
-# For example, running your Python script
+#
+
+
 /usr/bin/python3.9 init.py
 
 # Record the end time

@@ -11,7 +11,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from utils import get_all_ready_logs,load_cache_variable
 from recommender import classification
 from filehelper import gather_all_xes, get_all_ready_logs_multiple,split_file_path
-from measures import read_target_entries, read_target_entry, read_target_vector,  read_worst_entry
+from measures import read_target_entries, read_target_entry, read_target_vector,  read_worst_entry,read_measure_entry
 from features import read_feature_matrix
 from init import init
 
@@ -156,16 +156,54 @@ def evaluate_min_max_measure_accuracy(testing_log_paths, measure_name, classific
     return sum / len(testing_log_paths)
 
 
+def create_two_measure_graph(measure_name1,measure_name2,discovery_algorithm):
+    original_logpaths = gather_all_xes("../logs/training") + gather_all_xes("../logs/testing")
+    full_logs = set(get_all_ready_logs(original_logpaths,measure_name1
+                                  )).intersection(set(get_all_ready_logs(original_logpaths,measure_name2)))
+    
+    full_logs = list(full_logs)
+    x_values = []
+    y_values = []
+
+    for log_path in full_logs:
+            x_values +=[read_measure_entry(log_path,discovery_algorithm,measure_name1)]
+            y_values +=[read_measure_entry(log_path,discovery_algorithm,measure_name2)]
+
+    # Plotting the points
+    plt.scatter(x_values, y_values, color='red', label='Points', s=2)
+
+    # Adding labels and title
+    plt.xlabel(measure_name1)
+    plt.ylabel(measure_name2)
+    plt.title(f"{measure_name1} vs {measure_name2} with {discovery_algorithm} and {len(x_values)} values")
+
+    # Display the legend
+    plt.xlim(0, 1)
+    plt.ylim(0, 1)
+
+
+    now = datetime.now()
+
+    current_date_string = now.strftime("%Y-%m-%d")
+
+    if not os.path.exists(f"../evaluation/measure_comparisons_{current_date_string}"):
+    # If it doesn't exist, create the directory
+        os.mkdir(f"../evaluation/measure_comparisons_{current_date_string}")
+
+    plt.savefig(f"../evaluation/measure_comparisons_{current_date_string}/{discovery_algorithm}_{measure_name1}_{measure_name2}_{int(time.time())}.png", dpi=300, bbox_inches='tight')
+
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
 
 
-    init()
+    measures_list = ["token_fitness",  "token_precision",
+                              "generalization", "pm4py_simplicity"]
 
-
-    for classification_method in globals.classification_methods:
-        if classification_method != "autofolio":
-            create_scikit_evaluation_plot(globals.measures_list, classification_method)
-
+    for i in range(len(measures_list)):
+        for j in range(i+1, len(measures_list)):
+                measure_name1 = measures_list[i]
+                measure_name2 = measures_list[j]
+                for discovery_algorithm in globals.algorithm_portfolio:
+                    create_two_measure_graph(measure_name1,measure_name2,discovery_algorithm)
 
 

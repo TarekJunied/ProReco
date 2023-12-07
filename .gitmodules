@@ -1,0 +1,3 @@
+[submodule "backend/flask_app/fig4pm"]
+	path = backend/flask_app/fig4pm
+	url = git@github.com:f-zand/fig4pm.git

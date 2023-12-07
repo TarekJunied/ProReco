@@ -5,13 +5,12 @@ import subprocess
 import os
 import re
 import pm4py
-import sys
-from utils import read_logs, read_models,  get_all_ready_logs, read_log, split_data
+from utils import read_logs, read_models,  get_all_ready_logs
 from filehelper import gather_all_xes, get_all_ready_logs, get_all_ready_logs_multiple
 from features import read_feature_matrix, read_feature_vector, feature_no_total_traces,space_out_feature_vector_string
-from measures import read_target_entry, read_target_entries, read_measure_entry
+from measures import read_measure_entry
 from init import *
-from sklearn.model_selection import train_test_split, cross_val_score
+from autofolio_interface import  autofolio_classification
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.svm import SVC
@@ -19,8 +18,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.impute import SimpleImputer
-from autofolio_interface import create_performance_csv,create_feature_csv
-import sklearn
+from sklearn.model_selection import GridSearchCV
+
+
 
 
 label_to_index = {label: index for index,
@@ -32,141 +32,10 @@ def activate_smac_env():
     subprocess.run("conda run -n SMAC",shell=True)
 
 
-def extract_prediction_from_autofolio_string(autofolio_string):
-    # Define a regular expression pattern to capture the word after "('inductive',"
-    pattern = r"\('(\w+)',"
-
-    # Use re.search to find the first match
-    match = re.search(pattern, autofolio_string)
-
-    # Check if a match is found
-    if match:
-        # Extract and return the captured word
-        return match.group(1)
-    else:
-        # Return None if no match is found
-        return "AutoFolio Error"
-
-def read_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
-    if os.path.exists(f"./AutoFolio/af_predictors/{measure_name}_predictor.af"):
-        ret = f"./af_predictors/{measure_name}_predictor.af"
-    else:
-        ret = f"./{create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name)}"
-    return ret
 
 
 
 
-
-
-
-def create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
-
-
-
-    training_features_filename = f"{measure_name}_training_features.csv"
-    training_performance_filename =f"{measure_name}_training_performance.csv"
-    testing_features_filename = f"{measure_name}_testing_features.csv"
-    testing_performance_filename =f"{measure_name}_testing_performance.csv"
-
-
-
-    training_features_filepath = f"./AutoFolio/csv_files/{measure_name}_training_features.csv"
-    training_performance_filepath =f"./AutoFolio/csv_files/{measure_name}_training_performance.csv"
-    testing_features_filepath = f"./AutoFolio/csv_files/{measure_name}_testing_features.csv"
-    testing_performance_filepath =f"./AutoFolio/csv_files/{measure_name}_testing_performance.csv"
-
-
-    create_feature_csv(training_logpaths,training_features_filepath)
-    create_performance_csv(training_logpaths,measure_name,training_performance_filepath)
-
-    create_feature_csv(testing_logpaths,testing_features_filepath)
-    create_performance_csv(testing_logpaths,measure_name,testing_performance_filepath)
-
-    predictor_filepath = f"./af_predictors/{measure_name}_predictor.af"
-
-    if globals.measures_kind[measure_name] == "max": 
-        max_string = "--maximize"
-    elif globals.measures_kind[measure_name] == "min":
-        max_string = ""
-    else:
-        print("invalid kind of measure")
-        sys.exit(-1)
-
-
-    if measure_name == "runtime" or measure_name =="log_runtime":
-        objective_string = "runtime"
-    else:
-        objective_string = "solution_quality"
-    objective_string="solution_quality"
-
-    command = [
-    "python",
-    f"./scripts/autofolio",
-    "--performance_csv", f"./csv_files/{training_performance_filename}",
-    "--feature_csv",  f"./csv_files/{training_features_filename}",
-    "--objective ", objective_string,
-    "--tune",
-    max_string,
-    "--save", predictor_filepath,
-
-    ]
-
-    command_str = " ".join(command)
-
-
-
-    os.chdir(os.path.abspath("./AutoFolio"))
-
-    subprocess.run(command_str,shell=True)
-
-
-    os.chdir("../")
-    return predictor_filepath
-
-
-def autofolio_classification(log_path,measure_name):
-
-    
-
-    training_logpaths = list(globals.training_log_paths.keys())
-    testing_logpaths = list(globals.testing_log_paths.keys())
-
-    predictor_filepath = read_autofolio_predictor(training_logpaths,testing_logpaths,measure_name)
-
-
-    spaced_out_feature_vector_string = space_out_feature_vector_string(log_path)
-
-    command=[
-        "python",
-        "scripts/autofolio",
-        "--load",
-        predictor_filepath,
-        "--feature_vec",
-        spaced_out_feature_vector_string]
-
-
-    os.chdir("./AutoFolio")
-
-
-    try:
-        output = subprocess.check_output(command, stderr=subprocess.STDOUT, text=True)
-        print("Command output:")
-        print(output)
-    except subprocess.CalledProcessError as e:
-        print("Error executing command. Return code:", e.returncode)
-        print("Command output (if any):")
-        print(e.output)
-   
-    prediction = extract_prediction_from_autofolio_string(output)
-
-    if prediction not in globals.algorithm_portfolio:
-        input("an error occureed with autofolio")
-        return 
-    
-    os.chdir("../")
-
-    return prediction
 
 
 
@@ -312,10 +181,71 @@ def score(log_path, discovery_algorithm, measure_weight):
 
     return total_score
 
+def list_files_with_sizes(file_paths):
+    # Create a list to store file details
+    file_details = []
+
+    # Iterate over each file path
+    for file_path in file_paths:
+        # Get file size in bytes
+        file_size = os.path.getsize(file_path)
+
+        # Append file details to the list
+        file_details.append((file_path, file_size))
+
+    # Sort the list based on file size in descending order
+    file_details.sort(key=lambda x: x[1], reverse=True)
+
+    # Print the sorted file details
+    for file_path, file_size in file_details:
+        print(f"{file_path}: {file_size} bytes")
 
 if __name__ == "__main__":
 
+    log_paths = gather_all_xes("../logs/real_life_logs")
 
-    input(len(gather_all_xes("../logs/real_life_logs")))
+
+    list_files_with_sizes(log_paths)
+
+    input("done")
+
+    param_grid = {
+    'n_estimators': [50, 100, 200,400,800],
+    'learning_rate': [0.01, 0.1, 0.2,0.3,0.4],
+    'max_depth': [3, 5, 7,9,12],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4,6]
+    }
+
+    init()
+    ready_training = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
+    ready_testing  = get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))
+
+
+    x_train = read_feature_matrix(ready_training)
+    y_train =  read_target_vector(ready_training,"runtime")
+
+    x_test = read_feature_matrix(ready_testing)
+    y_test =  read_target_vector(ready_testing,"runtime")
+
+    gb_clf = GradientBoostingClassifier()
+
+    grid_search = GridSearchCV(gb_clf, param_grid, cv=5, n_jobs=-1)
+    grid_search.fit(x_train, y_train)
+
+    # Get the best hyperparameters
+    best_params = grid_search.best_params_
+    print("Best Hyperparameters:", best_params)
+
+
+    # Train the model with the best hyperparameters
+    best_gb_clf = GradientBoostingClassifier(**best_params)
+    best_gb_clf.fit(x_train, y_train)
+
+# Evaluate the model
+    accuracy = best_gb_clf.score(x_test, y_test)
+    print("Accuracy on Test Set:", accuracy)
+
+    input("done")
 
 
