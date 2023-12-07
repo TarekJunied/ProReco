@@ -87,6 +87,7 @@ fig4pm_features = [
 
 #    "dfg_wcc_variation_coefficient",
 #   "dfg_wcc_entropy"
+# + fig4pm_features
 selected_features = ["no_distinct_traces"
                      , "no_total_traces"
                      , "avg_trace_length"
@@ -101,7 +102,7 @@ selected_features = ["no_distinct_traces"
 
     "dfg_wcc_min",
     "dfg_wcc_max",
- ] + fig4pm_features
+ ] 
 
 ## "alignment_precision": "max" "alignment_fitness": "max", used_memory": "min",
 measures_kind = {"token_fitness": "max", "token_precision": "max",
@@ -110,13 +111,26 @@ measures_kind = {"token_fitness": "max", "token_precision": "max",
 measures_list = ["token_fitness",  "token_precision", 
                  "no_total_elements", "node_arc_degree", "runtime", "generalization", "pm4py_simplicity","log_runtime"]
 
-normalisierbare_measures = {"token_fitness": "max", "alignment_fitness": "max", "token_precision": "max",
-                            "alignment_precision": "max",  "generalization": "max", "pm4py_simplicity": "max"}
+normalisierbare_measures = {"token_fitness": "max",  "token_precision": "max",
+                              "generalization": "max", "pm4py_simplicity": "max"}
 
 
 #logistic regression removed, "autofolio"
 classification_methods = ["decision_tree", "knn", "svm",
                           "random_forest", "gradient_boosting"]
+
+regression_methods = [
+    "linear_regression",
+    "ridge_regression",
+    "lasso_regression",
+    "decision_tree",
+    "random_forest",
+    "gradient_boosting",
+    "svm",
+    "knn",
+    "mlp"
+]
+
 
 selected_measure = "token_precision"
 working_dir = "/Users/tarekjunied/Documents/Universität/BachelorThesis"

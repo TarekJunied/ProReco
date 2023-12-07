@@ -1,6 +1,6 @@
 from utils import read_logs, read_models, read_model, read_log, load_cache_variable, store_cache_variable, generate_log_id, generate_cache_file,  read_log
 from features import read_feature_matrix, read_feature_vector, feature_no_events_total
-from measures import read_target_entries, read_target_entry, read_target_vector,read_measure_entry
+from measures import read_target_entries, read_target_entry, read_classification_target_vector,read_measure_entry
 from filehelper import gather_all_xes, split_file_path,get_all_ready_logs_multiple
 from LogGenerator.log_generator import create_random_log
 import multiprocessing

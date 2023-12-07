@@ -8,7 +8,7 @@ import pm4py
 from utils import read_logs, read_models,  get_all_ready_logs
 from filehelper import gather_all_xes, get_all_ready_logs, get_all_ready_logs_multiple
 from features import read_feature_matrix, read_feature_vector, feature_no_total_traces,space_out_feature_vector_string
-from measures import read_measure_entry
+from measures import read_measure_entry,read_regression_target_vector
 from init import *
 from autofolio_interface import  autofolio_classification
 from sklearn.preprocessing import StandardScaler
@@ -19,6 +19,13 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import GridSearchCV
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.svm import SVR
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.neural_network import MLPRegressor
+
 
 
 
@@ -48,7 +55,7 @@ def read_fitted_classifier(classification_method,measure_name,ready_training):
 
         x_train = read_feature_matrix(ready_training)
 
-        y_train = read_target_vector(ready_training, measure_name)
+        y_train = read_classification_target_vector(ready_training, measure_name)
 
         if classification_method == "decision_tree":
             clf = DecisionTreeClassifier()
@@ -75,19 +82,67 @@ def read_fitted_classifier(classification_method,measure_name,ready_training):
     return clf
 
 
+def read_fitted_regressor(regression_method, measure_name,discovery_algorithm, ready_training):
+    regressor_filepath = f"./regressors/{regression_method}/{discovery_algorithm}_{measure_name}.pkl"
+    
+    try:
+        reg = load_cache_variable(regressor_filepath)
+    except Exception:
+        print("Regressor doesn't exist yet. Computing regressor now")
+
+        x_train = read_feature_matrix(ready_training)
+        y_train = read_regression_target_vector(ready_training, discovery_algorithm,measure_name)
+
+        if regression_method == "linear_regression":
+            reg = LinearRegression()
+        elif regression_method == "ridge_regression":
+            reg = Ridge(alpha=1.0)
+        elif regression_method == "lasso_regression":
+            reg = Lasso(alpha=1.0)
+        elif regression_method == "decision_tree":
+            reg = DecisionTreeRegressor()
+        elif regression_method == "random_forest":
+            reg = RandomForestRegressor()
+        elif regression_method == "gradient_boosting":
+            reg = GradientBoostingRegressor(n_estimators=100)
+        elif regression_method == "svm":
+            reg = SVR()
+        elif regression_method == "knn":
+            reg = KNeighborsRegressor(n_neighbors=5)
+        elif regression_method == "mlp":
+            reg = MLPRegressor(hidden_layer_sizes=(100,), max_iter=500)
+        else:
+            raise ValueError(f"Invalid regression method: {regression_method}")
+
+        reg = reg.fit(x_train, y_train)
+        store_cache_variable(reg, regressor_filepath)
+
+    return reg
+
+
+
+
 #TODO: tailor this again to backend
 def classification(log_path, classification_method,measure_name,ready_training):
     if classification_method == "autofolio":
         return autofolio_classification(log_path,measure_name)
- 
 
 
     clf = read_fitted_classifier(classification_method,measure_name,ready_training)
 
     predictions = clf.predict(read_feature_vector(log_path))
 
-
     return predictions[0] 
+
+#TODO: tailor this again to backend
+def regression(log_path, regression_method, measure_name, discovery_algorithm, ready_training):
+ 
+    reg = read_fitted_regressor(regression_method, measure_name,discovery_algorithm, ready_training)
+
+    prediction = reg.predict(read_feature_vector(log_path))
+
+    return prediction[0]
+
 
 def ranking_classification(log_path, classification_method,measure_name):
     if classification_method == "autofolio":
@@ -116,6 +171,24 @@ def ranking_classification(log_path, classification_method,measure_name):
     return class_ranking_array
 
 
+def predict_regression(log_path, measure_name,regression_method="linear_regression"):
+    predicted_values = {}
+    ready_training = list(globals.training_log_paths.keys())
+    for discovery_algorithm in globals.algorithm_portfolio:
+        predicted_values[discovery_algorithm] = regression(log_path,regression_method,measure_name,discovery_algorithm,ready_training)
+
+    if globals.measures_kind[measure_name] =="max":
+        ret = max(predicted_values, key=predicted_values.get)
+    elif globals.measures_kind[measure_name] =="min":
+        ret = min(predicted_values, key=predicted_values.get)
+    else:
+        print("Invalid kind of measures")
+        input(measure_name)
+
+        ret = None
+    return ret
+
+
 
 def final_prediction(log_path, measure_weight):
     """returns the predicted rankings
@@ -138,12 +211,7 @@ def final_prediction(log_path, measure_weight):
     
 
 
-def final_rankings(log_path, measure_weight):
-    rank_list = {}
-    for disco_algorithm in globals.algorithm_portfolio:
-        rank_list[disco_algorithm] = score(
-            log_path, disco_algorithm, measure_weight)
-    return rank_list
+
 
 
 def measure_score(log_path, discovery_algorithm, measure):
@@ -164,22 +232,7 @@ def measure_score(log_path, discovery_algorithm, measure):
     return sorted_keys_list.index(discovery_algorithm) + 1
 
 
-def score(log_path, discovery_algorithm, measure_weight):
-    """ computes the score used for the final ranking
 
-    Args:
-        log_path: the log path used
-        discovery_algorithm: the discovery algorithm used
-        measure_weight: a dictionary that uses the measure names as key and 
-        the weights of the measures selected as values
-    """
-    total_score = 0
-    i = 0
-    for measure in globals.measures:
-        total_score += measure_weight[measure] * \
-            measure_score(log_path, discovery_algorithm, measure)
-
-    return total_score
 
 def list_files_with_sizes(file_paths):
     # Create a list to store file details
@@ -202,50 +255,13 @@ def list_files_with_sizes(file_paths):
 
 if __name__ == "__main__":
 
-    log_paths = gather_all_xes("../logs/real_life_logs")
-
-
-    list_files_with_sizes(log_paths)
-
-    input("done")
-
-    param_grid = {
-    'n_estimators': [50, 100, 200,400,800],
-    'learning_rate': [0.01, 0.1, 0.2,0.3,0.4],
-    'max_depth': [3, 5, 7,9,12],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2, 4,6]
-    }
-
-    init()
+    #init()
     ready_training = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
-    ready_testing  = get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))
+    log_path = ready_training[0]
+    for regression_method in globals.regression_methods:
+        for measure_name in globals.measures_list:
+            for discovery_algorithm in globals.algorithm_portfolio:
+                print(regression(log_path,regression_method,measure_name,discovery_algorithm,ready_training))
 
-
-    x_train = read_feature_matrix(ready_training)
-    y_train =  read_target_vector(ready_training,"runtime")
-
-    x_test = read_feature_matrix(ready_testing)
-    y_test =  read_target_vector(ready_testing,"runtime")
-
-    gb_clf = GradientBoostingClassifier()
-
-    grid_search = GridSearchCV(gb_clf, param_grid, cv=5, n_jobs=-1)
-    grid_search.fit(x_train, y_train)
-
-    # Get the best hyperparameters
-    best_params = grid_search.best_params_
-    print("Best Hyperparameters:", best_params)
-
-
-    # Train the model with the best hyperparameters
-    best_gb_clf = GradientBoostingClassifier(**best_params)
-    best_gb_clf.fit(x_train, y_train)
-
-# Evaluate the model
-    accuracy = best_gb_clf.score(x_test, y_test)
-    print("Accuracy on Test Set:", accuracy)
-
-    input("done")
-
+    
 

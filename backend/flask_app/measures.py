@@ -216,13 +216,24 @@ def read_target_entries(log_paths, measure_name):
             print(e)
 
 
-def read_target_vector(log_paths, measure_name):
+def read_classification_target_vector(log_paths, measure_name):
     n = len(log_paths)
     y = [None]*n
 
     for i in range(n):
         y[i] = read_target_entry(log_paths[i], measure_name)
     return y
+
+
+def read_regression_target_vector(log_paths,discovery_algorithm, measure_name):
+    n = len(log_paths)
+    y = [None]*n
+
+    for i in range(n):
+        y[i] = read_measure_entry(log_paths[i], discovery_algorithm,measure_name)
+    return y
+
+
 
 
 def read_worst_entry(log_path, measure_name):
