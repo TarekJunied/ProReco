@@ -12,6 +12,7 @@ import RecommendPage from "./pages/RecommendPage.jsx";
 import LandingPage from './pages/LandingPage.jsx';
 import AboutPage from './pages/AboutPage.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
+import ContactPage from './pages/ContactPage.jsx';
 const router = createBrowserRouter([
   {
     path: '', // Empty path for the default route
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <ErrorBoundary><AboutPage /></ErrorBoundary>,
+  },
+  {
+    path: "/contact",
+    element: <ErrorBoundary><ContactPage /></ErrorBoundary>,
   },
   {
     // Add a wildcard route to catch all unknown paths
