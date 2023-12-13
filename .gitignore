@@ -6,6 +6,8 @@ __MACOSX
 *.plg
 *.bpmn
 *.pnml
+*.xml
+*.mxml
 cache
 misc/
 .metadata

@@ -1,6 +1,6 @@
 home_dir = "/Users/tarekjunied/Documents/Universität/BachelorThesis"
-algorithm_portfolio = ["alpha", "heuristic",
-                       "inductive", "ILP", "split"]
+algorithm_portfolio = ["alpha","alpha_plus" ,"heuristic",
+                       "inductive", "inductive_infrequent","ILP", "split"]
 
 #    "graph_diameter",    "cyclicity",    "simple_path_complexity",    "transition_profile_minimum_cosine_similarity",
 

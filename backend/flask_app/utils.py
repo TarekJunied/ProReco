@@ -42,28 +42,13 @@ def print_distinct_traces(log_path):
 
 def compute_model(log_path, discovery_algorithm):
     log = read_log(log_path)
+
     print(f"Start compute_model using {discovery_algorithm}")
-    if discovery_algorithm == "alpha":
-        net, initial_marking, final_marking = pm4py.discover_petri_net_alpha(
-            log)
-    elif discovery_algorithm == "heuristic":
-        net, initial_marking, final_marking = pm4py.discover_petri_net_heuristics(
-            log)
-    elif discovery_algorithm == "ILP":
-        net, initial_marking, final_marking = pm4py.discover_petri_net_ilp(
-            log)
-    elif discovery_algorithm == "inductive":
-        net, initial_marking, final_marking = pm4py.discover_petri_net_inductive(
-            log)
-    elif discovery_algorithm == "split":
-        net, initial_marking, final_marking = discover_petri_net_split(
-            log_path)
+    
+    return discovery_functions[discovery_algorithm](log)
 
-    elif discovery_algorithm == "fodina":
-        net, initial_marking, final_marking = discover_petri_net_fodina(
-            log_path)
 
-    return net, initial_marking, final_marking
+
 
 
 def read_model(log_path, discovery_algorithm):
@@ -203,9 +188,23 @@ def split_data(data, ratio=0.8, seed=None):
 
     return training_data, testing_data
 
+def discover_petri_net_infrequent(log,noise_threshold = 0.1):
+    pm4py.discover_petri_net_inductive(log, noise_threshold)
 
 
 
+discovery_functions = {
+    "alpha":pm4py.discover_petri_net_alpha,
+    "alpha_plus":pm4py.discover_petri_net_alpha_plus,
+    "heuristic":pm4py.discover_petri_net_heuristics,
+    "inductive":pm4py.discover_petri_net_ilp,
+    "split":discover_petri_net_split,
+    "inductive_infrequent":discover_petri_net_infrequent
+}
 
 if __name__ == "__main__":
-    print("Hi")
+    log_paths = gather_all_xes("../logs/training")
+    log = read_log(log_paths[1])
+    for discovery_algorithm in globals.algorithm_portfolio:
+        read_model(log_paths[1], discovery_algorithm)
+        input(f"{discovery_algorithm} is done")
