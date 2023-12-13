@@ -10,25 +10,23 @@ from datetime import datetime
 from sklearn.metrics import accuracy_score, mean_squared_error
 from utils import get_all_ready_logs,load_cache_variable
 from recommender import classification,regression, predict_regression
-from filehelper import gather_all_xes, get_all_ready_logs_multiple,split_file_path
+from filehelper import gather_all_xes, get_all_ready_logs_multiple
 from measures import read_target_entries, read_classification_target_vector,  read_worst_entry,read_measure_entry, read_target_entry
 from features import read_feature_matrix
 from init import init
 
 
-def create_scikit_classification_evaluation_plot(selected_measures, classification_method="knn"):
+def create_scikit_classification_evaluation_plot(selected_measures,ready_training,ready_testing, classification_method="knn",):
     values = []
     categories = selected_measures
     display_str = ""
-
-    ready_testing  = list(globals.testing_log_paths.keys())
 
 
     for measure in selected_measures:
     
         display_str += f" {len(ready_testing)} "
-        values += [evaluate_scikit_measure_accuracy(measure,classification_method)]
-
+        values += [evaluate_scikit_measure_accuracy(measure,ready_training,ready_testing,classification_method)]
+        input(values)
 
 
 
@@ -61,16 +59,15 @@ def create_scikit_classification_evaluation_plot(selected_measures, classificati
 
 
 
-def evaluate_scikit_measure_accuracy(measure,classification_method):
+def evaluate_scikit_measure_accuracy(measure,ready_training,ready_testing, classification_method):
 
-    ready_testing = list(globals.testing_log_paths.keys())
 
     y_true = [None] * len(ready_testing)
     y_pred = [None] * len(ready_testing)
 
     for i in range(len(ready_testing)):
         y_true[i] = read_target_entry(ready_testing[i], measure)
-        y_pred[i] = classification(ready_testing[i],  classification_method,measure)
+        y_pred[i] = classification(ready_testing[i],  classification_method,measure,ready_training)
 
 
     return accuracy_score(y_true, y_pred)
@@ -285,9 +282,20 @@ def create_auto_regression_accuracy_plot(selected_measures):
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
 
-    init()
+    #init()
     measures_list = ["token_fitness",  "token_precision",
                               "generalization", "pm4py_simplicity"]
+    
+
+
+    log_paths = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
+    ready_training= log_paths[:80]
+    ready_testing = log_paths[81:len(log_paths)-1]
+
+    create_scikit_classification_evaluation_plot(globals.measures_list,ready_training,ready_testing,"knn")
+
+    input("done")
+
     """"
 
 

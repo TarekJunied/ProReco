@@ -11,6 +11,10 @@ from pm4py.algo.discovery.footprints import algorithm as footprints_discovery
 from scipy.stats import variation, entropy
 sys.path.append("/home/qc261227/Recommender/RecommenderSystem/backend/flask_app/fig4pm")
 from fig4pm.fig4pm_features import *
+import warnings
+
+# Ignore all warnings
+warnings.filterwarnings("ignore")
 
 
 
@@ -459,11 +463,16 @@ if __name__  == "__main__":
 
     log_paths = gather_all_xes("../logs/training") + gather_all_xes("../logs/testing")
 
-    input(len(feature_functions.keys()))
 
+    failed_logpaths = []
     for log_path in log_paths:
-        read_feature_vector(log_path)
-        input("log done on to the next")
-            
+        for feature in globals.selected_features:
+            try:
+                read_single_feature(log_path,feature)
+            except Exception as e:
+                (f"error computing {feature}")
+                failed_logpaths +=[(log_path,e)]
+    
 
-
+    input(failed_logpaths)
+ 

@@ -257,7 +257,9 @@ def sort_files_by_size(file_paths):
 if __name__ == "__main__":
 
 
+
     training_log_paths = gather_all_xes("../logs/training") + gather_all_xes("../logs/testing")
+    training_log_paths = gather_all_xes("../logs/real_life_logs")
     #training_log_paths = sorted(training_log_paths, key = get_file_size)
     #training_log_paths = sort_files_by_size(training_log_paths)
     num_processes = len(training_log_paths)
@@ -278,7 +280,6 @@ if __name__ == "__main__":
     
 
 
-   
 
 
 

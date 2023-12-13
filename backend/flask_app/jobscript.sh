@@ -1,12 +1,12 @@
 #!/usr/local_rwth/bin/zsh
-#SBATCH --job-name=301Aritficial
-#SBATCH --output=301Artificial.txt
-#SBATCH --error=301Artifical_error.txt
+#SBATCH --job-name=Real72hoursnow
+#SBATCH --output=Real72_output.txt
+#SBATCH --error=Real72_error.txt
 #SBATCH --nodes=1
 #SBATCH --ntasks=10
 #SBATCH --mem=10G
 #SBATCH --account=thes1569
-#SBATCH --time=12:00:00
+#SBATCH --time=60:00:00
 
 
 

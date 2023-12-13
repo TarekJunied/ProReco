@@ -2,6 +2,8 @@ home_dir = "/Users/tarekjunied/Documents/Universität/BachelorThesis"
 algorithm_portfolio = ["alpha", "heuristic",
                        "inductive", "ILP", "split"]
 
+#    "graph_diameter",    "cyclicity",    "simple_path_complexity",    "transition_profile_minimum_cosine_similarity",
+
 
 fig4pm_features = [
     "total_number_of_events",
@@ -44,13 +46,10 @@ fig4pm_features = [
     "density",
     "structure",
     "cyclomatic_number",
-    "graph_diameter",
     "number_of_cut_vertices",
     "separability_ratio",
     "sequentiality_ratio",
-    "cyclicity",
     "affinity",
-    "simple_path_complexity",
     "start_event_frequency_evaluation",
     "end_event_frequency_evaluation",
     "event_frequency_evaluation",
@@ -64,7 +63,6 @@ fig4pm_features = [
     "transition_profile_average_euclidean_distance",
     "transition_profile_average_cosine_similarity",
     "event_profile_minimum_cosine_similarity",
-    "transition_profile_minimum_cosine_similarity",
     "average_spatial_proximity",
     "spatial_proximity_connectedness",
     "spatial_proximity_abstraction_evaluation",
@@ -74,7 +72,6 @@ fig4pm_features = [
     "number_of_graph_communities",
     "maximum_cut_vertex_outgoing_degree",
     "cut_vertex_independent_path",
-    "simple_path_minimum_jaccard_similarity",
     "syntactic_node_similarity"
 ]
 
@@ -87,7 +84,7 @@ fig4pm_features = [
 
 #    "dfg_wcc_variation_coefficient",
 #   "dfg_wcc_entropy"
-# + fig4pm_features
+# 
 selected_features = ["no_distinct_traces"
                      , "no_total_traces"
                      , "avg_trace_length"
@@ -99,10 +96,10 @@ selected_features = ["no_distinct_traces"
     "dfg_min_variable_degree",
     "dfg_max_variable_degree",
     "dfg_entropy_variable_degree",
-
     "dfg_wcc_min",
     "dfg_wcc_max",
- ] 
+ ]
+selected_features = fig4pm_features
 
 ## "alignment_precision": "max" "alignment_fitness": "max", used_memory": "min",
 measures_kind = {"token_fitness": "max", "token_precision": "max",

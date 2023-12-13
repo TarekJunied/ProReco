@@ -256,6 +256,14 @@ def list_files_with_sizes(file_paths):
 if __name__ == "__main__":
 
     #init()
+    log_paths = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
+    input(len(log_paths))
+
+
+
+
+
+    input("stop")
     ready_training = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
     log_path = ready_training[0]
     for regression_method in globals.regression_methods:
