@@ -10,6 +10,8 @@ import math
 from filehelper import  gather_all_xes
 from discovery.splitminer.split_miner import discover_petri_net_split
 from discovery.structuredminer.fodina_miner import discover_petri_net_fodina
+from pm4py.algo.discovery.inductive import algorithm as inductive_miner
+
 
 def get_log_name(log_path):
     return split_file_path(log_path)["filename"]
@@ -188,9 +190,15 @@ def split_data(data, ratio=0.8, seed=None):
 
     return training_data, testing_data
 
-def discover_petri_net_infrequent(log,noise_threshold = 0.1):
-    pm4py.discover_petri_net_inductive(log, noise_threshold)
+def discover_petri_net_inductive_infrequent(log):
+    return inductive_miner.apply(
+                log, variant=inductive_miner.Variants.IMf
+    )
 
+def discover_petri_net_inductive_direct(log): 
+    return inductive_miner.apply(
+                log, variant=inductive_miner.Variants.IMd
+            )
 
 
 discovery_functions = {
@@ -199,7 +207,8 @@ discovery_functions = {
     "heuristic":pm4py.discover_petri_net_heuristics,
     "inductive":pm4py.discover_petri_net_ilp,
     "split":discover_petri_net_split,
-    "inductive_infrequent":discover_petri_net_infrequent
+    "inductive_infrequent":discover_petri_net_inductive_infrequent,
+    "inductive_direct":discover_petri_net_inductive_direct
 }
 
 if __name__ == "__main__":

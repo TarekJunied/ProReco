@@ -253,40 +253,45 @@ def get_file_size(file_path):
 def sort_files_by_size(file_paths):
     return sorted(file_paths, key=get_file_size)
 
+def try_init_log(log_path):
+    try:
+        init_log(log_path)
+    except Exception as e:
+        print("couldn't init log")
+        print(e)
+
+
+
+
 
 if __name__ == "__main__":
 
+    log_folder_paths = []
 
+    # Check if at least one argument is provided
+    if len(sys.argv) > 1:
+        # sys.argv[1] is the first command line argument
+        for i in range(1,len(sys.argv)):
+            log_folder_paths += [sys.argv[i]]
+    else:
+        print("No input provided")
+        sys.exit(-1)
 
-    training_log_paths = gather_all_xes("../logs/training") + gather_all_xes("../logs/testing")
-    training_log_paths = gather_all_xes("../logs/real_life_logs")
-    #training_log_paths = sorted(training_log_paths, key = get_file_size)
-    #training_log_paths = sort_files_by_size(training_log_paths)
-    num_processes = len(training_log_paths)
-
-    """"
-    print("starting computation")
-    for log_path in training_log_paths:
-        print("now starting ", log_path)
-        try:
-            init_log(log_path)
-        except Exception as e:
-            print(e)
-            input("skipping log")
-            input(log_path)
-
-    num_processes = 6   
-    """
     
+    print("now startin init")
+    print(log_folder_paths)
+    logs_to_init = []
+    for log_folder_path in log_folder_paths:
+        logs_to_init += gather_all_xes(log_folder_path)
 
-
-
-
+    logs_to_init = sort_files_by_size(logs_to_init)
+    num_processes = len(logs_to_init)
+    num_processes = 6
 
     pool = multiprocessing.Pool(processes = num_processes)
 
     print("now mapping pool")
-    pool.map(init_log, training_log_paths)
+    pool.map(try_init_log, logs_to_init)
 
     print("pool map done")
     pool.close()
@@ -296,33 +301,7 @@ if __name__ == "__main__":
 
     print("done")
 
-    """"
-
-    init()
-    input("okay now no more loading from cache")
-    for log_path in globals.training_log_paths:
-        log = read_log(log_path)
-
-    for log_path in globals.training_log_paths:
-        read_feature_vector(log_path)
-
-    for discovery_algorithm in globals.algorithm_portfolio:
-        for log_path in globals.training_log_paths:
-            for measure_name in globals.measures_list:
-                read_measure_entry(log_path,discovery_algorithm,measure_name)
-    input("stop")
 
 
-
-
-    
-    init()
-    input("init done")
-    for log_path in gather_all_xes("../logs/training"):
-        read_log(log_path)
-
-    input("stop")
-    mode = "experiments"
-    """
 
 

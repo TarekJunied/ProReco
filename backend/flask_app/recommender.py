@@ -1,9 +1,10 @@
-import multiprocessing
+#import shap
+import matplotlib.pyplot as plt
+import pandas as pd
 import globals
 import numpy as np
 import subprocess
 import os
-import re
 import pm4py
 from utils import read_logs, read_models,  get_all_ready_logs
 from filehelper import gather_all_xes, get_all_ready_logs, get_all_ready_logs_multiple
@@ -25,23 +26,66 @@ from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.svm import SVR
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.neural_network import MLPRegressor
+from lime import lime_tabular
+from sklearn.tree import plot_tree
 
 
 
 
 
-label_to_index = {label: index for index,
-                  label in enumerate(globals.algorithm_portfolio)}
+
+def read_multiobjective_graph(log_path,ready_training,measure_weight_dict,regression_method="linear_regression"):
+    predicted_alg_values = {}
+    relevant_measures = [key for key, value in measure_weight_dict.items() if value > 0]
+    predicted_algorithm_vectors = {algorithm: [] for algorithm in globals.algorithm_portfolio}
+    actual_algorithm_vectors = {algorithm: [] for algorithm in globals.algorithm_portfolio}
+
+    for discovery_algorithm in globals.algorithm_portfolio:
+        for measure_name in relevant_measures:
+            predicted_value = regression(log_path,regression_method,measure_name,discovery_algorithm,ready_training)
+            actual_value = read_measure_entry(log_path,discovery_algorithm,measure_name)
+            predicted_alg_values[discovery_algorithm, measure_name] = predicted_value
+            predicted_algorithm_vectors[discovery_algorithm].append(predicted_value)
+            actual_algorithm_vectors[discovery_algorithm].append(actual_value)
+
+    n = len(globals.algorithm_portfolio)
+    predicted_dominated = set()
+    actual_dominated = set()
+    for i in range(n):
+        for j in range(n):
+            algo_i = globals.algorithm_portfolio[i]
+            algo_j = globals.algorithm_portfolio[j]
+            if algo_i_dominates_algo_j(predicted_algorithm_vectors[algo_i],predicted_algorithm_vectors[algo_j],relevant_measures):
+                predicted_dominated.add(algo_j)
+            if algo_i_dominates_algo_j(actual_algorithm_vectors[algo_i],actual_algorithm_vectors[algo_j],relevant_measures):
+                actual_dominated.add(algo_j)
 
 
-all_labels = list(label_to_index.keys())
-def activate_smac_env():
-    subprocess.run("conda run -n SMAC",shell=True)
+   
+    print(f"predicted dominated algos {predicted_dominated}")
+    print(f"acutal dominated algos {actual_dominated}")
+
+    m = max(len(predicted_dominated),len(actual_dominated))
+    u = len(predicted_dominated.intersection(actual_dominated))
+
+    return u/m
 
 
 
-
-
+def algo_i_dominates_algo_j(algo_i_value_vector,algo_j_value_vector,relevant_measures):
+    i_dominates_j = True
+    k = 0 
+    for measure in relevant_measures:
+        if globals.measures_kind[measure] == "max":
+            if algo_i_value_vector[k] <= algo_j_value_vector[k]:
+                i_dominates_j = False
+            elif globals.measures_kind[measure] == "min":
+                if algo_i_value_vector[k] >= algo_j_value_vector[k]:
+                    i_dominates_j = False
+                else:
+                    print("fuck")
+                k+=1
+    return i_dominates_j
 
 
 
@@ -120,12 +164,45 @@ def read_fitted_regressor(regression_method, measure_name,discovery_algorithm, r
     return reg
 
 
+def classification_prediction_ranking(log_path, classification_method, measure_name, ready_training):
+    if classification_method == "autofolio":
+        print("We don't support autofolio for this.")
+        return
+
+    clf = read_fitted_classifier(classification_method, measure_name, ready_training)
+
+    # Check if the classifier has the predict_proba method
+    if hasattr(clf, 'predict_proba'):
+        # Read the feature vector from the log path
+        feature_vector = read_feature_vector(log_path)
+
+        # Get probability estimates for each class
+        probabilities = clf.predict_proba(feature_vector)[0]
+
+        # Get class labels
+        classes = clf.classes_
+
+        # Pair each probability with its corresponding class label
+        probability_class_pairs = list(zip(probabilities, classes))
+
+        # Sort the pairs in descending order of probability
+        sorted_pairs = sorted(probability_class_pairs, reverse=True, key=lambda pair: pair[0])
+
+        # Extract the class labels in sorted order to get the ranking
+        ranked_predictions = [pair[1] for pair in sorted_pairs]
+
+        # Return the ranked predictions
+        algos_left = set(globals.algorithm_portfolio)  - set(ranked_predictions)
+        return ranked_predictions + list(algos_left)
+    else:
+        print("This classifier does not support probability predictions.")
+        return None
 
 
 #TODO: tailor this again to backend
 def classification(log_path, classification_method,measure_name,ready_training):
     if classification_method == "autofolio":
-        return autofolio_classification(log_path,measure_name)
+        return autofolio_classification(log_path,ready_training,measure_name)
 
 
     clf = read_fitted_classifier(classification_method,measure_name,ready_training)
@@ -171,9 +248,8 @@ def ranking_classification(log_path, classification_method,measure_name):
     return class_ranking_array
 
 
-def predict_regression(log_path, measure_name,regression_method="linear_regression"):
+def predict_regression(log_path, measure_name,ready_training,regression_method="linear_regression"):
     predicted_values = {}
-    ready_training = list(globals.training_log_paths.keys())
     for discovery_algorithm in globals.algorithm_portfolio:
         predicted_values[discovery_algorithm] = regression(log_path,regression_method,measure_name,discovery_algorithm,ready_training)
 
@@ -253,23 +329,115 @@ def list_files_with_sizes(file_paths):
     for file_path, file_size in file_details:
         print(f"{file_path}: {file_size} bytes")
 
+
+def read_shap_explainer(classification_method,x_train):
+    cache_file_path = f"./cache/explainers/{classification_method}.pkl"
+    try:
+        explainer = load_cache_variable(cache_file_path)
+    except Exception as e:
+
+        clf = read_fitted_classifier(classification_method, chosen_measure, ready_training)
+
+        if classification_method == "decision_tree" or classification_method == "random_forest":
+            explainer = shap.TreeExplainer(clf)
+        elif classification_method == "knn" or classification_method == "svm" or classification_method =="logistic_regression":
+            explainer = shap.KernelExplainer(clf.predict_proba, x_train)    
+        elif classification_method == "svm":
+            explainer = shap.KernelExplainer(clf.predict_proba,x_train)
+        else:
+            print("no shap values possible for this classification method")        
+            sys.exit(-1)
+
+        store_cache_variable(explainer, cache_file_path)
+
+    return explainer
+
+def create_shap_graph(ready_training,ready_testing,classification_method,chosen_measure):
+    x_test = read_feature_matrix(ready_testing)
+    x_train = read_feature_matrix(ready_training)
+
+
+    x_test = pd.DataFrame(x_test, columns=globals.selected_features)
+    x_train = pd.DataFrame(x_train, columns=globals.selected_features)
+
+    explainer = read_shap_explainer(classification_method,x_train)
+
+    shap_values = explainer.shap_values(x_test)
+
+    plt.clf()
+
+    # Plot the SHAP summary plot
+    shap.summary_plot(shap_values[1], x_test, feature_names=globals.selected_features, show=False)
+
+    # Save the plot
+    storage_dir = "../evaluation/shap"
+
+    plt.savefig(f'{storage_dir}/{classification_method}_{chosen_measure}_shap_summary_plot.png')
+    plt.show()
+
+
+def create_lime_graph(measure_name):
+
+    ready_training = get_all_ready_logs(gather_all_xes("../logs/training"),measure_name)
+    ready_testing = get_all_ready_logs(gather_all_xes("../logs/testing"),measure_name)
+
+    # Assume 'model' is your scikit-learn classifier
+    x_test = read_feature_matrix(ready_testing)
+    x_train = read_feature_matrix(ready_training)
+
+
+    #x_test = pd.DataFrame(x_test, columns=globals.selected_features)
+    #x_train = pd.DataFrame(x_train, columns=globals.selected_features)
+    custom_model_predict = lambda x: classification(x,"autofolio",measure_name,ready_training)
+
+    # Assume 'X_train' is your training data
+    explainer = lime_tabular.LimeTabularExplainer(x_train, mode="classification")
+
+    input("hji")
+    # Assume 'X_test[i]' is the instance you want to explain
+    explanation = explainer.explain_instance(read_feature_vector(ready_testing[0]).values.reshape(1, -1), custom_model_predict)
+
+    # Save the explanation plot as a PNG file
+    explanation.save_to_file('lime_explanation_plot.png')
+
+
+
+
 if __name__ == "__main__":
-
-    #init()
-    log_paths = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
-    input(len(log_paths))
-
-
-
-
-
-    input("stop")
-    ready_training = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
-    log_path = ready_training[0]
-    for regression_method in globals.regression_methods:
-        for measure_name in globals.measures_list:
-            for discovery_algorithm in globals.algorithm_portfolio:
-                print(regression(log_path,regression_method,measure_name,discovery_algorithm,ready_training))
-
+    #shap.initjs()  
+    globals.algorithm_portfolio =  ["alpha","heuristic",
+                       "inductive","ILP", "split"] 
+    
+    globals.selected_features = ["no_distinct_traces"
+                     , "no_total_traces"
+                     , "avg_trace_length"
+                     , "avg_event_repetition_intra_trace"
+                     ,
+                     "no_distinct_events", "no_events_total", "no_distinct_start", "no_distinct_end", "density", "length_one_loops","total_no_activities","percentage_concurrency","percentage_sequence",
+    "dfg_mean_variable_degree",
+    "dfg_variation_coefficient_variable_degree",
+    "dfg_min_variable_degree",
+    "dfg_max_variable_degree",
+    "dfg_entropy_variable_degree",
+    "dfg_wcc_min",
+    "dfg_wcc_max",
+ ]
     
 
+    ready_training = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
+    ready_testing = get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))
+    measure_weight_dict = {}
+    for measure in globals.measures_list:
+        measure_weight_dict[measure] = 0
+        
+    measure_weight_dict["token_fitness"] = 1
+    measure_weight_dict["token_precision"] = 1
+    #measure_weight_dict["generalization"] = 1
+    #measure_weight_dict["pm4py_simplicity"] = 1
+
+
+    sum = 0
+    for log_path in ready_testing:
+        sum += read_multiobjective_graph(log_path,ready_training,measure_weight_dict)
+
+    input(sum/len(ready_testing))

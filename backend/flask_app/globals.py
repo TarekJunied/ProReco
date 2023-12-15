@@ -1,6 +1,10 @@
 home_dir = "/Users/tarekjunied/Documents/Universität/BachelorThesis"
-algorithm_portfolio = ["alpha","alpha_plus" ,"heuristic",
-                       "inductive", "inductive_infrequent","ILP", "split"]
+new_algos = ["alpha_plus", "inductive_infrequent","inductive_direct"]
+algorithm_portfolio = ["alpha","heuristic",
+                       "inductive","ILP", "split"]  + new_algos
+
+
+
 
 #    "graph_diameter",    "cyclicity",    "simple_path_complexity",    "transition_profile_minimum_cosine_similarity",
 
@@ -99,7 +103,7 @@ selected_features = ["no_distinct_traces"
     "dfg_wcc_min",
     "dfg_wcc_max",
  ]
-selected_features = fig4pm_features
+#selected_features = fig4pm_features
 
 ## "alignment_precision": "max" "alignment_fitness": "max", used_memory": "min",
 measures_kind = {"token_fitness": "max", "token_precision": "max",
@@ -114,7 +118,7 @@ normalisierbare_measures = {"token_fitness": "max",  "token_precision": "max",
 
 #logistic regression removed, "autofolio"
 classification_methods = ["decision_tree", "knn", "svm",
-                          "random_forest", "gradient_boosting"]
+                          "random_forest", "gradient_boosting","logistic_regression"]
 
 regression_methods = [
     "linear_regression",

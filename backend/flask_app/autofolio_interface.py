@@ -5,7 +5,7 @@ import sys
 import os 
 import subprocess
 import re
-from features import read_single_feature
+from features import read_single_feature,space_out_feature_vector_string
 from utils import get_log_name
 from filehelper import gather_all_xes, get_all_ready_logs_multiple
 from measures import read_measure_entry
@@ -70,14 +70,12 @@ def create_performance_csv(log_paths,measure_name,filepath):
 
 
 
-def create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
+def create_autofolio_predictor(training_logpaths,measure_name):
 
 
 
     training_features_filename = f"{measure_name}_training_features.csv"
     training_performance_filename =f"{measure_name}_training_performance.csv"
-    testing_features_filename = f"{measure_name}_testing_features.csv"
-    testing_performance_filename =f"{measure_name}_testing_performance.csv"
 
 
 
@@ -90,8 +88,8 @@ def create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
     create_feature_csv(training_logpaths,training_features_filepath)
     create_performance_csv(training_logpaths,measure_name,training_performance_filepath)
 
-    create_feature_csv(testing_logpaths,testing_features_filepath)
-    create_performance_csv(testing_logpaths,measure_name,testing_performance_filepath)
+    #create_feature_csv(testing_logpaths,testing_features_filepath)
+    #create_performance_csv(testing_logpaths,measure_name,testing_performance_filepath)
 
     predictor_filepath = f"./af_predictors/{measure_name}_predictor.af"
 
@@ -125,11 +123,9 @@ def create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
     command_str = " ".join(command)
 
 
-
     os.chdir(os.path.abspath("./AutoFolio"))
 
     subprocess.run(command_str,shell=True)
-
 
     os.chdir("../")
     return predictor_filepath
@@ -152,24 +148,20 @@ def extract_prediction_from_autofolio_string(autofolio_string):
         # Return None if no match is found
         return "AutoFolio Error"
 
-def read_autofolio_predictor(training_logpaths,testing_logpaths,measure_name):
+def read_autofolio_predictor(training_logpaths,measure_name):
     if os.path.exists(f"./AutoFolio/af_predictors/{measure_name}_predictor.af"):
         ret = f"./af_predictors/{measure_name}_predictor.af"
     else:
-        ret = f"./{create_autofolio_predictor(training_logpaths,testing_logpaths,measure_name)}"
+        ret = f"{create_autofolio_predictor(training_logpaths,measure_name)}"
     return ret
 
 
 
-def autofolio_classification(log_path,measure_name):
+def autofolio_classification(log_path,ready_training,measure_name):
 
-    
 
-    training_logpaths = list(globals.training_log_paths.keys())
-    testing_logpaths = list(globals.testing_log_paths.keys())
 
-    predictor_filepath = read_autofolio_predictor(training_logpaths,testing_logpaths,measure_name)
-
+    predictor_filepath = read_autofolio_predictor(ready_training,measure_name)
 
     spaced_out_feature_vector_string = space_out_feature_vector_string(log_path)
 
@@ -197,9 +189,16 @@ def autofolio_classification(log_path,measure_name):
     prediction = extract_prediction_from_autofolio_string(output)
 
     if prediction not in globals.algorithm_portfolio:
-        input("an error occureed with autofolio")
         return 
     
     os.chdir("../")
 
     return prediction
+
+
+
+
+if __name__ == "__main__":
+    ready_training = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
+    for measure in globals.measures_list:
+        create_autofolio_predictor(ready_training,measure)

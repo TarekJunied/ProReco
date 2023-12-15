@@ -12,7 +12,7 @@ from utils import get_all_ready_logs,load_cache_variable
 from recommender import classification,regression, predict_regression
 from filehelper import gather_all_xes, get_all_ready_logs_multiple
 from measures import read_target_entries, read_classification_target_vector,  read_worst_entry,read_measure_entry, read_target_entry
-from features import read_feature_matrix
+from features import read_feature_matrix,read_single_feature
 from init import init
 
 
@@ -26,7 +26,6 @@ def create_scikit_classification_evaluation_plot(selected_measures,ready_trainin
     
         display_str += f" {len(ready_testing)} "
         values += [evaluate_scikit_measure_accuracy(measure,ready_training,ready_testing,classification_method)]
-        input(values)
 
 
 
@@ -288,13 +287,15 @@ if __name__ == "__main__":
     
 
 
-    log_paths = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
-    ready_training= log_paths[:80]
-    ready_testing = log_paths[81:len(log_paths)-1]
+    ready_training = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
+    ready_testing = get_all_ready_logs_multiple(gather_all_xes("../logs/testing"))
 
-    create_scikit_classification_evaluation_plot(globals.measures_list,ready_training,ready_testing,"knn")
 
-    input("done")
+    create_scikit_classification_evaluation_plot(globals.measures_list,ready_training, ready_testing, "autofolio")
+    #for classification_method in globals.classification_methods:
+    #    create_scikit_classification_evaluation_plot(globals.measures_list,ready_training,ready_testing,classification_method)
+
+  
 
     """"
 
@@ -306,8 +307,4 @@ if __name__ == "__main__":
                 for discovery_algorithm in globals.algorithm_portfolio:
                     create_two_measure_graph(measure_name1,measure_name2,discovery_algorithm)
     """
-    create_auto_regression_accuracy_plot(globals.measures_list)
-    input("hi")
-    for regression_method in globals.regression_methods:
-        create_scikit_regression_evaluation_plot(globals.measures_list,regression_method)
 

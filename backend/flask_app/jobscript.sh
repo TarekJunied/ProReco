@@ -1,21 +1,22 @@
 #!/usr/local_rwth/bin/zsh
-#SBATCH --job-name=Real72hoursnow
-#SBATCH --output=Real72_output.txt
-#SBATCH --error=Real72_error.txt
+#SBATCH --job-name=newalog_oldslogs
+#SBATCH --output=newalgos_oldlogs_output.txt
+#SBATCH --error=newalgos_oldlogs_error.txt
 #SBATCH --nodes=1
-#SBATCH --ntasks=10
+#SBATCH --ntasks=8
 #SBATCH --mem=10G
+#SBATCH --time=12:00:00
 #SBATCH --account=thes1569
-#SBATCH --time=60:00:00
-
 
 
 start_time=$(date +"%Y-%m-%d %H:%M:%S")
 
-#
+##  this ia c ommetn SBATCH --account=thes1569
 
 
-/usr/bin/python3.9 init.py
+
+/usr/bin/python3.9 init.py "/home/qc261227/Recommender/RecommenderSystem/backend/logs/training" "/home/qc261227/Recommender/RecommenderSystem/backend/logs/testing"
+
 
 # Record the end time
 end_time=$(date +"%Y-%m-%d %H:%M:%S")
