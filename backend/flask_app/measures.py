@@ -6,9 +6,7 @@ from pm4py.algo.evaluation.generalization import algorithm as generalization_eva
 from pm4py.algo.evaluation.simplicity import algorithm as simplicity_evaluator
 from utils import read_model, read_log
 from utils import generate_cache_file, generate_log_id, store_cache_variable, load_cache_variable, compute_model
-from filehelper import gather_all_xes,split_file_path,get_all_ready_logs
-
-
+from filehelper import gather_all_xes, split_file_path, get_all_ready_logs
 
 
 def measure_token_fitness(log_path, discovery_algorithm):
@@ -150,10 +148,10 @@ def compute_measure(log_path, discovery_algorithm, measure_name):
         raise ValueError("Invalid measure name")
 
 
-def read_max_target_vector(log_path,  measure_name):
+def read_max_target_vector(log_path,  measure_name, algorithm_portfolio):
     cur_max = float("-inf")
     cur_algo = None
-    for discovery_algorithm in globals.algorithm_portfolio:
+    for discovery_algorithm in algorithm_portfolio:
         algo_val = read_measure_entry(
             log_path, discovery_algorithm, measure_name)
         if algo_val > cur_max:
@@ -163,10 +161,10 @@ def read_max_target_vector(log_path,  measure_name):
     return cur_algo
 
 
-def read_min_target_vector(log_path, measure_name):
+def read_min_target_vector(log_path, measure_name, algorithm_portfolio):
     cur_min = float("inf")
     cur_algo = None
-    for discovery_algorithm in globals.algorithm_portfolio:
+    for discovery_algorithm in algorithm_portfolio:
         algo_val = read_measure_entry(
             log_path, discovery_algorithm, measure_name)
         if algo_val < cur_min:
@@ -178,10 +176,8 @@ def read_min_target_vector(log_path, measure_name):
 
 def read_measure_entry(log_path, discovery_algorithm, measure_name):
 
-    if (log_path, discovery_algorithm,measure_name) in globals.measures:
-        return globals.measures[log_path,discovery_algorithm,measure_name]
-
-
+    if (log_path, discovery_algorithm, measure_name) in globals.measures:
+        return globals.measures[log_path, discovery_algorithm, measure_name]
 
     log_id = generate_log_id(log_path)
     cache_file_path = generate_cache_file(
@@ -196,12 +192,14 @@ def read_measure_entry(log_path, discovery_algorithm, measure_name):
     return measure_entry
 
 
-def read_target_entry(log_path, measure_name):
+def read_target_entry(log_path, measure_name, algorithm_portfolio):
     if globals.measures_kind[measure_name] == "max":
-        target_entry = read_max_target_vector(log_path, measure_name)
+        target_entry = read_max_target_vector(
+            log_path, measure_name, algorithm_portfolio)
         return target_entry
     if globals.measures_kind[measure_name] == "min":
-        target_entry = read_min_target_vector(log_path, measure_name)
+        target_entry = read_min_target_vector(log_path, measure_name, algorithm_portfolio
+                                              )
         return target_entry
 
     return None
@@ -225,15 +223,14 @@ def read_classification_target_vector(log_paths, measure_name):
     return y
 
 
-def read_regression_target_vector(log_paths,discovery_algorithm, measure_name):
+def read_regression_target_vector(log_paths, discovery_algorithm, measure_name):
     n = len(log_paths)
     y = [None]*n
 
     for i in range(n):
-        y[i] = read_measure_entry(log_paths[i], discovery_algorithm,measure_name)
+        y[i] = read_measure_entry(
+            log_paths[i], discovery_algorithm, measure_name)
     return y
-
-
 
 
 def read_worst_entry(log_path, measure_name):
@@ -248,10 +245,12 @@ def read_worst_entry(log_path, measure_name):
 
 
 if __name__ == "__main__":
-    log_paths = get_all_ready_logs(gather_all_xes("../logs/training") + gather_all_xes("../logs/testing"),"runtime")
+    log_paths = get_all_ready_logs(gather_all_xes(
+        "../logs/training") + gather_all_xes("../logs/testing"), "runtime")
 
     for log_path in log_paths:
         for discovery_algorithm in globals.algorithm_portfolio:
             log_name = split_file_path(log_path)["filename"]
-            current_runtime = read_measure_entry(log_path,discovery_algorithm,"log_runtime")
-            #store_cache_variable(math.log10(current_runtime),f"./cache/measures/{discovery_algorithm}_log_runtime_{log_name}.pkl")
+            current_runtime = read_measure_entry(
+                log_path, discovery_algorithm, "log_runtime")
+            # store_cache_variable(math.log10(current_runtime),f"./cache/measures/{discovery_algorithm}_log_runtime_{log_name}.pkl")

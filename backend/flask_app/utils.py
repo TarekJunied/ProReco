@@ -4,13 +4,15 @@ import time
 import pickle
 import os
 import random
-import hashlib
 import globals
 import math
-from filehelper import  gather_all_xes
+from filehelper import gather_all_xes
 from discovery.splitminer.split_miner import discover_petri_net_split
 from discovery.structuredminer.fodina_miner import discover_petri_net_fodina
 from pm4py.algo.discovery.inductive import algorithm as inductive_miner
+from pm4py.algo.discovery.alpha import algorithm as alpha_miner
+from pm4py.algo.discovery.heuristics import algorithm as heuristics_miner
+from pm4py.algo.discovery.ilp import algorithm as ilp_miner
 
 
 def get_log_name(log_path):
@@ -46,43 +48,39 @@ def compute_model(log_path, discovery_algorithm):
     log = read_log(log_path)
 
     print(f"Start compute_model using {discovery_algorithm}")
-    
+
     return discovery_functions[discovery_algorithm](log)
-
-
-
 
 
 def read_model(log_path, discovery_algorithm):
 
-
-    if (log_path,discovery_algorithm) in globals.models:
+    if (log_path, discovery_algorithm) in globals.models:
         return model
 
-
     log_id = generate_log_id(log_path)
-    cache_file_path = generate_cache_file(
-        f"./cache/models/{discovery_algorithm}_{log_id}.pkl")
-    runtime_cache_file_path = generate_cache_file(
-        f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl")
-    log_runtime_cache_file_path = generate_cache_file(
-        f"./cache/measures/{discovery_algorithm}_log_runtime_{log_id}.pkl")
+    cache_file_path = f"./cache/models/{discovery_algorithm}_{log_id}.pkl"
+    runtime_cache_file_path = f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl"
+    log_runtime_cache_file_path = f"./cache/measures/{discovery_algorithm}_log_runtime_{log_id}.pkl"
+
     try:
-            model = load_cache_variable(cache_file_path)
-            runtime = load_cache_variable(runtime_cache_file_path)
-            log_runtime = load_cache_variable(runtime_cache_file_path)
+        model = load_cache_variable(cache_file_path)
+        runtime = load_cache_variable(runtime_cache_file_path)
+        log_runtime = load_cache_variable(runtime_cache_file_path)
     except Exception:
         print(
-                f"No cached model found, now computing model for {log_path} using {discovery_algorithm}.")
+            f"No cached model found, now computing model for {log_path} using {discovery_algorithm}.")
 
         start_time = time.time()
         model = compute_model(log_path, discovery_algorithm)
         end_time = time.time()
-
+        generate_cache_file(runtime_cache_file_path)
+        generate_cache_file(cache_file_path)
+        generate_cache_file(log_runtime_cache_file_path)
         store_cache_variable(
             end_time-start_time, runtime_cache_file_path)
         store_cache_variable(model, cache_file_path)
-        store_cache_variable(math.log10(end_time - start_time), log_runtime_cache_file_path)
+        store_cache_variable(math.log10(
+            end_time - start_time), log_runtime_cache_file_path)
     return model
 
 
@@ -113,15 +111,15 @@ def generate_cache_file(cache_filepath):
 
 def read_log(log_path):
     if log_path in globals.training_log_paths:
-            return globals.training_log_paths[log_path]
+        return globals.training_log_paths[log_path]
     elif log_path in globals.testing_log_paths:
-            return globals.testing_log_paths[log_path]
-    
+        return globals.testing_log_paths[log_path]
+
     log_id = generate_log_id(log_path)
     cache_file_path = generate_cache_file(f"./cache/logs/{log_id}.pkl")
     log = None
     try:
-            log = load_cache_variable(cache_file_path)
+        log = load_cache_variable(cache_file_path)
     except Exception:
         print("No cached log found, now parsing log.")
         log = pm4py.read.read_xes(log_path)
@@ -153,7 +151,6 @@ def all_files_exist(file_paths):
     return all(os.path.exists(file_path) for file_path in file_paths)
 
 
-    
 def get_all_ready_logs(log_paths, measure_name):
     ready_logs = []
     for log_path in log_paths:
@@ -190,26 +187,56 @@ def split_data(data, ratio=0.8, seed=None):
 
     return training_data, testing_data
 
-def discover_petri_net_inductive_infrequent(log):
+
+def discover_petri_net_inductive(log):
     return inductive_miner.apply(
-                log, variant=inductive_miner.Variants.IMf
+        log, variant=inductive_miner.Variants.IM
     )
 
-def discover_petri_net_inductive_direct(log): 
+
+def discover_petri_net_inductive_infrequent(log):
     return inductive_miner.apply(
-                log, variant=inductive_miner.Variants.IMd
-            )
+        log, variant=inductive_miner.Variants.IMf
+    )
+
+
+def discover_petri_net_inductive_direct(log):
+    return inductive_miner.apply(
+        log, variant=inductive_miner.Variants.IMd
+    )
+
+
+def discover_petri_net_alpha(log):
+    return alpha_miner.apply(
+        log, variant=alpha_miner.ALPHA_VERSION_CLASSIC
+    )
+
+
+def discover_petri_net_alpha_plus(log):
+    return alpha_miner.apply(
+        log, variant=alpha_miner.ALPHA_VERSION_PLUS
+    )
+
+
+def discover_petri_net_heuristic(log):
+    return heuristics_miner.apply(log)
+
+
+def discover_petri_net_ilp(log):
+    return ilp_miner.apply(log, variant=ilp_miner.Variants.CLASSIC)
 
 
 discovery_functions = {
-    "alpha":pm4py.discover_petri_net_alpha,
-    "alpha_plus":pm4py.discover_petri_net_alpha_plus,
-    "heuristic":pm4py.discover_petri_net_heuristics,
-    "inductive":pm4py.discover_petri_net_ilp,
-    "split":discover_petri_net_split,
-    "inductive_infrequent":discover_petri_net_inductive_infrequent,
-    "inductive_direct":discover_petri_net_inductive_direct
+    "alpha": discover_petri_net_alpha,
+    "alpha_plus": discover_petri_net_alpha_plus,
+    "heuristic": discover_petri_net_heuristic,
+    "inductive": discover_petri_net_inductive,
+    "split": discover_petri_net_split,
+    "inductive_infrequent": discover_petri_net_inductive_infrequent,
+    "inductive_direct": discover_petri_net_inductive_direct,
+    "ILP": discover_petri_net_ilp
 }
+
 
 if __name__ == "__main__":
     log_paths = gather_all_xes("../logs/training")

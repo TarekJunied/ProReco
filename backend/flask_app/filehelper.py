@@ -2,6 +2,9 @@ import os
 import globals
 import pickle
 import zipfile
+import pytz
+import re
+from datetime import datetime
 import tarfile
 
 
@@ -136,15 +139,15 @@ def remove_extension(filename):
 def get_all_ready_logs_multiple(log_paths):
     current = set(log_paths)
 
-
     for measure in globals.measures_list:
-        ready_logs =set(get_all_ready_logs(current, measure))
+        ready_logs = set(get_all_ready_logs(current, measure))
         current = current.intersection(ready_logs)
-
 
     return list(current)
 
-#TODO: improve the computation time of this function to redc
+# TODO: improve the computation time of this function to redc
+
+
 def get_all_ready_logs(log_paths, measure_name):
     ready_logs = []
     for log_path in log_paths:
@@ -158,7 +161,7 @@ def get_all_ready_logs(log_paths, measure_name):
             file_list += [model_path, measure_cache]
         for feature in globals.selected_features:
             feature_path = f"./cache/features/{feature}_{log_id}.pkl"
-            file_list +=[feature_path]
+            file_list += [feature_path]
 
         no_problem = True
         for file in file_list:
@@ -170,6 +173,7 @@ def get_all_ready_logs(log_paths, measure_name):
             ready_logs += [log_path]
 
     return ready_logs
+
 
 def unzip_all(zip_path, extract_path):
     # Check if the provided path is a directory
@@ -188,7 +192,8 @@ def unzip_all(zip_path, extract_path):
             print(f"Unzipped: {file_path}")
 
             # Recursively call the function for the extracted contents
-            unzip_all(os.path.join(extract_path, file_name.split('.')[0]), extract_path)
+            unzip_all(os.path.join(extract_path,
+                      file_name.split('.')[0]), extract_path)
 
         elif tarfile.is_tarfile(file_path):
             # Untar the file
@@ -197,11 +202,52 @@ def unzip_all(zip_path, extract_path):
             print(f"Untarred: {file_path}")
 
             # Recursively call the function for the extracted contents
-            unzip_all(os.path.join(extract_path, file_name.split('.')[0]), extract_path)
+            unzip_all(os.path.join(extract_path,
+                      file_name.split('.')[0]), extract_path)
 
 
+def add_timestamps_to_log_path(file_path):
+    """
+    Adds unique date lines to each <event> tag in the XML file at file_path.
 
+    :param file_path: Path to the input XML file.
+    :param dates: A list of tuples, where each tuple contains two date strings (start and end).
+    :param output_file_path: Path to the output XML file. If None, the input file is overwritten.
+    """
+    # Read the contents of the file
+    with open(file_path, 'r', encoding='utf-8') as file:
+        content = file.readlines()
+
+    updated_content = []
+    inside_event = False
+    for line in content:
+        updated_content.append(line)
+        if '<event>' in line:
+            inside_event = True
+        elif '</event>' in line:
+            inside_event = False
+        elif inside_event and '<string' in line:
+            try:
+                utc_now = datetime.now(pytz.utc)
+                timestamp = utc_now.strftime('%Y-%m-%dT%H:%M:%S+00:00')
+                date_lines = f'\t\t\t<date key="time:start_timestamp" value="{timestamp}" />\n'
+                date_lines += f'\t\t\t<date key="time:timestamp" value="{timestamp}" />\n'
+                updated_content.append(date_lines)
+            except StopIteration:
+                print("Error in processing dates.")
+                break
+
+    filename = split_file_path(file_path)["filename"]
+    directory = split_file_path(file_path)["directory"]
+    # Write the updated content back to the file or to a new file
+    output_file_path = f"/home/qc261227/Recommender/RecommenderSystem/backend/logs/modified_eventlogs/modified_{filename}.xes"
+    # output_file_path = file_path
+    with open(output_file_path, 'w', encoding='utf-8') as file:
+        file.writelines(updated_content)
 
 
 if __name__ == "__main__":
-    unzip_all("../logs/real_life_logs","../logs/real_life_logs")
+    log_paths = gather_all_xes("../logs/process_meta_learning_logs")
+    for log_path in log_paths:
+        print(log_path)
+        add_timestamps_to_log_path(log_path)

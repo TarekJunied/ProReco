@@ -28836,3 +28836,1918 @@ File './cache/measures/inductive_log_runtime_1287402867.pkl' created.
 No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1287402867.xes using inductive.
 Variable loaded from cache file: ./cache/logs/1287402867.pkl
 Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1287402867.pkl
+Variable stored in cache file: ./cache/models/inductive_1287402867.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1287402867.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1287402867.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1287402867.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1287402867.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1287402867.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1287402867.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/4268465861.pkl
+Variable loaded from cache file: ./cache/models/alpha_4268465861.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_4268465861.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_4268465861.pkl
+Variable loaded from cache file: ./cache/models/heuristic_4268465861.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_4268465861.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_4268465861.pkl
+Variable loaded from cache file: ./cache/models/inductive_4268465861.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_4268465861.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_4268465861.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/4268465861.xes using ILP.
+Variable loaded from cache file: ./cache/logs/4268465861.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/3752191743.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3752191743.xes using alpha.
+Variable loaded from cache file: ./cache/logs/3752191743.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_3752191743.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_3752191743.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3752191743.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/3752191743.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_3752191743.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_3752191743.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_3752191743.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_3752191743.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_3752191743.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3752191743.xes using inductive.
+Variable loaded from cache file: ./cache/logs/3752191743.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1261498058.pkl
+Variable stored in cache file: ./cache/models/inductive_1261498058.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1261498058.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1261498058.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1261498058.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1261498058.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1261498058.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1261498058.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1459978320.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1459978320.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1459978320.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1459978320.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1459978320.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1459978320.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1459978320.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1459978320.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1459978320.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1459978320.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1459978320.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1459978320.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1459978320.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1459978320.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1459978320.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1459978320.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1459978320.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1459978320.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1459978320.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1459978320.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1459978320.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/281332931.pkl
+Variable loaded from cache file: ./cache/models/alpha_281332931.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_281332931.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_281332931.pkl
+Variable loaded from cache file: ./cache/models/heuristic_281332931.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_281332931.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_281332931.pkl
+Variable loaded from cache file: ./cache/models/inductive_281332931.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_281332931.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_281332931.pkl
+Variable loaded from cache file: ./cache/models/ILP_281332931.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_281332931.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_281332931.pkl
+Variable loaded from cache file: ./cache/models/split_281332931.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_281332931.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_281332931.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/281332931.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/281332931.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_281332931.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_281332931.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_281332931.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_281332931.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_281332931.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_281332931.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/281332931.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/281332931.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_281332931.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_281332931.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_281332931.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_281332931.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_281332931.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_281332931.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/281332931.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/281332931.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_281332931.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_281332931.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_281332931.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_281332931.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_281332931.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_281332931.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_281332931.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_281332931.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_281332931.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_281332931.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_281332931.pkl
+Variable loaded from cache file: ./cache/features/density_281332931.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_281332931.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_281332931.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_281332931.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_281332931.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_281332931.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_281332931.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_281332931.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_281332931.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_281332931.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_281332931.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_281332931.pkl
+Variable loaded from cache file: ./cache/logs/319913825.pkl
+Variable loaded from cache file: ./cache/models/alpha_319913825.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/models/heuristic_319913825.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/models/inductive_319913825.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/models/ILP_319913825.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/models/split_319913825.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_319913825.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/319913825.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/319913825.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_319913825.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_319913825.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_319913825.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_319913825.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_319913825.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_319913825.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/319913825.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/319913825.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_319913825.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_319913825.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_319913825.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_319913825.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_319913825.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_319913825.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/319913825.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/319913825.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_319913825.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_319913825.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_319913825.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_319913825.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_319913825.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_319913825.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_319913825.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_319913825.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_319913825.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_319913825.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_319913825.pkl
+Variable loaded from cache file: ./cache/features/density_319913825.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_319913825.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_319913825.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_319913825.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_319913825.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_319913825.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_319913825.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_319913825.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_319913825.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_319913825.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_319913825.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_319913825.pkl
+Variable loaded from cache file: ./cache/logs/37823655.pkl
+Variable loaded from cache file: ./cache/models/alpha_37823655.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_37823655.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_37823655.pkl
+Variable loaded from cache file: ./cache/models/heuristic_37823655.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_37823655.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_37823655.pkl
+Variable loaded from cache file: ./cache/models/inductive_37823655.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_37823655.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_37823655.pkl
+Variable loaded from cache file: ./cache/models/ILP_37823655.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_37823655.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_37823655.pkl
+Variable loaded from cache file: ./cache/models/split_37823655.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_37823655.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_37823655.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/37823655.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/37823655.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_37823655.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_37823655.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_37823655.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_37823655.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_37823655.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_37823655.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/37823655.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/37823655.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_37823655.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_37823655.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_37823655.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_37823655.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_37823655.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_37823655.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/37823655.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/37823655.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_37823655.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_37823655.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_37823655.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_37823655.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_37823655.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_37823655.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_37823655.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_37823655.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_37823655.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_37823655.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_37823655.pkl
+Variable loaded from cache file: ./cache/features/density_37823655.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_37823655.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_37823655.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_37823655.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_37823655.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_37823655.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_37823655.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_37823655.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_37823655.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_37823655.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_37823655.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_37823655.pkl
+Variable loaded from cache file: ./cache/logs/3986638292.pkl
+Variable loaded from cache file: ./cache/models/alpha_3986638292.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3986638292.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3986638292.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3986638292.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/3986638292.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_3986638292.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_3986638292.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_3986638292.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_3986638292.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_3986638292.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3986638292.xes using inductive.
+Variable loaded from cache file: ./cache/logs/3986638292.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_3986638292.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_3986638292.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_3986638292.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_3986638292.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_3986638292.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3986638292.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3986638292.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/2650993573.pkl
+Variable loaded from cache file: ./cache/models/alpha_2650993573.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2650993573.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2650993573.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2650993573.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2650993573.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2650993573.pkl
+Variable loaded from cache file: ./cache/models/inductive_2650993573.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2650993573.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2650993573.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2650993573.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2650993573.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1671907633.pkl
+Variable loaded from cache file: ./cache/models/alpha_1671907633.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1671907633.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1671907633.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1671907633.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1671907633.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1671907633.pkl
+Variable loaded from cache file: ./cache/models/inductive_1671907633.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1671907633.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1671907633.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1671907633.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1671907633.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/2983627645.pkl
+Variable loaded from cache file: ./cache/models/alpha_2983627645.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2983627645.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2983627645.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2983627645.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2983627645.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2983627645.pkl
+Variable stored in cache file: ./cache/models/heuristic_2983627645.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2983627645.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2983627645.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2983627645.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2983627645.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2983627645.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2983627645.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_3752191743.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_3752191743.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_3752191743.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_3752191743.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_3752191743.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3752191743.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3752191743.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/3690311667.pkl
+Variable loaded from cache file: ./cache/models/alpha_3690311667.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3690311667.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3690311667.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3690311667.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3690311667.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3690311667.pkl
+Variable loaded from cache file: ./cache/models/inductive_3690311667.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3690311667.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3690311667.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/3690311667.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3690311667.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/4084997696.pkl
+Variable loaded from cache file: ./cache/models/alpha_4084997696.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_4084997696.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_4084997696.pkl
+Variable loaded from cache file: ./cache/models/heuristic_4084997696.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_4084997696.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_4084997696.pkl
+Variable loaded from cache file: ./cache/models/inductive_4084997696.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_4084997696.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_4084997696.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/4084997696.xes using ILP.
+Variable loaded from cache file: ./cache/logs/4084997696.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/226063071.pkl
+Variable loaded from cache file: ./cache/models/alpha_226063071.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_226063071.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_226063071.pkl
+Variable loaded from cache file: ./cache/models/heuristic_226063071.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_226063071.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_226063071.pkl
+Variable loaded from cache file: ./cache/models/inductive_226063071.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_226063071.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_226063071.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/226063071.xes using ILP.
+Variable loaded from cache file: ./cache/logs/226063071.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/4199153318.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/4199153318.xes using alpha.
+Variable loaded from cache file: ./cache/logs/4199153318.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_4199153318.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_4199153318.pkl
+Cache file does not exist yet.
+File './cache/models/heuristic_4199153318.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_runtime_4199153318.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/heuristic_log_runtime_4199153318.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/4199153318.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/4199153318.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_4199153318.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_4199153318.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_4199153318.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_4199153318.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_4199153318.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/4199153318.xes using inductive.
+Variable loaded from cache file: ./cache/logs/4199153318.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2983627645.pkl
+Variable stored in cache file: ./cache/models/inductive_2983627645.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2983627645.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2983627645.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2983627645.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2983627645.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2983627645.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2983627645.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1666134801.pkl
+Variable loaded from cache file: ./cache/models/alpha_1666134801.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1666134801.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1666134801.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1666134801.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1666134801.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1666134801.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1666134801.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1666134801.pkl
+Start compute_model using inductive
+now mapping pool
+Variable stored in cache file: ./cache/measures/inductive_runtime_1666134801.pkl
+Variable stored in cache file: ./cache/models/inductive_1666134801.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1666134801.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1666134801.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1666134801.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1666134801.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1666134801.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1666134801.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1479598006.pkl
+Variable loaded from cache file: ./cache/models/alpha_1479598006.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1479598006.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1479598006.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1479598006.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1479598006.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1479598006.pkl
+Variable loaded from cache file: ./cache/models/inductive_1479598006.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1479598006.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1479598006.pkl
+Variable loaded from cache file: ./cache/models/ILP_1479598006.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_1479598006.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_1479598006.pkl
+Variable loaded from cache file: ./cache/models/split_1479598006.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_1479598006.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_1479598006.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1479598006.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/1479598006.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_1479598006.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_1479598006.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_1479598006.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_1479598006.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_1479598006.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_1479598006.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1479598006.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/1479598006.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_1479598006.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_1479598006.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_1479598006.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_1479598006.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_1479598006.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_1479598006.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1479598006.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/1479598006.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_1479598006.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_1479598006.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_1479598006.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_1479598006.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_1479598006.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_1479598006.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_1479598006.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_1479598006.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_1479598006.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_1479598006.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_1479598006.pkl
+Variable loaded from cache file: ./cache/features/density_1479598006.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_1479598006.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_1479598006.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_1479598006.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_1479598006.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_1479598006.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_1479598006.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_1479598006.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_1479598006.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_1479598006.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_1479598006.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_1479598006.pkl
+Variable loaded from cache file: ./cache/logs/3481558967.pkl
+Variable loaded from cache file: ./cache/models/alpha_3481558967.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3481558967.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3481558967.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3481558967.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3481558967.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3481558967.pkl
+Variable loaded from cache file: ./cache/models/inductive_3481558967.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3481558967.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3481558967.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3481558967.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3481558967.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/3147944387.pkl
+Variable loaded from cache file: ./cache/models/alpha_3147944387.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3147944387.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3147944387.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3147944387.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3147944387.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3147944387.pkl
+Variable loaded from cache file: ./cache/models/inductive_3147944387.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3147944387.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3147944387.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3147944387.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3147944387.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/2478434683.pkl
+Variable loaded from cache file: ./cache/models/alpha_2478434683.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2478434683.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2478434683.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2478434683.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2478434683.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2478434683.pkl
+Variable loaded from cache file: ./cache/models/inductive_2478434683.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2478434683.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2478434683.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2478434683.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2478434683.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1506870125.pkl
+Variable loaded from cache file: ./cache/models/alpha_1506870125.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1506870125.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1506870125.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1506870125.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1506870125.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1506870125.pkl
+Variable loaded from cache file: ./cache/models/inductive_1506870125.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1506870125.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1506870125.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1506870125.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1506870125.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/3263023217.pkl
+Variable loaded from cache file: ./cache/models/alpha_3263023217.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3263023217.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3263023217.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3263023217.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/3263023217.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_3263023217.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_3263023217.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_3263023217.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_3263023217.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_3263023217.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3263023217.xes using inductive.
+Variable loaded from cache file: ./cache/logs/3263023217.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_3263023217.pkl
+Variable stored in cache file: ./cache/models/inductive_3263023217.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_3263023217.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_3263023217.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_3263023217.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_3263023217.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3263023217.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3263023217.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1767288135.pkl
+Variable loaded from cache file: ./cache/models/alpha_1767288135.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1767288135.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1767288135.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1767288135.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1767288135.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1767288135.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1767288135.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1767288135.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1767288135.pkl
+Variable stored in cache file: ./cache/models/inductive_1767288135.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1767288135.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1767288135.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1767288135.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1767288135.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1767288135.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1767288135.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/2972904145.pkl
+Variable loaded from cache file: ./cache/models/alpha_2972904145.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2972904145.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2972904145.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2972904145.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2972904145.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2972904145.pkl
+Variable stored in cache file: ./cache/models/heuristic_2972904145.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2972904145.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2972904145.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2972904145.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2972904145.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2972904145.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2972904145.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2972904145.pkl
+Variable stored in cache file: ./cache/models/inductive_2972904145.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2972904145.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2972904145.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2972904145.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2972904145.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2972904145.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2972904145.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/2286905601.pkl
+Variable loaded from cache file: ./cache/models/alpha_2286905601.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2286905601.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2286905601.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2286905601.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2286905601.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2286905601.pkl
+Variable loaded from cache file: ./cache/models/inductive_2286905601.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2286905601.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2286905601.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2286905601.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2286905601.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Variable loaded from cache file: ./cache/models/alpha_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1606294804.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1606294804.pkl
+Variable loaded from cache file: ./cache/models/inductive_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1606294804.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1606294804.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1606294804.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1606294804.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1571103728.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1571103728.xes using alpha.
+Variable loaded from cache file: ./cache/logs/1571103728.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_1571103728.pkl
+Variable stored in cache file: ./cache/models/alpha_1571103728.pkl
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_1571103728.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1571103728.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1571103728.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1571103728.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1571103728.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1571103728.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1571103728.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1571103728.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1571103728.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1571103728.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1571103728.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1571103728.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1571103728.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1571103728.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1571103728.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1571103728.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1571103728.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1151178979.pkl
+Variable loaded from cache file: ./cache/models/alpha_1151178979.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1151178979.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1151178979.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1151178979.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1151178979.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1151178979.pkl
+Variable loaded from cache file: ./cache/models/inductive_1151178979.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1151178979.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1151178979.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1151178979.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1151178979.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/3393313983.pkl
+Variable loaded from cache file: ./cache/models/alpha_3393313983.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3393313983.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3393313983.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3393313983.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3393313983.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3393313983.pkl
+Variable loaded from cache file: ./cache/models/inductive_3393313983.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3393313983.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3393313983.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3393313983.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3393313983.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/889771977.pkl
+Variable loaded from cache file: ./cache/models/alpha_889771977.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_889771977.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_889771977.pkl
+Variable loaded from cache file: ./cache/models/heuristic_889771977.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_889771977.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_889771977.pkl
+Variable loaded from cache file: ./cache/models/inductive_889771977.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_889771977.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_889771977.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/889771977.xes using ILP.
+Variable loaded from cache file: ./cache/logs/889771977.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/3988436430.pkl
+Variable loaded from cache file: ./cache/models/alpha_3988436430.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3988436430.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3988436430.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3988436430.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3988436430.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3988436430.pkl
+Variable loaded from cache file: ./cache/models/inductive_3988436430.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3988436430.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3988436430.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3988436430.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3988436430.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1193607930.pkl
+Variable loaded from cache file: ./cache/models/alpha_1193607930.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1193607930.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1193607930.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1193607930.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1193607930.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1193607930.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1193607930.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1193607930.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1193607930.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1193607930.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1193607930.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1193607930.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_3206184558.pkl
+Variable stored in cache file: ./cache/models/inductive_3206184558.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_3206184558.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_3206184558.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_3206184558.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_3206184558.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3206184558.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3206184558.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/3120593598.pkl
+Variable loaded from cache file: ./cache/models/alpha_3120593598.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3120593598.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3120593598.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3120593598.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3120593598.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3120593598.pkl
+Variable loaded from cache file: ./cache/models/inductive_3120593598.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3120593598.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3120593598.pkl
+Variable loaded from cache file: ./cache/models/ILP_3120593598.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_3120593598.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_3120593598.pkl
+Variable loaded from cache file: ./cache/models/split_3120593598.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_3120593598.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_3120593598.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/3120593598.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/3120593598.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_3120593598.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_3120593598.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_3120593598.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_3120593598.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_3120593598.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/3120593598.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/3120593598.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_3120593598.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_3120593598.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_3120593598.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_3120593598.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_3120593598.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_3120593598.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/3120593598.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/3120593598.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_3120593598.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_3120593598.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_3120593598.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_3120593598.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_3120593598.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_3120593598.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_3120593598.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_3120593598.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_3120593598.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_3120593598.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_3120593598.pkl
+Variable loaded from cache file: ./cache/features/density_3120593598.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_3120593598.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_3120593598.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_3120593598.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_3120593598.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_3120593598.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_3120593598.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_3120593598.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_3120593598.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_3120593598.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_3120593598.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_3120593598.pkl
+Variable loaded from cache file: ./cache/logs/2610721044.pkl
+Variable loaded from cache file: ./cache/models/alpha_2610721044.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2610721044.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2610721044.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2610721044.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2610721044.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2610721044.pkl
+Variable loaded from cache file: ./cache/models/inductive_2610721044.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2610721044.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2610721044.pkl
+Variable loaded from cache file: ./cache/models/ILP_2610721044.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2610721044.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2610721044.pkl
+Variable loaded from cache file: ./cache/models/split_2610721044.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2610721044.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2610721044.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2610721044.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/2610721044.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_2610721044.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_2610721044.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_2610721044.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_2610721044.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_2610721044.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_2610721044.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2610721044.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/2610721044.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_2610721044.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_2610721044.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_2610721044.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_2610721044.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_2610721044.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_2610721044.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2610721044.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/2610721044.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_2610721044.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_2610721044.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_2610721044.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_2610721044.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_2610721044.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_2610721044.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_2610721044.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_2610721044.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_2610721044.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_2610721044.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_2610721044.pkl
+Variable loaded from cache file: ./cache/features/density_2610721044.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_2610721044.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_2610721044.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_2610721044.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_2610721044.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_2610721044.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_2610721044.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_2610721044.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_2610721044.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_2610721044.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_2610721044.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_2610721044.pkl
+Variable loaded from cache file: ./cache/logs/2957031094.pkl
+Variable loaded from cache file: ./cache/models/alpha_2957031094.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2957031094.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2957031094.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2957031094.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2957031094.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2957031094.pkl
+Variable loaded from cache file: ./cache/models/inductive_2957031094.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2957031094.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2957031094.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/2957031094.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2957031094.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/279714292.pkl
+Variable loaded from cache file: ./cache/models/alpha_279714292.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_279714292.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_279714292.pkl
+Variable loaded from cache file: ./cache/models/heuristic_279714292.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_279714292.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_279714292.pkl
+Variable loaded from cache file: ./cache/models/inductive_279714292.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_279714292.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_279714292.pkl
+Variable loaded from cache file: ./cache/models/ILP_279714292.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_279714292.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_279714292.pkl
+Variable loaded from cache file: ./cache/models/split_279714292.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_279714292.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_279714292.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/279714292.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/279714292.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_279714292.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_279714292.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_279714292.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_279714292.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_279714292.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_279714292.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/279714292.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/279714292.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_279714292.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_279714292.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_279714292.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_279714292.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_279714292.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_279714292.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/279714292.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/279714292.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_279714292.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_279714292.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_279714292.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_279714292.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_279714292.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_279714292.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_279714292.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_279714292.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_279714292.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_279714292.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_279714292.pkl
+Variable loaded from cache file: ./cache/features/density_279714292.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_279714292.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_279714292.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_279714292.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_279714292.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_279714292.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_279714292.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_279714292.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_279714292.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_279714292.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_279714292.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_279714292.pkl
+Variable loaded from cache file: ./cache/logs/2278614773.pkl
+Variable loaded from cache file: ./cache/models/alpha_2278614773.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2278614773.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2278614773.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2278614773.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2278614773.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2278614773.pkl
+Variable loaded from cache file: ./cache/models/inductive_2278614773.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2278614773.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2278614773.pkl
+Variable loaded from cache file: ./cache/models/ILP_2278614773.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2278614773.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2278614773.pkl
+Variable loaded from cache file: ./cache/models/split_2278614773.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2278614773.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2278614773.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2278614773.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/2278614773.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_2278614773.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_2278614773.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_2278614773.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_2278614773.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_2278614773.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_2278614773.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2278614773.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/2278614773.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_2278614773.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_2278614773.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_2278614773.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_2278614773.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_2278614773.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_2278614773.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2278614773.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/2278614773.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_2278614773.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_2278614773.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_2278614773.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_2278614773.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_2278614773.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_2278614773.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_2278614773.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_2278614773.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_2278614773.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_2278614773.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_2278614773.pkl
+Variable loaded from cache file: ./cache/features/density_2278614773.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_2278614773.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_2278614773.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_2278614773.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_2278614773.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_2278614773.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_2278614773.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_2278614773.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_2278614773.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_2278614773.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_2278614773.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_2278614773.pkl
+Variable loaded from cache file: ./cache/logs/2424853211.pkl
+Variable loaded from cache file: ./cache/models/alpha_2424853211.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2424853211.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2424853211.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2424853211.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2424853211.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2424853211.pkl
+Variable loaded from cache file: ./cache/models/inductive_2424853211.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2424853211.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2424853211.pkl
+Variable loaded from cache file: ./cache/models/ILP_2424853211.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2424853211.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_2424853211.pkl
+Variable loaded from cache file: ./cache/models/split_2424853211.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2424853211.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_2424853211.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2424853211.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/2424853211.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_2424853211.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_2424853211.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_2424853211.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_2424853211.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_2424853211.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_2424853211.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2424853211.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/2424853211.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_2424853211.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_2424853211.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_2424853211.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_2424853211.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_2424853211.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_2424853211.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2424853211.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/2424853211.pkl
+Start compute_model using inductive_direct
+couldn't init log
+list index out of range
+Variable loaded from cache file: ./cache/logs/3917330454.pkl
+Variable loaded from cache file: ./cache/models/alpha_3917330454.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3917330454.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3917330454.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3917330454.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3917330454.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3917330454.pkl
+Variable loaded from cache file: ./cache/models/inductive_3917330454.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3917330454.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3917330454.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3917330454.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3917330454.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1645120869.pkl
+Variable loaded from cache file: ./cache/models/alpha_1645120869.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1645120869.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1645120869.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1645120869.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1645120869.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1645120869.pkl
+Variable loaded from cache file: ./cache/models/inductive_1645120869.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1645120869.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1645120869.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1645120869.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1645120869.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/497372042.pkl
+Variable loaded from cache file: ./cache/models/alpha_497372042.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_497372042.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_497372042.pkl
+Variable loaded from cache file: ./cache/models/heuristic_497372042.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_497372042.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_497372042.pkl
+Variable loaded from cache file: ./cache/models/inductive_497372042.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_497372042.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_497372042.pkl
+Variable loaded from cache file: ./cache/models/ILP_497372042.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_497372042.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_497372042.pkl
+Variable loaded from cache file: ./cache/models/split_497372042.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_497372042.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_497372042.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/497372042.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/497372042.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_497372042.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_497372042.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_497372042.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_497372042.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_497372042.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_497372042.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/497372042.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/497372042.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_497372042.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_497372042.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_497372042.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_497372042.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_497372042.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_497372042.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/497372042.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/497372042.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_497372042.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_497372042.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_497372042.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_497372042.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_497372042.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_497372042.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_497372042.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_497372042.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_497372042.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_497372042.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_497372042.pkl
+Variable loaded from cache file: ./cache/features/density_497372042.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_497372042.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_497372042.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_497372042.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_497372042.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_497372042.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_497372042.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_497372042.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_497372042.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_497372042.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_497372042.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_497372042.pkl
+Variable loaded from cache file: ./cache/logs/180959935.pkl
+Variable loaded from cache file: ./cache/models/alpha_180959935.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_180959935.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_180959935.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/180959935.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/180959935.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_180959935.pkl
+Variable stored in cache file: ./cache/models/heuristic_180959935.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_180959935.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_180959935.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_180959935.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_180959935.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/180959935.xes using inductive.
+Variable loaded from cache file: ./cache/logs/180959935.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_180959935.pkl
+Variable stored in cache file: ./cache/models/inductive_180959935.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_180959935.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_180959935.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_180959935.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_180959935.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/180959935.xes using ILP.
+Variable loaded from cache file: ./cache/logs/180959935.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/3860256447.pkl
+Variable loaded from cache file: ./cache/models/alpha_3860256447.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3860256447.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3860256447.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3860256447.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3860256447.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3860256447.pkl
+Variable loaded from cache file: ./cache/models/inductive_3860256447.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3860256447.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3860256447.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3860256447.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3860256447.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/2460662825.pkl
+Variable loaded from cache file: ./cache/models/alpha_2460662825.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2460662825.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2460662825.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2460662825.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2460662825.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2460662825.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2460662825.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2460662825.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2460662825.pkl
+Variable stored in cache file: ./cache/models/inductive_2460662825.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2460662825.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2460662825.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2460662825.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2460662825.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2460662825.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2460662825.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1754453708.pkl
+Variable loaded from cache file: ./cache/models/alpha_1754453708.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1754453708.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1754453708.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1754453708.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1754453708.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1754453708.pkl
+Variable loaded from cache file: ./cache/models/inductive_1754453708.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1754453708.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1754453708.pkl
+Variable loaded from cache file: ./cache/models/ILP_1754453708.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_1754453708.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_1754453708.pkl
+Variable loaded from cache file: ./cache/models/split_1754453708.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_1754453708.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_1754453708.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1754453708.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/1754453708.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_1754453708.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_1754453708.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_1754453708.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_1754453708.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_1754453708.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_1754453708.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1754453708.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/1754453708.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_1754453708.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_1754453708.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_1754453708.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_1754453708.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_1754453708.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_1754453708.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1754453708.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/1754453708.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_1754453708.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_1754453708.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_1754453708.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_1754453708.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_1754453708.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_1754453708.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_1754453708.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_1754453708.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_1754453708.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_1754453708.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_1754453708.pkl
+Variable loaded from cache file: ./cache/features/density_1754453708.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_1754453708.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_1754453708.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_1754453708.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_1754453708.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_1754453708.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_1754453708.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_1754453708.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_1754453708.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_1754453708.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_1754453708.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_1754453708.pkl
+Variable loaded from cache file: ./cache/logs/1351970954.pkl
+Variable loaded from cache file: ./cache/models/alpha_1351970954.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1351970954.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1351970954.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1351970954.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1351970954.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1351970954.pkl
+Variable loaded from cache file: ./cache/models/inductive_1351970954.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1351970954.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1351970954.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1351970954.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1351970954.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/428472480.pkl
+Variable loaded from cache file: ./cache/models/alpha_428472480.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_428472480.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_428472480.pkl
+Variable loaded from cache file: ./cache/models/heuristic_428472480.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_428472480.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_428472480.pkl
+Variable loaded from cache file: ./cache/models/inductive_428472480.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_428472480.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_428472480.pkl
+Variable loaded from cache file: ./cache/models/ILP_428472480.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_428472480.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_428472480.pkl
+Variable loaded from cache file: ./cache/models/split_428472480.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_428472480.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_428472480.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/428472480.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/428472480.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_428472480.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_428472480.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_428472480.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_428472480.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_428472480.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_428472480.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/428472480.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/428472480.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_428472480.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_428472480.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_428472480.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_428472480.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_428472480.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_428472480.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/428472480.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/428472480.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_428472480.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_428472480.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_428472480.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_428472480.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_428472480.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_428472480.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_428472480.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_428472480.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_428472480.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_428472480.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_428472480.pkl
+Variable loaded from cache file: ./cache/features/density_428472480.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_428472480.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_428472480.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_428472480.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_428472480.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_428472480.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_428472480.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_428472480.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_428472480.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_428472480.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_428472480.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_428472480.pkl
+Variable loaded from cache file: ./cache/logs/3952114220.pkl
+Variable loaded from cache file: ./cache/models/alpha_3952114220.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3952114220.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3952114220.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3952114220.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3952114220.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3952114220.pkl
+Variable loaded from cache file: ./cache/models/inductive_3952114220.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3952114220.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3952114220.pkl
+Variable loaded from cache file: ./cache/models/ILP_3952114220.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_3952114220.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_3952114220.pkl
+Variable loaded from cache file: ./cache/models/split_3952114220.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_3952114220.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_3952114220.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3952114220.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/3952114220.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_3952114220.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_3952114220.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_3952114220.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_3952114220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_3952114220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_3952114220.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3952114220.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/3952114220.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_3952114220.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_3952114220.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_3952114220.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_3952114220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_3952114220.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_3952114220.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3952114220.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/3952114220.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_3952114220.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_3952114220.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_3952114220.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_3952114220.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_3952114220.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_3952114220.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_3952114220.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_3952114220.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_3952114220.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_3952114220.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_3952114220.pkl
+Variable loaded from cache file: ./cache/features/density_3952114220.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_3952114220.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_3952114220.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_3952114220.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_3952114220.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_3952114220.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_3952114220.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_3952114220.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_3952114220.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_3952114220.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_3952114220.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_3952114220.pkl
+Variable loaded from cache file: ./cache/logs/581093364.pkl
+Variable loaded from cache file: ./cache/models/alpha_581093364.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_581093364.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_581093364.pkl
+Variable loaded from cache file: ./cache/models/heuristic_581093364.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_581093364.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_581093364.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/581093364.xes using inductive.
+Variable loaded from cache file: ./cache/logs/581093364.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_581093364.pkl
+Variable stored in cache file: ./cache/models/inductive_581093364.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_581093364.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_581093364.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_581093364.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_581093364.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/581093364.xes using ILP.
+Variable loaded from cache file: ./cache/logs/581093364.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/2381357166.pkl
+Variable loaded from cache file: ./cache/models/alpha_2381357166.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2381357166.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2381357166.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2381357166.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2381357166.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2381357166.pkl
+Variable loaded from cache file: ./cache/models/inductive_2381357166.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2381357166.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2381357166.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2381357166.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2381357166.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1003865348.pkl
+Variable loaded from cache file: ./cache/models/alpha_1003865348.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1003865348.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1003865348.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1003865348.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/1003865348.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_1003865348.pkl
+Variable stored in cache file: ./cache/models/heuristic_1003865348.pkl
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_1003865348.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_1003865348.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_1003865348.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_1003865348.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1003865348.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1003865348.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_1003865348.pkl
+Variable stored in cache file: ./cache/models/inductive_1003865348.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_1003865348.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_1003865348.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_1003865348.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_1003865348.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1003865348.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1003865348.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1073685811.pkl
+Variable loaded from cache file: ./cache/models/alpha_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1073685811.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1073685811.pkl
+Variable loaded from cache file: ./cache/models/inductive_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1073685811.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1073685811.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1073685811.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1073685811.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1977732182.pkl
+Variable loaded from cache file: ./cache/models/alpha_1977732182.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1977732182.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1977732182.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1977732182.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1977732182.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1977732182.pkl
+Variable loaded from cache file: ./cache/models/inductive_1977732182.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1977732182.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1977732182.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1977732182.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1977732182.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/119197758.pkl
+Variable loaded from cache file: ./cache/models/alpha_119197758.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_119197758.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_119197758.pkl
+Variable loaded from cache file: ./cache/models/heuristic_119197758.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_119197758.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_119197758.pkl
+Variable loaded from cache file: ./cache/models/inductive_119197758.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_119197758.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_119197758.pkl
+Variable loaded from cache file: ./cache/models/ILP_119197758.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_119197758.pkl
+Variable loaded from cache file: ./cache/measures/ILP_runtime_119197758.pkl
+Variable loaded from cache file: ./cache/models/split_119197758.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_119197758.pkl
+Variable loaded from cache file: ./cache/measures/split_runtime_119197758.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/119197758.xes using alpha_plus.
+Variable loaded from cache file: ./cache/logs/119197758.pkl
+Start compute_model using alpha_plus
+Variable stored in cache file: ./cache/measures/alpha_plus_runtime_119197758.pkl
+Variable stored in cache file: ./cache/models/alpha_plus_119197758.pkl
+Variable stored in cache file: ./cache/measures/alpha_plus_log_runtime_119197758.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_infrequent_119197758.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_runtime_119197758.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_infrequent_log_runtime_119197758.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/119197758.xes using inductive_infrequent.
+Variable loaded from cache file: ./cache/logs/119197758.pkl
+Start compute_model using inductive_infrequent
+Variable stored in cache file: ./cache/measures/inductive_infrequent_runtime_119197758.pkl
+Variable stored in cache file: ./cache/models/inductive_infrequent_119197758.pkl
+Variable stored in cache file: ./cache/measures/inductive_infrequent_log_runtime_119197758.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_direct_119197758.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_runtime_119197758.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_direct_log_runtime_119197758.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/119197758.xes using inductive_direct.
+Variable loaded from cache file: ./cache/logs/119197758.pkl
+Start compute_model using inductive_direct
+Variable stored in cache file: ./cache/measures/inductive_direct_runtime_119197758.pkl
+Variable stored in cache file: ./cache/models/inductive_direct_119197758.pkl
+Variable stored in cache file: ./cache/measures/inductive_direct_log_runtime_119197758.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_traces_119197758.pkl
+Variable loaded from cache file: ./cache/features/no_total_traces_119197758.pkl
+Variable loaded from cache file: ./cache/features/avg_trace_length_119197758.pkl
+Variable loaded from cache file: ./cache/features/avg_event_repetition_intra_trace_119197758.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_events_119197758.pkl
+Variable loaded from cache file: ./cache/features/no_events_total_119197758.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_start_119197758.pkl
+Variable loaded from cache file: ./cache/features/no_distinct_end_119197758.pkl
+Variable loaded from cache file: ./cache/features/density_119197758.pkl
+Variable loaded from cache file: ./cache/features/length_one_loops_119197758.pkl
+Variable loaded from cache file: ./cache/features/total_no_activities_119197758.pkl
+Variable loaded from cache file: ./cache/features/percentage_concurrency_119197758.pkl
+Variable loaded from cache file: ./cache/features/percentage_sequence_119197758.pkl
+Variable loaded from cache file: ./cache/features/dfg_mean_variable_degree_119197758.pkl
+Variable loaded from cache file: ./cache/features/dfg_variation_coefficient_variable_degree_119197758.pkl
+Variable loaded from cache file: ./cache/features/dfg_min_variable_degree_119197758.pkl
+Variable loaded from cache file: ./cache/features/dfg_max_variable_degree_119197758.pkl
+Variable loaded from cache file: ./cache/features/dfg_entropy_variable_degree_119197758.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_min_119197758.pkl
+Variable loaded from cache file: ./cache/features/dfg_wcc_max_119197758.pkl
+Variable loaded from cache file: ./cache/logs/1082086153.pkl
+Variable loaded from cache file: ./cache/models/alpha_1082086153.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1082086153.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1082086153.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1082086153.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1082086153.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1082086153.pkl
+Variable loaded from cache file: ./cache/models/inductive_1082086153.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1082086153.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_1082086153.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/1082086153.xes using ILP.
+Variable loaded from cache file: ./cache/logs/1082086153.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/3499195642.pkl
+Variable loaded from cache file: ./cache/models/alpha_3499195642.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3499195642.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3499195642.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3499195642.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3499195642.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3499195642.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3499195642.xes using inductive.
+Variable loaded from cache file: ./cache/logs/3499195642.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_3499195642.pkl
+Variable stored in cache file: ./cache/models/inductive_3499195642.pkl
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_3499195642.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_3499195642.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_3499195642.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_3499195642.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3499195642.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3499195642.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/2409805167.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/2409805167.xes using alpha.
+Variable loaded from cache file: ./cache/logs/2409805167.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_2409805167.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_2409805167.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/2409805167.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2409805167.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2409805167.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2409805167.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/2409805167.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2409805167.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_4199153318.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_4199153318.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_4199153318.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_4199153318.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_4199153318.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/4199153318.xes using ILP.
+Variable loaded from cache file: ./cache/logs/4199153318.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/2649202001.pkl
+Variable loaded from cache file: ./cache/models/alpha_2649202001.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2649202001.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_2649202001.pkl
+Variable loaded from cache file: ./cache/models/heuristic_2649202001.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2649202001.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_2649202001.pkl
+Variable loaded from cache file: ./cache/models/inductive_2649202001.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2649202001.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_2649202001.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2649202001.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2649202001.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/3494751104.pkl
+Variable loaded from cache file: ./cache/models/alpha_3494751104.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3494751104.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_3494751104.pkl
+Variable loaded from cache file: ./cache/models/heuristic_3494751104.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3494751104.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_3494751104.pkl
+Variable loaded from cache file: ./cache/models/inductive_3494751104.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3494751104.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_3494751104.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/3494751104.xes using ILP.
+Variable loaded from cache file: ./cache/logs/3494751104.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/39292888.pkl
+Variable loaded from cache file: ./cache/models/alpha_39292888.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_39292888.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_39292888.pkl
+Variable loaded from cache file: ./cache/models/heuristic_39292888.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_39292888.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_39292888.pkl
+Variable loaded from cache file: ./cache/models/inductive_39292888.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_39292888.pkl
+Variable loaded from cache file: ./cache/measures/inductive_runtime_39292888.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/testing/39292888.xes using ILP.
+Variable loaded from cache file: ./cache/logs/39292888.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/2809361004.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2809361004.xes using alpha.
+Variable loaded from cache file: ./cache/logs/2809361004.pkl
+Start compute_model using alpha
+Variable stored in cache file: ./cache/measures/alpha_runtime_2809361004.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/alpha_log_runtime_2809361004.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2809361004.xes using heuristic.
+Variable loaded from cache file: ./cache/logs/2809361004.pkl
+Start compute_model using heuristic
+Variable stored in cache file: ./cache/measures/heuristic_runtime_2809361004.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/heuristic_log_runtime_2809361004.pkl
+Cache file does not exist yet.
+File './cache/models/inductive_2809361004.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_runtime_2809361004.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/inductive_log_runtime_2809361004.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2809361004.xes using inductive.
+Variable loaded from cache file: ./cache/logs/2809361004.pkl
+Start compute_model using inductive
+Variable stored in cache file: ./cache/measures/inductive_runtime_2809361004.pkl
+Error storing variable in cache: maximum recursion depth exceeded while pickling an object
+Variable stored in cache file: ./cache/measures/inductive_log_runtime_2809361004.pkl
+Cache file does not exist yet.
+File './cache/models/ILP_2809361004.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_runtime_2809361004.pkl' created.
+Cache file does not exist yet.
+File './cache/measures/ILP_log_runtime_2809361004.pkl' created.
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/2809361004.xes using ILP.
+Variable loaded from cache file: ./cache/logs/2809361004.pkl
+Start compute_model using ILP
+couldn't init log
+'ILP'
+Variable loaded from cache file: ./cache/logs/1564035269.pkl
+Variable loaded from cache file: ./cache/models/alpha_1564035269.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1564035269.pkl
+Variable loaded from cache file: ./cache/measures/alpha_runtime_1564035269.pkl
+Variable loaded from cache file: ./cache/models/heuristic_1564035269.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1564035269.pkl
+Variable loaded from cache file: ./cache/measures/heuristic_runtime_1564035269.pkl
+No cached model found, now computing model for /home/qc261227/Recommender/RecommenderSystem/backend/logs/training/1564035269.xes using inductive.
+Variable loaded from cache file: ./cache/logs/1564035269.pkl
+Start compute_model using inductive
