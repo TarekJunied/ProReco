@@ -1,21 +1,19 @@
 #!/usr/local_rwth/bin/zsh
-#SBATCH --job-name=newalog_oldslogs
-#SBATCH --output=newalgos_oldlogs_output.txt
-#SBATCH --error=newalgos_oldlogs_error.txt
+#SBATCH --job-name=MTL_LOGS
+#SBATCH --output=MTL_LOGS_OUTPUT.txt
+#SBATCH --error=MTL_LOGS_ERROR.txt
 #SBATCH --nodes=1
-#SBATCH --ntasks=8
-#SBATCH --mem=10G
+#SBATCH --ntasks=12
+#SBATCH --mem=4G
 #SBATCH --time=12:00:00
 #SBATCH --account=thes1569
 
 
 start_time=$(date +"%Y-%m-%d %H:%M:%S")
 
-##  this ia c ommetn SBATCH --account=thes1569
 
+/usr/bin/python3.9 init.py "/home/qc261227/Recommender/RecommenderSystem/backend/logs/modified_eventlogs"
 
-
-/usr/bin/python3.9 init.py "/home/qc261227/Recommender/RecommenderSystem/backend/logs/training" "/home/qc261227/Recommender/RecommenderSystem/backend/logs/testing"
 
 
 # Record the end time

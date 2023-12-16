@@ -230,20 +230,20 @@ def try_init_log(log_path):
         read_log(log_path)
     except Exception as e:
         print("Could not parse log")
-        input(e)
+        print(e)
     for discovery_algorithm in globals.algorithm_portfolio:
         try:
             read_model(log_path, discovery_algorithm)
         except Exception as e:
             print(
                 f"Could not discover model for {discovery_algorithm} on {log_path}")
-            input(e)
+            print(e)
 
     try:
         read_feature_vector(log_path)
     except Exception as e:
         print("Couldn't compute feature vector")
-        input(e)
+        print(e)
 
     for measure in list_of_measure_names:
         for discovery_algorithm in globals.algorithm_portfolio:
@@ -252,7 +252,7 @@ def try_init_log(log_path):
             except Exception as e:
                 print(
                     f"Could not compute measure {measure} on {discovery_algorithm}, {log_path}")
-                input(e)
+                print(e)
 
 
 if __name__ == "__main__":
@@ -275,23 +275,8 @@ if __name__ == "__main__":
         logs_to_init += gather_all_xes(log_folder_path)
 
     logs_to_init = sort_files_by_size(logs_to_init)
-    num_processes = len(logs_to_init)
-    num_processes = 6
+    num_processes = 48
 
-    globals.algorithm_portfolio = [
-        "alpha", "inductive", "inductive_infrequent", "heuristic"]
-
-    for log_path in logs_to_init:
-        try_init_log(log_path)
-    # "inductive_direct",
-    input("done init")
-    globals.algorithm_portfolio = [
-        "alpha", "inductive", "inductive_infrequent", "heuristic"]
-
-    ready_logs = get_all_ready_logs_multiple(
-        gather_all_xes("../logs/process_meta_learning_logs"))
-
-    input(len(ready_logs))
     pool = multiprocessing.Pool(processes=num_processes)
 
     print("now mapping pool")
