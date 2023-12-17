@@ -153,14 +153,14 @@ def get_all_ready_logs(log_paths, measure_name):
     for log_path in log_paths:
         file_list = []
         log_id = generate_log_id(log_path)
-        log_cache = f"./cache/logs/{log_id}.pkl"
+        log_cache = f"{globals.flask_app_path}/cache/logs/{log_id}.pkl"
         file_list += [log_cache]
         for discovery_algorithm in globals.algorithm_portfolio:
-            model_path = f"./cache/models/{discovery_algorithm}_{log_id}.pkl"
-            measure_cache = f"./cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl"
+            model_path = f"{globals.flask_app_path}/cache/models/{discovery_algorithm}_{log_id}.pkl"
+            measure_cache = f"{globals.flask_app_path}/cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl"
             file_list += [model_path, measure_cache]
         for feature in globals.selected_features:
-            feature_path = f"./cache/features/{feature}_{log_id}.pkl"
+            feature_path = f"{globals.flask_app_path}/cache/features/{feature}_{log_id}.pkl"
             file_list += [feature_path]
 
         no_problem = True

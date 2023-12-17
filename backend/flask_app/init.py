@@ -14,7 +14,7 @@ import os
 
 
 def fix_corrupt_cache():
-    cache_folder = "./cache/"
+    cache_folder = f"{globals.flask_app_path}/cache/"
     for folder_path, _, filenames in os.walk(cache_folder):
         for filename in filenames:
             if filename.endswith(".pkl"):
@@ -42,12 +42,12 @@ def load_logs():
     for log_path in training_log_paths:
         log_name = get_log_name(log_path)
         globals.training_log_paths[log_path] = load_cache_variable(
-            f"./cache/logs/{log_name}.pkl")
+            f"{globals.flask_app_path}/cache/logs/{log_name}.pkl")
 
     for log_path in testing_log_paths:
         log_name = get_log_name(log_path)
         globals.testing_log_paths[log_path] = load_cache_variable(
-            f"./cache/logs/{log_name}.pkl")
+            f"{globals.flask_app_path}/cache/logs/{log_name}.pkl")
 
 
 def load_measures():
@@ -59,7 +59,7 @@ def load_measures():
             for discovery_algorithm in globals.algorithm_portfolio:
                 log_name = get_log_name(log_path)
                 globals.measures[log_path, discovery_algorithm, measure] = load_cache_variable(
-                    f"./cache/measures/{discovery_algorithm}_{measure}_{log_name}.pkl")
+                    f"{globals.flask_app_path}/cache/measures/{discovery_algorithm}_{measure}_{log_name}.pkl")
 
 
 def load_models():
@@ -69,7 +69,7 @@ def load_models():
         for discovery_algorithm in globals.algorithm_portfolio:
             log_name = get_log_name(log_path)
             globals.models[log_path, discovery_algorithm] = load_cache_variable(
-                f"./cache/models/{discovery_algorithm}_{log_name}.pkl")
+                f"{globals.flask_app_path}/cache/models/{discovery_algorithm}_{log_name}.pkl")
 
 
 def load_features():
@@ -79,7 +79,7 @@ def load_features():
         log_name = get_log_name(log_path)
         for feature in globals.selected_features:
             globals.features[log_path, feature] = load_cache_variable(
-                f"./cache/features/{feature}_{log_name}.pkl")
+                f"{globals.flask_app_path}/cache/features/{feature}_{log_name}.pkl")
 
 
 def init():
@@ -147,7 +147,7 @@ def keep_top_percentage_traces(log_path, top_k):
         filtered_log, f"{log_path_dir}/filtered_{log_path_filename}.xes")
 
     cache_filepath = generate_cache_file(
-        f"./cache/logs/filtered_{log_path_filename}.pkl")
+        f"{globals.flask_app_path}/cache/logs/filtered_{log_path_filename}.pkl")
 
     store_cache_variable(filtered_log, cache_filepath)
 
@@ -165,9 +165,9 @@ def split_logpath(log_path, train_percentage=0.7):
     test_xes_filepath = f"../logs/testing/{test_log_filename}.xes"
 
     train_cache_filepath = generate_cache_file(
-        f"./cache/logs/{train_log_filename}.pkl")
+        f"{globals.flask_app_path}/cache/logs/{train_log_filename}.pkl")
     test_cache_filepath = generate_cache_file(
-        f"./cache/logs/{test_log_filename}.pkl")
+        f"{globals.flask_app_path}/cache/logs/{test_log_filename}.pkl")
 
     try:
         train_log = read_log(train_cache_filepath)
@@ -256,7 +256,7 @@ def try_init_log(log_path):
 
 
 if __name__ == "__main__":
-
+    sys.setrecursionlimit(100000)
     log_folder_paths = []
 
     # Check if at least one argument is provided

@@ -82,7 +82,7 @@ def measure_node_arc_degree(log_path, discovery_algorithm):
 # performance measures
 def measure_runtime(log_path, discovery_algorithm):
     log_id = generate_log_id(log_path)
-    runtime_cache_file = f"./cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl"
+    runtime_cache_file = f"{globals.flask_app_path}/cache/measures/{discovery_algorithm}_runtime_{log_id}.pkl"
     read_model(log_path, discovery_algorithm)
     try:
         runtime = load_cache_variable(runtime_cache_file)
@@ -112,7 +112,7 @@ def measure_pm4py_simplicity(log_path, discovery_algorithm):
 
 def measure_log_runtime(log_path, discovery_algorithm):
     log_id = generate_log_id(log_path)
-    runtime_cache_file = f"./cache/measures/{discovery_algorithm}_log_runtime_{log_id}.pkl"
+    runtime_cache_file = f"{globals.flask_app_path}/measures/{discovery_algorithm}_log_runtime_{log_id}.pkl"
     read_model(log_path, discovery_algorithm)
     try:
         runtime = load_cache_variable(runtime_cache_file)
@@ -181,7 +181,7 @@ def read_measure_entry(log_path, discovery_algorithm, measure_name):
 
     log_id = generate_log_id(log_path)
     cache_file_path = generate_cache_file(
-        f"./cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl")
+        f"{globals.flask_app_path}/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl")
     try:
         measure_entry = load_cache_variable(cache_file_path)
     except Exception:

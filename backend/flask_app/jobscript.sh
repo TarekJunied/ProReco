@@ -1,10 +1,10 @@
 #!/usr/local_rwth/bin/zsh
-#SBATCH --job-name=MTL_LOGS
-#SBATCH --output=MTL_LOGS_OUTPUT.txt
-#SBATCH --error=MTL_LOGS_ERROR.txt
+#SBATCH --job-name=MTL_LOGS2
+#SBATCH --output=MTLLOGS2_OUTPUT.txt
+#SBATCH --error=MTLLOGS2_ERROR.txt
 #SBATCH --nodes=1
 #SBATCH --ntasks=12
-#SBATCH --mem=4G
+#SBATCH --mem=10G
 #SBATCH --time=12:00:00
 #SBATCH --account=thes1569
 

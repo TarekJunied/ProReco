@@ -179,7 +179,7 @@ def do_mtl_evaluation_experiment(all_log_paths, classification_method):
     ax.yaxis.grid(True)
     # Save the plot to a file.
     # You can change the file name and extension as needed.
-    plt.savefig(f"./{classification_method}_boxplot.png")
+    plt.savefig(f"./mtl_boxplots/{classification_method}_boxplot.png")
 
     # Optional: Close the figure to free up memory.
     plt.close()
@@ -187,7 +187,7 @@ def do_mtl_evaluation_experiment(all_log_paths, classification_method):
 
 if __name__ == "__main__":
     globals.algorithm_portfolio = [
-        "alpha", "inductive", "heuristic"]
+        "alpha", "inductive", "heuristic", "split", "ILP"]
     # + "inductive_infrequent", "inductive_direct"
 
     log_paths = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
