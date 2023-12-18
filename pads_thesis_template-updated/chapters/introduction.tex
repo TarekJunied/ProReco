@@ -1,0 +1,148 @@
+In this section, you introduce the work to your audience.
+Even though this is the first chapter of your thesis, you should not necessarily write this chapter first.
+It is often easier to write this chapter at the end of the thesis writing.
+In this part of your introduction, i.e., the part before the Motivation section (\autoref{sec:intro_ssec:motiv}), you write a paragraph (not just a sentence) for each of the bullet points mentioned in the abstract:
+
+\begin{itemize}
+	\item Domain, i.e., explain the application domain in which your thesis is applicable.
+	\item Problem, i.e., motivate what the problem is you are solving.
+	\item Method, i.e., describe the method you have proposed, and, compare it, briefly \& high level to other approaches. In particular, focus on the benefits of your approach versus the other approach(es)
+	\item Evaluation, i.e., how did you evaluate your method and what do the results indicate?
+\end{itemize}
+
+Optionally, you can finalize this part with a little overview of what is still to come in this chapter:
+\enquote{The remainder of this chapter is structured as follows.
+In \autoref{sec:intro_ssec:motiv}, we motivate the need for \dots
+In \autoref{sec:intro_ssec:probs}, we provide a formal problem statement.
+\dots
+}
+
+Before we dive into the motivation section, a few general guidelines for writing:
+\begin{enumerate}
+	\item Write \emph{active} and in the \emph{present tense}.
+	\item Avoid \enquote{optionality} as much as possible, i.e., usage of the following words should (pun intended) be minimized:
+	\begin{itemize}
+		\item could
+		\item would
+		\item should
+		\item may
+		\item might
+		\item can
+		\item will
+		\item ...
+	\end{itemize}
+	Good: We present a method that ...\\
+	Bad: We will present a method that ...\\
+	Good: We use function $f$ and compute its inverse.\\
+	Bad: We can use the function $f$ and will compute its inverse.\\
+	\item Connect mathematical operators using the \{ \}-operators in math mode (\$ \$).\\
+	Good: $x{\in}X$\\
+	Bad: $x \in X$\\
+	Good: $f{\colon}X{\to}Y$\\
+	Bad: $f \colon X \to Y$\\
+	If using \{ \} prevents your mathematics to break at the end of the line, use \texttt{$\backslash$allowbreak} in math mode.
+	\item Do not use $\backslash\backslash$ to generate line breaks % we used a few before, however do not use them in text!
+	
+	Do it like
+
+	This
+	\item Position the caption of a Figure below the figure.
+	\item Position the caption of a Table above the table.
+	\item Write Section Headings and Titles Like This\\
+	Good: Approximation Bias in Unstable Systems\\
+	Bad: Approximation bias in unstable systems\\
+	\item Be consistent in your references.
+	\begin{itemize}
+		\item Make sure that the name of the same author is always the same (using DBLP helps for this)
+		\item Titles should be consistent. Either use the style previously described, i.e., Approximation Bias in Unstable Systems or Approximation bias in unstable systems (this is allowed in the references, opposed to your own section headings and titles, however, \emph{BE CONSISTENT}).
+	\end{itemize}
+\end{enumerate}
+
+\section{Motivation}
+\label{sec:intro_ssec:motiv}
+In this section, you explain to the reader why:
+\begin{enumerate}
+    \item The problem you are solving is relevant to be solved.
+    \item The existing solutions do not solve the problem and/or have significant problems/shortcomings when doing so.
+\end{enumerate}
+Note that parts of this section are already highlighted in both the abstract and the introduction.
+However, in this section, you dive a bit deeper.
+In a good motivation, you show a (simple) example on which current methods fail, yet, the method that you are going to describe in this thesis actually yields a better result.
+
+For example, assume that your thesis describes a new \emph{process discovery} algorithm that is able to handle noise, incomplete behavior, and, on top of that, is able to apply label-splitting.
+You can take an (example) event log and show that existing algorithms result in models that are of suboptimal quality.
+Finally, you show a model discovered by your fancy algorithm, and, you explain why this model is so much better.
+
+\section{Problem Statement}
+\label{sec:intro_ssec:probs}
+In this section, you introduce the problem that you are solving.
+A good problem statement is a concise, more general statement of the example motivation that you have used in the motivation section.
+
+For example, in the case of our previous example:
+
+\enquote{Real event data contains infrequent and incomplete behavior. 
+Furthermore, different recordings of the same activity may refer to conceptually different contextual executions.
+Existing, state-of-the-art process discovery algorithms cannot discover process models of adequate quality, given event data of the previously described form.}
+
+
+\section{Research Questions}
+The research questions you pose, are questions you need to (largely) answer in order to solve the problem.
+Basically, the combined set of answers to the questions you pose, allow you to solve the research problem.
+
+From the book of Justin Zobel, \enquote{Writing for Computer Science}~\cite{DBLP:books/sp/Zobel14} (which we highly recommend you to read before writing):
+
+\enquote{
+	A hypothesis or research question should be specific and precise, and should be
+	unambiguous; the more loosely a concept is defined, the more easily it will satisfy
+	many needs simultaneously, even when these needs are contradictory. And it is
+	important to state what is not being proposed—what the limits on the conclusions
+	will be.
+}
+
+In the context of our example, we can define many relevant research questions:
+\begin{enumerate}
+	\item What are typical prominent noise patterns in real event data?
+	\item How to detect noise patterns in event data?
+	\item How to detect infrequent behavior in event data?
+	\item How to detect contextually different executions of the same activity?
+	\item How to balance between detected noise patterns, infrequent behavior and imprecise labels?
+	\item ...
+\end{enumerate}
+Typically, your thesis consists of 3-5 research questions (often multiple more questions can be defined).
+
+\section{Research Goals}
+In this section, you present your research goals.
+A research goal is a concise statement that s.t., achieving the goal helps you in (partially) solve a research question.
+Hence, the research questions and goals are often very related.
+Furthermore, it should be obvious for the reader what goal answers what problem.
+
+In the context of our previously mentioned questions, some example goals are:
+\begin{itemize}
+	\item Conduct a systematic literature review on noise patterns in real event data.
+	\item Design a noise detection algorithm.
+	\item Formalize the notion of incompleteness in an event log.
+	\item ...
+\end{itemize}
+
+\section{Contributions}
+In this section, you list the contributions that your thesis makes to our wonderful world (of science).
+Again, there is a strong link to the previous section.
+Usually, you have achieved your research goals.
+Hence, the contributions are concrete statements of the goals you have achieved.
+Additionally, your evaluation (most likely also stressed as a goal) is a contribution.
+Any implementation or prototype can also be quantified as a contribution.
+
+Some examples:
+\begin{itemize}
+	\item A systematic literature review covering 35 articles on noise patterns in real event data
+	\item A noise detection algorithm based on dynamic programming and symbolic linking
+	\item ...
+\end{itemize}
+
+\section{Thesis Structure}
+In this section, you outline the remainder of the thesis.
+
+The remainder of this thesis is structured as follows.
+In \autoref{chap:related_work}, we discuss related work.
+In \autoref{chap:prelim}, we present basic mathematical preliminaries, used throughout the thesis.
+...
