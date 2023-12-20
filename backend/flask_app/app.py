@@ -55,7 +55,8 @@ def submit_weights():
             measure_weight[measure] = slider_values[i]
             i += 1
 
-        return final_prediction(get_logpath_of_session(session_token), measure_weight)
+        log_path_to_predict = get_logpath_of_session(session_token),
+        return final_prediction(log_path_to_predict, measure_weight)
     else:
         return "This route only accepts POST requests."
 
