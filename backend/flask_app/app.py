@@ -36,13 +36,12 @@ app.secret_key = os.urandom(24)
 CORS(app, origins="*", supports_credentials=True)
 
 
-
 UPLOAD_FOLDER = '../logs/frontend'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
 @app.route("/api/submitWeights", methods=['POST'])
 def submit_weights():
-
 
     if request.method == 'POST':
         print(request.data)
@@ -64,8 +63,6 @@ def submit_weights():
         return final_prediction(log_path_to_predict, measure_weight)
     else:
         return "This route only accepts POST requests."
-
-
 
 
 @app.route("/api/submitLog", methods=['POST'])
