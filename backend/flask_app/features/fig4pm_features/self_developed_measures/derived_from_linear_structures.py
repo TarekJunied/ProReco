@@ -1,6 +1,7 @@
 # METHODS IMPLEMENTING SELF-DEVELOPED MEASURES
 # DERIVED FROM LINEAR STRUCTURES OF THE EVENT LOG
 import numpy as np
+import math
 
 # 1. Outlier evaluation of start event frequencies
 
@@ -167,7 +168,13 @@ def average_spatial_proximity(log):
     from spatial_proximity import spatial_proximity_matrix
 
     spatial_proximity_list = spatial_proximity_matrix(log).flatten()
-    return sum(spatial_proximity_list) / (total_number_of_event_classes(log) * (total_number_of_event_classes(log) - 1))
+    ret = sum(spatial_proximity_list) / (total_number_of_event_classes(log)
+                                         * (total_number_of_event_classes(log) - 1))
+    if (total_number_of_event_classes(log) <= 1):
+        return 0
+    if math.isnan(ret) or np.isnan(ret):
+        return 0
+    return ret
 
 
 # 16. Spatial proximity connectedness
@@ -180,6 +187,8 @@ def spatial_proximity_connectedness(log):
     for elem in spatial_proximity_list:
         if elem == 0:
             counter += 1
+    if (total_number_of_event_classes(log) * (total_number_of_event_classes(log) - 1)) == 0:
+        return 1
     return 1 - ((counter - total_number_of_event_classes(log)) / (total_number_of_event_classes(log) * (total_number_of_event_classes(log) - 1)))
 
 
@@ -199,6 +208,8 @@ def spatial_proximity_abstraction_evaluation(log, avg=True, threshold=0.9):
     for elem in spatial_proximity_list:
         if elem >= thres:
             counter += 1
+    if nonzero == 0:
+        return 0
     return counter / nonzero
 
 
@@ -212,6 +223,8 @@ def event_dependency_abstraction_evaluation(log):
     for elem in event_dependency_list:
         if elem == 0.5:
             counter += 1
+    if nonzero == 0:
+        return 0
     return counter / nonzero
 
 

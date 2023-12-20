@@ -104,6 +104,3 @@ def get_mtl_feature_functions_dict():
         "entropy_knn_7": feature_entropy_knn_7
     }
     return feature_functions
-
-
-print(len(get_mtl_feature_functions_dict()))

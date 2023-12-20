@@ -4,6 +4,7 @@ import pickle
 import zipfile
 import pytz
 import re
+import numpy as np
 from datetime import datetime
 import tarfile
 
@@ -145,7 +146,30 @@ def get_all_ready_logs_multiple(log_paths):
 
     return list(current)
 
-# TODO: improve the computation time of this function to redc
+
+def get_all_logs_with_ready_features(log_paths, feature_list):
+    ready_logs = []
+    for log_path in log_paths:
+        file_list = []
+        log_id = generate_log_id(log_path)
+        log_cache = f"{globals.flask_app_path}/cache/logs/{log_id}.pkl"
+        file_list += [log_cache]
+        for feature in feature_list:
+            feature_path = f"{globals.flask_app_path}/cache/features/{feature}_{log_id}.pkl"
+            file_list += [feature_path]
+
+        no_problem = True
+        for file in file_list:
+            try:
+                x = load_cache_variable(file)
+            except Exception:
+                no_problem = False
+                print(f"{file} is missing")
+
+        if no_problem:
+            ready_logs += [log_path]
+
+    return ready_logs
 
 
 def get_all_ready_logs(log_paths, measure_name):

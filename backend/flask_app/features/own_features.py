@@ -1,4 +1,5 @@
 import pm4py
+import flask_app.globals as globals
 from flask_app.utils import read_log, get_log_name, load_cache_variable, store_cache_variable
 import networkx as nx
 import numpy as np
@@ -232,58 +233,96 @@ def feature_length_one_loops(log_path):
 def feature_dfg_mean_variable_degree(log_path):
     G = read_networkx_graph_of_log(log_path)
     variable_degrees = list(dict(G.degree()).values())
-    return np.mean(variable_degrees)
+    result = np.mean(variable_degrees)
+    return result if not np.isnan(result) else 0
 
 
 def feature_dfg_variation_coefficient_variable_degree(log_path):
     G = read_networkx_graph_of_log(log_path)
     variable_degrees = list(dict(G.degree()).values())
-    return variation(variable_degrees)
+    result = variation(variable_degrees)
+    return result if not np.isnan(result) else 0
 
 
 def feature_dfg_min_variable_degree(log_path):
     G = read_networkx_graph_of_log(log_path)
     variable_degrees = list(dict(G.degree()).values())
-    return np.min(variable_degrees)
+    result = np.min(variable_degrees)
+    return result if not np.isnan(result) else 0
 
 
 def feature_dfg_max_variable_degree(log_path):
     G = read_networkx_graph_of_log(log_path)
     variable_degrees = list(dict(G.degree()).values())
-    return np.max(variable_degrees)
+    result = np.max(variable_degrees)
+    return result if not np.isnan(result) else 0
 
 
 def feature_dfg_entropy_variable_degree(log_path):
     G = read_networkx_graph_of_log(log_path)
     variable_degrees = list(dict(G.degree()).values())
-    return entropy(variable_degrees)
+    result = entropy(variable_degrees)
+    return result if not np.isnan(result) else 0
 
 
 def feature_dfg_wcc_variation_coefficient(log_path):
     G = read_networkx_graph_of_log(log_path)
     wcc = nx.average_clustering(G, weight='weight')
     result = variation(wcc)
-    if np.isnan(result):
-        result = 0
-    return result
+    return result if not np.isnan(result) else 0
 
 
 def feature_dfg_wcc_min(log_path):
     G = read_networkx_graph_of_log(log_path)
-    wcc = nx.average_clustering(G, weight='weight')
-    return np.min(wcc)
+    wcc_values = nx.clustering(G, weight='weight').values()
+    result = np.min(list(wcc_values))
+    return result if not np.isnan(result) else 0
 
 
 def feature_dfg_wcc_max(log_path):
     G = read_networkx_graph_of_log(log_path)
-    wcc = nx.average_clustering(G, weight='weight')
-    return np.max(wcc)
+    wcc_values = nx.clustering(G, weight='weight').values()
+    result = np.max(list(wcc_values))
+    return result if not np.isnan(result) else 0
+
+
+def feature_dfg_wcc_variation_coefficient(log_path):
+    G = read_networkx_graph_of_log(log_path)
+    wcc_values = list(nx.clustering(G, weight='weight').values())
+    result = variation(wcc_values)
+    return result if not np.isnan(result) else 0
 
 
 def feature_dfg_wcc_entropy(log_path):
     G = read_networkx_graph_of_log(log_path)
-    wcc = nx.average_clustering(G, weight='weight')
-    result = entropy(wcc)
-    if np.isnan(result):
-        result = 0
-    return result
+    wcc_values = list(nx.clustering(G, weight='weight').values())
+    result = entropy(wcc_values)
+    return result if not np.isnan(result) else 0
+
+
+def get_own_features_dict():
+    own_functions = {
+        "no_distinct_traces": feature_no_distinct_traces,
+        "no_total_traces": feature_no_total_traces,
+        "avg_trace_length": feature_avg_trace_length,
+        "avg_event_repetition_intra_trace": feature_avg_event_repetition_intra_trace,
+        "no_distinct_events": feature_no_distinct_events,
+        "no_events_total": feature_no_events_total,
+        "no_distinct_start": feature_no_distinct_start,
+        "no_distinct_end": feature_no_distinct_end,
+        "length_one_loops": feature_length_one_loops,
+        "total_no_activities": feature_total_no_activities,
+        "percentage_concurrency": feature_percentage_concurrency,
+        "percentage_sequence": feature_percentage_sequence,
+        "dfg_mean_variable_degree": feature_dfg_mean_variable_degree,
+        "dfg_variation_coefficient_variable_degree": feature_dfg_variation_coefficient_variable_degree,
+        "dfg_min_variable_degree": feature_dfg_min_variable_degree,
+        "dfg_max_variable_degree": feature_dfg_max_variable_degree,
+        "dfg_entropy_variable_degree": feature_dfg_entropy_variable_degree,
+        "dfg_wcc_variation_coefficient": feature_dfg_wcc_variation_coefficient,
+        "dfg_wcc_min": feature_dfg_wcc_min,
+        "dfg_wcc_max": feature_dfg_wcc_max,
+        "dfg_wcc_entropy": feature_dfg_wcc_entropy,
+
+    }
+    return own_functions

@@ -1,7 +1,7 @@
 #!/usr/local_rwth/bin/zsh
-#SBATCH --job-name=MTL_LOGS2
-#SBATCH --output=MTLLOGS2_OUTPUT.txt
-#SBATCH --error=MTLLOGS2_ERROR.txt
+#SBATCH --job-name=FFA
+#SBATCH --output=FFA_OUTPUT.txt
+#SBATCH --error=FFA_ERROR.txt
 #SBATCH --nodes=1
 #SBATCH --ntasks=12
 #SBATCH --mem=10G

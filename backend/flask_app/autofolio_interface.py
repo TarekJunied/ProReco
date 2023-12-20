@@ -5,7 +5,7 @@ import sys
 import os
 import subprocess
 import re
-from features import read_single_feature, space_out_feature_vector_string
+from feature_controller import read_single_feature
 from utils import get_log_name
 from filehelper import gather_all_xes, get_all_ready_logs_multiple
 from measures import read_measure_entry

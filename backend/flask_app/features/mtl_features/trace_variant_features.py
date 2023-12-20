@@ -3,6 +3,7 @@ from scipy import stats
 from pm4py.statistics.traces.generic.log import case_statistics
 import sys
 import numpy as np
+import math
 sys.path.append(
     "/home/qc261227/Recommender/RecommenderSystem/backend/flask_app")
 
@@ -82,9 +83,14 @@ def feature_std_variant_occurrence(log_path):
 
 def feature_skewness_variant_occurrence(log_path):
     occurrences = get_occurrences(log_path)
-    return stats.skew(occurrences)
+    result = stats.skew(occurrences)
+    if np.isnan(result) or math.isnan(result):
+        return 0
 
 
 def feature_kurtosis_variant_occurrence(log_path):
     occurrences = get_occurrences(log_path)
-    return stats.kurtosis(occurrences)
+    result = stats.kurtosis(occurrences)
+    if math.isnan(result) or np.isnan(result):
+        return 0
+    return result

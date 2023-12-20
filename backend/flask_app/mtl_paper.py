@@ -13,13 +13,14 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, f1_score
-from features import read_single_feature, read_feature_matrix
+from feature_controller import read_single_feature, read_feature_matrix, get_total_feature_functions_dict
 from pm4py.objects.log.importer.xes import importer as xes_importer
 from pm4py.objects.log.exporter.xes import exporter as xes_exporter
 from utils import get_log_name, load_cache_variable, store_cache_variable
 from measures import read_target_entry, read_measure_entry
 from filehelper import gather_all_xes, get_all_ready_logs, get_all_ready_logs_multiple
-from recommender import classification_prediction_ranking, classification
+from init import init_given_parameters
+from recommender import classification_prediction_ranking, classification, compute_fitted_classifier
 
 
 def read_fitted_classifier(classification_method,  x_train, y_train):
@@ -103,8 +104,8 @@ def read_mtl_target_vector(all_log_paths):
     return label['target'].cat.codes
 
 
-def get_mtl_X_feature_matrix(ready_logs):
-    X = pd.DataFrame(read_feature_matrix(ready_logs),
+def get_mtl_X_feature_matrix(ready_logs, feature_portfolio):
+    X = pd.DataFrame(read_feature_matrix(ready_logs, feature_portfolio),
                      columns=globals.selected_features)
 
     X.index = [get_log_name(log_path) for log_path in ready_logs]
@@ -117,7 +118,8 @@ def do_mtl_classification_evaluation_experiment(X, label, classification_method)
         X_train, X_test, y_train, y_test = train_test_split(
             X, label, stratify=label, random_state=step)
 
-        clf = read_fitted_classifier(classification_method, X_train, y_train)
+        clf = compute_fitted_classifier(
+            classification_method, X_train, y_train)
         result = clf.predict(X_test)
         result_df = pd.concat([result_df, pd.DataFrame(
             [[clf.score(X_test, y_test), f1_score(y_test, result, average='macro')]])])
@@ -159,8 +161,8 @@ def do_mtl_majority_experiment(X, label):
     return result_df_maj
 
 
-def do_mtl_evaluation_experiment(all_log_paths, classification_method):
-    X = get_mtl_X_feature_matrix(all_log_paths)
+def do_mtl_evaluation_experiment(all_log_paths, classification_method, feature_portfolio):
+    X = get_mtl_X_feature_matrix(all_log_paths, feature_portfolio)
     label = read_mtl_target_vector(all_log_paths)
 
     result_df = do_mtl_classification_evaluation_experiment(
@@ -179,7 +181,8 @@ def do_mtl_evaluation_experiment(all_log_paths, classification_method):
     ax.yaxis.grid(True)
     # Save the plot to a file.
     # You can change the file name and extension as needed.
-    plt.savefig(f"./mtl_boxplots/{classification_method}_boxplot.png")
+    plt.savefig(
+        f"../evaluation/mtl_accuracy/{classification_method}_boxplot.png")
 
     # Optional: Close the figure to free up memory.
     plt.close()
@@ -190,7 +193,11 @@ if __name__ == "__main__":
         "alpha", "inductive", "heuristic", "split", "ILP"]
     # + "inductive_infrequent", "inductive_direct"
 
-    log_paths = get_all_ready_logs_multiple(gather_all_xes("../logs/training"))
+    log_paths = get_all_ready_logs_multiple(gather_all_xes(
+        "../logs/training") + gather_all_xes("../logs/testing"))
+
+    init_given_parameters(log_paths, globals.algorithm_portfolio,
+                          globals.selected_features, globals.measures_list)
     algorithm_portfolio = copy.deepcopy(globals.algorithm_portfolio)
     for classification_method in globals.classification_methods:
         do_mtl_evaluation_experiment(log_paths, classification_method)

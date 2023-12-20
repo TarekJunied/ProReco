@@ -7,6 +7,7 @@ import random
 import globals
 import math
 from filehelper import gather_all_xes
+
 from discovery.splitminer.split_miner import discover_petri_net_split
 from discovery.structuredminer.fodina_miner import discover_petri_net_fodina
 from pm4py.algo.discovery.inductive import algorithm as inductive_miner

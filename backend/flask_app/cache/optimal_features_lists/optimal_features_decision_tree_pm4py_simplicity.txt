@@ -1,0 +1,6 @@
+start_activities_mean
+structure
+spatial_proximity_connectedness
+length_one_loops
+percentage_concurrency
+dfg_wcc_max

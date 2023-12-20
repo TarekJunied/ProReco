@@ -20,17 +20,24 @@ def number_of_arcs(log):
 
 # 3. Coefficient of network connectivity / complexity (i.e. number of arcs / number of nodes) (gcnc)
 def coefficient_of_network_connectivity(log):
+    if number_of_nodes(log) == 0:
+        return 0
     return number_of_arcs(log) / number_of_nodes(log)
 
 
 # 4. Average node degree (i.e. (2 x number of arcs) / number of nodes) (gand)
 def average_node_degree(log):
+    if number_of_nodes(log) == 0:
+        return 0
     return (2 * number_of_arcs(log)) / number_of_nodes(log)
 
 
 # 5. Maximum node degree (gmnd)
 def maximum_node_degree(log):
-    return max(list(i[1] for i in nx.degree(create_directed_graph(log))))
+    node_degrees = list(i[1] for i in nx.degree(create_directed_graph(log)))
+    if node_degrees == []:
+        return 0
+    return max(node_degrees)
 
 
 # 6. Density (i.e. A / (N x (N-1)) (gdn)
@@ -40,6 +47,8 @@ def density(log):
 
 # 7. Structure (i.e. 1 - (A / (N^2))) (gst)
 def structure(log):
+    if number_of_nodes(log) == 0:
+        return 1
     return 1 - (number_of_arcs(log) / (number_of_nodes(log)**2))
 
 
@@ -94,10 +103,13 @@ def number_of_cut_vertices(log):
 
 # 11. Separability ratio (gsepr)
 def separability_ratio(log):
+    if number_of_nodes(log) == 0:
+        return 0
     return number_of_cut_vertices(log) / number_of_nodes(log)
 
 
 # 12. Sequentiality ratio (gseqr)
+
 def sequentiality_ratio(log):
     # retrieve graph and list of in- and out-degrees of each node
     graph = create_directed_graph(log)
@@ -115,6 +127,9 @@ def sequentiality_ratio(log):
         for j in non_connector_nodes:
             if graph.has_edge(i, j):
                 non_connector_edges += 1
+
+    if number_of_arcs(log) == 0:
+        return 0
     return non_connector_edges / number_of_arcs(log)
 
 

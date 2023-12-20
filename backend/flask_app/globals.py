@@ -78,9 +78,6 @@ fig4pm_features = [
 ]
 
 
-#    "dfg_wcc_variation_coefficient",
-#   "dfg_wcc_entropy"
-#
 selected_features = ["no_distinct_traces", "no_total_traces", "avg_trace_length", "avg_event_repetition_intra_trace",
                      "no_distinct_events", "no_events_total", "no_distinct_start", "no_distinct_end", "density", "length_one_loops", "total_no_activities", "percentage_concurrency", "percentage_sequence",
                      "dfg_mean_variable_degree",
@@ -90,6 +87,8 @@ selected_features = ["no_distinct_traces", "no_total_traces", "avg_trace_length"
                      "dfg_entropy_variable_degree",
                      "dfg_wcc_min",
                      "dfg_wcc_max",
+                     "dfg_wcc_entropy",
+                     "dfg_wcc_variation_coefficient"
                      ]
 # selected_features = fig4pm_features
 
@@ -106,7 +105,7 @@ normalisierbare_measures = {"token_fitness": "max",  "token_precision": "max",
 
 # logistic regression removed, "autofolio"
 classification_methods = ["decision_tree", "knn", "svm",
-                          "random_forest", "gradient_boosting", "logistic_regression"]
+                          "random_forest", "logistic_regression", "gradient_boosting",  "xgboost"]
 
 regression_methods = [
     "linear_regression",
@@ -126,5 +125,6 @@ working_dir = "/Users/tarekjunied/Documents/Universität/BachelorThesis"
 features = {}
 training_log_paths = {}
 testing_log_paths = {}
+log_paths = {}
 measures = {}
 models = {}

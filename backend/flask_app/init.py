@@ -1,7 +1,10 @@
 from utils import read_logs, read_models, read_model, read_log, load_cache_variable, store_cache_variable, generate_log_id, generate_cache_file,  read_log
+import logging
+
 from pm4py.objects.conversion.log import converter as log_converter
 from pm4py.algo.discovery.inductive import algorithm as inductive_miner
-from features import read_feature_matrix, read_feature_vector, feature_no_events_total
+from tqdm.contrib.concurrent import process_map  # Use process_map from tqdm
+from feature_controller import read_feature_matrix, read_feature_vector, get_total_feature_functions_dict, read_single_feature
 from measures import read_target_entries, read_target_entry, read_classification_target_vector, read_measure_entry
 from filehelper import gather_all_xes, split_file_path, get_all_ready_logs_multiple
 from LogGenerator.log_generator import create_random_log
@@ -27,6 +30,44 @@ def fix_corrupt_cache():
                     print(f"Error loading {file_path}: {e}")
 
 
+def load_logs_into_main_memory(log_paths):
+    for log_path in log_paths:
+        globals.log_paths[log_path] = read_log(log_path)
+
+
+def load_logs_into_main_memory_with_mode(log_paths, mode):
+    if mode == "training":
+        for log_path in log_paths:
+            globals.training_log_pathslog_paths[log_path] = read_log(log_path)
+    elif mode == "testing":
+        for log_path in log_paths:
+            globals.testing_log_paths[log_path] = read_log(log_path)
+    else:
+        print("wrong mode")
+
+
+def load_models_into_main_memory(log_paths, algorithm_portfolio):
+    for log_path in log_paths:
+        for discovery_algorithm in algorithm_portfolio:
+            globals.models[log_path, discovery_algorithm] = read_model(
+                log_path, discovery_algorithm)
+
+
+def load_features_into_main_memory(log_paths, selected_features):
+    for log_path in log_paths:
+        for feature in selected_features:
+            globals.features[log_path, feature] = read_single_feature(
+                log_path, feature)
+
+
+def load_measures_into_main_main_memory(log_paths, algorithm_portfolio, selected_measures):
+    for log_path in log_paths:
+        for discovery_algorithm in algorithm_portfolio:
+            for measure in selected_measures:
+                globals.measures[log_path, discovery_algorithm,
+                                 measure] = read_measure_entry(log_path, discovery_algorithm, measure)
+
+
 def get_log_name(log_path):
     return split_file_path(log_path)["filename"]
 
@@ -39,47 +80,37 @@ def load_logs():
     testing_log_paths = get_all_ready_logs_multiple(
         gather_all_xes("../logs/testing"))
 
-    for log_path in training_log_paths:
-        log_name = get_log_name(log_path)
-        globals.training_log_paths[log_path] = load_cache_variable(
-            f"{globals.flask_app_path}/cache/logs/{log_name}.pkl")
-
-    for log_path in testing_log_paths:
-        log_name = get_log_name(log_path)
-        globals.testing_log_paths[log_path] = load_cache_variable(
-            f"{globals.flask_app_path}/cache/logs/{log_name}.pkl")
+    load_logs_into_main_memory(training_log_paths + testing_log_paths)
+    load_logs_into_main_memory_with_mode(training_log_paths, "training")
+    load_logs_into_main_memory_with_mode(training_log_paths, "testing")
 
 
 def load_measures():
     log_paths = list(globals.training_log_paths.keys()) + \
         list(globals.testing_log_paths.keys())
 
-    for log_path in log_paths:
-        for measure in globals.measures_list:
-            for discovery_algorithm in globals.algorithm_portfolio:
-                log_name = get_log_name(log_path)
-                globals.measures[log_path, discovery_algorithm, measure] = load_cache_variable(
-                    f"{globals.flask_app_path}/cache/measures/{discovery_algorithm}_{measure}_{log_name}.pkl")
+    load_measures_into_main_main_memory(
+        log_paths, globals.algorithm_portfolio, globals.measures_list)
 
 
 def load_models():
     log_paths = list(globals.training_log_paths.keys()) + \
         list(globals.testing_log_paths.keys())
-    for log_path in log_paths:
-        for discovery_algorithm in globals.algorithm_portfolio:
-            log_name = get_log_name(log_path)
-            globals.models[log_path, discovery_algorithm] = load_cache_variable(
-                f"{globals.flask_app_path}/cache/models/{discovery_algorithm}_{log_name}.pkl")
+    load_models_into_main_memory(log_paths, globals.algorithm_portfolio)
 
 
 def load_features():
     log_paths = list(globals.training_log_paths.keys()) + \
         list(globals.testing_log_paths.keys())
-    for log_path in log_paths:
-        log_name = get_log_name(log_path)
-        for feature in globals.selected_features:
-            globals.features[log_path, feature] = load_cache_variable(
-                f"{globals.flask_app_path}/cache/features/{feature}_{log_name}.pkl")
+    load_features_into_main_memory(log_paths, globals.selected_features)
+
+
+def init_given_parameters(log_paths, algorithm_portfolio, selected_features, selected_measures):
+    load_logs_into_main_memory(log_paths)
+    load_features_into_main_memory(log_paths, selected_features)
+    load_models_into_main_memory(log_paths, algorithm_portfolio)
+    load_measures_into_main_main_memory(
+        log_paths, algorithm_portfolio, selected_measures)
 
 
 def init():
@@ -89,131 +120,21 @@ def init():
     load_features()
 
 
-def init_training_logs(training_log_paths, list_of_measure_names):
-    read_logs(training_log_paths)
-
-    read_models(training_log_paths)
-
-    x = read_feature_matrix(training_log_paths)
-
-    for measure_name in list_of_measure_names:
-        read_target_entries(training_log_paths, measure_name)
-
-
-def init_real_life_logs(real_life_log_paths, list_of_measure_names):
-
-    for log_path in real_life_log_paths:
-        train_xes, test_xes = split_logpath(log_path)
-        break_up_logpath(train_xes)
-        break_up_logpath(test_xes)
-        init_log(train_xes, list_of_measure_names)
-        init_log(test_xes, list_of_measure_names)
-
-
-def init_log(log_path):
+def init_log(log_path, feature_portfolio, algorithm_portfolio):
     list_of_measure_names = globals.measures
 
     read_log(log_path)
-    for discovery_algorithm in globals.algorithm_portfolio:
+    for discovery_algorithm in algorithm_portfolio:
         read_model(log_path, discovery_algorithm)
 
-    read_feature_vector(log_path)
+    read_feature_vector(log_path, feature_portfolio)
 
     for measure in list_of_measure_names:
-        for discovery_algorithm in globals.algorithm_portfolio:
+        for discovery_algorithm in algorithm_portfolio:
             try:
                 read_measure_entry(log_path, discovery_algorithm, measure)
             except Exception as e:
                 print(e)
-
-
-def keep_top_percentage_traces(log_path, top_k):
-
-    # no_traces = feature_no_distinct_traces(log_path)
-
-    # k = math.ceil(no_traces*percentage)
-
-    unfiltered_log = read_log(log_path)
-
-    filtered_log = pm4py.filtering.filter_variants_top_k(unfiltered_log, top_k)
-
-    split_dic = split_file_path(log_path)
-
-    log_path_dir = split_dic["directory"]
-
-    log_path_filename = split_dic["filename"]
-
-    pm4py.write.write_xes(
-        filtered_log, f"{log_path_dir}/filtered_{log_path_filename}.xes")
-
-    cache_filepath = generate_cache_file(
-        f"{globals.flask_app_path}/cache/logs/filtered_{log_path_filename}.pkl")
-
-    store_cache_variable(filtered_log, cache_filepath)
-
-    return filtered_log
-
-
-def split_logpath(log_path, train_percentage=0.7):
-
-    log_id = generate_log_id(log_path)
-
-    train_log_filename = f"{log_id}_train"
-    test_log_filename = f"{log_id}_test"
-
-    train_xes_filepath = f"../logs/training/{train_log_filename}.xes"
-    test_xes_filepath = f"../logs/testing/{test_log_filename}.xes"
-
-    train_cache_filepath = generate_cache_file(
-        f"{globals.flask_app_path}/cache/logs/{train_log_filename}.pkl")
-    test_cache_filepath = generate_cache_file(
-        f"{globals.flask_app_path}/cache/logs/{test_log_filename}.pkl")
-
-    try:
-        train_log = read_log(train_cache_filepath)
-        test_log = read_log(test_cache_filepath)
-        return train_xes_filepath, test_xes_filepath
-    except Exception:
-        log = read_log(log_path)
-        print("No cache file existing for split logs. Now splitting logs.")
-
-        train_log, test_log = pm4py.split_train_test(log, train_percentage)
-
-        pm4py.write.write_xes(train_log, train_xes_filepath)
-        pm4py.write.write_xes(test_log, test_xes_filepath)
-
-        store_cache_variable(train_log, train_cache_filepath)
-        store_cache_variable(test_log, test_cache_filepath)
-
-    return train_xes_filepath, test_xes_filepath
-
-
-def split_list_random_sizes(lst):
-    min_size = 1000
-    max_size = 2000
-    sublists = []
-    current_sublist = []
-
-    while lst:
-        size = random.randint(min_size, max_size)
-        current_sublist = lst[:size]
-        sublists.append(current_sublist)
-        lst = lst[size:]
-
-    return sublists
-
-
-def create_and_init(index, mode):
-
-    log_path = create_random_log(index, mode)
-
-    init_log(log_path)
-
-# Function to get the size of a file
-
-
-def get_file_size(file_path):
-    return os.path.getsize(file_path)
 
 
 def get_file_size(file_path):
@@ -231,6 +152,13 @@ def try_init_log(log_path):
     except Exception as e:
         print("Could not parse log")
         print(e)
+
+    try:
+        read_feature_vector(log_path, globals.selected_features)
+    except Exception as e:
+        print("Couldn't compute feature vector")
+        print(e)
+
     for discovery_algorithm in globals.algorithm_portfolio:
         try:
             read_model(log_path, discovery_algorithm)
@@ -238,12 +166,6 @@ def try_init_log(log_path):
             print(
                 f"Could not discover model for {discovery_algorithm} on {log_path}")
             print(e)
-
-    try:
-        read_feature_vector(log_path)
-    except Exception as e:
-        print("Couldn't compute feature vector")
-        print(e)
 
     for measure in list_of_measure_names:
         for discovery_algorithm in globals.algorithm_portfolio:
@@ -257,6 +179,7 @@ def try_init_log(log_path):
 
 if __name__ == "__main__":
     sys.setrecursionlimit(100000)
+
     log_folder_paths = []
 
     # Check if at least one argument is provided
@@ -268,14 +191,25 @@ if __name__ == "__main__":
         print("No input provided")
         sys.exit(-1)
 
-    print("now startin init")
-    print(log_folder_paths)
+    globals.algorithm_portfolio = ["alpha", "alpha_plus", "inductive",
+                                   "inductive_infrequent", "inductive_direct", "heuristic"]
+    # , "ILP"
+    to_init_logs = gather_all_xes("../logs/modified_eventlogs") + gather_all_xes("../logs/training") + gather_all_xes(
+        "../logs/testing")
+
+    globals.selected_features = list(get_total_feature_functions_dict().keys())
+
     logs_to_init = []
     for log_folder_path in log_folder_paths:
         logs_to_init += gather_all_xes(log_folder_path)
 
-    logs_to_init = sort_files_by_size(logs_to_init)
-    num_processes = 48
+    logs_to_init = to_init_logs
+    # logs_to_init = sort_files_by_size(logs_to_init)
+
+    num_processes = 8
+    # sys.stdout = open('/dev/null', 'w')
+
+    # process_map(try_init_log, logs_to_init, max_workers=num_processes)
 
     pool = multiprocessing.Pool(processes=num_processes)
 
@@ -289,3 +223,10 @@ if __name__ == "__main__":
     print("pool joined")
 
     print("done")
+
+    for log_path in logs_to_init:
+        try:
+            read_model(log_path, "ILP")
+            read_model(log_path, "split")
+        except Exception:
+            print("bye next")

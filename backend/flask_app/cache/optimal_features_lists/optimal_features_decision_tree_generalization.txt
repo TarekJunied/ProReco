@@ -1,0 +1,10 @@
+ratio_unique_traces_per_trace
+activities_std
+activities_skewness
+simple_trace_diversity
+average_node_degree
+density
+event_profile_average_cosine_similarity
+dfg_mean_variable_degree
+dfg_variation_coefficient_variable_degree
+dfg_wcc_max

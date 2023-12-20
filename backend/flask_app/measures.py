@@ -181,7 +181,7 @@ def read_measure_entry(log_path, discovery_algorithm, measure_name):
 
     log_id = generate_log_id(log_path)
     cache_file_path = generate_cache_file(
-        f"{globals.flask_app_path}/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl")
+        f"{globals.flask_app_path}/cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl")
     try:
         measure_entry = load_cache_variable(cache_file_path)
     except Exception:
@@ -214,12 +214,13 @@ def read_target_entries(log_paths, measure_name):
             print(e)
 
 
-def read_classification_target_vector(log_paths, measure_name):
+def read_classification_target_vector(log_paths, measure_name, algorithm_portfolio):
     n = len(log_paths)
     y = [None]*n
 
     for i in range(n):
-        y[i] = read_target_entry(log_paths[i], measure_name)
+        y[i] = read_target_entry(
+            log_paths[i], measure_name, algorithm_portfolio)
     return y
 
 

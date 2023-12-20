@@ -2,12 +2,12 @@
 '''Necessery liberaries'''
 ###############################################################################
 from pm4py.statistics.traces.generic.log import case_statistics
-from ..general_methods import event_names, self_loop_per_trace_overview, repetition_per_trace_overview
+from flask_app.features.fig4pm_features.general_methods import event_names, self_loop_per_trace_overview, repetition_per_trace_overview
 import sys
 sys.path.append(
     "/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/flask_app/features/fig4pm_features")
 sys.path.append(
-    "/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/flask_app")
+    "/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/flask_app/features")
 ###############################################################################
 '''Derived From Linear Structure functions'''
 ###############################################################################
@@ -212,6 +212,8 @@ def trace_similarity_rate(log):
                 dist += (((max(len(reference_trace), len(compared_trace))) -
                           distance(reference_trace, compared_trace)) /
                          (max(len(reference_trace), len(compared_trace))))
+    if (total_number_of_trace_classes(log) * (total_number_of_trace_classes(log) - 1)) == 0:
+        return 0
     return (1 / (total_number_of_trace_classes(log) * (total_number_of_trace_classes(log) - 1))) * dist
 
 

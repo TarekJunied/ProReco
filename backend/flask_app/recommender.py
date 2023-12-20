@@ -6,13 +6,14 @@ import numpy as np
 import subprocess
 import os
 import pm4py
+from xgboost import XGBClassifier
 from utils import read_logs, read_models,  get_all_ready_logs
 from filehelper import gather_all_xes, get_all_ready_logs, get_all_ready_logs_multiple
-from features import read_feature_matrix, read_feature_vector, feature_no_total_traces, space_out_feature_vector_string
+from feature_controller import read_feature_matrix, read_feature_vector
 from measures import read_measure_entry, read_regression_target_vector
 from init import *
 from autofolio_interface import autofolio_classification
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
@@ -28,98 +29,49 @@ from lime import lime_tabular
 from sklearn.tree import plot_tree
 
 
-def read_multiobjective_graph(log_path, ready_training, measure_weight_dict, regression_method="linear_regression"):
-    predicted_alg_values = {}
-    relevant_measures = [key for key,
-                         value in measure_weight_dict.items() if value > 0]
-    predicted_algorithm_vectors = {algorithm: []
-                                   for algorithm in globals.algorithm_portfolio}
-    actual_algorithm_vectors = {algorithm: []
-                                for algorithm in globals.algorithm_portfolio}
+def compute_fitted_classifier(classification_method, measure_name, ready_training, feature_portfolio=globals.selected_features):
+    x_train = read_feature_matrix(ready_training, feature_portfolio)
+    y_train = read_classification_target_vector(
+        ready_training, measure_name, globals.algorithm_portfolio)
 
-    for discovery_algorithm in globals.algorithm_portfolio:
-        for measure_name in relevant_measures:
-            predicted_value = regression(
-                log_path, regression_method, measure_name, discovery_algorithm, ready_training)
-            actual_value = read_measure_entry(
-                log_path, discovery_algorithm, measure_name)
-            predicted_alg_values[discovery_algorithm,
-                                 measure_name] = predicted_value
-            predicted_algorithm_vectors[discovery_algorithm].append(
-                predicted_value)
-            actual_algorithm_vectors[discovery_algorithm].append(actual_value)
+    if classification_method == "decision_tree":
+        clf = DecisionTreeClassifier()
+    elif classification_method == "knn":
+        clf = KNeighborsClassifier(n_neighbors=9)
+    elif classification_method == "svm":
+        clf = SVC(probability=True)
+    elif classification_method == "random_forest":
+        clf = RandomForestClassifier()
+    elif classification_method == "logistic_regression":
+        clf = LogisticRegression()
+    elif classification_method == "gradient_boosting":
+        clf = GradientBoostingClassifier(n_estimators=100)
+    elif classification_method == "xgboost":
+        clf = XGBClassifier(use_label_encoder=False, eval_metric='logloss',
+                            objective='multi:softprob', num_class=len(globals.algorithm_portfolio))
+    else:
+        raise ValueError(
+            f"Invalid classification method: {classification_method}")
 
-    n = len(globals.algorithm_portfolio)
-    predicted_dominated = set()
-    actual_dominated = set()
-    for i in range(n):
-        for j in range(n):
-            algo_i = globals.algorithm_portfolio[i]
-            algo_j = globals.algorithm_portfolio[j]
-            if algo_i_dominates_algo_j(predicted_algorithm_vectors[algo_i], predicted_algorithm_vectors[algo_j], relevant_measures):
-                predicted_dominated.add(algo_j)
-            if algo_i_dominates_algo_j(actual_algorithm_vectors[algo_i], actual_algorithm_vectors[algo_j], relevant_measures):
-                actual_dominated.add(algo_j)
+    clf = clf.fit(x_train, y_train)
 
-    print(f"predicted dominated algos {predicted_dominated}")
-    print(f"acutal dominated algos {actual_dominated}")
-
-    m = max(len(predicted_dominated), len(actual_dominated))
-    u = len(predicted_dominated.intersection(actual_dominated))
-
-    return u/m
+    return clf
 
 
-def algo_i_dominates_algo_j(algo_i_value_vector, algo_j_value_vector, relevant_measures):
-    i_dominates_j = True
-    k = 0
-    for measure in relevant_measures:
-        if globals.measures_kind[measure] == "max":
-            if algo_i_value_vector[k] <= algo_j_value_vector[k]:
-                i_dominates_j = False
-            elif globals.measures_kind[measure] == "min":
-                if algo_i_value_vector[k] >= algo_j_value_vector[k]:
-                    i_dominates_j = False
-                else:
-                    print("fuck")
-                k += 1
-    return i_dominates_j
-
-
-def read_fitted_classifier(classification_method, measure_name, ready_training):
+def read_fitted_classifier(classification_method, measure_name, ready_training, feature_portfolio):
     classifier_filepath = f"./classifiers/{measure_name}_{classification_method}.pkl"
     try:
-        clf = load_cache_variable(classifier_filepath)
+        ret = load_cache_variable(classifier_filepath)
+
     except Exception:
         print("Classifier doesn't exist yet. Computing classifier now")
 
-        x_train = read_feature_matrix(ready_training)
+        ret = compute_fitted_classifier(
+            classification_method, measure_name, ready_training, feature_portfolio)
 
-        y_train = read_classification_target_vector(
-            ready_training, measure_name)
+        store_cache_variable(ret, classifier_filepath)
 
-        if classification_method == "decision_tree":
-            clf = DecisionTreeClassifier()
-        elif classification_method == "knn":
-            clf = KNeighborsClassifier(n_neighbors=9)
-        elif classification_method == "svm":
-            clf = SVC(probability=True)
-        elif classification_method == "random_forest":
-            clf = RandomForestClassifier()
-        elif classification_method == "logistic_regression":
-            clf = LogisticRegression()
-        elif classification_method == "gradient_boosting":
-            clf = GradientBoostingClassifier(n_estimators=100)
-
-        else:
-            raise ValueError(
-                f"Invalid classification method: {classification_method}")
-
-        clf = clf.fit(x_train, y_train)
-
-        store_cache_variable(clf, classifier_filepath)
-
-    return clf
+    return ret
 
 
 def read_fitted_regressor(regression_method, measure_name, discovery_algorithm, ready_training):
@@ -166,8 +118,8 @@ def classification_prediction_ranking(log_path, classification_method, measure_n
         print("We don't support autofolio for this.")
         return
 
-    clf = read_fitted_classifier(
-        classification_method, measure_name, ready_training)
+    clf = compute_fitted_classifier(
+        classification_method, measure_name, ready_training)[0]
 
     # Check if the classifier has the predict_proba method
     if hasattr(clf, 'predict_proba'):
@@ -198,19 +150,15 @@ def classification_prediction_ranking(log_path, classification_method, measure_n
         return None
 
 
-# TODO: tailor this again to backend
-def classification(log_path, classification_method, measure_name, ready_training):
-    if classification_method == "autofolio":
-        return autofolio_classification(log_path, ready_training, measure_name)
+def classification(log_path, classification_method, measure_name, ready_training, feature_portfolio):
 
-    clf = read_fitted_classifier(
-        classification_method, measure_name, ready_training)
+    ret = read_fitted_classifier(
+        classification_method, measure_name, ready_training, feature_portfolio)
+    clf = ret
 
-    predictions = clf.predict(read_feature_vector(log_path))
+    predictions = clf.predict(read_feature_vector(log_path, feature_portfolio))
 
     return predictions[0]
-
-# TODO: tailor this again to backend
 
 
 def regression(log_path, regression_method, measure_name, discovery_algorithm, ready_training):
@@ -227,7 +175,7 @@ def ranking_classification(log_path, classification_method, measure_name):
     if classification_method == "autofolio":
         return autofolio_classification(log_path, measure_name)
 
-    clf = read_fitted_classifier(classification_method, measure_name, [])
+    clf = read_fitted_classifier(classification_method, measure_name)[0]
 
     # Get probability estimates for each class
     proba = clf.predict_proba(read_feature_vector(log_path))
@@ -307,104 +255,6 @@ def measure_score(log_path, discovery_algorithm, measure):
     return sorted_keys_list.index(discovery_algorithm) + 1
 
 
-def list_files_with_sizes(file_paths):
-    # Create a list to store file details
-    file_details = []
-
-    # Iterate over each file path
-    for file_path in file_paths:
-        # Get file size in bytes
-        file_size = os.path.getsize(file_path)
-
-        # Append file details to the list
-        file_details.append((file_path, file_size))
-
-    # Sort the list based on file size in descending order
-    file_details.sort(key=lambda x: x[1], reverse=True)
-
-    # Print the sorted file details
-    for file_path, file_size in file_details:
-        print(f"{file_path}: {file_size} bytes")
-
-
-def read_shap_explainer(classification_method, x_train):
-    cache_file_path = f"./cache/explainers/{classification_method}.pkl"
-    try:
-        explainer = load_cache_variable(cache_file_path)
-    except Exception as e:
-
-        clf = read_fitted_classifier(
-            classification_method, chosen_measure, ready_training)
-
-        if classification_method == "decision_tree" or classification_method == "random_forest":
-            explainer = shap.TreeExplainer(clf)
-        elif classification_method == "knn" or classification_method == "svm" or classification_method == "logistic_regression":
-            explainer = shap.KernelExplainer(clf.predict_proba, x_train)
-        elif classification_method == "svm":
-            explainer = shap.KernelExplainer(clf.predict_proba, x_train)
-        else:
-            print("no shap values possible for this classification method")
-            sys.exit(-1)
-
-        store_cache_variable(explainer, cache_file_path)
-
-    return explainer
-
-
-def create_shap_graph(ready_training, ready_testing, classification_method, chosen_measure):
-    x_test = read_feature_matrix(ready_testing)
-    x_train = read_feature_matrix(ready_training)
-
-    x_test = pd.DataFrame(x_test, columns=globals.selected_features)
-    x_train = pd.DataFrame(x_train, columns=globals.selected_features)
-
-    explainer = read_shap_explainer(classification_method, x_train)
-
-    shap_values = explainer.shap_values(x_test)
-
-    plt.clf()
-
-    # Plot the SHAP summary plot
-    shap.summary_plot(
-        shap_values[1], x_test, feature_names=globals.selected_features, show=False)
-
-    # Save the plot
-    storage_dir = "../evaluation/shap"
-
-    plt.savefig(
-        f'{storage_dir}/{classification_method}_{chosen_measure}_shap_summary_plot.png')
-    plt.show()
-
-
-def create_lime_graph(measure_name):
-
-    ready_training = get_all_ready_logs(
-        gather_all_xes("../logs/training"), measure_name)
-    ready_testing = get_all_ready_logs(
-        gather_all_xes("../logs/testing"), measure_name)
-
-    # Assume 'model' is your scikit-learn classifier
-    x_test = read_feature_matrix(ready_testing)
-    x_train = read_feature_matrix(ready_training)
-
-    # x_test = pd.DataFrame(x_test, columns=globals.selected_features)
-    # x_train = pd.DataFrame(x_train, columns=globals.selected_features)
-    def custom_model_predict(x): return classification(
-        x, "autofolio", measure_name, ready_training)
-
-    # Assume 'X_train' is your training data
-    explainer = lime_tabular.LimeTabularExplainer(
-        x_train, mode="classification")
-
-    input("hji")
-    # Assume 'X_test[i]' is the instance you want to explain
-    explanation = explainer.explain_instance(read_feature_vector(
-        ready_testing[0]).values.reshape(1, -1), custom_model_predict)
-
-    # Save the explanation plot as a PNG file
-    explanation.save_to_file('lime_explanation_plot.png')
-
-
 if __name__ == "__main__":
     # shap.initjs()
     globals.algorithm_portfolio = ["alpha", "heuristic",
@@ -425,6 +275,10 @@ if __name__ == "__main__":
         gather_all_xes("../logs/training"))
     ready_testing = get_all_ready_logs_multiple(
         gather_all_xes("../logs/testing"))
+
+    for measure in globals.measures_list:
+        compute_fitted_classifier("xgboost", measure, ready_training)
+
     measure_weight_dict = {}
     for measure in globals.measures_list:
         measure_weight_dict[measure] = 0

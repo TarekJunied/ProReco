@@ -8,7 +8,11 @@ __MACOSX
 *.pnml
 *.xml
 *.mxml
-cache
+backend/flask_app/cache/features/*
+backend/flask_app/cache/measures/*
+backend/flask_app/cache/models/*
+backend/flask_app/cache/logs/*
+backend/flask_app/cache/explainers/*
 misc/
 .metadata
 *.DS_Store
