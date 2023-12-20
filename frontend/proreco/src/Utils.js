@@ -12,6 +12,8 @@ async function parsePNMLFile(filePath) {
             }
 
 
+            console.log(result.pnml.net[0])
+
 
 
             const places = result.pnml.net[0].place || [];
