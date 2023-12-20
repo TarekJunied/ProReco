@@ -1,0 +1,86 @@
+\documentclass[a4paper,11pt,twoside]{pads-thesis}
+
+%%%%% PACKAGES USED SORTED ALPHABETICALLY  %%%%%
+\usepackage[toc,page]{appendix} % support appendices
+\usepackage{csquotes} % handles quotes automatically
+\usepackage{hyperref} % allows autoref/hyperlinks/etc.
+
+
+%%%%% PADS TEMPLATE SETTINGS %%%%%
+\renewcommand{\gTitle}{Thesis Title}
+\renewcommand{\gAuthor}{Author}
+\renewcommand{\gStudentID}{Student ID}
+\renewcommand{\gHeader}{Master's/Bachelor's Thesis}
+\renewcommand{\gSupervisor}{
+    Dr. Supervisor}
+\renewcommand{\gExaminer}{Prof. One \\ 
+	Prof. Two }
+\renewcommand{\gInstitution}{Chair of Process and Data Science (PADS - Informatik 9), RWTH Aachen University}
+\renewcommand{\gRegDate}{YYYY-MM-DD}
+\renewcommand{\gSubDate}{YYYY-MM-DD}
+
+%%%%% AUTOREF %%%%%
+\renewcommand{\sectionautorefname}{Section}
+
+\begin{document}
+%%% Title page
+\pagenumbering{roman}
+
+\gTitlePage
+%\pagestyle{plain}
+%%% TOC
+
+%\begin{abstract}
+\chapter*{Abstract} \addcontentsline{toc}{chapter}{Abstract}
+\input{chapters/abstract.tex}
+%\end{abstract}
+
+\tableofcontents
+
+%\setcounter{page}{1}
+\cleardoublepage
+%%% Begin document
+\pagestyle{fancy}
+\pagenumbering{arabic}
+
+\chapter{Introduction} \label{chap:intro}
+\input{chapters/introduction.tex}
+
+\chapter{Related Work} \label{chap:related_work}
+\input{chapters/related_work.tex}
+
+\chapter{Preliminaries} \label{chap:prelim}
+\input{chapters/prelim.tex}
+
+\chapter{Method} \label{chap:method}
+\input{chapters/method.tex}
+
+\chapter{Implementation} \label{chap:impl}
+\input{chapters/implementation.tex}
+
+\chapter{Evaluation} \label{chap:eval}
+\input{chapters/evaluation.tex}
+
+\chapter{Discussion} \label{chap:discussion}
+\input{chapters/discussion.tex}
+
+\chapter{Conclusion} \label{chap:conclusion}
+\input{chapters/conclusion.tex}
+
+\bibliography{references} 
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\begin{appendices}
+    \chapter{Some Appendix}
+    Try to avoid appendices.
+    If you can't this is a place to show all kinds of results that are supportive, yet, not critical for your thesis.
+\end{appendices}
+
+
+
+\chapter*{Acknowledgments}\addcontentsline{toc}{chapter}{Acknowledgements}
+\input{chapters/acknowledgements.tex}
+
+
+
+\end{document}
