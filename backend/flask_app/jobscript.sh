@@ -1,11 +1,11 @@
 #!/usr/local_rwth/bin/zsh
-#SBATCH --job-name=FFA
-#SBATCH --output=FFA_OUTPUT.txt
-#SBATCH --error=FFA_ERROR.txt
+#SBATCH --job-name=modified_eventlogs
+#SBATCH --output=modified_eventlogs_OUTPUT.txt
+#SBATCH --error=modified_eventlogs_ERROR.txt
 #SBATCH --nodes=1
 #SBATCH --ntasks=12
 #SBATCH --mem=10G
-#SBATCH --time=12:00:00
+#SBATCH --time=72:00:00
 #SBATCH --account=thes1569
 
 

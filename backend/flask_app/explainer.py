@@ -1,15 +1,26 @@
+import shap
+import sys
+import globals
+import pandas as pd
+import matplotlib.pyplot as plt
+from utils import load_cache_variable, store_cache_variable
+from recommender import read_fitted_classifier
+from feature_controller import read_feature_matrix, get_total_feature_functions_dict, read_feature_vector
+from filehelper import gather_all_xes, get_all_ready_logs_multiple
+from init import init_given_parameters
+from feature_selection import read_optimal_features
 
 
-def read_shap_explainer(classification_method, x_train):
-    cache_file_path = f"./cache/explainers/{classification_method}.pkl"
+def read_shap_explainer(classification_method, ready_training, measure_name, feature_portfolio):
+    cache_file_path = f"./cache/explainers/{classification_method}_{measure_name}.pkl"
+    x_train = read_feature_matrix(ready_logs, feature_portfolio)
     try:
         explainer = load_cache_variable(cache_file_path)
     except Exception as e:
-
         clf = read_fitted_classifier(
-            classification_method, chosen_measure, ready_training)
+            classification_method, measure_name, ready_training, feature_portfolio)
 
-        if classification_method == "decision_tree" or classification_method == "random_forest":
+        if classification_method in ["decision_tree", "random_forest", "xgboost"]:
             explainer = shap.TreeExplainer(clf)
         elif classification_method == "knn" or classification_method == "svm" or classification_method == "logistic_regression":
             explainer = shap.KernelExplainer(clf.predict_proba, x_train)
@@ -24,54 +35,50 @@ def read_shap_explainer(classification_method, x_train):
     return explainer
 
 
-def create_shap_graph(ready_training, ready_testing, classification_method, chosen_measure):
-    x_test = read_feature_matrix(ready_testing)
-    x_train = read_feature_matrix(ready_training)
+def create_shap_graph(ready_training, testing_instance_log_path, classification_method, measure_name, feature_portfolio):
+    # Assuming read_feature_vector and read_shap_explainer are defined elsewhere
+    x_test = read_feature_vector(testing_instance_log_path, feature_portfolio)
+    x_test = pd.DataFrame(x_test, columns=feature_portfolio)
 
-    x_test = pd.DataFrame(x_test, columns=globals.selected_features)
-    x_train = pd.DataFrame(x_train, columns=globals.selected_features)
-
-    explainer = read_shap_explainer(classification_method, x_train)
-
+    explainer = read_shap_explainer(
+        classification_method, ready_training, measure_name, feature_portfolio)
     shap_values = explainer.shap_values(x_test)
 
-    plt.clf()
-
-    # Plot the SHAP summary plot
-    shap.summary_plot(
-        shap_values[1], x_test, feature_names=globals.selected_features, show=False)
+    # Plot the SHAP summary bar plot
+    shap.summary_plot(shap_values, x_test,
+                      feature_names=feature_portfolio, plot_type="bar", show=False)
 
     # Save the plot
     storage_dir = "../evaluation/shap"
-
     plt.savefig(
-        f'{storage_dir}/{classification_method}_{chosen_measure}_shap_summary_plot.png')
-    plt.show()
+        f'{storage_dir}/{classification_method}_{measure_name}_shap_summary_plot.png', bbox_inches='tight')
+
+    # Optionally, clear the current plot to free memory
+    plt.clf()
 
 
-def create_lime_graph(measure_name):
+if __name__ == "__main__":
+    shap.initjs()
+    globals.algorithm_portfolio = [
+        "alpha", "inductive", "heuristic", "split", "ILP"]
+    feature_dict = get_total_feature_functions_dict()
 
-    ready_training = get_all_ready_logs(
-        gather_all_xes("../logs/training"), measure_name)
-    ready_testing = get_all_ready_logs(
-        gather_all_xes("../logs/testing"), measure_name)
+    feature_list = list(feature_dict.keys())
 
-    # Assume 'model' is your scikit-learn classifier
-    x_test = read_feature_matrix(ready_testing)
-    x_train = read_feature_matrix(ready_training)
+    globals.selected_features = feature_list
+    globals.measures_list = ["token_fitness", "token_precision",
+                             "no_total_elements", "generalization", "pm4py_simplicity"]
 
-    # x_test = pd.DataFrame(x_test, columns=globals.selected_features)
-    # x_train = pd.DataFrame(x_train, columns=globals.selected_features)
-    def custom_model_predict(x): return classification(
-        x, "autofolio", measure_name, ready_training)
+    globals.classification_methods = [
+        x for x in globals.classification_methods if x not in ["knn", "svm"]]
 
-    # Assume 'X_train' is your training data
-    explainer = lime_tabular.LimeTabularExplainer(
-        x_train, mode="classification")
+    all_logs = gather_all_xes("../logs/training") + gather_all_xes(
+        "../logs/testing") + gather_all_xes("../logs/modified_eventlogs")
+    ready_logs = get_all_ready_logs_multiple(all_logs[:100])
 
-    # Assume 'X_test[i]' is the instance you want to explain
-    explanation = explainer.explain_instance(read_feature_vector(
-        ready_testing[0]).values.reshape(1, -1), custom_model_predict)
+    token_precision_optimal_features = read_optimal_features(
+        [], "xgboost", "token_precision", feature_list, globals.algorithm_portfolio)
+    create_shap_graph(ready_logs, ready_logs[0], "random_forest",
+                      "token_precision", token_precision_optimal_features)
 
-    # Save the explanation plot as a PNG file
-    explanation.save_to_file('lime_explanation_plot.png')
+    # init_given_parameters(ready_logs, globals.algorithm_portfolio, feature_list, globals.measures_list)

@@ -1,7 +1,7 @@
 
 
 from utils import read_log, generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable
-from filehelper import gather_all_xes, get_all_ready_logs_multiple
+from filehelper import gather_all_xes
 from flask_app.features.mtl_features.mtl_feature_interface import get_mtl_feature_functions_dict
 from flask_app.features.own_features import get_own_features_dict
 from flask_app.features.fig4pm_features.fig4pm_interface import get_fig4pm_feature_functions_dict

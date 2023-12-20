@@ -34,8 +34,8 @@ def event_profile_distance_all_variants(log, distance_measure):
     # Close progress bar and return
     progress.close()
     del progress
-    if (total_number_of_trace_classes(log) * (total_number_of_trace_classes(log) - 1)) / average_trace_length(log), (sum(distance_per_variant_list) - total_number_of_trace_classes(log)) / (total_number_of_trace_classes(log) * (total_number_of_trace_classes(log) - 1)) == 0:
-        return  0
+    if (sum(distance_per_variant_list) - total_number_of_trace_classes(log)) / (total_number_of_trace_classes(log) * (total_number_of_trace_classes(log) - 1)) == 0:
+        return 0
     return np.asarray(distance_per_variant_list, dtype=object), sum(distance_per_variant_list) / (total_number_of_trace_classes(log) * (total_number_of_trace_classes(log) - 1)) / average_trace_length(log), (sum(distance_per_variant_list) - total_number_of_trace_classes(log)) / (total_number_of_trace_classes(log) * (total_number_of_trace_classes(log) - 1))
 
 

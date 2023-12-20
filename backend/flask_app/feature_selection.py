@@ -7,10 +7,10 @@ import globals
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_selection import SelectKBest, chi2
-from filehelper import gather_all_xes, get_all_ready_logs_multiple, get_all_logs_with_ready_features
+from filehelper import gather_all_xes, get_all_logs_with_ready_features
 from flask_app.feature_controller import read_feature_matrix
 from feature_controller import get_total_feature_functions_dict, read_single_feature
-from flask_app.recommender import compute_fitted_classifier, read_fitted_classifier
+from classifiers import compute_fitted_classifier, read_fitted_classifier
 from measures import read_classification_target_vector
 from init import load_logs_into_main_memory, load_features_into_main_memory, load_measures_into_main_main_memory, fix_corrupt_cache, init_given_parameters
 from sklearn.feature_selection import SelectKBest, f_classif

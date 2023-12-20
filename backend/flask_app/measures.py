@@ -234,15 +234,19 @@ def read_regression_target_vector(log_paths, discovery_algorithm, measure_name):
     return y
 
 
-def read_worst_entry(log_path, measure_name):
-    if globals.measures_kind[measure_name] == "min":
-        target_entry = read_max_target_vector(log_path, measure_name)
-        return target_entry
-    if globals.measures_kind[measure_name] == "max":
-        target_entry = read_min_target_vector(log_path, measure_name)
-        return target_entry
+def read_binary_classification_target_entry(log_path, measure_name, algorithm_a, algorithm_b):
+    return read_target_entry(log_path, measure_name, [
+        algorithm_a, algorithm_b])
 
-    return None
+
+def read_binary_classification_target_vector(log_paths, measure_name, algorithm_a, algorithm_b):
+    n = len(log_paths)
+    y = [None]*n
+
+    for i in range(n):
+        y[i] = read_binary_classification_target_entry(
+            log_paths[i], measure_name, algorithm_a, algorithm_b)
+    return y
 
 
 if __name__ == "__main__":

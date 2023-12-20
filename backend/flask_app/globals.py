@@ -102,9 +102,25 @@ measures_list = ["token_fitness",  "token_precision",
 normalisierbare_measures = {"token_fitness": "max",  "token_precision": "max",
                             "generalization": "max", "pm4py_simplicity": "max"}
 
-
+binary_classification_methods = [
+    "decision_tree",
+    "knn",
+    "svm",
+    "random_forest",
+    "logistic_regression",
+    "gradient_boosting",
+    "xgboost",
+    "mlp",
+    "adaboost",
+    "extra_trees",
+    "gaussian_nb",
+    "ridge",
+    "sgd",
+    "passive_aggressive"
+]
 # logistic regression removed, "autofolio"
-classification_methods = ["decision_tree", "knn", "svm",
+# "knn", "svm",
+classification_methods = ["decision_tree",
                           "random_forest", "logistic_regression", "gradient_boosting",  "xgboost"]
 
 regression_methods = [
@@ -116,9 +132,9 @@ regression_methods = [
     "gradient_boosting",
     "svm",
     "knn",
-    "mlp"
+    "mlp",
+    "xgboost"
 ]
-
 
 selected_measure = "token_precision"
 working_dir = "/Users/tarekjunied/Documents/Universität/BachelorThesis"

@@ -12,11 +12,13 @@ import globals
 from datetime import datetime
 from sklearn.metrics import accuracy_score, mean_squared_error
 from utils import get_all_ready_logs, load_cache_variable
-from recommender import classification, regression, predict_regression, compute_fitted_classifier
-from filehelper import gather_all_xes, get_all_ready_logs_multiple
-from measures import read_target_entries, read_classification_target_vector,  read_worst_entry, read_measure_entry, read_target_entry
+from multiobjective import predicted_classification
+from filehelper import gather_all_xes, get_all_ready_logs
+from measures import read_measure_entry, read_target_entry, read_binary_classification_target_entry
 from feature_controller import read_feature_matrix, read_single_feature, get_total_feature_functions_dict
+from regressors import get_regression_based_classification_methods
 from feature_selection import select_k_best_features, read_optimal_features
+from binary_classifiers import get_all_pairs_of_algorithms, predicted_binary_classification
 from flask_app.features.removed_features import get_removed_features_list
 from init import init_given_parameters
 import pandas as pd
@@ -30,7 +32,27 @@ import time
 # modified for choosing features
 
 
-def create_scikit_classification_evaluation_plot(selected_measures, ready_training, ready_testing, classification_method, feature_portfolio, plot_title):
+def evaluate_binary_scikit_measure_accuracy(measure, ready_training, ready_testing, binary_classification_method, feature_portfolio, algorithm_portfolio):
+
+    algorithm_pairs = get_all_pairs_of_algorithms(algorithm_portfolio)
+    n = len(ready_testing) * len(algorithm_pairs)
+
+    y_true = [None] * n
+    y_pred = [None] * n
+
+    i = 0
+    for log_path in ready_testing:
+        for (algorithm_a, algorithm_b) in algorithm_pairs:
+            y_true[i] = read_binary_classification_target_entry(
+                log_path, measure, algorithm_a, algorithm_b)
+            y_pred[i] = predicted_binary_classification(
+                log_path, algorithm_a, algorithm_b, measure, ready_training, feature_portfolio, binary_classification_method)
+            i += 1
+
+    return accuracy_score(y_true, y_pred)
+
+
+def create_binary_scikit_classification_evaluation_plot(selected_measures, ready_training, ready_testing, binary_classification_method, feature_portfolio, algorithm_portfolio, plot_title):
     values = []
     categories = selected_measures
     display_str = ""
@@ -38,8 +60,8 @@ def create_scikit_classification_evaluation_plot(selected_measures, ready_traini
     total_accuracy = 0
     for measure in selected_measures:
         display_str += f" {len(ready_testing)} "
-        cur_measure_accuracy = evaluate_scikit_measure_accuracy(
-            measure, ready_training, ready_testing, classification_method, feature_portfolio)
+        cur_measure_accuracy = evaluate_binary_scikit_measure_accuracy(
+            measure, ready_training, ready_testing, binary_classification_method, feature_portfolio, algorithm_portfolio)
         values += [cur_measure_accuracy]
         total_accuracy += cur_measure_accuracy
 
@@ -72,7 +94,59 @@ def create_scikit_classification_evaluation_plot(selected_measures, ready_traini
     # Format the current date as a string
     current_date_string = now.strftime("%Y-%m-%d")
 
-    storage_dir = f"../evaluation/accuracy_tests/scikit_{current_date_string}"
+    storage_dir = f"../evaluation/accuracy_tests/{plot_title}"
+
+    if not os.path.exists(storage_dir):
+        # If it doesn't exist, create the directory
+        os.mkdir(storage_dir)
+
+    plt.savefig(
+        f'{storage_dir}/{plot_title}_{binary_classification_method}_accuracy_{int(time.time())}.png', dpi=300, bbox_inches='tight')
+
+
+def create_scikit_classification_evaluation_plot(selected_measures, ready_training, ready_testing, classification_method, feature_portfolio, algorithm_portfolio, plot_title):
+    values = []
+    categories = selected_measures
+    display_str = ""
+
+    total_accuracy = 0
+    for measure in selected_measures:
+        display_str += f" {len(ready_testing)} "
+        cur_measure_accuracy = evaluate_scikit_measure_accuracy(
+            measure, ready_training, ready_testing, classification_method, feature_portfolio, algorithm_portfolio)
+        values += [cur_measure_accuracy]
+        total_accuracy += cur_measure_accuracy
+
+    average_accuracy = total_accuracy / \
+        len(selected_measures)  # Calculate average accuracy
+
+    plt.figure(figsize=(8, 6))  # Adjust the figure size if needed
+    plt.bar(categories, values, color='royalblue')
+    plt.axhline(y=average_accuracy, color='red', linestyle='-',
+                linewidth=1.5, label='Average Accuracy')
+    plt.text(len(categories)-1, average_accuracy,
+             f'Avg: {average_accuracy:.2f}', color='red', va='bottom')
+    plt.xlabel('Categories')
+    plt.ylabel('Values')
+    plt.title(display_str)
+
+    # Set y-axis ticks and limits
+    plt.yticks([i/10 for i in range(11)])
+    plt.ylim(0, 1)
+
+    for i in range(1, 10):
+        plt.axhline(y=i/10, color='gray', linestyle='--', linewidth=0.5)
+
+    plt.grid(True, axis='y', linestyle='--',
+             alpha=0.7)  # Add a horizontal grid
+    plt.xticks(rotation=90)
+
+    now = datetime.now()
+
+    # Format the current date as a string
+    current_date_string = now.strftime("%Y-%m-%d")
+
+    storage_dir = f"../evaluation/accuracy_tests/{plot_title}/scikit_{current_date_string}"
 
     if not os.path.exists(storage_dir):
         # If it doesn't exist, create the directory
@@ -82,7 +156,7 @@ def create_scikit_classification_evaluation_plot(selected_measures, ready_traini
         f'{storage_dir}/{plot_title}_{classification_method}_accuracy_{int(time.time())}.png', dpi=300, bbox_inches='tight')
 
 
-def evaluate_scikit_measure_accuracy(measure, ready_training, ready_testing, classification_method, feature_portfolio):
+def evaluate_scikit_measure_accuracy(measure, ready_training, ready_testing, classification_method, feature_portfolio, algorithm_portfolio):
 
     y_true = [None] * len(ready_testing)
     y_pred = [None] * len(ready_testing)
@@ -91,50 +165,9 @@ def evaluate_scikit_measure_accuracy(measure, ready_training, ready_testing, cla
         y_true[i] = read_target_entry(
             ready_testing[i], measure, globals.algorithm_portfolio)
         y_pred[i] = classification(
-            ready_testing[i],  classification_method, measure, ready_training, feature_portfolio)
+            ready_testing[i],  classification_method, measure, ready_training, feature_portfolio, algorithm_portfolio)
 
     return accuracy_score(y_true, y_pred)
-
-
-def create_two_measure_graph(measure_name1, measure_name2, discovery_algorithm):
-    original_logpaths = gather_all_xes(
-        "../logs/training") + gather_all_xes("../logs/testing")
-    full_logs = set(get_all_ready_logs(original_logpaths, measure_name1
-                                       )).intersection(set(get_all_ready_logs(original_logpaths, measure_name2)))
-
-    full_logs = list(full_logs)
-    x_values = []
-    y_values = []
-
-    for log_path in full_logs:
-        x_values += [read_measure_entry(log_path,
-                                        discovery_algorithm, measure_name1)]
-        y_values += [read_measure_entry(log_path,
-                                        discovery_algorithm, measure_name2)]
-
-    # Plotting the points
-    plt.scatter(x_values, y_values, color='red', label='Points', s=2)
-
-    # Adding labels and title
-    plt.xlabel(measure_name1)
-    plt.ylabel(measure_name2)
-    plt.title(
-        f"{measure_name1} vs {measure_name2} with {discovery_algorithm} and {len(x_values)} values")
-
-    # Display the legend
-    plt.xlim(0, 1)
-    plt.ylim(0, 1)
-
-    now = datetime.now()
-
-    current_date_string = now.strftime("%Y-%m-%d")
-
-    if not os.path.exists(f"../evaluation/measure_comparisons_{current_date_string}"):
-        # If it doesn't exist, create the directory
-        os.mkdir(f"../evaluation/measure_comparisons_{current_date_string}")
-
-    plt.savefig(
-        f"../evaluation/measure_comparisons_{current_date_string}/{discovery_algorithm}_{measure_name1}_{measure_name2}_{int(time.time())}.png", dpi=300, bbox_inches='tight')
 
 
 def split_log_paths(log_paths, train_percent=0.7):
@@ -151,7 +184,7 @@ def split_log_paths(log_paths, train_percent=0.7):
     return train_paths, test_paths
 
 
-def create_scikit_classification_evaluation_plot_with_k_feature_selection(selected_measures, ready_training, ready_testing, k, classification_method, feature_portfolio, plot_title):
+def create_scikit_classification_evaluation_plot_with_k_feature_selection(selected_measures, ready_training, ready_testing, k, classification_method, feature_portfolio, algorithm_portfolio, plot_title):
     values = []
     categories = selected_measures
     display_str = ""
@@ -162,7 +195,7 @@ def create_scikit_classification_evaluation_plot_with_k_feature_selection(select
             ready_training+ready_testing, globals.algorithm_portfolio, globals.selected_features, measure, k=k)
         display_str += f" {len(ready_testing)} "
         cur_measure_accuracy = evaluate_scikit_measure_accuracy(
-            measure, ready_training, ready_testing, classification_method, feature_portfolio)
+            measure, ready_training, ready_testing, classification_method, feature_portfolio, algorithm_portfolio)
         values += [cur_measure_accuracy]
         total_accuracy += cur_measure_accuracy
 
@@ -195,7 +228,7 @@ def create_scikit_classification_evaluation_plot_with_k_feature_selection(select
     # Format the current date as a string
     current_date_string = now.strftime("%Y-%m-%d")
 
-    storage_dir = f"../evaluation/accuracy_tests/scikit_{current_date_string}"
+    storage_dir = f"../evaluation/accuracy_tests/{plot_title}/scikit_{current_date_string}"
 
     if not os.path.exists(storage_dir):
         # If it doesn't exist, create the directory
@@ -205,19 +238,18 @@ def create_scikit_classification_evaluation_plot_with_k_feature_selection(select
         f'{storage_dir}/{plot_title}_{classification_method}_accuracy_{int(time.time())}.png', dpi=300, bbox_inches='tight')
 
 
-def create_scikit_classification_evaluation_plot_with_optimal_feature_selection(selected_measures, ready_training, ready_testing, classification_method, plot_title):
+def create_scikit_classification_evaluation_plot_with_optimal_feature_selection(selected_measures, ready_training, ready_testing, classification_method, feature_portfolio, algorithm_portfolio, plot_title):
     values = []
     categories = selected_measures
     display_str = ""
 
     total_accuracy = 0
-    feature_portfolio = copy.deepcopy(globals.selected_features)
     for measure in selected_measures:
         measure_optimized_feature_portfolio = read_optimal_features(
-            ready_training+ready_testing, classification_method, measure, feature_portfolio, globals.algorithm_portfolio)
+            ready_training+ready_testing, classification_method, measure, feature_portfolio, algorithm_portfolio)
         display_str += f" {len(ready_testing)} "
         cur_measure_accuracy = evaluate_scikit_measure_accuracy(
-            measure, ready_training, ready_testing, classification_method, measure_optimized_feature_portfolio)
+            measure, ready_training, ready_testing, classification_method, measure_optimized_feature_portfolio, algorithm_portfolio)
         values += [cur_measure_accuracy]
         total_accuracy += cur_measure_accuracy
 
@@ -250,7 +282,7 @@ def create_scikit_classification_evaluation_plot_with_optimal_feature_selection(
     # Format the current date as a string
     current_date_string = now.strftime("%Y-%m-%d")
 
-    storage_dir = f"../evaluation/accuracy_tests/scikit_{current_date_string}"
+    storage_dir = f"../evaluation/accuracy_tests/{plot_title}/scikit_{current_date_string}"
 
     if not os.path.exists(storage_dir):
         # If it doesn't exist, create the directory
@@ -261,9 +293,11 @@ def create_scikit_classification_evaluation_plot_with_optimal_feature_selection(
 
 
 def clear_cached_classifiers():
-    classifiers_dir = "./classifiers/"
+    classifiers_dir = "./cache/classifiers/"
     folder_path = classifiers_dir
     for filename in os.listdir(folder_path):
+        if filename == ".gitkeep":  # Skip .gitkeep files
+            continue
         file_path = os.path.join(folder_path, filename)
         if os.path.isfile(file_path) or os.path.islink(file_path):
             os.unlink(file_path)
@@ -271,10 +305,35 @@ def clear_cached_classifiers():
             shutil.rmtree(file_path)
 
 
+def clear_cached_regressors():
+    regressors_dir = "./cache/regressors/"
+    folder_path = regressors_dir
+    for subdir in os.listdir(folder_path):
+        subdir_path = os.path.join(folder_path, subdir)
+        if os.path.isdir(subdir_path):
+            for filename in os.listdir(subdir_path):
+                # Check if the file is a .pkl file
+                if filename.endswith(".pkl"):
+                    file_path = os.path.join(subdir_path, filename)
+                    os.unlink(file_path)
+
+
+def clear_cached_binary_classifiers():
+    regressors_dir = "./cache/binary_classifiers/"
+    folder_path = regressors_dir
+    for subdir in os.listdir(folder_path):
+        subdir_path = os.path.join(folder_path, subdir)
+        if os.path.isdir(subdir_path):
+            for filename in os.listdir(subdir_path):
+                # Check if the file is a .pkl file
+                if filename.endswith(".pkl"):
+                    file_path = os.path.join(subdir_path, filename)
+                    os.unlink(file_path)
+
+
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
 
-    clear_cached_classifiers()
     globals.algorithm_portfolio = [
         "alpha", "inductive", "heuristic", "split", "ILP"]
     feature_dict = get_total_feature_functions_dict()
@@ -285,31 +344,35 @@ if __name__ == "__main__":
     globals.measures_list = ["token_fitness", "token_precision",
                              "no_total_elements", "generalization", "pm4py_simplicity"]
 
-    globals.classification_methods = [
-        x for x in globals.classification_methods if x not in ["knn", "svm"]]
-    ready_logs = get_all_ready_logs_multiple(gather_all_xes("../logs/training") + gather_all_xes("../logs/testing")
-                                             + gather_all_xes("../logs/modified_eventlogs"))
+    regression_based_classification_methods = get_regression_based_classification_methods()
+    globals.classification_methods = globals.classification_methods + \
+        regression_based_classification_methods
+    algorithm_portfolio = globals.algorithm_portfolio
+
+    all_logs = gather_all_xes("../logs/training") + gather_all_xes(
+        "../logs/testing") + gather_all_xes("../logs/modified_eventlogs")
+    ready_logs = get_all_ready_logs(
+        all_logs, feature_list, algorithm_portfolio, globals.measures_list)
 
     init_given_parameters(ready_logs,
                           globals.algorithm_portfolio, feature_list, globals.measures_list)
 
     ready_training, ready_testing = split_log_paths(ready_logs)
-    for classification_method in globals.classification_methods:
-        for measure in globals.measures_list:
-            read_optimal_features(ready_logs, classification_method, measure,
-                                  globals.selected_features, globals.algorithm_portfolio, cv=5, scoring='accuracy')
-
-    for no_of_features in [10, 20, 50, 150, len(feature_list)]:
-        clear_cached_classifiers()
-        globals.selected_features = feature_list
-        for classification_method in globals.classification_methods:
-            create_scikit_classification_evaluation_plot_with_k_feature_selection(
-                globals.measures_list, ready_training, ready_testing, no_of_features, classification_method, globals.selected_features, f"like_before_{no_of_features}_features_all_logs_cached_clf")
-
+    for binary_classification_method in globals.binary_classification_methods:
+        for no_of_features in [10, 20, 50, 150, len(feature_list)]:
+            clear_cached_classifiers()
+            clear_cached_regressors()
+            clear_cached_binary_classifiers()
+            globals.selected_features = feature_list
+            create_binary_scikit_classification_evaluation_plot(
+                globals.measures_list, ready_training, ready_testing, binary_classification_method, feature_list, algorithm_portfolio, f"binary_test_{no_of_features}")
     globals.selected_features = feature_list
 
     clear_cached_classifiers()
-
+    clear_cached_regressors()
+    """
+    input("no optimal feature selection yet for regression")
     for classification_method in globals.classification_methods:
         create_scikit_classification_evaluation_plot_with_optimal_feature_selection(
-            globals.measures_list, ready_training, ready_testing, classification_method,  f"optimal_features_all_logs_cached_clf")
+            globals.measures_list, ready_training, ready_testing, classification_method, feauture_portfolio, algorithm_portfolio, f"optimal_features_all_logs_cached_clf")
+    """

@@ -6,7 +6,7 @@ from pm4py.algo.discovery.inductive import algorithm as inductive_miner
 from tqdm.contrib.concurrent import process_map  # Use process_map from tqdm
 from feature_controller import read_feature_matrix, read_feature_vector, get_total_feature_functions_dict, read_single_feature
 from measures import read_target_entries, read_target_entry, read_classification_target_vector, read_measure_entry
-from filehelper import gather_all_xes, split_file_path, get_all_ready_logs_multiple
+from filehelper import gather_all_xes, split_file_path
 from LogGenerator.log_generator import create_random_log
 import multiprocessing
 import globals
@@ -194,19 +194,15 @@ if __name__ == "__main__":
     globals.algorithm_portfolio = ["alpha", "alpha_plus", "inductive",
                                    "inductive_infrequent", "inductive_direct", "heuristic"]
     # , "ILP"
-    to_init_logs = gather_all_xes("../logs/modified_eventlogs") + gather_all_xes("../logs/training") + gather_all_xes(
-        "../logs/testing")
 
     globals.selected_features = list(get_total_feature_functions_dict().keys())
 
     logs_to_init = []
     for log_folder_path in log_folder_paths:
         logs_to_init += gather_all_xes(log_folder_path)
-
-    logs_to_init = to_init_logs
     # logs_to_init = sort_files_by_size(logs_to_init)
 
-    num_processes = 8
+    num_processes = 20
     # sys.stdout = open('/dev/null', 'w')
 
     # process_map(try_init_log, logs_to_init, max_workers=num_processes)
