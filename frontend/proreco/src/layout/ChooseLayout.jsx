@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import Newsletter from '../components/Newsletter';
 import "../components/styles/LandingPage.css";
 import backgroundImage from '../assets/background.png';
 
-const MainLayout = ({ children }) => {
+const ChooseLayout = ({ children }) => {
     return (
         <div style={{
             backgroundImage: `url(${backgroundImage})`,
@@ -15,6 +14,7 @@ const MainLayout = ({ children }) => {
             minHeight: "100vh",
         }}>
             <NavBar />
+
             {children}
 
 
@@ -23,8 +23,8 @@ const MainLayout = ({ children }) => {
     );
 }
 
-MainLayout.propTypes = {
+ChooseLayout.propTypes = {
     children: PropTypes.node,
 };
 
-export default MainLayout;
+export default ChooseLayout;
