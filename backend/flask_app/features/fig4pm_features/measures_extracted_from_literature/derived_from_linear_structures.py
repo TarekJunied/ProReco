@@ -161,7 +161,7 @@ def number_of_distinct_traces_per_hundred_traces(log):
 
 # 22. Absolute trace coverage: 80 percent level (tco)
 def absolute_trace_coverage(log):
-    from general_methods import variant_count_list
+    from flask_app.features.fig4pm_features.general_methods import variant_count_list
     variant_count_list = variant_count_list(log)
     coverage_threshold = len(log) * 0.8
     trace_counter = 0
@@ -176,7 +176,7 @@ def absolute_trace_coverage(log):
 
 # 23. Absolute trace coverage: 80 percent level (rtco)
 def relative_trace_coverage(log):
-    from general_methods import variant_count_list
+    from flask_app.features.fig4pm_features.general_methods import variant_count_list
     variant_count_list = variant_count_list(log)
     coverage_threshold = len(log) * 0.8
     trace_counter = 0
@@ -203,7 +203,7 @@ def traces_heterogeneity_rate(log):
 # 26. Trace similarity rate (tsr)
 def trace_similarity_rate(log):
     from editdistance import distance
-    from general_methods import variant_list
+    from flask_app.features.fig4pm_features.general_methods import variant_list
     variant_list = variant_list(log)
     dist = 0
     for reference_trace in variant_list:
@@ -233,7 +233,7 @@ def simple_trace_diversity(log):
 # 29. Advanced trace diversity (i.e. weighted levenshtein distance between all traces) (atd)
 def advanced_trace_diversity(log):
     from editdistance import distance
-    from general_methods import case_list
+    from flask_app.features.fig4pm_features.general_methods import case_list
     case_list = case_list(log)
     dist = sum(distance(reference_trace, compared_trace) for reference_trace in case_list
                for compared_trace in case_list)
@@ -242,7 +242,7 @@ def advanced_trace_diversity(log):
 
 # 30. Trace entropy (tentr)
 def trace_entropy(log):
-    from general_methods import variant_count_list
+    from flask_app.features.fig4pm_features.general_methods import variant_count_list
     from scipy.stats import entropy
     # calculate probabilities of the variants
     variant_count_list = variant_count_list(log)
@@ -253,7 +253,7 @@ def trace_entropy(log):
 
 # 31. Prefix entropy (flattened) (prentr)
 def prefix_entropy(log):
-    from general_methods import variant_list
+    from flask_app.features.fig4pm_features.general_methods import variant_list
     from scipy.stats import entropy
     # create dictionary including all prefixes and the number of times they occur in the log
     prefix_dict = {}
@@ -274,7 +274,7 @@ def prefix_entropy(log):
 
 # 32. All-block entropy (flattened) (abentr)
 def all_block_entropy(log):
-    from general_methods import variant_list
+    from flask_app.features.fig4pm_features.general_methods import variant_list
     from scipy.stats import entropy
     # create dictionary including all blocks and the number of times they occur in the log
     all_block_dict = {}

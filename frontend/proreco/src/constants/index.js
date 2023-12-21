@@ -131,13 +131,7 @@ export const socialMedia = [
 
 export const measures = [
     "Token Fitness",
-    "Alignment Fitness",
     "Token Precision",
-    "Alignment Precision",
-    "No Total Elements",
-    "Node Arc Degree",
-    "Runtime",
-    "Used Memory",
     "Generalization",
     "Pm4py Simplicity"
 ];

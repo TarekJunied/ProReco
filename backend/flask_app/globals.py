@@ -1,4 +1,5 @@
-flask_app_path = "/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/flask_app"
+
+flask_app_path = "/Users/tarekjunied/Documents/Universität/BachelorThesis/backend/flask_app"
 new_algos = ["alpha_plus", "inductive_infrequent", "inductive_direct"]
 algorithm_portfolio = ["alpha", "heuristic",
                        "inductive", "ILP", "split"] + new_algos

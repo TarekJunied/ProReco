@@ -1,5 +1,6 @@
 
 import matplotlib.pyplot as plt
+import math
 import pandas as pd
 import globals
 import numpy as np
@@ -9,7 +10,7 @@ import pm4py
 from xgboost import XGBClassifier
 from utils import read_logs, read_models,  get_all_ready_logs
 from filehelper import gather_all_xes, get_all_ready_logs
-from feature_controller import read_feature_matrix, read_feature_vector
+from feature_controller import read_feature_matrix, read_feature_vector, read_single_feature
 from feature_selection import read_optimal_features
 from measures import read_measure_entry, read_regression_target_vector, read_target_entry
 from init import *
@@ -207,6 +208,7 @@ def actual_regression_based_combined_score_of_discovery_algorithm(log_path_to_pr
 def predicted_classification_based_scalarization(log_path_to_predict, classification_method, measure_weight_dict, ready_training, feature_portfolio, algorithm_portfolio):
     ret = {discovery_algorithm: predicted_classification_based_combined_score_of_discovery_algorithm(log_path_to_predict, discovery_algorithm, classification_method,
                                                                                                      measure_weight_dict, ready_training, feature_portfolio, algorithm_portfolio) for discovery_algorithm in algorithm_portfolio}
+
     return ret
 
 

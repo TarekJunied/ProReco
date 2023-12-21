@@ -8,7 +8,15 @@ from flask import Flask,  jsonify, session, redirect, render_template, Response,
 from flask_cors import CORS
 from flask_session import Session
 from utils import read_log
-from recommender import final_prediction
+from recommender import final_prediction, get_final_petri_net_dict
+from feature_controller import get_total_feature_functions_dict
+
+
+globals.measures_list = ["token_precision",
+                         "token_fitness", "generalization", "pm4py_simplicity"]
+globals.algorithm_portfolio = [
+    "alpha", "inductive", "heuristic", "split", "ILP"]
+globals.selected_features = list(get_total_feature_functions_dict().keys())
 
 
 def generate_token(length=32):
@@ -28,6 +36,7 @@ allowed_origins = [
     "http://139.162.188.197",
     "http://www.proreco.co",
     # Add more origins as needed
+
 ]
 
 
@@ -59,7 +68,8 @@ def submit_weights():
             measure_weight[measure] = slider_values[i]
             i += 1
 
-        log_path_to_predict = get_logpath_of_session(session_token),
+        log_path_to_predict = get_logpath_of_session(session_token)
+
         return final_prediction(log_path_to_predict, measure_weight)
     else:
         return "This route only accepts POST requests."
@@ -91,6 +101,26 @@ def submit_log():
 
             return jsonify({'sessionToken': session_token})
     return "This route only accepts POST requests"
+
+
+@app.route("/api/requestModel", methods=['POST'])
+def request_model():
+
+    if request.method == 'POST':
+        print(request.data)
+
+        json_data = request.data.decode('utf-8')
+
+        parsed_data = json.loads(json_data)
+
+        discovery_algorithm = parsed_data['requestData']['discoveryAlgorithm']
+        session_token = parsed_data['requestData']['sessionToken']
+
+        log_path_to_predict = get_logpath_of_session(session_token)
+
+        return jsonify(get_final_petri_net_dict(log_path_to_predict, discovery_algorithm))
+    else:
+        return "This route only accepts POST requests."
 
 
 if __name__ == '__main__':

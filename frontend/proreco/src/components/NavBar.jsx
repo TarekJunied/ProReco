@@ -16,12 +16,12 @@ class NavBar extends Component {
         return (
             <div className="navbar">
                 <nav>
-                    <Link to="/home">
+                    <Link to="/">
                         <img src={reactLogo} alt="React Logo" />
                     </Link>
                     <div>
                         <ul id="navbar" className={this.state.clicked ? "navbar active" : "navbar"}>
-                            <li><Link to="/home" className="active">Home</Link></li>
+                            <li><Link to="/" className="active">Home</Link></li>
                             <li><Link to="/about">About</Link></li>
                             <li><Link to="/process-mining">Process Mining</Link></li>
                             <li><Link to="/contact">Contact</Link></li>

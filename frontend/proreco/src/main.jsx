@@ -14,6 +14,8 @@ import AboutPage from './pages/AboutPage.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import ContactPage from './pages/ContactPage.jsx';
 import PetriNetPageTest from './pages/PetriNetPageTest';
+import MinePage from './pages/MinePage.jsx';
+import PetriNetView from "./pages/PetriNetView.jsx"
 const router = createBrowserRouter([
   {
     path: '', // Empty path for the default route
@@ -50,6 +52,14 @@ const router = createBrowserRouter([
   {
     path: "/test",
     element: <PetriNetPageTest />
+  },
+  {
+    path: "/mine",
+    element: <ErrorBoundary><MinePage /></ErrorBoundary>
+  },
+  {
+    path: "/viewPetriNet",
+    element: <ErrorBoundary><PetriNetView /></ErrorBoundary>
   },
   {
     // Add a wildcard route to catch all unknown paths

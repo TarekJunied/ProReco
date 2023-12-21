@@ -1,6 +1,6 @@
 # METHODS IMPLEMENTING SELF-DEVELOPED MEASURES
 # DERIVED FROM NON-LINEAR STRUCTURES OF THE EVENT LOG
-from graph_creation import create_undirected_graph, create_directed_graph
+from flask_app.features.fig4pm_features.graph_creation import create_undirected_graph, create_directed_graph
 import networkx as nx
 import numpy as np
 

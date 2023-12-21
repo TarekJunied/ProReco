@@ -2,15 +2,17 @@
 from utils import read_log
 import pandas as pd
 import pm4py
+import globals
 from time import time
 from pm4py.objects.conversion.log import converter as log_converter
 from .measures_extracted_from_literature.derived_from_linear_structures import *
 from .measures_extracted_from_literature.derived_from_non_linear_structures import *
 from .self_developed_measures.derived_from_linear_structures import *
 from .self_developed_measures.derived_from_non_linear_structures import *
+
 import sys
 sys.path.append(
-    "/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/flask_app")
+    globals.flask_app_path)
 
 
 def feature_total_number_of_events(log_path):

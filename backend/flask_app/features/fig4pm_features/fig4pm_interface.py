@@ -1,7 +1,8 @@
-from .fig4pm_feature_functions import *
+from flask_app.features.fig4pm_features.fig4pm_feature_functions import *
 import sys
+import globals
 sys.path.append(
-    "/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/flask_app/features/fig4pm_features")
+    f"{globals.flask_app_path}./features/fig4pm_features")
 
 
 def get_fig4pm_feature_functions_dict():

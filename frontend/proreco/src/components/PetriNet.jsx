@@ -2,55 +2,51 @@ import React, { useEffect, useRef } from 'react';
 import * as joint from 'jointjs';
 import 'jointjs/dist/joint.css'; // Import JointJS styles
 
-const PetriNet = () => {
+// eslint-disable-next-line react/prop-types
+const PetriNet = ({ paperWidth, paperHeight, data }) => {
     const ref = useRef(null); // Create a reference to the DOM element
+    // REMEMBER TO MAKE SILENT TRANSITIONS , I.E: transitions with labels '\\N' black
+    // don't use label attribute for places, but use label attribute for transitions
+
+
+
 
     useEffect(() => {
-        if (ref.current) {
-            // Create a JointJS graph and paper
+        if (ref.current && data.places && data.transitions && data.links) {
             const graph = new joint.dia.Graph();
             const paper = new joint.dia.Paper({
                 el: ref.current,
                 model: graph,
-                width: 800,
-                height: 400,
+                width: paperWidth,
+                height: paperHeight,
                 gridSize: 1
             });
 
-            // Create Petri net elements
-            // Place 1
-            const place1 = new joint.shapes.pn.Place({
-                position: { x: 100, y: 100 },
-                attrs: { circle: { fill: 'blue' } }
-            });
+            // Create places
+            const places = data.places.map(place => new joint.shapes.pn.Place({
+                position: { x: place.x * paperWidth, y: place.y * paperHeight },
+                attrs: { circle: { fill: 'red' } },
+                id: place.id,
+            }));
 
-            // Place 2
-            const place2 = new joint.shapes.pn.Place({
-                position: { x: 300, y: 100 },
-                attrs: { circle: { fill: 'blue' } }
-            });
+            // Create transitions
+            const transitions = data.transitions.map(transition => new joint.shapes.pn.Transition({
+                position: { x: transition.x * paperWidth, y: transition.y * paperHeight },
+                attrs: { rect: { fill: 'black' } },
+                id: transition.id,
+            }));
 
-            // Transition
-            const transition = new joint.shapes.pn.Transition({
-                position: { x: 200, y: 100 },
-                attrs: { rect: { fill: 'black' } }
-            });
+            // Create links
+            const links = data.links.map(link => new joint.shapes.pn.Link({
+                source: { id: link.sourceid },
+                target: { id: link.targetid },
+                attrs: { '.connection': { stroke: 'black' } }
+            }));
 
-            // Links
-            const link1 = new joint.shapes.pn.Link({
-                source: { id: place1.id },
-                target: { id: transition.id }
-            });
-
-            const link2 = new joint.shapes.pn.Link({
-                source: { id: transition.id },
-                target: { id: place2.id }
-            });
-
-            // Add elements to the graph
-            graph.addCells([place1, place2, transition, link1, link2]);
+            // Add all elements to the graph
+            graph.addCells([...places, ...transitions, ...links]);
         }
-    }, []);
+    }, [data, paperWidth, paperHeight]);
 
     return <div ref={ref} style={{ border: '2px solid black' }}></div>;
 };

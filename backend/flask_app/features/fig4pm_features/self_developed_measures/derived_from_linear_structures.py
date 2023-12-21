@@ -1,14 +1,16 @@
 # METHODS IMPLEMENTING SELF-DEVELOPED MEASURES
 # DERIVED FROM LINEAR STRUCTURES OF THE EVENT LOG
 import numpy as np
+from flask_app import globals
 import math
-
+import sys
+sys.path.append(f"{globals.flask_app_path}/features/fig4pm_features")
 # 1. Outlier evaluation of start event frequencies
 
 
 def start_event_frequency_evaluation(log, lower_bound, threshold):
     from pm4py.statistics.start_activities.log import get
-    from measures_extracted_from_literature.derived_from_linear_structures import total_number_of_events
+    from flask_app.features.fig4pm_features.measures_extracted_from_literature.derived_from_linear_structures import total_number_of_events
 
     start_event_frequency = list(get.get_start_activities(log).values())
     if lower_bound == 'all_events':
@@ -25,7 +27,7 @@ def start_event_frequency_evaluation(log, lower_bound, threshold):
 # 2. Outlier evaluation of end event frequencies
 def end_event_frequency_evaluation(log, lower_bound, threshold):
     from pm4py.statistics.end_activities.log import get
-    from measures_extracted_from_literature.derived_from_linear_structures import total_number_of_events
+    from flask_app.features.fig4pm_features.measures_extracted_from_literature.derived_from_linear_structures import total_number_of_events
 
     end_event_frequency = list(get.get_end_activities(log).values())
     if lower_bound == 'all_events':
@@ -42,7 +44,7 @@ def end_event_frequency_evaluation(log, lower_bound, threshold):
 # 3. Outlier evaluation of event frequencies
 def event_frequency_evaluation(log, lower_bound, threshold):
     from pm4py.statistics.attributes.log.get import get_attribute_values
-    from measures_extracted_from_literature.derived_from_linear_structures import total_number_of_events
+    from flask_app.features.fig4pm_features.measures_extracted_from_literature.derived_from_linear_structures import total_number_of_events
     from numpy import quantile
 
     event_frequency = list(get_attribute_values(log, 'concept:name').values())
@@ -64,8 +66,8 @@ def event_frequency_evaluation(log, lower_bound, threshold):
 
 # 4. Outlier evaluation of trace frequencies
 def trace_frequency_evaluation(log, lower_bound, threshold):
-    from general_methods import variant_count_list
-    from measures_extracted_from_literature.derived_from_linear_structures import total_number_of_traces
+    from flask_app.features.fig4pm_features.general_methods import variant_count_list
+    from flask_app.features.fig4pm_features.measures_extracted_from_literature.derived_from_linear_structures import total_number_of_traces
     from numpy import quantile
 
     trace_frequency = variant_count_list(log)
@@ -87,7 +89,7 @@ def trace_frequency_evaluation(log, lower_bound, threshold):
 
 # 5. Outlier evaluation of event dependency
 def event_dependency_evaluation(log, threshold=0.05):
-    from event_dependency import event_dependency_matrix
+    from flask_app.features.fig4pm_features.event_dependency import event_dependency_matrix
     import numpy as np
 
     event_dependency_list = event_dependency_matrix(log).flatten()
@@ -103,7 +105,7 @@ def event_dependency_evaluation(log, threshold=0.05):
 
 # 6. Outlier evaluation of trace length
 def trace_length_evaluation(log):
-    from measures_extracted_from_literature.derived_from_linear_structures import total_number_of_traces
+    from flask_app.features.fig4pm_features.measures_extracted_from_literature.derived_from_linear_structures import total_number_of_traces
     from outlier_detection import box_whisker_plot_evaluation
 
     trace_length_list = []
@@ -121,7 +123,7 @@ def number_of_outlying_traces(log):
 
 # 8. Relative number of outlying traces detected via unsupervised outlier detection algorithm
 def relative_number_of_outlying_traces(log):
-    from measures_extracted_from_literature.derived_from_linear_structures import total_number_of_traces
+    from flask_app.features.fig4pm_features.measures_extracted_from_literature.derived_from_linear_structures import total_number_of_traces
     from outlier_detection import outlier_detection_feature_based_unsupervised
     return outlier_detection_feature_based_unsupervised(log, 'IForest', 0.05, 0.9)[0] / total_number_of_traces(log)
 
@@ -164,7 +166,7 @@ def transition_profile_minimum_cosine_similarity(log):
 
 # 15. Average spatial proximity
 def average_spatial_proximity(log):
-    from measures_extracted_from_literature.derived_from_linear_structures import total_number_of_event_classes
+    from flask_app.features.fig4pm_features.measures_extracted_from_literature.derived_from_linear_structures import total_number_of_event_classes
     from spatial_proximity import spatial_proximity_matrix
 
     spatial_proximity_list = spatial_proximity_matrix(log).flatten()
@@ -179,7 +181,7 @@ def average_spatial_proximity(log):
 
 # 16. Spatial proximity connectedness
 def spatial_proximity_connectedness(log):
-    from measures_extracted_from_literature.derived_from_linear_structures import total_number_of_event_classes
+    from flask_app.features.fig4pm_features.measures_extracted_from_literature.derived_from_linear_structures import total_number_of_event_classes
     from spatial_proximity import spatial_proximity_matrix
 
     spatial_proximity_list = spatial_proximity_matrix(log).flatten()
@@ -194,7 +196,7 @@ def spatial_proximity_connectedness(log):
 
 # 17. Spatial proximity abstraction evaluation
 def spatial_proximity_abstraction_evaluation(log, avg=True, threshold=0.9):
-    from measures_extracted_from_literature.derived_from_linear_structures import average_trace_length
+    from flask_app.features.fig4pm_features.measures_extracted_from_literature.derived_from_linear_structures import average_trace_length
     from spatial_proximity import spatial_proximity_matrix
 
     if avg == True:

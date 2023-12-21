@@ -1,33 +1,27 @@
 
-
-from utils import read_log, generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable
-from filehelper import gather_all_xes
-from flask_app.features.mtl_features.mtl_feature_interface import get_mtl_feature_functions_dict
-from flask_app.features.own_features import get_own_features_dict
-from flask_app.features.fig4pm_features.fig4pm_interface import get_fig4pm_feature_functions_dict
-from flask_app.features.removed_features import get_removed_features_list
-import sys
-import pm4py
-import time
-import globals
-import math
-import warnings
 import numpy as np
-sys.path.insert(
-    0, '/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/flask_app')
+import warnings
+import math
+import globals
+import time
+import pm4py
+import sys
+from flask_app.utils import read_log, generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable
+from flask_app.features.removed_features import get_removed_features_list
+from flask_app.features.fig4pm_features.fig4pm_interface import get_fig4pm_feature_functions_dict
+from flask_app.features.own_features import get_own_features_dict
+from flask_app.features.mtl_features.mtl_feature_interface import get_mtl_feature_functions_dict
+from flask_app.filehelper import gather_all_xes
+
 
 warnings.filterwarnings("ignore")
-
-sys.path.append(
-    "/home/qc261227/Recommender/RecommenderSystem/backend/flask_app/features/fig4pm_features")
-sys.path.append(
-    "/home/qc261227/Recommender/RecommenderSystem/backend/flask_app/features/fig4pm_features/measures_extracted_from_literature")
 
 
 def read_single_feature(log_path, feature_name):
     if (log_path, feature_name) in globals.features:
         return globals.features[log_path, feature_name]
     try:
+
         log_id = generate_log_id(log_path)
         cache_file_path = generate_cache_file(
             f"{globals.flask_app_path}/cache/features/{feature_name}_{log_id}.pkl")

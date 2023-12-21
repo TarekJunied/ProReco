@@ -52,7 +52,7 @@ const RankingPage = () => {
                 console.log("this is what we got back, it should be a recommendation: ", response.data)
 
                 // maybe clean the data
-                navigate(`/recommend?recommendation=${encodeURIComponent(JSON.stringify(response.data))}`);
+                navigate(`/recommend?recommendation=${encodeURIComponent(JSON.stringify(response.data))}&sessionToken=${encodeURIComponent(sessionToken)}`);
             })
             .catch((error) => {
                 console.error("Error sending data to the backend:", error);

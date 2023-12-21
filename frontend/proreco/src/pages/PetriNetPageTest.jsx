@@ -5,7 +5,7 @@ import PetriNet from '../components/PetriNet'
 const PetriNetPageTest = () => {
     return (
         <div>
-            <PetriNet />
+            <PetriNet paperHeight={600} paperWidth={10000} />
         </div>
     )
 }

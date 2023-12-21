@@ -1,6 +1,6 @@
 # METHODS IMPLEMENTING MEASURES EXTRACTED FROM THE LITERATURE
 # DERIVED FROM NON-LINEAR STRUCTURES OF THE EVENT LOG
-from graph_creation import create_directed_graph
+from flask_app.features.fig4pm_features.graph_creation import create_directed_graph
 import networkx as nx
 from pm4py.statistics.start_activities.log.get import get_start_activities
 from pm4py.statistics.end_activities.log.get import get_end_activities
@@ -60,11 +60,12 @@ def cyclomatic_number(log):
 # 9. Graph diameter, i.e. longest path through the process without accounting for cycles (gdm)
 def graph_diameter(log, threshold=0.05):
     import numpy as np
-    from graph_creation import create_directed_weighted_graph
+    from flask_app.features.fig4pm_features.graph_creation import create_directed_weighted_graph
 
     # create list of start and end events as well as graph
     start_events = [*get_start_activities(log)]
     end_events = [*get_end_activities(log)]
+
     start_events_count = list(get_start_activities(log).values())
     end_events_count = list(get_end_activities(log).values())
 
@@ -97,7 +98,7 @@ def graph_diameter(log, threshold=0.05):
 # 10. Absolute number of cut vertices, i.e. articulation points,
 #     that separate the graph into several components when removed (gcv)
 def number_of_cut_vertices(log):
-    from graph_creation import create_undirected_graph
+    from flask_app.features.fig4pm_features.graph_creation import create_undirected_graph
     return len(list(nx.articulation_points(create_undirected_graph(log))))
 
 
@@ -147,7 +148,7 @@ def cyclicity(log):
 
 # 14. Affinity (gaf)
 def affinity(log):
-    from general_methods import case_list, jaccard_similarity
+    from flask_app.features.fig4pm_features.general_methods import case_list, jaccard_similarity
     # create transition representation of all traces in the log
     traces = case_list(log)
     trace_transition_representation = []

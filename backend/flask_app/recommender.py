@@ -7,14 +7,16 @@ from classifiers import read_fitted_classifier, compute_fitted_classifier
 from regressors import read_fitted_regressor, compute_fitted_regressor
 from binary_classifiers import read_fitted_binary_classifier, get_all_pairs_of_algorithms, compute_fitted_binary_classifier
 from filehelper import gather_all_xes, get_all_ready_logs, clear_cached_regressors, clear_cached_binary_classifiers, clear_cached_classifiers
+from utils import read_model
 from init import init_given_parameters
+from petri_net import create_json_petri_net
 
-current_mode = "predicted_regression_based_scalarization"
+current_mode = "predicted_classification_based_scalarization"
 
 
 def final_prediction(log_path_to_predict, measure_weight):
     if current_mode == "predicted_regression_based_scalarization":
-        dict = predicted_regression_based_scalarization(log_path_to_predict, "random_forest", measure_weight, [
+        dict = predicted_regression_based_scalarization(log_path_to_predict, "xgboost", measure_weight, [
         ], globals.selected_features, globals.algorithm_portfolio)
 
     elif current_mode == "predicted_classification_based_scalarization":
@@ -58,6 +60,17 @@ def load_all_needed_classifiers_and_regressors():
             for (algorithm_a, algorithm_b) in algorithm_pairs:
                 read_fitted_binary_classifier(
                     binary_classification_method,   algorithm_a, algorithm_b, measure_name, ready_training, globals.selected_features)
+
+
+def get_final_petri_net_dict(log_path, discovery_algorithm):
+    print(
+        f"now starting to compute model for {log_path} using {discovery_algorithm}")
+    petri_net = read_model(log_path, discovery_algorithm)
+    print("now starting to create_json_petri_net")
+    petri_net_dict = create_json_petri_net(petri_net)
+    print("returning: ")
+    print(petri_net_dict)
+    return petri_net_dict
 
 
 if __name__ == "__main__":
