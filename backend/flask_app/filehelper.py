@@ -7,6 +7,46 @@ import re
 import numpy as np
 from datetime import datetime
 import tarfile
+import shutil
+
+
+def clear_cached_classifiers():
+    classifiers_dir = "./cache/classifiers/"
+    folder_path = classifiers_dir
+    for filename in os.listdir(folder_path):
+        if filename == ".gitkeep":  # Skip .gitkeep files
+            continue
+        file_path = os.path.join(folder_path, filename)
+        if os.path.isfile(file_path) or os.path.islink(file_path):
+            os.unlink(file_path)
+        elif os.path.isdir(file_path):
+            shutil.rmtree(file_path)
+
+
+def clear_cached_regressors():
+    regressors_dir = "./cache/regressors/"
+    folder_path = regressors_dir
+    for subdir in os.listdir(folder_path):
+        subdir_path = os.path.join(folder_path, subdir)
+        if os.path.isdir(subdir_path):
+            for filename in os.listdir(subdir_path):
+                # Check if the file is a .pkl file
+                if filename.endswith(".pkl"):
+                    file_path = os.path.join(subdir_path, filename)
+                    os.unlink(file_path)
+
+
+def clear_cached_binary_classifiers():
+    regressors_dir = "./cache/binary_classifiers/"
+    folder_path = regressors_dir
+    for subdir in os.listdir(folder_path):
+        subdir_path = os.path.join(folder_path, subdir)
+        if os.path.isdir(subdir_path):
+            for filename in os.listdir(subdir_path):
+                # Check if the file is a .pkl file
+                if filename.endswith(".pkl"):
+                    file_path = os.path.join(subdir_path, filename)
+                    os.unlink(file_path)
 
 
 def load_cache_variable(cache_file_path):

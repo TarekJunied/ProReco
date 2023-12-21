@@ -13,7 +13,7 @@ from datetime import datetime
 from sklearn.metrics import accuracy_score, mean_squared_error
 from utils import get_all_ready_logs, load_cache_variable
 from multiobjective import predicted_classification
-from filehelper import gather_all_xes, get_all_ready_logs
+from filehelper import gather_all_xes, get_all_ready_logs, clear_cached_classifiers, clear_cached_regressors, clear_cached_binary_classifiers
 from measures import read_measure_entry, read_target_entry, read_binary_classification_target_entry
 from feature_controller import read_feature_matrix, read_single_feature, get_total_feature_functions_dict
 from regressors import get_regression_based_classification_methods
@@ -290,45 +290,6 @@ def create_scikit_classification_evaluation_plot_with_optimal_feature_selection(
 
     plt.savefig(
         f'{storage_dir}/{plot_title}_{classification_method}_accuracy_{int(time.time())}.png', dpi=300, bbox_inches='tight')
-
-
-def clear_cached_classifiers():
-    classifiers_dir = "./cache/classifiers/"
-    folder_path = classifiers_dir
-    for filename in os.listdir(folder_path):
-        if filename == ".gitkeep":  # Skip .gitkeep files
-            continue
-        file_path = os.path.join(folder_path, filename)
-        if os.path.isfile(file_path) or os.path.islink(file_path):
-            os.unlink(file_path)
-        elif os.path.isdir(file_path):
-            shutil.rmtree(file_path)
-
-
-def clear_cached_regressors():
-    regressors_dir = "./cache/regressors/"
-    folder_path = regressors_dir
-    for subdir in os.listdir(folder_path):
-        subdir_path = os.path.join(folder_path, subdir)
-        if os.path.isdir(subdir_path):
-            for filename in os.listdir(subdir_path):
-                # Check if the file is a .pkl file
-                if filename.endswith(".pkl"):
-                    file_path = os.path.join(subdir_path, filename)
-                    os.unlink(file_path)
-
-
-def clear_cached_binary_classifiers():
-    regressors_dir = "./cache/binary_classifiers/"
-    folder_path = regressors_dir
-    for subdir in os.listdir(folder_path):
-        subdir_path = os.path.join(folder_path, subdir)
-        if os.path.isdir(subdir_path):
-            for filename in os.listdir(subdir_path):
-                # Check if the file is a .pkl file
-                if filename.endswith(".pkl"):
-                    file_path = os.path.join(subdir_path, filename)
-                    os.unlink(file_path)
 
 
 if __name__ == "__main__":
