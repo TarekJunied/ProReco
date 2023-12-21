@@ -44,20 +44,20 @@ def load_all_needed_classifiers_and_regressors():
 
     for classification_method in globals.classification_methods:
         for measure_name in globals.measures_list:
-            compute_fitted_classifier(classification_method,
-                                      measure_name, ready_training, globals.selected_features)
+            read_fitted_classifier(classification_method,
+                                   measure_name, ready_training, globals.selected_features)
 
     for regression_method in globals.regression_methods:
         for measure_name in globals.measures_list:
             for discovery_algorithm in globals.algorithm_portfolio:
-                compute_fitted_regressor(
+                read_fitted_regressor(
                     regression_method, discovery_algorithm, measure_name, ready_training, globals.selected_features)
 
     for binary_classification_method in globals.binary_classification_methods:
         for measure_name in globals.measures_list:
             for (algorithm_a, algorithm_b) in algorithm_pairs:
-                compute_fitted_binary_classifier(
-                    algorithm_a, algorithm_b, measure_name, ready_training, globals.selected_features, binary_classification_method)
+                read_fitted_binary_classifier(
+                    binary_classification_method,   algorithm_a, algorithm_b, measure_name, ready_training, globals.selected_features)
 
 
 if __name__ == "__main__":
