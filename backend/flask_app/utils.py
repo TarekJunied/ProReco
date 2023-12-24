@@ -82,6 +82,7 @@ def read_model(log_path, discovery_algorithm):
         store_cache_variable(model, cache_file_path)
         store_cache_variable(math.log10(
             end_time - start_time), log_runtime_cache_file_path)
+
     return model
 
 
@@ -111,6 +112,7 @@ def generate_cache_file(cache_filepath):
 
 
 def read_log(log_path):
+    globals.init_progress_dict(log_path)
     if log_path in globals.training_log_paths:
         return globals.training_log_paths[log_path]
     elif log_path in globals.testing_log_paths:
@@ -125,6 +127,7 @@ def read_log(log_path):
         print("No cached log found, now parsing log.")
         log = pm4py.read.read_xes(log_path)
         store_cache_variable(log, cache_file_path)
+
     return log
 
 

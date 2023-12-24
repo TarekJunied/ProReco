@@ -4,11 +4,11 @@ import uuid
 import os
 import json
 import globals
-from flask import Flask,  jsonify, session, redirect, render_template, Response, request
+from flask import Flask,  jsonify, session, redirect, render_template, Response, request, send_file
 from flask_cors import CORS
 from flask_session import Session
 from utils import read_log
-from recommender import final_prediction, get_final_petri_net_dict
+from recommender import final_prediction, get_final_petri_net_dict, create_random_log_dict, get_regressed_algo_measure_dict
 from feature_controller import get_total_feature_functions_dict
 
 
@@ -69,8 +69,15 @@ def submit_weights():
             i += 1
 
         log_path_to_predict = get_logpath_of_session(session_token)
+        prediction_score_dict = final_prediction(
+            log_path_to_predict, measure_weight)
+        algo_measure_dict = get_regressed_algo_measure_dict(
+            log_path_to_predict)
 
-        return final_prediction(log_path_to_predict, measure_weight)
+        print("returning the following string jsonified for the post request submitWeights")
+        print({'predictonDict': prediction_score_dict,
+              "algoMeasureDict": algo_measure_dict})
+        return jsonify({'predictonDict': prediction_score_dict, "algoMeasureDict": algo_measure_dict})
     else:
         return "This route only accepts POST requests."
 
@@ -121,6 +128,58 @@ def request_model():
         return jsonify(get_final_petri_net_dict(log_path_to_predict, discovery_algorithm))
     else:
         return "This route only accepts POST requests."
+
+
+@app.route("/api/progress", methods=['POST'])
+def get_progress():
+    if request.method == 'POST':
+
+        json_data = request.data.decode('utf-8')
+
+        parsed_data = json.loads(json_data)
+
+        session_token = parsed_data['requestData']['sessionToken']
+
+        ret_dict = globals.get_progress_dict_of_session_token(session_token)
+
+        # ret_dict = globals.progress_dict[session_token]
+
+        return jsonify(ret_dict), 200
+
+
+@app.route("/api/generateLog", methods=['POST'])
+def request_log_generation():
+    if request.method == 'POST':
+        print(request.data)
+
+        json_data = request.data.decode('utf-8')
+
+        parsed_data = json.loads(json_data)
+
+        slider_values = parsed_data['requestData']
+
+        session_token = str(uuid.uuid4())
+
+        log_path = get_logpath_of_session(session_token)
+
+        globals.set_progress_state(log_path, "start")
+
+        create_random_log_dict(slider_values, session_token)
+
+        session['session_token'] = session_token
+
+        return jsonify({'sessionToken': session_token})
+    else:
+        return "This route only accepts POST requests."
+
+
+@app.route('/api/downloadEventLog')
+def download_file():
+    # Get the session token from the headers
+    session_token = request.headers.get('Authorization')
+
+    log_path = get_logpath_of_session(session_token)
+    return send_file(log_path, as_attachment=True)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,84 @@
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+        /* Original size */
+    }
+
+    10% {
+        transform: scale(1.01);
+        /* First beat starts */
+    }
+
+    20% {
+        transform: scale(1);
+        /* First beat ends */
+    }
+
+    30% {
+        transform: scale(1.007);
+        /* Second beat starts */
+    }
+
+    40% {
+        transform: scale(1);
+        /* Second beat ends and rests */
+    }
+
+    /* Rest of the keyframes remain at the original size */
+}
+
+@keyframes realisticBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    10%,
+    90% {
+        transform: translateY(-2.5px);
+        /* Highest point */
+    }
+
+    25%,
+    75% {
+        transform: translateY(-2px);
+        /* Slightly lower bounce */
+    }
+
+    40%,
+    60% {
+        transform: translateY(-1.5px);
+        /* Even lower bounce */
+    }
+
+    50% {
+        transform: translateY(-1px);
+        /* Lowest bounce before resetting */
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+        /* Adjust this value for a more or less pronounced pulse */
+    }
+}
+
+
+
+.heartbeat-helmet {
+    position: absolute;
+    top: calc(13vh);
+    left: calc(50.5vh);
+    width: calc(73.2vh);
+    animation: heartbeat 2s infinite;
+}

@@ -51,15 +51,15 @@ export const footerLinks = [
         links: [
             {
                 name: "Upload Event Log",
-                link: "https://www.hoobank.com/content/",
+                link: "/start",
             },
             {
                 name: "Choose Existing Event Log",
-                link: "https://www.hoobank.com/how-it-works/",
+                link: "/start",
             },
             {
                 name: "Generate Event Log",
-                link: "https://www.hoobank.com/create/",
+                link: "/generateLog",
             },
 
         ],
@@ -69,15 +69,15 @@ export const footerLinks = [
         links: [
             {
                 name: "Process Mining",
-                link: "https://www.hoobank.com/help-center/",
+                link: "/processmining",
             },
             {
                 name: "Recommender System",
-                link: "https://www.hoobank.com/partners/",
+                link: "/about",
             },
             {
                 name: "Impressum",
-                link: "https://www.hoobank.com/partners/",
+                link: "/start",
             },
 
 
@@ -90,15 +90,15 @@ export const footerLinks = [
         links: [
             {
                 name: "Contact",
-                link: "https://www.hoobank.com/our-partner/",
+                link: "/contact",
             },
             {
                 name: "Contribute",
-                link: "https://www.hoobank.com/our-partner/",
+                link: "https://github.com/TarekJunied/RecommenderSystem",
             },
             {
                 name: "Terms & Services",
-                link: "https://www.hoobank.com/terms-and-services/",
+                link: "/start",
             },
 
         ],

@@ -10,6 +10,21 @@ import hashlib
 # TODO remove relative paths and perhaps add more flexiblity by visting java project again
 
 
+def get_parameter_list():
+    return [
+        "andBranches",
+        "xorBranches",
+        "loopWeight",
+        "singleActivityWeight",
+        "skipWeight",
+        "sequenceWeight",
+        "andWeight",
+        "xorWeight",
+        "maxDepth",
+        "dataObjectProbability"
+    ]
+
+
 def generate_32bit_sha_hash(input_string):
     # Compute the SHA-256 hash
     sha256_hash = hashlib.sha256(input_string.encode()).hexdigest()
@@ -18,7 +33,6 @@ def generate_32bit_sha_hash(input_string):
     truncated_hash = int(sha256_hash[:8], 16)
 
     return truncated_hash
-
 
 
 def create_random_process(and_branches=5,
@@ -33,10 +47,12 @@ def create_random_process(and_branches=5,
                           data_object_probability=0.1):
     process_id = str(generate_32bit_sha_hash(
         str(datetime.datetime.now().time())))
-    storage_path = "processes/process_" + \
-        process_id + ".plg"
 
-    command_list = ["java", "-jar", "ProcessGenerator.jar",
+    path_to_plg = "./LogGenerator"
+
+    storage_path = f"{path_to_plg}/processes/process_{process_id}.plg"
+
+    command_list = ["java", "-jar", f"{path_to_plg}/ProcessGenerator.jar",
                     "-ab", str(and_branches), "-xb", str(xor_branches),
                     "-l", str(loop_weight), "-sa", str(single_activity_weight),
                     "-sw", str(skip_weight), "-sq", str(sequence_weight),
@@ -65,16 +81,12 @@ def create_random_process(and_branches=5,
     return storage_path
 
 
-def create_log_from_model(model_path, mode, no_traces=1000):
-    if mode != "testing" and mode != "training":
-        print("wrong mode mfer")
-        return
-    log_id = generate_32bit_sha_hash(str(datetime.datetime.now().time()))
+def create_log_from_model(model_path, storage_path, no_traces=1000):
 
-    storage_path = f"../../logs/{mode}/{log_id}.xes"
+    path_to_plg = "./LogGenerator"
 
     command_list = [
-        "java", "-jar", "LogGenerator.jar",
+        "java", "-jar", f"{path_to_plg}/LogGenerator.jar",
         "-l", storage_path,
         "-m", model_path,
         "-c", str(no_traces)
@@ -98,36 +110,36 @@ def create_log_from_model(model_path, mode, no_traces=1000):
         print(error)
 
 
-def create_random_log(index, mode):
-    print(f"this is the {index}-th log")
+def create_random_log(and_branches=5,
+                      xor_branches=5,
+                      loop_weight=0.1,
+                      single_activity_weight=0.2,
+                      skip_weight=0.1,
+                      sequence_weight=0.7,
+                      and_weight=0.3,
+                      xor_weight=0.3,
+                      max_depth=3,
+                      data_object_probability=0.1,
+                      number_of_traces=1000,
+                      storage_path=None):
 
-    random_and_branches = random.randint(0, 4)
-    random_xor_branches = random.randint(0, 4)
-    random_loop_weight = random.uniform(0, 0.5)
-    random_single_activity_weight = random.uniform(0, 0.3)
-    random_sequence_weight = random.uniform(0.2, 1)
-    random_and_weight = random.uniform(0, 0.5)
-    random_xor_weight = random.uniform(0, 0.5)
-    random_max_depth = random.randint(1, 5)
-    random_data_object_probability = random.uniform(0, 0.4)
-
-    cur_proc = create_random_process(and_branches=random_and_branches,
-                                     xor_branches=random_xor_branches,
-                                     loop_weight=random_loop_weight,
-                                     single_activity_weight=random_single_activity_weight,
-                                     sequence_weight=random_sequence_weight,
-                                     and_weight=random_and_weight,
-                                     xor_weight=random_xor_weight,
-                                     max_depth=random_max_depth,
-                                     data_object_probability=random_data_object_probability)
-    return create_log_from_model(cur_proc, mode, random.randint(1000, 1500))
+    cur_proc = create_random_process(and_branches=and_branches,
+                                     xor_branches=xor_branches,
+                                     loop_weight=loop_weight,
+                                     single_activity_weight=single_activity_weight,
+                                     skip_weight=skip_weight,
+                                     sequence_weight=sequence_weight,
+                                     and_weight=and_weight,
+                                     xor_weight=xor_weight,
+                                     max_depth=max_depth,
+                                     data_object_probability=data_object_probability)
+    return create_log_from_model(cur_proc, storage_path, number_of_traces)
 
 
 if __name__ == "__main__":
     num_instances = 300
-    training_num = math.floor(num_instances *0.7)
-    testing_num =   num_instances - training_num
-
+    training_num = math.floor(num_instances * 0.7)
+    testing_num = num_instances - training_num
 
     for i in range(training_num):
         create_random_log(i, "training")

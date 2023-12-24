@@ -1,10 +1,9 @@
 import React from 'react'
 import ChooseLayout from '../layout/ChooseLayout';
-import PetriNet from '../components/PetriNet';
-import StartButton from '../components/StartButton';
 import { AlgorithmPortfolio } from "../constants";
-import ClickableAlgo from '../components/ClickableAlgo';
 import { useNavigate } from 'react-router-dom';
+import { Tooltip } from 'react-tooltip'
+import AlgorithmView from '../components/AlgorithmView';
 
 const MinePage = () => {
     const navigate = useNavigate();
@@ -12,25 +11,61 @@ const MinePage = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const sessionTokenParam = urlParams.get('sessionToken');
     const sessionToken = decodeURIComponent(sessionTokenParam);
+    const toolTipStyle = {
+        fontSize: "2vw"
+    }
 
     const handleClick = (discoveryAlgorithm) => () => {
         navigate(`/viewPetriNet?sessionToken=${sessionToken}&discoveryAlgorithm=${discoveryAlgorithm}`);
     }
+    const headingStyle = {
+
+        alignSelf: "center",
+        color: "white",
+        fontSize: "5vw"
+
+    }
+    const tooltipTexts = {
+        "alpha": "know for its simplicity",
+        "inductive": "known for its fitness",
+        "ILP": "smart approach tbh",
+        "heuristic": "very diverse results ?",
+        "split": "strikes a nice balance <br/>between fitness and precision"
+    }
+
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center">
-            <ChooseLayout>
-                <div className="flex flex-col items-center justify-center flex-grow mb-40">
-                    <div className="flex flex-col items-center space-y-20 flex-grow">
-                        {AlgorithmPortfolio.map((discoveryAlgorithm, index) => (
-                            <div className="flex-col" key={index}>
-                                <ClickableAlgo handleClick={handleClick(discoveryAlgorithm)} discoveryAlgorithm={discoveryAlgorithm} ></ClickableAlgo>
-                            </div>
-                        ))}
-                    </div>
+
+        <ChooseLayout>
+            <h1 style={headingStyle}>Choose your Algorithm ⛏️ </h1>
+            <div className="flex justify-center w-screen mt-10">
+                <div className="flex-row">
+                    {AlgorithmPortfolio.map((DiscoveryAlgorithm, index) => (
+                        <div key={index} style={{
+                            marginTop: index === 0 ? "0" : "5vh",
+                            width: "45vw",
+                            cursor: "pointer" // add top margin for all but the first item
+                        }}>
+                            <a
+                                data-tooltip-id={`${DiscoveryAlgorithm}sToolTip`}
+                                data-tooltip-html={tooltipTexts[DiscoveryAlgorithm]}
+                                data-tooltip-place="right"
+                                onClick={handleClick(DiscoveryAlgorithm)}
+
+                            >
+                                <AlgorithmView
+                                    algorithmName={DiscoveryAlgorithm} />
+                            </a>
+
+                            <Tooltip id={`${DiscoveryAlgorithm}sToolTip`}
+                                style={toolTipStyle}
+                                place="right" />
+                        </div>
+                    ))}
+
                 </div>
-            </ChooseLayout>
-        </div>
+            </div>
+        </ChooseLayout>
     );
 }
 

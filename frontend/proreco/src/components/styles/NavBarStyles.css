@@ -1,18 +1,5 @@
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: transparent;
-    padding-top: 20px;
-    padding-right: 250px;
-    padding-bottom: 0px;
-    padding-left: 20px;
-
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
-}
-
-
-
+/* NavBarStyles.css */
+.nav {}
 
 #navbar {
     display: flex;
@@ -21,18 +8,21 @@ nav {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
+    width: 100%;
+    padding-left: 2%;
 }
 
 #navbar li {
-    list-style: none;
     padding: 0 20px;
     position: relative;
 }
 
 #navbar li a {
     text-decoration: none;
-    font-size: 25px;
-    font-weight: 300s;
+    font-size: 2.2vw;
+    font-weight: 300;
+    /* Fixed the typo here from '300s' to '300' */
     color: white;
     transition: 0.3s ease-in-out;
 }
@@ -51,48 +41,4 @@ nav {
     position: absolute;
     bottom: -4px;
     left: 20px;
-}
-
-#mobile {
-    display: none;
-}
-
-#mobile i {
-    color: white;
-}
-
-@media screen and (max-width:769px) {
-    #navbar {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        position: fixed;
-        top: 76px;
-        right: -300px;
-        width: 300px;
-        height: 100vh;
-        background: rgb(141, 66, 1);
-        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
-        padding: 40px 0 0 10px;
-        transition: 0.3s ease-in-out;
-    }
-
-    #navbar.active {
-        right: 0px
-    }
-
-    #navbar li {
-        margin-bottom: 25px;
-    }
-
-    #mobile {
-        display: block;
-
-    }
-
-    #mobile i {
-        font-size: 24px;
-        cursor: pointer;
-    }
 }

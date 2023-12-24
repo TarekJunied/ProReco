@@ -14,6 +14,7 @@ class NavBar extends Component {
 
     render() {
         return (
+
             <div className="navbar">
                 <nav>
                     <Link to="/">
@@ -33,9 +34,7 @@ class NavBar extends Component {
                             </li>
                         </ul>
                     </div>
-                    <div id="mobile" onClick={this.handleClick}>
-                        <i id="bar" className={this.state.clicked ? "fas fa-times" : "fas fa-bars"}></i>
-                    </div>
+
                 </nav>
             </div>
         );

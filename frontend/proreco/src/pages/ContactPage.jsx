@@ -6,10 +6,11 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import emailjs from 'emailjs-com';
 
-
+import "../index.css"
 let SERVICE_ID = "service_w3ucaxq";
 let TEMPLATE_ID = "template_5e1bu2z"
 let PUBLIC_KEY = "G3GpzYf315YbbJ3_J";
+
 
 const labelStyle = {
     color: "white",
@@ -36,16 +37,45 @@ const textAreaStyle = {
     minHeight: "70vh",
     paddingBottom: "70vh"
 }
+//confirmButtonColor: '#BF3604',
 
 const ContactPage = () => {
     const handleOnSubmit = (e) => {
+        Swal.fire({
+            title: 'Message Sent Successfully',
+            confirmButtonColor: '#BF3604',
+            imageUrl: './src/assets/cuteIcon.png',
+            imageWidth: 250,
+            imageHeight: 250,
+            imageAlt: 'Custom image',
+            animation: true
+
+        }).then((result) => {
+            if (result.isDismissed) {
+                console.error('Swal.fire dismissed.');
+            } else if (result.isConfirmed) {
+                console.log('Swal.fire confirmed.');
+            } else if (result.isDenied) {
+                console.warn('Swal.fire denied.');
+            }
+        }).catch((error) => {
+            console.error('Swal.fire error:', error);
+        });
+
+
+
         e.preventDefault();
+        /*
         emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY)
             .then((result) => {
                 console.log(result.text);
                 Swal.fire({
                     icon: 'success',
-                    title: 'Message Sent Successfully'
+                    title: 'Message Sent Successfully',
+                    backgroundColor: "black",
+
+                    confirmButtonColor: 'text-gradient'
+
                 })
             }, (error) => {
                 console.log(error.text);
@@ -55,6 +85,7 @@ const ContactPage = () => {
                     text: error.text,
                 })
             });
+            */
         e.target.reset()
     };
 

@@ -8,6 +8,7 @@ import SupportedAlgorithms from "../components/SupportedAlgorithms";
 const LandingPage = () => {
     return (
         <MainLayout>
+
             <Hero />
             <SupportedAlgorithms />
         </MainLayout>

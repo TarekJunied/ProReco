@@ -24,13 +24,13 @@ const RankSlider = ({ value, onChange }) => {
     };
 
     const sliderStyles = {
-        height: 30,
-        borderRadius: 2,
+        height: "3.5vh",
+        borderRadius: "1.5vh",
     };
 
     // Custom format function to style the value label
     const formatValueLabel = (value) => (
-        <span style={{ fontFamily: 'outfit', fontSize: '20px' }}>{value}</span>
+        <span style={{ fontFamily: 'outfit', fontSize: "1.3vw" }}>{value}</span>
     );
 
     return (
@@ -40,7 +40,6 @@ const RankSlider = ({ value, onChange }) => {
                     disabled={false}
                     max={100}
                     min={0}
-                    size="large"
                     value={value}
                     onChange={(event, newValue) => onChange(newValue)}
                     valueLabelDisplay="on"

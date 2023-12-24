@@ -6,7 +6,7 @@ import globals
 import time
 import pm4py
 import sys
-from flask_app.utils import read_log, generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable
+from flask_app.utils import read_log, generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable, get_log_name
 from flask_app.features.removed_features import get_removed_features_list
 from flask_app.features.fig4pm_features.fig4pm_interface import get_fig4pm_feature_functions_dict
 from flask_app.features.own_features import get_own_features_dict
@@ -18,6 +18,8 @@ warnings.filterwarnings("ignore")
 
 
 def read_single_feature(log_path, feature_name):
+    log_name = get_log_name(log_path)
+
     if (log_path, feature_name) in globals.features:
         return globals.features[log_path, feature_name]
     try:
@@ -39,6 +41,7 @@ def read_feature_vector(log_path, feature_portfolio):
     for feature_index in range(len(feature_portfolio)):
         feature_vector[0, feature_index] = read_single_feature(
             log_path, feature_portfolio[feature_index])
+
     return feature_vector
 
 
@@ -52,6 +55,9 @@ def read_feature_matrix(log_paths, feature_portfolio):
 
 
 def compute_single_feature(log_path, feature_name):
+    globals.set_progress_current_feature_name_and_percentage(
+        log_path, feature_name)
+
     # Check if the feature name is valid
     if feature_name in feature_functions:
         # Call the corresponding feature function

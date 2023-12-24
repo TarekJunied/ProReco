@@ -87,6 +87,7 @@ def predicted_classification_ranking_list(log_path, classification_method, measu
         classification_method, measure_name, ready_training, feature_portfolio)
 
     # Read the feature vector
+
     feature_vector = read_feature_vector(log_path, feature_portfolio)
 
     # Get predictions with associated probabilities
@@ -219,8 +220,9 @@ def actual_classification_based_scalarization(log_path_to_predict, measure_weigh
 
 
 def predicted_regression_based_scalarization(log_path_to_predict, regression_method, measure_weight_dict, ready_training, feature_portfolio, algorithm_portfolio):
-    ret = {discovery_algorithm: predicted_regression_based_combined_score_of_discovery_algorithm(log_path_to_predict, discovery_algorithm, regression_method,
-                                                                                                 measure_weight_dict, ready_training, feature_portfolio, algorithm_portfolio) for discovery_algorithm in algorithm_portfolio}
+
+    ret = {discovery_algorithm: round(predicted_regression_based_combined_score_of_discovery_algorithm(log_path_to_predict, discovery_algorithm, regression_method,
+                                                                                                       measure_weight_dict, ready_training, feature_portfolio, algorithm_portfolio), 2) for discovery_algorithm in algorithm_portfolio}
     return ret
 
 

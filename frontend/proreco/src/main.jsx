@@ -16,6 +16,8 @@ import ContactPage from './pages/ContactPage.jsx';
 import PetriNetPageTest from './pages/PetriNetPageTest';
 import MinePage from './pages/MinePage.jsx';
 import PetriNetView from "./pages/PetriNetView.jsx"
+import GenerateLogPage from './pages/GenerateLogPage.jsx';
+import AfterGeneration from './pages/AfterGeneration.jsx';
 const router = createBrowserRouter([
   {
     path: '', // Empty path for the default route
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
   {
     path: "/test",
     element: <PetriNetPageTest />
+  },
+  {
+    path: "/generateLog",
+    element: <ErrorBoundary><GenerateLogPage /></ErrorBoundary>
+  },
+  {
+    path: "/afterGeneration",
+    element: <ErrorBoundary><AfterGeneration /></ErrorBoundary>
   },
   {
     path: "/mine",
