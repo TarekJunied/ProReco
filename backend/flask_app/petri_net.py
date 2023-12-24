@@ -64,12 +64,32 @@ def create_json_petri_net(petri_net):
     with Image.open("./temp_petri_net.png") as img:
         total_width, total_height = img.size
 
-    gviz = pn_visualizer.apply(net, im, fm)
+    gviz = pn_visualizer.apply(net, im, fm,
+                               parameters={
+                                   pn_visualizer.Variants.WO_DECORATION.value.Parameters.FORMAT: "png",
+                                   "bgcolor": "white",
+                                   "decorations": None,
+                                   "debug": False,
+                                   "set_rankdir": "LR"
+                               })
 
     dot_string = gviz.source
 
     A = pgv.AGraph(string=dot_string)
     A.layout(prog='dot')
+
+    total_height = max([extract_xy_from_graphviz_pos(
+        node.attr['pos'])[1] for node in A.nodes()])
+    total_width = max([extract_xy_from_graphviz_pos(
+        node.attr['pos'])[0] for node in A.nodes()])
+
+    start_node = [x for x in A.nodes() if x.attr["label"] == "&#9679;"][0]
+    start_node.attr["shape"] = "circle"
+    start_node.attr["label"] = "start"
+
+    end_node = [x for x in A.nodes() if x.attr["label"] == "&#9632;"][0]
+    end_node.attr["shape"] = "circle"
+    end_node.attr["label"] = "end"
 
     place_dict_list = [{"x": extract_xy_from_graphviz_pos(node.attr['pos'])[0] / total_width,
                         "y":   (total_height - extract_xy_from_graphviz_pos(node.attr['pos'])[1]) / total_height,
@@ -78,7 +98,7 @@ def create_json_petri_net(petri_net):
                        for node in A.nodes() if node.attr["shape"] == "circle"]
 
     transition_dict_list = [{"x": extract_xy_from_graphviz_pos(node.attr['pos'])[0] / total_width,
-                             "y": extract_xy_from_graphviz_pos(node.attr['pos'])[1] / total_height,
+                             "y": (total_height - extract_xy_from_graphviz_pos(node.attr['pos'])[1]) / total_height,
                              "id": str(node),
                              "label": node.attr["label"]}
                             for node in A.nodes() if node.attr["shape"] != "circle"]
@@ -90,7 +110,8 @@ def create_json_petri_net(petri_net):
         "places": place_dict_list,
         "transitions": transition_dict_list,
         "links": link_dict_list,
-        "width_to_height_ratio": total_width/total_height
+        "total_width": total_width,
+        "total_height": total_height
     }
     print(place_dict_list)
     print(transition_dict_list)

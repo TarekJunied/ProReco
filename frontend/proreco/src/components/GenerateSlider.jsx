@@ -25,6 +25,12 @@ const sliderStyles = {
     height: "3.7vh",
     borderRadius: "1.5vh",
 };
+/*
+#FF7700 12.19%,
+#FF6300 29.82%,
+#FF4F00 51.94%,
+#BF3604 90.29%);
+*/
 const labelStyle = {
     fontSize: "50px",
     color: "#FF6300"
@@ -52,7 +58,7 @@ const GenerateSlider = ({ value, label, min, max, onChange, step }) => {
 
     return (
         <div style={divStyle}>
-            <div style={labelStyle} className="text-gradient">
+            <div style={labelStyle}>
                 {label}
             </div>
             <ThemeProvider theme={themeOptions}>

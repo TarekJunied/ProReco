@@ -24,7 +24,15 @@ const containerStyle = {
     display: "flex",
     alignItems: 'center', // This centers vertically in the flex container
     justifyContent: 'center', // This centers horizontally in the flex container
-    width: '100vw', // Take at least the full width of the viewport
+    margin: "0 auto"
+};
+const petriNetContainerWidth = window.innerWidth * 0.95;
+
+
+const petriNetContainerStyle = {
+    width: `${petriNetContainerWidth}px`, // Correctly append 'px' to the numerical width
+    display: 'flex',
+    justifyContent: 'center', // Center its children horizontally
 };
 
 
@@ -64,15 +72,15 @@ const PetriNetView = () => {
     }, []); // Empty dependency array to ensure it runs only once
 
 
-
     return (
         <ChooseLayout>
             <div style={containerStyle}>
 
 
                 {!isComputing && (
-                    <PetriNet windowWidthInVW={0.9} data={petriNetData} />
-
+                    <div style={petriNetContainerStyle}>
+                        <PetriNet data={petriNetData} paperWidthInPX={petriNetContainerWidth} />
+                    </div>
                 )}
 
 

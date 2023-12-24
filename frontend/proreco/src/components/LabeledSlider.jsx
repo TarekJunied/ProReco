@@ -48,7 +48,7 @@ const LabeledSlider = ({ value, onChange, label }) => {
 
     return (
         <div style={divStyle}>
-            <div style={labelStyle} className="text-gradient">
+            <div style={labelStyle}>
                 {label}
             </div>
             <ThemeProvider theme={themeOptions}>

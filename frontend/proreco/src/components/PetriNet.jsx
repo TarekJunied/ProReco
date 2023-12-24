@@ -1,16 +1,179 @@
 import { useEffect, useRef } from 'react';
 import * as joint from 'jointjs';
 import 'jointjs/dist/joint.css'; // Import JointJS styles
+const V = joint.V;
+const namespace = joint.shapes;
 
-const PetriNet = ({ windowWidthInVW, data }) => {
+function fireTransition(paper, graph, t, sec) {
+
+    var inbound = graph.getConnectedLinks(t, { inbound: true });
+    var outbound = graph.getConnectedLinks(t, { outbound: true });
+
+    var placesBefore = inbound.map(function (link) {
+        return link.getSourceElement();
+    });
+    var placesAfter = outbound.map(function (link) {
+        return link.getTargetElement();
+    });
+
+    var isFirable = true;
+    placesBefore.forEach(function (p) {
+        if (p.get('tokens') <= 0) {
+            isFirable = false;
+        }
+    });
+
+    if (isFirable) {
+
+        placesBefore.forEach(function (p) {
+            // Let the execution finish before adjusting the value of tokens. So that we can loop over all transitions
+            // and call fireTransition() on the original number of tokens.
+            setTimeout(function () {
+                if (p.get('tokens') <= 1) {
+                    p.set('tokens', 0)
+                }
+                else {
+                    p.set('tokens', p.get('tokens') - 1);
+
+                }
+
+            }, 0);
+
+            var links = inbound.filter(function (l) {
+                return l.getSourceElement() === p;
+            });
+
+            links.forEach(function (l) {
+                var token = V('circle', { r: tokenRadius, fill: tokenColor });
+                l.findView(paper).sendToken(token, sec * 1000);
+            });
+        });
+
+        placesAfter.forEach(function (p) {
+
+            var links = outbound.filter(function (l) {
+                return l.getTargetElement() === p;
+            });
+
+            links.forEach(function (l) {
+                var token = V('circle', { r: tokenRadius, fill: tokenColor });
+                l.findView(paper).sendToken(token, sec * 1000, function () {
+                    p.set('tokens', p.get('tokens') + 1)
+                });
+            });
+        });
+    }
+}
+
+
+
+function simulate(transitions, places, paper, graph, sec) {
+
+    transitions.forEach(function (t) {
+        fireTransition(paper, graph, t, sec);
+    });
+
+
+
+    return setInterval(function () {
+
+        transitions.forEach(function (t) {
+            fireTransition(paper, graph, t, sec);
+        });
+    }, 3000);
+}
+
+
+function stopSimulation(simulationId) {
+    clearInterval(simulationId);
+}
+
+
+
+
+
+function createTransitionObject(transition, paperWidth, paperHeight, widthScalingFactor, heightScalingFactor) {
+    // Determine fill color based on the transition.label, or set a default
+    let fill = transition.label === '\\N' ? 'black' : 'white'; // Example condition or implement your own logic
+
+    return {
+        position: {
+            x: (transition.x * paperWidth) / widthScalingFactor,
+            y: (transition.y * paperHeight) / heightScalingFactor
+        },
+        size: { width: 40, height: 40 },
+        attrs: {
+            '.root': {
+                'stroke': transitionStrokeColor,
+            },
+            rect: {
+                fill: fill, // Set the fill color
+            },
+            text: {
+                text: transition.label, // Use transition.label
+                fill: 'black',          // Customize label text color
+                'font-size': 15,
+                'ref-x': 0.5,           // center the text in the x-axis inside the rectangle
+                'ref-y': 0.5,           // center the text in the y-axis inside the rectangle
+                'text-anchor': 'middle', // ensures the text is centered
+                'y-alignment': 'middle', // vertically centers the text
+            }
+        },
+        id: transition.id, // Place the id outside of attrs
+    };
+}
+
+
+
+function createPlaceObject(place, paperWidth, paperHeight, widthScalingFactor, heightScalingFactor) {
+    // Determine if the place is the "end" place
+    let addition = 0
+    let strokeWidth = 3
+    let strokeColor = "#000000"
+    if (place.label === "start") {
+        addition = 1
+        strokeColor = "#FF0000"
+    }
+    if (place.label == "end") {
+        strokeColor = "blue"
+    }
+    return {
+        position: {
+            x: (place.x * paperWidth) / widthScalingFactor,
+            y: (place.y * paperHeight) / heightScalingFactor
+        },
+        attrs: {
+            '.root': {
+                'stroke': placeStrokeColor,
+                'stroke-width': strokeWidth
+            },
+            '.tokens > circle': {
+                'fill': tokenColor,
+                'r': tokenRadius
+            },
+        },
+
+        tokens: addition,
+        id: place.id,
+    };
+}
+
+
+const widthScalingFactor = 1.1
+const heightScalingFactor = 1.1
+const tokenColor = "#FF4F00"
+const placeStrokeColor = "#BF3604"
+const transitionStrokeColor = "red"
+const tokenRadius = 7
+const PetriNet = ({ data, paperWidthInPX }) => {
     const ref = useRef(null); // Create a reference to the DOM element
 
 
     useEffect(() => {
         if (ref.current && data && data.places && data.transitions && data.links) {
 
-            const paperWidth = windowWidthInVW * window.innerWidth
-            const paperHeight = paperWidth / data.width_to_height_ratio
+            const paperWidth = paperWidthInPX
+            const paperHeight = (data.total_height / data.total_width) * paperWidth
 
 
             const graph = new joint.dia.Graph();
@@ -22,43 +185,24 @@ const PetriNet = ({ windowWidthInVW, data }) => {
                 defaultConnectionPoint: { name: 'boundary' },
                 width: paperWidth,
                 height: paperHeight,
-                gridSize: 10,
+                gridSize: 1,
                 background: {
-                    color: "transparent",
+                    color: "white",
 
                 },
-
-
-
-                /*,
-                interactive: function (cellView, method) {
-                    return cellView instanceof joint.dia.ElementView; // Only allow interaction with joint.dia.LinkView instances.
-                }*/
+                cellViewNamespace: namespace
 
             });
 
 
-            // Create places
-            const places = data.places.map(place => new joint.shapes.pn.Place({
+            const places = data.places.map(place =>
+                new joint.shapes.pn.Place(createPlaceObject(place, paperWidth, paperHeight, widthScalingFactor, heightScalingFactor))
+            );
 
-                position: { x: place.x * paperWidth, y: place.y * paperHeight },
-                attrs: { circle: { fill: 'white' } },
-                tokens: place.tokens || 0,
-                id: place.id,
-            }));
+            const transitions = data.transitions.map(transition =>
+                new joint.shapes.pn.Transition(createTransitionObject(transition, paperWidth, paperHeight, widthScalingFactor, heightScalingFactor))
+            );
 
-            const transitions = data.transitions.map(transition => new joint.shapes.pn.Transition({
-                position: { x: transition.x * paperWidth, y: transition.y * paperHeight },
-                attrs: {
-                    rect: { fill: 'black' },
-                    text: {
-                        text: transition.label, // Replace with your desired label text
-                        fill: 'white',      // Customize label text color
-                        'font-size': 14,    // Customize label font size
-                    },
-                },
-                id: transition.id,
-            }));
             graph.addCells([...places, ...transitions]);
 
 
@@ -74,19 +218,35 @@ const PetriNet = ({ windowWidthInVW, data }) => {
                     source: { id: sourceElement.id },
                     target: { id: targetElement.id },
                     attrs: {
-                        '.connection': { stroke: 'black' },
-
+                        '.connection': {
+                            'fill': 'none',
+                            'stroke-linejoin': 'round',
+                            'stroke-width': '1.2',
+                            'stroke': '#4b4a67'
+                        }
                     },
                 });
-                paper.findViewByModel(curLink)
+                //curLink.router("manhattan");
+
+                curLink.connector("smooth")
+
+                graph.addCell(curLink)
+                var cell = paper.findViewByModel(graph.getLastCell())
+                cell.model.attr('./pointer-events', 'none')
 
                 return curLink
             }).filter(link => link !== null); // Filter out inva
-            graph.addCells(links)
+            //graph.addCells(links)
             links.forEach((link) => { paper.findViewByModel(link).options.interactive = false })
             //paper.$el.css('pointer-events', 'none');
+
+
+
+            simulate(transitions, places, paper, graph, 1)
+
+
         }
-    }, [data, windowWidthInVW]);
+    }, [data, paperWidthInPX]);
 
 
     if (!data || !data.places || !data.transitions || !data.links) {

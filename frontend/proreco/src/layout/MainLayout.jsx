@@ -3,7 +3,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 //import Newsletter from '../components/Newsletter';
 import "../components/styles/LandingPage.css";
-import backgroundImage from '../assets/backgroundWithoutHelmet.png';
+import backgroundImage from '../assets/background.png';
 import HelmetComponent from '../components/HelmetComponent';
 
 
@@ -13,12 +13,12 @@ const MainLayout = ({ children }) => {
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
             backgroundPosition: "top",
-            position: "absolute",
+            position: "relative",
             minHeight: "100vh",
             width: "100vw"
         }}>
 
-            <HelmetComponent />
+
             <NavBar />
             {children}
 

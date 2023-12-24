@@ -5,6 +5,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import LandingLayout from "./layout/LandingLayout.jsx"
 import StartPage from './pages/StartPage.jsx';
 import LoadingPage from './pages/LoadingPage.jsx';
 import RankingPage from './pages/RankingPage.jsx';
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/test",
-    element: <PetriNetPageTest />
+    element: <LandingLayout />
   },
   {
     path: "/generateLog",
