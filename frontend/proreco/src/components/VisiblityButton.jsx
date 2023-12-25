@@ -6,14 +6,13 @@ import "../index.css"
 
 
 const buttonStyle = {
-    width: "50vw",
-    height: "10vh",
+    width: "17vw",
+    height: "5vh",
     outline: "None",
     borderRadius: "8px",
     color: "white",
     textAlign: "center",
-    fontWeight: "bold",
-    fontSize: "3vw",
+    fontSize: "2vw",
     background: `linear-gradient(157.81deg,
         #FFA000 -43.27%,
         #FF8C00 -21.24%,
@@ -32,20 +31,21 @@ const buttonStyle = {
 };
 
 // eslint-disable-next-line react/prop-types
-const RedirectButton = ({ text, onClick }) => {
+const VisibilityButton = ({ text, onClick }) => {
 
     return (
-        <div>
+        <div >
             <button
                 type="button"
                 style={buttonStyle}
                 onClick={onClick}
             >
                 {text}
+
             </button>
         </div>
     );
 }
 
 
-export default RedirectButton;
+export default VisibilityButton;

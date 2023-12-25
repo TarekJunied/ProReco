@@ -82,7 +82,7 @@ def read_regression_shap_explainer(regression_method, discovery_algorithm, ready
     return explainer
 
 
-def get_decision_plot_dict(log_path_to_explain, regression_method, discovery_algorithm, ready_training, measure_name, feature_portfolio):
+def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_algorithm, ready_training, measure_name, feature_portfolio):
 
     explainer = read_regression_shap_explainer(
         regression_method, discovery_algorithm, ready_training, measure_name, feature_portfolio)

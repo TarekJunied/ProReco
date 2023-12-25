@@ -2,7 +2,7 @@
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import "../components/styles/LandingPage.css";
-import backgroundImage from '../assets/background.png';
+import backgroundImage from '../assets/plainBackground.png';
 
 const ChooseLayout = ({ children }) => {
 
@@ -18,6 +18,9 @@ const ChooseLayout = ({ children }) => {
             position: "absolute",
             width: "100vw",
             minHeight: "100vh",
+            backgroundRepeat: "repeat",
+            overflowX: "hidden" // Prevent horizontal scrolling
+
         }}>
             <div style={{
                 width: '100%',

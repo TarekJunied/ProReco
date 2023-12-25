@@ -14,7 +14,7 @@ import LandingPage from './pages/LandingPage.jsx';
 import AboutPage from './pages/AboutPage.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import ContactPage from './pages/ContactPage.jsx';
-import PetriNetPageTest from './pages/PetriNetPageTest';
+import ExplainPage from './pages/ExplainPage.jsx';
 import MinePage from './pages/MinePage.jsx';
 import PetriNetView from "./pages/PetriNetView.jsx"
 import GenerateLogPage from './pages/GenerateLogPage.jsx';
@@ -71,6 +71,10 @@ const router = createBrowserRouter([
   {
     path: "/viewPetriNet",
     element: <ErrorBoundary><PetriNetView /></ErrorBoundary>
+  },
+  {
+    path: "/explain",
+    element: <ErrorBoundary><ExplainPage /></ErrorBoundary>
   },
   {
     // Add a wildcard route to catch all unknown paths

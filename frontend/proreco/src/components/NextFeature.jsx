@@ -6,14 +6,13 @@ import "../index.css"
 
 
 const buttonStyle = {
-    width: "50vw",
-    height: "10vh",
+    width: '100%', // Make the button fill its container
     outline: "None",
     borderRadius: "8px",
     color: "white",
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: "3vw",
+    fontSize: "2vw",
     background: `linear-gradient(157.81deg,
         #FFA000 -43.27%,
         #FF8C00 -21.24%,
@@ -25,14 +24,11 @@ const buttonStyle = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    padding: "0.5vw",
-    overflow: 'hidden', // Hide overflow
-    textOverflow: 'ellipsis', // Show an ellipsis for overflowed text
-    whiteSpace: 'nowrap' // Keep text on a single line
+    padding: "0.5vw"
 };
 
 // eslint-disable-next-line react/prop-types
-const RedirectButton = ({ text, onClick }) => {
+const NextFeature = ({ text, onClick }) => {
 
     return (
         <div>
@@ -42,10 +38,11 @@ const RedirectButton = ({ text, onClick }) => {
                 onClick={onClick}
             >
                 {text}
+
             </button>
         </div>
     );
 }
 
 
-export default RedirectButton;
+export default NextFeature;
