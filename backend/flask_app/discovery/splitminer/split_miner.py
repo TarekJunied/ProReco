@@ -18,7 +18,8 @@ def discover_petri_net_split(log_path, parallelism_threshold=0.1, frequency_thre
 
     command = f"java -cp discovery/splitminer/splitminer.jar:./discovery/splitminer/lib/* au.edu.unimelb.services.ServiceProvider SMPN {parallelism_threshold} {frequency_threshold}\
     {remove_or_joins} {log_path} {model_path}"
-    print(command)
+
+    input(command)
 
     result = subprocess.run(
         command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -35,6 +36,7 @@ def discover_petri_net_split(log_path, parallelism_threshold=0.1, frequency_thre
 
     print(f"Success: model stored to {dest}")
 
+    input("hi")
     net, im, fm = pm4py.read.read_pnml(dest)
 
     return net, im, fm

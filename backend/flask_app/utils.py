@@ -46,11 +46,10 @@ def print_distinct_traces(log_path):
 
 
 def compute_model(log_path, discovery_algorithm):
-    log = read_log(log_path)
 
     print(f"Start compute_model using {discovery_algorithm}")
 
-    return discovery_functions[discovery_algorithm](log)
+    return discovery_functions[discovery_algorithm](log_path)
 
 
 def read_model(log_path, discovery_algorithm):
@@ -192,41 +191,51 @@ def split_data(data, ratio=0.8, seed=None):
     return training_data, testing_data
 
 
-def discover_petri_net_inductive(log):
-    return inductive_miner.apply(
+def discover_petri_net_inductive(log_path):
+    log = read_log(log_path)
+    tree = inductive_miner.apply(
         log, variant=inductive_miner.Variants.IM
     )
+    return pm4py.convert_to_petri_net(tree)
 
 
-def discover_petri_net_inductive_infrequent(log):
-    return inductive_miner.apply(
+def discover_petri_net_inductive_infrequent(log_path):
+    log = read_log(log_path)
+    tree = inductive_miner.apply(
         log, variant=inductive_miner.Variants.IMf
     )
+    return pm4py.convert_to_petri_net(tree)
 
 
-def discover_petri_net_inductive_direct(log):
-    return inductive_miner.apply(
+def discover_petri_net_inductive_direct(log_path):
+    log = read_log(log_path)
+    tree = inductive_miner.apply(
         log, variant=inductive_miner.Variants.IMd
     )
+    return pm4py.convert_to_petri_net(tree)
 
 
-def discover_petri_net_alpha(log):
+def discover_petri_net_alpha(log_path):
+    log = read_log(log_path)
     return alpha_miner.apply(
         log, variant=alpha_miner.ALPHA_VERSION_CLASSIC
     )
 
 
-def discover_petri_net_alpha_plus(log):
+def discover_petri_net_alpha_plus(log_path):
+    log = read_log(log_path)
     return alpha_miner.apply(
         log, variant=alpha_miner.ALPHA_VERSION_PLUS
     )
 
 
-def discover_petri_net_heuristic(log):
+def discover_petri_net_heuristic(log_path):
+    log = read_log(log_path)
     return heuristics_miner.apply(log)
 
 
-def discover_petri_net_ilp(log):
+def discover_petri_net_ilp(log_path):
+    log = read_log(log_path)
     return ilp_miner.apply(log, variant=ilp_miner.Variants.CLASSIC)
 
 
@@ -244,7 +253,8 @@ discovery_functions = {
 
 if __name__ == "__main__":
     log_paths = gather_all_xes("../logs/training")
-    log = read_log(log_paths[1])
     for discovery_algorithm in globals.algorithm_portfolio:
-        read_model(log_paths[1], discovery_algorithm)
-        input(f"{discovery_algorithm} is done")
+        net, im, fm = compute_model(log_paths[2], "split")
+        pm4py.vis.save_vis_petri_net(
+            net, im, fm, f"./{discovery_algorithm}.png")
+        input("done")

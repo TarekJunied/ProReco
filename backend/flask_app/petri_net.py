@@ -83,13 +83,17 @@ def create_json_petri_net(petri_net):
     total_width = max([extract_xy_from_graphviz_pos(
         node.attr['pos'])[0] for node in A.nodes()])
 
-    start_node = [x for x in A.nodes() if x.attr["label"] == "&#9679;"][0]
-    start_node.attr["shape"] = "circle"
-    start_node.attr["label"] = "start"
+    start_node = [x for x in A.nodes() if x.attr["label"] == "&#9679;"]
+    if len(start_node) > 0:
+        start_node = start_node[0]
+        start_node.attr["shape"] = "circle"
+        start_node.attr["label"] = "start"
 
-    end_node = [x for x in A.nodes() if x.attr["label"] == "&#9632;"][0]
-    end_node.attr["shape"] = "circle"
-    end_node.attr["label"] = "end"
+    end_node = [x for x in A.nodes() if x.attr["label"] == "&#9632;"]
+    if len(end_node) > 0:
+        end_node = end_node[0]
+        end_node.attr["shape"] = "circle"
+        end_node.attr["label"] = "end"
 
     place_dict_list = [{"x": extract_xy_from_graphviz_pos(node.attr['pos'])[0] / total_width,
                         "y":   (total_height - extract_xy_from_graphviz_pos(node.attr['pos'])[1]) / total_height,
