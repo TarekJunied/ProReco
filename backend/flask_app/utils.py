@@ -254,7 +254,8 @@ discovery_functions = {
 if __name__ == "__main__":
     log_paths = gather_all_xes("../logs/training")
     for discovery_algorithm in globals.algorithm_portfolio:
-        net, im, fm = compute_model(log_paths[2], "split")
-        pm4py.vis.save_vis_petri_net(
-            net, im, fm, f"./{discovery_algorithm}.png")
-        input("done")
+        if discovery_algorithm != "split":
+            net, im, fm = compute_model(log_paths[2], f"{discovery_algorithm}")
+            pm4py.vis.save_vis_petri_net(
+                net, im, fm, f"./{discovery_algorithm}.png")
+            input("done")
