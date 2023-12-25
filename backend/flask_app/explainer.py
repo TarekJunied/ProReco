@@ -135,10 +135,6 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
         plot_values += [plot_values[i] + shap_value]
         i += 1
 
-    # assert (predicted_value == regression(log_path_to_explain, regression_method,
-    #        discovery_algorithm, measure_name, ready_training, feature_portfolio))
-
-    input(top_feature_values)
     ret_dict = {"plot_values": plot_values,
                 "predicted_value": explainer.model.predict(x_test)[0],
                 "top_features": top_features,
@@ -148,26 +144,6 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
     input(plot_values)
     # Optionally, you might want to save or return this information
     return ret_dict
-
-
-def get_explaination_text(log_path_to_explain, regression_method, discovery_algorithm, ready_training, measure_name, feature_portfolio):
-    shap_value_dict = get_shap_values_dict(
-        log_path_to_explain, regression_method, discovery_algorithm, ready_training, measure_name, feature_portfolio)
-
-    feature_names = list(shap_value_dict.keys())
-    feature_values = [read_single_feature(
-        log_path_to_explain, feature_name) for feature_name in feature_names]
-
-    feature_str = ""
-    i = 0
-    for feature_name in feature_names:
-        feature_str += f"\n{feature_name}:{round(feature_values[i],3)}"
-        i += 1
-
-    "\n{feature_names[0]}:{read_single_feature()}\n{feature_names[1]}\n{feature_names[2]}"
-    explaination_text = f"The features that most influenced the {measure_name} using the {discovery_algorithm} miner are\n" + feature_str
-
-    return explaination_text
 
 
 if __name__ == "__main__":
@@ -190,6 +166,10 @@ if __name__ == "__main__":
     ready_logs = get_all_ready_logs(
         all_logs, globals.selected_features, globals.algorithm_portfolio, globals.measures_list)
 
-    ret_dict = get_decision_plot_dict(
-        ready_logs[1], "gradient_boosting", "alpha", ready_logs, "pm4py_simplicity", globals.selected_features)
-    input(ret_dict)
+    init_given_parameters(ready_logs, globals.algorithm_portfolio,
+                          globals.selected_features, globals.measures_list)
+
+    for discovery_algorithm in globals.algorithm_portfolio:
+        for measure in globals.measures_list:
+            read_regression_shap_explainer(
+                globals.regression_method, discovery_algorithm, ready_logs, measure, globals.selected_features)

@@ -136,6 +136,9 @@ def get_decision_plot_dict(log_path_to_explain):
 
 if __name__ == "__main__":
 
+    clear_cached_regressors()
+    input("done")
+
     hi = {'andBranches': 4, 'xorBranches': 2, 'loopWeight': 0.42, 'singleActivityWeight': 0.64, 'skipWeight': 0.5,
           'sequenceWeight': 0.41, 'andWeight': 0.37, 'xorWeight': 0.39, 'maxDepth': 2, 'dataObjectProbability': 0.55, 'numberOfTraces': 1868}
 
