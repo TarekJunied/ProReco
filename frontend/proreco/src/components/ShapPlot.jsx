@@ -135,16 +135,9 @@ const ShapPlot = ({ labels, featureNames, plotValues, featureValues, predictedVa
             setCaption("")
             setIndex(0)
             setCurrentFeature("Click the button above to check the impact of the features")
-            myChart.data = {
-                labels: labels,
-                datasets: [{
-                    label: "SHAP Value",
-                    borderWidth: 2,
-                    borderColor: "rgba(75,192,192,1)",
-                    pointBackgroundColor: "red",
-                    pointBorderColor: "red",
-                }]
-            }
+            myChart.data.datasets.forEach((dataset) => {
+                dataset.data = []; // Reset data array
+            });
             myChart.update();
 
 

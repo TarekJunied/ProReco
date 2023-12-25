@@ -8,7 +8,7 @@ from flask import Flask,  jsonify, session, redirect, render_template, Response,
 from flask_cors import CORS
 from flask_session import Session
 from utils import read_log
-from recommender import final_prediction, get_final_petri_net_dict, create_random_log_dict, get_regressed_algo_measure_dict
+from recommender import final_prediction, get_final_petri_net_dict, create_random_log_dict, get_regressed_algo_measure_dict, get_decision_plot_dict
 from feature_controller import get_total_feature_functions_dict
 
 
@@ -183,7 +183,7 @@ def download_file():
 
 
 @app.route('/api/getExplainationDict', methods=['POST'])
-def get_decision_plot_dict():
+def get_explaination_dict():
     if request.method == 'POST':
 
         json_data = request.data.decode('utf-8')
@@ -194,7 +194,7 @@ def get_decision_plot_dict():
 
         log_path_to_explain = get_logpath_of_session(session_token)
 
-        input("hello world")
+        ret_dict = get_decision_plot_dict(log_path_to_explain)
 
         return jsonify(ret_dict), 200
 

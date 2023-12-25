@@ -14,12 +14,18 @@ import Swal from 'sweetalert2';
 const plotValues = [0.7409909948064592, 0.746806967686832, 0.752748746107448, 0.7463866110304889, 0.7537428794781524, 0.762164312723242, 0.7718393193463003, 0.7827698977626607, 0.7943310253072154, 0.8099993363801724, 0.9721512660592142]
 const featureNames = ['length_one_loops', 'avg_event_repetition_intra_trace', 'percentage_concurrency', 'dfg_variation_coefficient_variable_degree', 'spatial_proximity_connectedness', 'average_number_of_self_loops_per_trace', 'number_of_arcs', 'dfg_wcc_variation_coefficient', 'maximum_node_degree', 'activities_max']
 const featureValues = [0.2, 1.3819849874895747, 0.06, 0.7483314773547882, 0.5555555555555556, 0.003336113427856547, 15.0, 2.7619423815302104, 11.0, 2324.0]
-const labels = featureNames
-labels.push("expected value")
 const predictedValue = 0.71
 
 
+const translateMeasureIntoPythonSyntax = (jsMeasure) => {
+    // Make the string lowercase
+    const lowercaseMeasure = jsMeasure.toLowerCase();
 
+    // Replace spaces with underscores
+    const pythonSyntaxMeasure = lowercaseMeasure.replace(/ /g, '_');
+
+    return pythonSyntaxMeasure;
+};
 
 function formatText(s) {
     // Replace all underscores with spaces
@@ -33,14 +39,36 @@ function formatText(s) {
 
 
 
+
+
 const ExplainPage = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const [isVisible, setIsVisible] = useState({});
-    const [hasClicked, setHasClicked] = useState(false); // track if any button has been clicked
-    const [algoDiscoValues, setAlgoDiscoValues] = useState(null)
+    const [valuesHaveArrived, setValuesHaveArrived] = useState(false); // track if any button has been clicked
+    const [algoDiscValues, setAlgoDiscoValues] = useState(null)
     const sessionTokenParam = urlParams.get('sessionToken');
     const sessionToken = decodeURIComponent(sessionTokenParam)
 
+    function getLabels(discoveryAlgorithm, measure) {
+        let key = discoveryAlgorithm + "-" + translateMeasureIntoPythonSyntax(measure)
+        return algoDiscValues[key].labels
+    }
+    function getFeatureNames(discoveryAlgorithm, measure) {
+        let key = discoveryAlgorithm + "-" + translateMeasureIntoPythonSyntax(measure)
+        return algoDiscValues[key].top_features
+    }
+    function getFeatureValues(discoveryAlgorithm, measure) {
+        let key = discoveryAlgorithm + "-" + translateMeasureIntoPythonSyntax(measure)
+        return algoDiscValues[key].feature_values
+    }
+    function getPlotValues(discoveryAlgorithm, measure) {
+        let key = discoveryAlgorithm + "-" + translateMeasureIntoPythonSyntax(measure)
+        return algoDiscValues[key].plot_values
+    }
+    function getPredictedValue(discoveryAlgorithm, measure) {
+        let key = discoveryAlgorithm + "-" + translateMeasureIntoPythonSyntax(measure)
+        return algoDiscValues[key].predictedValue
+    }
 
 
     useEffect(() => {
@@ -63,7 +91,7 @@ const ExplainPage = () => {
                 console.log(response)
                 console.log(response.data)
                 setAlgoDiscoValues(response.data)
-
+                setValuesHaveArrived(true)
 
             })
             .catch((error) => {
@@ -130,11 +158,11 @@ const ExplainPage = () => {
                                             }}
                                         >
                                             <ShapPlot
-                                                labels={labels}
-                                                featureNames={featureNames}
-                                                featureValues={featureValues}
-                                                plotValues={plotValues}
-                                                predictedValue={predictedValue}
+                                                labels={getLabels(discoveryAlgorithm, measure)}
+                                                featureNames={getFeatureNames(discoveryAlgorithm, measure)}
+                                                featureValues={getFeatureValues(discoveryAlgorithm, measure)}
+                                                plotValues={getPlotValues(discoveryAlgorithm, measure)}
+                                                predictedValue={getPredictedValue(discoveryAlgorithm, measure)}
                                             />
                                         </div>
                                     )}

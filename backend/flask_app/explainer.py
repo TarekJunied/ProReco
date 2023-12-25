@@ -106,9 +106,11 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
 
     # Subset the x_test to only include the top 10 features
     x_test_top_features = x_test.iloc[0, top_indices].values.reshape(1, -1)
+    """"
     plt.clf()
 
     expected_value = explainer.expected_value
+
 
     # Create a SHAP decision plot for the top 10 features
     shap.decision_plot(explainer.expected_value, top_shap_values, x_test_top_features,
@@ -124,7 +126,7 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
 
     plt.savefig(
         f"shap_decision_plot_top10_{regression_method}.png", format='png', dpi=300)
-
+    """
     plot_values = [explainer.expected_value[0]]
     i = 0
 
@@ -137,11 +139,10 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
 
     ret_dict = {"plot_values": plot_values,
                 "predicted_value": explainer.model.predict(x_test)[0],
-                "top_features": top_features,
-                "feature_values": top_feature_values}
+                "top_features": top_features+["expected value"],
+                "feature_values": top_feature_values,
+                "labels": top_features+["expected value"]}
 
-    input(top_features)
-    input(plot_values)
     # Optionally, you might want to save or return this information
     return ret_dict
 
