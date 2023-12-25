@@ -122,10 +122,6 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
     plt.savefig(
         f"shap_decision_plot_top10_{regression_method}.png", format='png', dpi=300)
 
-    # Print out or return the top features and their SHAP values
-    for name, value in zip(top_features, top_shap_values):
-        print(f"Feature: {name}, SHAP Value: {round(value,3)}")
-
     plot_values = [explainer.expected_value[0]]
     i = 0
 
