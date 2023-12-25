@@ -76,7 +76,8 @@ def read_regression_shap_explainer(regression_method, discovery_algorithm, ready
         explainer = load_cache_variable(cache_file_path)
     except Exception as e:
 
-        explainer = compute_fitted_explainer
+        explainer = compute_fitted_explainer(
+            regression_method, discovery_algorithm, measure_name, ready_training, feature_portfolio)
         store_cache_variable(explainer, cache_file_path)
 
     return explainer
@@ -97,6 +98,8 @@ def get_decision_plot_dict(log_path_to_explain, regression_method, discovery_alg
 
     # Get the names of the top 10 features
     top_features = list(x_test.columns[top_indices])
+
+    top_feature_values = list(x_test.iloc[0, top_indices].values)
 
     # Get the corresponding SHAP values for the top 10 features
     top_shap_values = shap_values_instance[0][top_indices]
@@ -139,12 +142,14 @@ def get_decision_plot_dict(log_path_to_explain, regression_method, discovery_alg
     # assert (predicted_value == regression(log_path_to_explain, regression_method,
     #        discovery_algorithm, measure_name, ready_training, feature_portfolio))
 
-    rounded_plot_values = [round(value, 2) for value in plot_values]
-    rounded_predicted_value = round(explainer.model.predict(x_test)[0], 2)
+    input(top_feature_values)
+    ret_dict = {"plot_values": plot_values,
+                "predicted_value": explainer.model.predict(x_test)[0],
+                "top_features": top_features,
+                "feature_values": top_feature_values}
 
-    ret_dict = {"plot_values": rounded_plot_values,
-                "predicted_value": rounded_predicted_value}
-
+    input(top_features)
+    input(plot_values)
     # Optionally, you might want to save or return this information
     return ret_dict
 
@@ -184,10 +189,11 @@ if __name__ == "__main__":
     globals.classification_methods = [
         x for x in globals.classification_methods if x not in ["knn", "svm"]]
 
-    all_logs = gather_all_xes("../logs/training")
+    all_logs = gather_all_xes("../logs/training") + gather_all_xes(
+        "../logs/testing") + gather_all_xes("../logs/modified_eventlogs")
     ready_logs = get_all_ready_logs(
         all_logs, globals.selected_features, globals.algorithm_portfolio, globals.measures_list)
 
     ret_dict = get_decision_plot_dict(
-        ready_logs[0], "random_forest", "split", ready_logs, "token_precision", globals.selected_features)
+        ready_logs[1], "gradient_boosting", "alpha", ready_logs, "pm4py_simplicity", globals.selected_features)
     input(ret_dict)
