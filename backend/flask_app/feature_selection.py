@@ -7,7 +7,7 @@ import globals
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_selection import SelectKBest, chi2
-from filehelper import gather_all_xes, get_all_logs_with_ready_features
+from filehelper import gather_all_xes, get_all_logs_with_ready_features, get_all_ready_logs
 from flask_app.feature_controller import read_feature_matrix
 from feature_controller import get_total_feature_functions_dict, read_single_feature
 from classifiers import compute_fitted_classifier, read_fitted_classifier
@@ -118,7 +118,7 @@ def plot_feature_importance_on_measure(ready_logpaths, feature_names, measure_na
         f"../evaluation/feature_importance/{measure_name}_{len(feature_names)}.png")
 
 
-def select_k_best_features(log_paths, algorithm_portfolio, feature_portfolio, measure_name, k=100):
+def classification_select_k_best_features(log_paths, algorithm_portfolio, feature_portfolio, measure_name, k=100):
     X_train = read_feature_matrix(log_paths, feature_portfolio)
     y_train = read_classification_target_vector(
         log_paths, measure_name, algorithm_portfolio)
@@ -138,7 +138,7 @@ def select_k_best_features(log_paths, algorithm_portfolio, feature_portfolio, me
     return list(selected_feature_names)
 
 
-def read_optimal_features(all_log_paths, classification_method, measure_name, feature_portfolio, algorithm_portfolio, cv=5, scoring='accuracy'):
+def classification_read_optimal_features(all_log_paths, classification_method, measure_name, feature_portfolio, algorithm_portfolio, cv=5, scoring='accuracy'):
     cache_file_path = f"{globals.flask_app_path}/cache/optimal_features_lists/optimal_features_{classification_method}_{measure_name}.pk"
     try:
         optimal_features_list = load_cache_variable(cache_file_path)
@@ -160,7 +160,7 @@ def read_optimal_features(all_log_paths, classification_method, measure_name, fe
     return optimal_features_list
 
 
-def compute_optimal_features(all_log_paths, classification_method, measure_name, feature_portfolio, algorithm_portfolio, cv=5, scoring='accuracy'):
+def classification_compute_optimal_features(all_log_paths, classification_method, measure_name, feature_portfolio, algorithm_portfolio, cv=5, scoring='accuracy'):
     """
     Selects the optimal set of features for accuracy using RFECV and returns the names of the selected features.
 
@@ -203,7 +203,7 @@ def compute_optimal_features(all_log_paths, classification_method, measure_name,
 
 
 if __name__ == "__main__":
-    """"
+
     globals.algorithm_portfolio = [
         "alpha", "inductive", "heuristic", "split", "ILP"]
     feature_dict = get_total_feature_functions_dict()
@@ -214,12 +214,14 @@ if __name__ == "__main__":
         "../logs/modified_eventlogs") + gather_all_xes("../logs/training")
 
     globals.selected_features = feature_list
-    #
-    training_log_paths = get_all_ready_logs_multiple(all_logs)
+    globals.measures_list = ["token_fitness", "token_precision",
+                             "no_total_elements", "generalization", "pm4py_simplicity"]
+
+    training_log_paths = get_all_ready_logs(
+        all_logs, globals.selected_features, globals.algorithm_portfolio)
     init_given_parameters(training_log_paths, globals.algorithm_portfolio,
                           feature_list, globals.measures_list)
 
     for measure_name in globals.measures_list:
         input(compute_optimal_features(training_log_paths,
               "xgboost", measure_name, globals.selected_features))
-        """

@@ -6,7 +6,7 @@ from pm4py.algo.discovery.inductive import algorithm as inductive_miner
 from tqdm.contrib.concurrent import process_map  # Use process_map from tqdm
 from feature_controller import read_feature_matrix, read_feature_vector, get_total_feature_functions_dict, read_single_feature
 from measures import read_target_entries, read_target_entry, read_classification_target_vector, read_measure_entry
-from filehelper import gather_all_xes, split_file_path
+from filehelper import gather_all_xes, split_file_path, get_all_ready_logs
 from LogGenerator.log_generator import create_random_log
 import multiprocessing
 import globals
@@ -192,10 +192,13 @@ if __name__ == "__main__":
         sys.exit(-1)
 
     globals.algorithm_portfolio = ["alpha", "alpha_plus", "inductive",
-                                   "inductive_infrequent", "inductive_direct", "heuristic"]
-    # , "ILP"
+                                   "heuristic"]
+    # , "ILP",     "inductive_infrequent", "inductive_direct",
 
     globals.selected_features = list(get_total_feature_functions_dict().keys())
+
+    input(len(get_all_ready_logs(gather_all_xes("../logs/"),
+          globals.selected_features, globals.algorithm_portfolio, globals.measures_list)))
 
     logs_to_init = []
     for log_folder_path in log_folder_paths:
