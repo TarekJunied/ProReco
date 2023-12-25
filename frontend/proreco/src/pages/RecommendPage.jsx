@@ -1,6 +1,7 @@
 import ChooseLayout from "../layout/ChooseLayout";
 import { AlgorithmPortfolio, measures } from "../constants";
 import StartButton from "../components/StartButton"
+import RedirectButton from "../components/RedirectButton";
 import { useNavigate } from 'react-router-dom';
 import AlgorithmScore from "../components/AlgorithmScore";
 import { Tooltip } from 'react-tooltip'
@@ -40,11 +41,11 @@ const RecommendPage = () => {
 
 
     const handleMineButtonClick = () => {
-
-
         navigate(`/mine?sessionToken=${sessionToken}`);
-
     };
+    const handlePredictionButtonClick = () => {
+        navigate(`/explain?sessionToken=${sessionToken}&relevantMeasures=${encodeURIComponent(JSON.stringify(relevantMeasures))}`)
+    }
 
 
     const handleMainMenuButtonClick = () => {
@@ -74,7 +75,12 @@ const RecommendPage = () => {
     AlgorithmPortfolio.forEach(DiscoveryAlgorithm => {
         tooltipTexts[DiscoveryAlgorithm] = `Predicted Values:<br/>${relevantMeasures.map(measure => `${measure}:${getPredictedMeasureValue(DiscoveryAlgorithm, measure)}<br/>`).join('')}`
     });
-
+    const buttonStyle = {
+        display: 'flex',        // Equivalent to 'flex'
+        width: '100%',          // Equivalent to 'w-full'
+        justifyContent: 'center',
+        marginBottom: "5vh"
+    };
 
 
     return (
@@ -112,25 +118,30 @@ const RecommendPage = () => {
 
                 </div>
             </div>
-            <div className="flex flex-col items-center justify-center flex-grow mb-40">
-                <div className="flex flex-col items-center space-y-20 flex-grow">
-                    <div className="flex-grow"></div>
-                    <div className="w-full">
-                        <StartButton
-                            text="Mine a process model"
-                            styles="bg-orange-gradient text-[40px]"
-                            onClick={handleMineButtonClick}
-                        />
-                    </div>
-                    <div className="w-full">
-                        <StartButton
-                            text="Back to start"
-                            styles="bg-orange-gradient text-[40px]"
-                            onClick={handleMainMenuButtonClick}
-                        />
-                    </div>
+            <div className="flex flex-col items-center space-y-10">
+                <div className="flex-grow"></div>
+                <div style={buttonStyle}>
 
+                    <RedirectButton
+                        text="Explain the predictions"
+                        onClick={handlePredictionButtonClick}
+                    />
                 </div>
+                <div style={buttonStyle}>
+                    <RedirectButton
+                        text="Mine a process model"
+                        onClick={handleMineButtonClick}
+                    />
+                </div>
+                <div style={buttonStyle}>
+                    <RedirectButton
+                        text="Back to start"
+                        onClick={handleMainMenuButtonClick}
+                    />
+                </div>
+
+
+
             </div>
 
         </ChooseLayout >

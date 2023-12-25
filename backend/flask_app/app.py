@@ -182,5 +182,22 @@ def download_file():
     return send_file(log_path, as_attachment=True)
 
 
+@app.route('/api/getExplainationDict', methods=['POST'])
+def get_decision_plot_dict():
+    if request.method == 'POST':
+
+        json_data = request.data.decode('utf-8')
+
+        parsed_data = json.loads(json_data)
+
+        session_token = parsed_data['requestData']['sessionToken']
+
+        log_path_to_explain = get_logpath_of_session(session_token)
+
+        input("hello world")
+
+        return jsonify(ret_dict), 200
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)

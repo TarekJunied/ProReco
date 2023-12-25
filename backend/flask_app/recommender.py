@@ -13,6 +13,7 @@ from regressors import read_fitted_regressor, compute_fitted_regressor, regressi
 from binary_classifiers import read_fitted_binary_classifier, get_all_pairs_of_algorithms, compute_fitted_binary_classifier
 from filehelper import gather_all_xes, get_all_ready_logs, clear_cached_regressors, clear_cached_binary_classifiers, clear_cached_classifiers
 from utils import read_model
+from explainer import get_decision_plot_dict_
 from init import init_given_parameters
 from petri_net import create_json_petri_net
 from output_manager import progressed_read_log
@@ -123,14 +124,20 @@ def get_regressed_algo_measure_dict(log_path):
     return dict
 
 
+def get_decision_plot_dict(log_path_to_explain):
+    ret_dict = {}
+    regression_method = globals.regression_method
+    for discovery_algorithm in globals.algorithm_portfolio:
+        for measure in globals.measures_list:
+            ret_dict[f"{discovery_algorithm}-{measure}"] = get_decision_plot_dict_(
+                log_path_to_explain, regression_method, discovery_algorithm, [], measure, globals.selected_features)
+    return ret_dict
+
+
 if __name__ == "__main__":
 
     hi = {'andBranches': 4, 'xorBranches': 2, 'loopWeight': 0.42, 'singleActivityWeight': 0.64, 'skipWeight': 0.5,
           'sequenceWeight': 0.41, 'andWeight': 0.37, 'xorWeight': 0.39, 'maxDepth': 2, 'dataObjectProbability': 0.55, 'numberOfTraces': 1868}
-
-    create_random_log_dict(hi, "yo")
-
-    input("wow")
 
     globals.measures_list = [
         "token_fitness", "token_precision", "generalization", "pm4py_simplicity"]

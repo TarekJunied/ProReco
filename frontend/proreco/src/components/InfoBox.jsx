@@ -4,11 +4,11 @@ import "./styles/InfoBox.css";
 // eslint-disable-next-line react/prop-types
 const InfoBox = ({ children, title }) => {
     return (
-        <div className="pt-2 pb-4 ">
+        <div className="pt-2 pb-4 " >
             <div className={`text-left ml-52 ${styles.infoboxTitle} `}>
                 {title}
             </div>
-            <div className="flex flex-col items-center relative padding pb-6">
+            <div className="flex flex-col items-center relative pb-6" style={{ borderRadius: "5vw" }} >
 
                 <div style={{
                     width: '75vw',
@@ -23,7 +23,7 @@ const InfoBox = ({ children, title }) => {
                     </p>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

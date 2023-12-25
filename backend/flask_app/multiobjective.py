@@ -11,7 +11,7 @@ from xgboost import XGBClassifier
 from utils import read_logs, read_models,  get_all_ready_logs
 from filehelper import gather_all_xes, get_all_ready_logs
 from feature_controller import read_feature_matrix, read_feature_vector, read_single_feature
-from feature_selection import read_optimal_features
+from feature_selection import classification_read_optimal_features
 from measures import read_measure_entry, read_regression_target_vector, read_target_entry
 from init import *
 from classifiers import read_fitted_classifier
