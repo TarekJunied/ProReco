@@ -105,8 +105,11 @@ const GenerateLogPage = () => {
 
         console.log({ sliderValues })
 
-        axios.post("http://localhost:8000/api/generateLog", { requestData })
+        console.log(window.location.href.split('/')[2]);
+
+        axios.post("https://proreco.co:8000/api/generateLog", { requestData })
             .then((response) => {
+
 
                 console.log('Successfully generated event log ! ')
 

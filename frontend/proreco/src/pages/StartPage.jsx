@@ -37,7 +37,7 @@ const StartPage = () => {
 
             setIsUploading(true);
             axios
-                .post('http://localhost:8000/api/submitLog', formData, {
+                .post("https://proreco.co:8000/api/submitLog", formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },

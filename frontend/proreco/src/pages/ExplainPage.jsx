@@ -88,7 +88,7 @@ const ExplainPage = () => {
         const requestData = {
             sessionToken
         };
-        axios.post("http://localhost:8000/api/getExplainationDict", { requestData })
+        axios.post("https://proreco.co:8000/api/getExplainationDict", { requestData })
             .then((response) => {
 
                 Swal.fire({

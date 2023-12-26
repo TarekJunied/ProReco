@@ -4,6 +4,8 @@ import uuid
 import os
 import json
 import globals
+import logging
+
 from flask import Flask,  jsonify, session, redirect, render_template, Response, request, send_file
 from flask_cors import CORS
 from flask_session import Session
@@ -34,23 +36,35 @@ def get_logpath_of_session(session_token):
 
 allowed_origins = [
     "http://139.162.188.197",
-    "http://www.proreco.co",
-    # Add more origins as needed
-
+    "http://139.162.188.197",
+    "https://proreco.co",
+    "http://proreco.co",
+    "*"
+    # Add more origins as neede
 ]
+import logging
 
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-CORS(app, origins="*", supports_credentials=True)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 UPLOAD_FOLDER = '../logs/frontend'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+@app.before_request
+@app.before_request
+def log_request_info():
+    logger.info(f"New request: {request.method} {request.path}")
+    logger.info(f"Headers: {request.headers}")
+    logger.info(f"Body: {request.get_data(as_text=True)}")
 
 
 @app.route("/api/submitWeights", methods=['POST'])
 def submit_weights():
+    app.logger.info(f"Received POST request at /api/submitWeights: {request.data}")
 
     if request.method == 'POST':
         print(request.data)
@@ -149,6 +163,8 @@ def get_progress():
 
 @app.route("/api/generateLog", methods=['POST'])
 def request_log_generation():
+    app.logger.info(f"Received POST request at /api/submitWeights: {request.data}")
+
     if request.method == 'POST':
         print(request.data)
 

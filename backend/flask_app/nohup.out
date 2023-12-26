@@ -1,0 +1,20 @@
+[2023-12-26 17:28:53 +0000] [7343] [INFO] Starting gunicorn 21.2.0
+[2023-12-26 17:28:53 +0000] [7343] [INFO] Listening at: http://0.0.0.0:8000 (7343)
+[2023-12-26 17:28:53 +0000] [7343] [INFO] Using worker: sync
+[2023-12-26 17:28:53 +0000] [7353] [INFO] Booting worker with pid: 7353
+[2023-12-26 17:28:53 +0000] [7354] [INFO] Booting worker with pid: 7354
+[2023-12-26 17:28:53 +0000] [7355] [INFO] Booting worker with pid: 7355
+[2023-12-26 17:28:53 +0000] [7356] [INFO] Booting worker with pid: 7356
+[2023-12-26 17:28:53 +0000] [7357] [INFO] Booting worker with pid: 7357
+[2023-12-26 17:28:53 +0000] [7343] [INFO] Handling signal: int
+[2023-12-26 17:28:54 +0000] [7354] [INFO] Worker exiting (pid: 7354)
+[2023-12-26 17:28:54 +0000] [7357] [INFO] Worker exiting (pid: 7357)
+[2023-12-26 17:28:54 +0000] [7356] [INFO] Worker exiting (pid: 7356)
+[2023-12-26 17:28:54 +0000] [7355] [INFO] Worker exiting (pid: 7355)
+[2023-12-26 17:28:54 +0000] [7353] [INFO] Worker exiting (pid: 7353)
+[2023-12-26 17:28:54 +0000] [7343] [ERROR] Worker (pid:7357) was sent SIGINT!
+[2023-12-26 17:28:54 +0000] [7343] [ERROR] Worker (pid:7353) was sent SIGINT!
+[2023-12-26 17:28:54 +0000] [7343] [ERROR] Worker (pid:7354) was sent SIGINT!
+[2023-12-26 17:28:54 +0000] [7343] [ERROR] Worker (pid:7356) was sent SIGINT!
+[2023-12-26 17:28:54 +0000] [7343] [ERROR] Worker (pid:7355) was sent SIGINT!
+[2023-12-26 17:28:54 +0000] [7343] [INFO] Shutting down: Master
