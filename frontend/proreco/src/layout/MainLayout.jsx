@@ -5,24 +5,26 @@ import Footer from '../components/Footer';
 import "../components/styles/LandingPage.css";
 import backgroundImage from '../assets/background.png';
 import HelmetComponent from '../components/HelmetComponent';
-
+import Hero from '../components/Hero';
 
 const MainLayout = ({ children }) => {
     return (
         <div style={{
             backgroundImage: `url(${backgroundImage})`,
+            position: "absolute",
             backgroundSize: "cover",
             backgroundPosition: "top",
-            position: "relative",
             minHeight: "100vh",
             width: "100vw"
         }}>
 
 
             <NavBar />
+            <Hero />
+
             {children}
 
-
+            <div style={{ marginBottom: "100vh" }} />
             <Footer />
         </div>
     );

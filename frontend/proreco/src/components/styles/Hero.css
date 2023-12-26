@@ -1,55 +1,17 @@
-/* hero.css */
-
-/* Flex Start Styles */
-
-.heroSection {
-    display: flex;
-    justify-content: flex-start;
-}
-
-.flex-start {
-    display: flex;
-    justify-content: flex-start;
-}
-
-/* Box Width Styles */
-.box-width {
-    /* Define your boxWidth styles here */
-}
-
-/* Home Section Styles */
-#home {
-    /* Define your #home styles here */
-}
-
-/* Heading Styles */
-.hero-heading {
-    font-weight: 600;
-    font-size: 5.3vw;
-    color: white;
-    line-height: 80px;
-    margin-bottom: 18px;
-}
-
-
-/* Paragraph Styles */
-.hero-paragraph {
-    font-weight: normal;
-    font-size: 20px;
-    color: white;
-    max-width: 470px;
-}
-
-/* Button Container Styles */
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-/* Button Styles */
-.button {
-    padding: 10px 20px;
+/* CSS for Get Started Button */
+.get-started-button {
+    padding: 1rem 1.5rem;
     font-weight: bold;
-    cursor: pointer;
+    font-size: 30px;
+    border-radius: 8px;
+    color: white;
+    background: linear-gradient(157.81deg, #401010 0%, #732626 100%);
+    outline: none;
+}
+
+/* CSS for Learn More Button */
+.learn-more-button {
+    border: 4px solid #ff8c00;
+    /* Assuming border-orange-800 corresponds to #ff8c00 */
+    /* Add other styles you want for this button */
 }

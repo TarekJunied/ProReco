@@ -30,6 +30,7 @@
     "react-icons": "^4.11.0",
     "react-loader-spinner": "^6.1.6",
     "react-native-progress-wheel": "^2.1.0",
+    "react-player": "^2.14.1",
     "react-router-dom": "^6.17.0",
     "react-session": "^0.0.1",
     "react-tooltip": "^5.25.0",

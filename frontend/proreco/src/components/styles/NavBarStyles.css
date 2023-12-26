@@ -1,5 +1,6 @@
 /* NavBarStyles.css */
-.nav {}
+
+
 
 #navbar {
     display: flex;
@@ -12,6 +13,25 @@
     width: 100%;
     padding-left: 2%;
 }
+
+.logo-container {
+    /* Adjust flex properties as necessary */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Or flex-start depending on your design */
+    height: auto;
+    /* Or set to the height of the navbar */
+}
+
+/* Add this class to the div wrapping your logo */
+.logo-container img {
+    width: auto;
+    /* Adjust width as necessary */
+    height: 100%;
+    /* make logo height match parent's height */
+}
+
 
 #navbar li {
     padding: 0 20px;

@@ -1,7 +1,7 @@
 
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import styles from "../styles";
-import logo from "../assets/react.svg";
+import Logo from './Logo';
 import { footerLinks, socialMedia } from "../constants";
 
 const Footer = () => {
@@ -21,11 +21,9 @@ const Footer = () => {
         <section className={`${styles.flexCenter} ${styles.paddingY} flex-col`}>
             <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
                 <div className="flex-[1] flex flex-col justify-start mr-10">
-                    <img
-                        src={logo}
-                        alt="react"
-                        className="w-[266px] h-[72.14px] object-contain"
-                    />
+                    <div style={{ display: 'flex', alignItems: 'center', height: "8vh", marginTop: "0.5vh", marginLeft: "3.5vw" }}>
+                        <Logo />
+                    </div>
                     <p className={`${styles.paragraph} ml-4 mt-4 max-w-[312px]`}>
                         Unlock the real power of process discovery.
                     </p>

@@ -6,13 +6,13 @@ import "../index.css"
 
 
 const buttonStyle = {
-    width: "17vw",
+    width: "20vw",
     height: "5vh",
     outline: "None",
     borderRadius: "8px",
     color: "white",
     textAlign: "center",
-    fontSize: "2vw",
+    fontSize: "2.5vw",
     background: `linear-gradient(157.81deg,
         #FFA000 -43.27%,
         #FF8C00 -21.24%,

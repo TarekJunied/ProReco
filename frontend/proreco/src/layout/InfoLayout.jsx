@@ -12,6 +12,7 @@ const InfoLayout = ({ children }) => {
         <div style={{
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
+            position: "absolute",
             backgroundPosition: "bottom",
             backgroundRepeat: "repeat-y", // Set to repeat vertically
             width: "100vw",

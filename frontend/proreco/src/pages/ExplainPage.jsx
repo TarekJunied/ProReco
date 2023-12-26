@@ -9,13 +9,26 @@ import VisibilityButton from '../components/VisiblityButton'
 import NextFeature from '../components/NextFeature'
 import axios from 'axios'; // You can use Axios for making HTTP requests
 import Swal from 'sweetalert2';
-
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const plotValues = [0.7409909948064592, 0.746806967686832, 0.752748746107448, 0.7463866110304889, 0.7537428794781524, 0.762164312723242, 0.7718393193463003, 0.7827698977626607, 0.7943310253072154, 0.8099993363801724, 0.9721512660592142]
 const featureNames = ['length_one_loops', 'avg_event_repetition_intra_trace', 'percentage_concurrency', 'dfg_variation_coefficient_variable_degree', 'spatial_proximity_connectedness', 'average_number_of_self_loops_per_trace', 'number_of_arcs', 'dfg_wcc_variation_coefficient', 'maximum_node_degree', 'activities_max']
 const featureValues = [0.2, 1.3819849874895747, 0.06, 0.7483314773547882, 0.5555555555555556, 0.003336113427856547, 15.0, 2.7619423815302104, 11.0, 2324.0]
 const predictedValue = 0.71
-
+const overlayStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 10,
+    flexDirection: 'row', // Change from column to row for horizontal layout
+    gap: '20px', // Optional: Add some space between each wheel
+};
 
 const translateMeasureIntoPythonSyntax = (jsMeasure) => {
     // Make the string lowercase
@@ -44,7 +57,7 @@ function formatText(s) {
 const ExplainPage = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const [isVisible, setIsVisible] = useState({});
-    const [valuesHaveArrived, setValuesHaveArrived] = useState(false); // track if any button has been clicked
+    const [isComputing, setIsComputing] = useState(true)
     const [algoDiscValues, setAlgoDiscoValues] = useState(null)
     const sessionTokenParam = urlParams.get('sessionToken');
     const sessionToken = decodeURIComponent(sessionTokenParam)
@@ -79,7 +92,7 @@ const ExplainPage = () => {
             .then((response) => {
 
                 Swal.fire({
-                    title: 'Success ! Recommendations Incoming.',
+                    title: 'Success ! Explainations Incoming.',
                     confirmButtonColor: '#BF3604',
                     imageUrl: './src/assets/cuteIcon.png',
                     imageWidth: 250,
@@ -91,7 +104,7 @@ const ExplainPage = () => {
                 console.log(response)
                 console.log(response.data)
                 setAlgoDiscoValues(response.data)
-                setValuesHaveArrived(true)
+                setIsComputing(false)
 
             })
             .catch((error) => {
@@ -124,6 +137,27 @@ const ExplainPage = () => {
 
     return (
         <ChooseLayout>
+
+            {isComputing && (
+
+                <div style={overlayStyle}>
+
+                    <LoadingSpinner text={"Explaining"} />
+
+                </div>
+            )
+            }
+            {isComputing &&
+                <div style={{
+                    marginBottom: "70vh"
+                }} />}
+
+
+
+
+
+
+
             {AlgorithmPortfolio.map((discoveryAlgorithm, index) => (
                 <div key={index} style={{ width: "100%" }}>
                     <InfoBox title={formatText(discoveryAlgorithm)} style={{ width: '100%' }}>
@@ -143,7 +177,7 @@ const ExplainPage = () => {
 
                                     }}
                                 >
-                                    <NextFeature
+                                    <VisibilityButton
                                         text={isPlotVisible ? "Hide Explaination" : formatText(measure)}
                                         onClick={() => toggleVisibility(discoveryAlgorithm, measure)}
                                     />

@@ -148,7 +148,6 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
 
 
 if __name__ == "__main__":
-    shap.initjs()
     globals.algorithm_portfolio = [
         "alpha", "inductive", "heuristic", "split", "ILP"]
     feature_dict = get_total_feature_functions_dict()

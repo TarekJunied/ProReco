@@ -5,7 +5,7 @@ import backgroundImage from '../assets/background.png';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import emailjs from 'emailjs-com';
-
+import ChooseLayout from "../layout/ChooseLayout"
 import "../index.css"
 let SERVICE_ID = "service_w3ucaxq";
 let TEMPLATE_ID = "template_5e1bu2z"
@@ -18,7 +18,7 @@ const labelStyle = {
 }
 const formStyle = {
     width: "70vw",
-    margin: "20px auto",
+    margin: "auto",
     marginBottom: "200px",
     textAlign: "center",
     paddingBottom: "300px",
@@ -28,7 +28,7 @@ const formStyle = {
 const inputStyle = {
     width: "100%",
     marginBottom: "10px",
-    height: "10vh",
+    height: "7vh",
     fontSize: "30px"
 };
 const textAreaStyle = {
@@ -65,41 +65,12 @@ const ContactPage = () => {
 
 
         e.preventDefault();
-        /*
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY)
-            .then((result) => {
-                console.log(result.text);
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Message Sent Successfully',
-                    backgroundColor: "black",
 
-                    confirmButtonColor: 'text-gradient'
-
-                })
-            }, (error) => {
-                console.log(error.text);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Ooops, something went wrong',
-                    text: error.text,
-                })
-            });
-            */
         e.target.reset()
     };
 
     return (
-        <div style={{
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "bottom",
-            backgroundRepeat: "repeat-y",
-            width: "100vw",
-            minHeight: "100vh",
-
-        }}>
-            <NavBar />
+        <ChooseLayout>
 
             <div style={formStyle}>
                 <Form onSubmit={handleOnSubmit}>
@@ -125,10 +96,10 @@ const ContactPage = () => {
                             #FF6300 29.82%,
                             #FF4F00 51.94%,
                             #BF3604 90.29%)`,
-                        width: "20vw",
+                        width: "17vw",
                         marginTop: "90vh",
-                        height: "15vh",
-                        fontSize: "60px", borderRadius: "10px"
+                        height: "10vh",
+                        fontSize: "3vw", borderRadius: "10px"
 
 
                     }} >Submit</button>
@@ -137,8 +108,7 @@ const ContactPage = () => {
                 </Form>
             </div>
 
-            <Footer />
-        </div>
+        </ChooseLayout>
     );
 };
 
