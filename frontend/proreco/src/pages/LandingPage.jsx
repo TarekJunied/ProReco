@@ -21,7 +21,8 @@ const LandingPage = () => {
             backgroundSize: "cover",
             backgroundPosition: "top",
             minHeight: "260vh",
-            width: "100vw"
+            width: "100vw",
+            backgroundRepeat: "repeat",
         }}>
 
             <div style={{

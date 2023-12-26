@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "./Button.jsx";
 import { useNavigate } from "react-router-dom";
-import "./styles/hero.css"; // Import the CSS file
 
 
 const heroTextDivStyle = {

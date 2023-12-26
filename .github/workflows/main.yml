@@ -36,4 +36,4 @@ jobs:
             sudo systemctl restart nginx
             cd ~/RecommenderSystem/backend/flask_app
             sudo fuser -k 8000/tcp
-            nohup gunicorn -b 0.0.0.0:8000 -w 3 --timeout 120 app:app --env FLASK_ENV=production > /gunicorn.log  2>&1 &
+            nohup gunicorn -b 0.0.0.0:8000 -w 5 --timeout 120 app:app --env FLASK_ENV=production > /gunicorn.log  2>&1 &
