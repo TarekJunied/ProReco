@@ -33,5 +33,5 @@ jobs:
             sudo systemctl restart nginx
             source /root/miniconda3/bin/activate proreco
             cd ~/RecommenderSystem/backend/flask_app
-            nohup gunicorn -c gunicorn_config.py app:app &
+            nohup gunicorn -c gunicorn_config.py app:app > /dev/null 2>&1 &
             netstat -tuln | grep 8000
