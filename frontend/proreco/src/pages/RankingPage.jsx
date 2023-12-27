@@ -153,11 +153,11 @@ const RankingPage = () => {
                 };
                 const queryParams = Object.keys(urlParams).map(key => `${key}=${urlParams[key]}`).join('&');
                 const finalUrl = `/recommend?${queryParams}`;
-
+                const imageUrl = "https://proreco.co/cuteIcon.png"
                 Swal.fire({
                     title: 'Success ! Recommendations Incoming.',
                     confirmButtonColor: '#BF3604',
-                    imageUrl: './src/assets/cuteIcon.png',
+                    imageUrl: imageUrl,
                     imageWidth: 250,
                     imageHeight: 250,
                     imageAlt: 'Custom image',

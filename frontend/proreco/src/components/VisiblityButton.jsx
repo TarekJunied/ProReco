@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoadingPage from '../pages/LoadingPage';
 import "../index.css"
 
 

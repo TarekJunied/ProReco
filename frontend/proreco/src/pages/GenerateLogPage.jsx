@@ -116,11 +116,11 @@ const GenerateLogPage = () => {
 
                 localStorage.setItem('sessionToken', response.data.sessionToken);
 
-
+                const imageUrl = "https://proreco.co/cuteIcon.png"
                 Swal.fire({
                     title: 'Success ! Event Log Generated.',
                     confirmButtonColor: '#BF3604',
-                    imageUrl: './src/assets/cuteIcon.png',
+                    imageUrl: imageUrl,
                     imageWidth: 250,
                     imageHeight: 250,
                     imageAlt: 'Custom image',
