@@ -21,7 +21,7 @@ const AfterGeneration = () => {
 
 
     const handleDownloadButtonClick = () => {
-        const url = 'https://proreco.co:8000/api/downloadEventLog';
+        const url = `${import.meta.env.VITE_API_URL}/api/downloadEventLog`;
 
 
         axios({

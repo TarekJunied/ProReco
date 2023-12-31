@@ -51,7 +51,7 @@ const PetriNetView = () => {
             sessionToken,
             discoveryAlgorithm
         };
-        axios.post("https://proreco.co:8000/api/requestModel", { requestData })
+        axios.post(`${import.meta.env.VITE_API_URL}/api/requestModel`, { requestData })
             .then((response) => {
 
                 console.log(`Successfully received follwowing petri net of ${sessionToken} using ${discoveryAlgorithm}:`);

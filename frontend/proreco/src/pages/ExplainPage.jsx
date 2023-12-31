@@ -88,7 +88,7 @@ const ExplainPage = () => {
         const requestData = {
             sessionToken
         };
-        axios.post("https://proreco.co:8000/api/getExplainationDict", { requestData })
+        axios.post(`${import.meta.env.VITE_API_URL}/api/getExplainationDict`, { requestData })
             .then((response) => {
                 const imageUrl = "https://proreco.co/cuteIcon.png"
                 Swal.fire({

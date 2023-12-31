@@ -107,7 +107,7 @@ const GenerateLogPage = () => {
 
         console.log(window.location.href.split('/')[2]);
 
-        axios.post("https://proreco.co:8000/api/generateLog", { requestData })
+        axios.post(`${import.meta.env.VITE_API_URL}api/generateLog`, { requestData })
             .then((response) => {
 
 
