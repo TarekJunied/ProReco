@@ -10,7 +10,7 @@ export default defineConfig({
     port: 3000, // or your preferred port
   },
   build: {
-    outDir: "dist",
-    minify: true,
+    outDir: "/var/www/proreco.co/",
+    minify: true
   }
 })

@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import LandingLayout from "./layout/LandingLayout.jsx"
 import StartPage from './pages/StartPage.jsx';
-import LoadingPage from './pages/LoadingPage.jsx';
 import RankingPage from './pages/RankingPage.jsx';
 import RecommendPage from "./pages/RecommendPage.jsx";
 import LandingPage from './pages/LandingPage.jsx';
@@ -31,10 +30,6 @@ const router = createBrowserRouter([
   {
     path: "/start",
     element: <ErrorBoundary><StartPage /></ErrorBoundary>,
-  },
-  {
-    path: "/loading",
-    element: <ErrorBoundary><LoadingPage /></ErrorBoundary>,
   },
   {
     path: "/ranking",

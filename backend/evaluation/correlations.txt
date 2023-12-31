@@ -9289,7 +9289,7 @@ total_number_of_events, maximum_cut_vertex_outgoing_degree, 0.0826
 dfg_min_variable_degree, dfg_wcc_variation_coefficient, 0.0826
 end_activities_std, relative_number_of_distinct_start_events, -0.0826
 start_activities_q1, entropy_k_block_diff_5, 0.0825
-trace_len_skewness_hist, event_profile_average_cosine_similarity, 0.0825
+trace_len_skewness_hist, event_profile_average_cosine_similarity, 0.0825 
 separability_ratio, dfg_mean_variable_degree, -0.0825
 activities_q1, trace_length_evaluation, -0.0825
 activities_q3, entropy_knn_7, 0.0825

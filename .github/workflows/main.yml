@@ -19,11 +19,9 @@ jobs:
           script: |
             cd ~/RecommenderSystem
             git pull
-            sudo find /var/www/proreco.co -mindepth 1 -delete
             cd ~/RecommenderSystem/frontend/proreco
             npm install
             npm run build
-            mv ~/RecommenderSystem/frontend/proreco/dist/* /var/www/proreco.co/
       - name: start front- and backendservers
         uses: appleboy/ssh-action@v1.0.0
         with:
@@ -31,9 +29,9 @@ jobs:
           username: root
           key: ${{ secrets.MAC_PRIVATEKEY }}
           script: |
-            source /root/miniconda3/bin/activate proreco
             sudo chcon -Rt httpd_sys_content_t /var/www/proreco.co;
             sudo systemctl restart nginx
+            source /root/miniconda3/bin/activate proreco
             cd ~/RecommenderSystem/backend/flask_app
-            sudo fuser -k 8000/tcp
-            nohup gunicorn -b 0.0.0.0:8000 -w 5 --timeout 120 app:app --env FLASK_ENV=production > /gunicorn.log  2>&1 &
+            nohup gunicorn -c gunicorn_config.py app:app > ~/output.log 2>&1 &
+            netstat -tuln | grep 8000

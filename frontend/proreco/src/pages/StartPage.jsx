@@ -37,11 +37,10 @@ const StartPage = () => {
 
             setIsUploading(true);
             axios
-                .post('http://localhost:8000/api/submitLog', formData, {
+                .post("https://proreco.co:8000/api/submitLog", formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
-                    withCredentials: true,
                     onUploadProgress: (progressEvent) => {
                         const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
                         setUploadProgress(percentCompleted); // Update the upload progress
@@ -52,11 +51,11 @@ const StartPage = () => {
                     console.log('File uploaded successfully:', response.data);
                     localStorage.setItem('sessionToken', response.data.sessionToken);
 
-
+                    const imageUrl = "https://proreco.co/cuteIcon.png"
                     Swal.fire({
                         title: 'Event log uploaded succesfully',
                         confirmButtonColor: '#BF3604',
-                        imageUrl: './src/assets/cuteIcon.png',
+                        imageUrl: imageUrl,
                         imageWidth: 250,
                         imageHeight: 250,
                         imageAlt: 'Custom image',

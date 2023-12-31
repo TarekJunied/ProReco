@@ -1,8 +1,0 @@
-ratio_unique_traces_per_trace
-affinity
-event_frequency_evaluation
-trace_frequency_evaluation
-avg_event_repetition_intra_trace
-length_one_loops
-dfg_wcc_variation_coefficient
-dfg_wcc_entropy

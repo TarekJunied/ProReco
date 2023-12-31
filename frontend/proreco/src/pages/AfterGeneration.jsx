@@ -21,7 +21,7 @@ const AfterGeneration = () => {
 
 
     const handleDownloadButtonClick = () => {
-        const url = 'http://localhost:8000/api/downloadEventLog';
+        const url = 'https://proreco.co:8000/api/downloadEventLog';
 
 
         axios({

@@ -60,7 +60,7 @@ const RankingPage = () => {
     const pollProgress = () => {
         const requestData = { sessionToken };
 
-        axios.post('http://localhost:8000/api/progress', { requestData })
+        axios.post('https://proreco.co:8000/api/progress', { requestData })
             .then(response => {
                 // Assuming response.data contains the progress information
                 console.log("received this data from the backend");
@@ -135,7 +135,7 @@ const RankingPage = () => {
 
         console.log({ sliderValues })
         // Send the slider values to the backend
-        axios.post("http://localhost:8000/api/submitWeights", { requestData })
+        axios.post("https://proreco.co:8000/api/submitWeights", { requestData })
             .then((response) => {
 
                 console.log('Successfully sent weights:');
@@ -153,11 +153,11 @@ const RankingPage = () => {
                 };
                 const queryParams = Object.keys(urlParams).map(key => `${key}=${urlParams[key]}`).join('&');
                 const finalUrl = `/recommend?${queryParams}`;
-
+                const imageUrl = "https://proreco.co/cuteIcon.png"
                 Swal.fire({
                     title: 'Success ! Recommendations Incoming.',
                     confirmButtonColor: '#BF3604',
-                    imageUrl: './src/assets/cuteIcon.png',
+                    imageUrl: imageUrl,
                     imageWidth: 250,
                     imageHeight: 250,
                     imageAlt: 'Custom image',

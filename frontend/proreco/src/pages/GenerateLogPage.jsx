@@ -105,19 +105,22 @@ const GenerateLogPage = () => {
 
         console.log({ sliderValues })
 
-        axios.post("http://localhost:8000/api/generateLog", { requestData })
+        console.log(window.location.href.split('/')[2]);
+
+        axios.post("https://proreco.co:8000/api/generateLog", { requestData })
             .then((response) => {
+
 
                 console.log('Successfully generated event log ! ')
 
 
                 localStorage.setItem('sessionToken', response.data.sessionToken);
 
-
+                const imageUrl = "https://proreco.co/cuteIcon.png"
                 Swal.fire({
                     title: 'Success ! Event Log Generated.',
                     confirmButtonColor: '#BF3604',
-                    imageUrl: './src/assets/cuteIcon.png',
+                    imageUrl: imageUrl,
                     imageWidth: 250,
                     imageHeight: 250,
                     imageAlt: 'Custom image',

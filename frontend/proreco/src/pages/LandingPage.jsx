@@ -20,7 +20,7 @@ const LandingPage = () => {
             position: "absolute",
             backgroundSize: "cover",
             backgroundPosition: "top",
-            minHeight: "262vh",
+            minHeight: "265vh",
             width: "100vw",
             backgroundRepeat: "repeat",
         }}>

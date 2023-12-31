@@ -39,12 +39,13 @@ const textAreaStyle = {
 }
 //confirmButtonColor: '#BF3604',
 
+const imageUrl = "https://proreco.co/cuteIcon.png"
 const ContactPage = () => {
     const handleOnSubmit = (e) => {
         Swal.fire({
             title: 'Message Sent Successfully',
             confirmButtonColor: '#BF3604',
-            imageUrl: './src/assets/cuteIcon.png',
+            imageUrl: imageUrl,
             imageWidth: 250,
             imageHeight: 250,
             imageAlt: 'Custom image',

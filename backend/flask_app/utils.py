@@ -102,11 +102,21 @@ def load_cache_variable(cache_file_path):
 
 
 def generate_cache_file(cache_filepath):
+    # Extract the directory path from the full file path
+    directory = os.path.dirname(cache_filepath)
+
+    # Create the directory (and any intermediate directories) if it doesn't exist
+    if not os.path.exists(directory):
+        os.makedirs(directory, exist_ok=True)
+        print(f"Created directories for {directory}")
+
+    # Create the file if it does not exist
     if not os.path.exists(cache_filepath):
         print("Cache file does not exist yet.")
         with open(cache_filepath, 'w') as file:
-            pass
+            pass  # Just create an empty file
         print(f"File '{cache_filepath}' created.")
+
     return cache_filepath
 
 
