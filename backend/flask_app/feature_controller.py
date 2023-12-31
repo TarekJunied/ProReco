@@ -1,4 +1,4 @@
-
+import os
 import numpy as np
 import warnings
 import math
@@ -85,6 +85,24 @@ def get_total_feature_functions_dict():
 
 feature_functions = get_total_feature_functions_dict()
 if __name__ == "__main__":
+
+    feature_dict = get_total_feature_functions_dict()
+
+    feature_list = list(feature_dict.keys())
+
+    log_paths = gather_all_xes(
+        "../logs/training") + gather_all_xes("../logs/testing") + gather_all_xes("../logs/modified_eventlogs")
+    evil_features = []
+    for log_path in log_paths:
+        for feature_name in globals.selected_features:
+            log_id = generate_log_id(log_path)
+            cache_file_path = generate_cache_file(
+                f"{globals.flask_app_path}/cache/features/{feature_name}_{log_id}.pkl")
+            if os.path.exists(cache_file_path):
+                feature = read_single_feature(log_path, feature_name)
+                if math.isnan(feature) or np.isnan(feature):
+                    evil_features += [feature_name]
+
     """"
     mtl_dict = get_mtl_feature_functions_dict()
     fig4pm_dict = get_fig4pm_feature_functions_dict()

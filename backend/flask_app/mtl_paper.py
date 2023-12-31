@@ -199,5 +199,5 @@ if __name__ == "__main__":
     init_given_parameters(log_paths, globals.algorithm_portfolio,
                           globals.selected_features, globals.measures_list)
     algorithm_portfolio = copy.deepcopy(globals.algorithm_portfolio)
-    for classification_method in globals.classification_methods:
-        do_mtl_evaluation_experiment(log_paths, classification_method)
+
+    do_mtl_evaluation_experiment(log_paths, "random_forest")

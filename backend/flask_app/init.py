@@ -180,6 +180,12 @@ def try_init_log(log_path):
 if __name__ == "__main__":
     sys.setrecursionlimit(100000)
 
+    globals.algorithm_portfolio = ["alpha", "alpha_plus", "inductive",
+                                   "heuristic", "inductive_infrequent", "inductive_direct",  "split", "ILP"]
+
+    globals.algorithm_portfolio = ["alpha_plus",
+                                   "inductive_infrequent", "inductive_direct"]
+
     log_folder_paths = []
 
     # Check if at least one argument is provided
@@ -191,24 +197,19 @@ if __name__ == "__main__":
         print("No input provided")
         sys.exit(-1)
 
-    globals.algorithm_portfolio = ["alpha", "alpha_plus", "inductive",
-                                   "heuristic"]
-    # , "ILP",     "inductive_infrequent", "inductive_direct",
+    globals.measures_list = [
+        "token_fitness",  "token_precision", "generalization", "pm4py_simplicity"]
 
     globals.selected_features = list(get_total_feature_functions_dict().keys())
-
-    input(len(get_all_ready_logs(gather_all_xes("../logs/"),
-          globals.selected_features, globals.algorithm_portfolio, globals.measures_list)))
 
     logs_to_init = []
     for log_folder_path in log_folder_paths:
         logs_to_init += gather_all_xes(log_folder_path)
-    # logs_to_init = sort_files_by_size(logs_to_init)
 
-    num_processes = 20
+    logs_to_init = sort_files_by_size(logs_to_init)
+
+    num_processes = 48
     # sys.stdout = open('/dev/null', 'w')
-
-    # process_map(try_init_log, logs_to_init, max_workers=num_processes)
 
     pool = multiprocessing.Pool(processes=num_processes)
 
@@ -222,10 +223,3 @@ if __name__ == "__main__":
     print("pool joined")
 
     print("done")
-
-    for log_path in logs_to_init:
-        try:
-            read_model(log_path, "ILP")
-            read_model(log_path, "split")
-        except Exception:
-            print("bye next")
