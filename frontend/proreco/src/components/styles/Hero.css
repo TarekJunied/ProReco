@@ -1,0 +1,17 @@
+/* CSS for Get Started Button */
+.get-started-button {
+    padding: 1rem 1.5rem;
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 8px;
+    color: white;
+    background: linear-gradient(157.81deg, #401010 0%, #732626 100%);
+    outline: none;
+}
+
+/* CSS for Learn More Button */
+.learn-more-button {
+    border: 4px solid #ff8c00;
+    /* Assuming border-orange-800 corresponds to #ff8c00 */
+    /* Add other styles you want for this button */
+}

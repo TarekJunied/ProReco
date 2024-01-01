@@ -1,0 +1,125 @@
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        /* Centered and original size */
+    }
+
+    10% {
+        transform: translate(-50%, -50%) scale(1.01);
+        /* Centered and slightly larger */
+    }
+
+    20% {
+        transform: translate(-50%, -50%) scale(1);
+        /* Back to centered and original size */
+    }
+
+    30% {
+        transform: translate(-50%, -50%) scale(1.007);
+        /* Centered and slightly larger */
+    }
+
+    40% {
+        transform: translate(-50%, -50%) scale(1);
+        /* Back to centered and original size */
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.005);
+        /* Centered and slightly larger */
+    }
+
+    60% {
+        transform: translate(-50%, -50%) scale(1);
+        /* Back to centered and original size */
+    }
+
+    70% {
+        transform: translate(-50%, -50%) scale(1.003);
+        /* Centered and slightly larger */
+    }
+
+    80% {
+        transform: translate(-50%, -50%) scale(1);
+        /* Back to centered and original size */
+    }
+
+    90% {
+        transform: translate(-50%, -50%) scale(1.002);
+        /* Centered and slightly larger */
+    }
+}
+
+@keyframes realisticBounce {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        /* Centered and original size */
+    }
+
+    10% {
+        transform: translate(-50%, -50%) scale(1.01);
+        /* Centered and slightly larger */
+    }
+
+    20% {
+        transform: translate(-50%, -50%) scale(1);
+        /* Back to centered and original size */
+    }
+
+    30% {
+        transform: translate(-50%, -50%) scale(1.007);
+        /* Centered and slightly larger */
+    }
+
+    40% {
+        transform: translate(-50%, -50%) scale(1);
+        /* Back to centered and original size */
+    }
+
+    60% {
+        transform: translateY(-1.5px);
+        /* Even lower bounce */
+    }
+
+    50% {
+        transform: translateY(-1px);
+        /* Lowest bounce before resetting */
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+        /* Adjust this value for a more or less pronounced pulse */
+    }
+}
+
+
+
+.heartbeat-helmet {
+    position: absolute;
+    top: 53.1%;
+    /* Adjust these percentages to align exactly where the transparent part is */
+    left: 69.8%;
+    transform: translate(-50%, -50%);
+    /* Center the helmet */
+    /* helmet width / background widtH = 1944/5161 */
+    width: 37.66%;
+    /* Adjust size accordingly */
+    height: auto;
+    /* Maintain aspect ratio */
+    animation: heartbeat 2s infinite;
+
+
+
+}

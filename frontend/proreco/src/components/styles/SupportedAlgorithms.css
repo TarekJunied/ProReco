@@ -1,0 +1,32 @@
+/* SupportedAlgorithms.css */
+sup {
+    padding-bottom: 20px;
+}
+
+
+
+#split-logo {
+    height: 120px;
+    /* Adjust the height and width as needed */
+    width: 120px;
+}
+
+#alpha-logo {
+    height: 120px;
+    width: 120px;
+}
+
+#ILP-logo {
+    height: 120px;
+    width: 120px;
+}
+
+#heuristic-logo {
+    height: 120px;
+    width: 120px;
+}
+
+#inductive-logo {
+    height: 120px;
+    width: 120px;
+}
