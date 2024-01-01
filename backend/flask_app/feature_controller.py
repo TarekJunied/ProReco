@@ -19,7 +19,6 @@ warnings.filterwarnings("ignore")
 
 def read_single_feature(log_path, feature_name):
     log_name = get_log_name(log_path)
-
     if (log_path, feature_name) in globals.features:
         return globals.features[log_path, feature_name]
     try:

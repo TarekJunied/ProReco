@@ -84,7 +84,7 @@ def feature_std_variant_occurrence(log_path):
 def feature_skewness_variant_occurrence(log_path):
     occurrences = get_occurrences(log_path)
     result = stats.skew(occurrences)
-    if np.isnan(result) or math.isnan(result):
+    if result is None or np.isnan(result) or math.isnan(result):
         return 0
     return result
 
@@ -92,6 +92,6 @@ def feature_skewness_variant_occurrence(log_path):
 def feature_kurtosis_variant_occurrence(log_path):
     occurrences = get_occurrences(log_path)
     result = stats.kurtosis(occurrences)
-    if math.isnan(result) or np.isnan(result):
+    if result is None or math.isnan(result) or np.isnan(result):
         return 0
     return result

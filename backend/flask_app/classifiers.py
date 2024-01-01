@@ -7,7 +7,6 @@ import subprocess
 import os
 import pm4py
 from xgboost import XGBClassifier
-from utils import read_logs, read_models,  get_all_ready_logs
 from filehelper import gather_all_xes, get_all_ready_logs
 from feature_controller import read_feature_matrix, read_feature_vector
 from measures import read_measure_entry, read_regression_target_vector

@@ -1,0 +1,17 @@
+n_unique_activities
+start_activities_mean
+relative_number_of_distinct_start_events
+relative_number_of_distinct_end_events
+maximum_node_degree
+density
+cyclomatic_number
+number_of_cut_vertices
+separability_ratio
+event_frequency_evaluation
+syntactic_node_similarity
+length_one_loops
+percentage_concurrency
+dfg_mean_variable_degree
+dfg_variation_coefficient_variable_degree
+dfg_entropy_variable_degree
+dfg_wcc_max

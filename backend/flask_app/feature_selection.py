@@ -1,4 +1,6 @@
 import pandas as pd
+import concurrent.futures
+import sys
 import math
 import os
 import seaborn as sns
@@ -18,12 +20,13 @@ from measures import read_classification_target_vector, read_regression_target_v
 from init import load_logs_into_main_memory, load_features_into_main_memory, load_measures_into_main_main_memory, fix_corrupt_cache, init_given_parameters
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.feature_selection import RFECV
-from sklearn.model_selection import StratifiedKFold
+from sklearn.model_selection import StratifiedKFold, train_test_split
 from sklearn.feature_selection import SelectKBest, f_regression
 from sklearn.model_selection import KFold, cross_val_score
 from sklearn.base import clone
 from sklearn.metrics import accuracy_score
-from utils import generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable
+from filehelper import split_file_path
+from utils import generate_log_id, generate_cache_file, store_cache_variable, load_cache_variable, get_log_name
 
 
 # Assuming X and y are your features and target variable
@@ -260,9 +263,9 @@ def regression_read_optimal_features(all_log_paths, regression_method, discovery
     except Exception:
         print(
             f"Optimal features list for {regression_method} {discovery_algorithm} {measure_name} does not exist yet, now computing")
-        generate_cache_file(cache_file_path)
         optimal_features_list = regression_compute_optimal_features(
             all_log_paths, regression_method, discovery_algorithm, measure_name, feature_portfolio, cv=cv, scoring='r2')
+        generate_cache_file(cache_file_path)
         store_cache_variable(optimal_features_list, cache_file_path)
 
         file_path = f"{globals.flask_app_path}/cache/optimal_features_lists/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure_name}.txt"
@@ -297,6 +300,9 @@ def regression_compute_optimal_features(all_log_paths, regression_method, discov
     y = read_regression_target_vector(
         all_log_paths, discovery_algorithm, measure_name)
 
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42)
+
     # Create the RFECV object
     print("Creating RFECV object")
     rfecv = RFECV(estimator=reg, step=1,
@@ -304,7 +310,7 @@ def regression_compute_optimal_features(all_log_paths, regression_method, discov
 
     # Fit RFECV
     print("Now starting fitting of RFECV")
-    rfecv.fit(X, y)
+    rfecv.fit(X_train, y_train)
 
     # Print the optimal number of features
     print(f"Optimal number of features: {rfecv.n_features_}")
@@ -327,56 +333,40 @@ def clear_regression_optimal_features():
             print(f"Deleted {file_path}")
 
 
+def remove_substrings(original_string, substrings):
+    substrings = sorted(substrings, key=len, reverse=True)
+    for substring in substrings:
+        original_string = original_string.replace(substring, "")
+    return original_string
+
+
+def process_combination(args):
+    regression_method, discovery_algorithm, measure_name, training_log_paths, selected_features = args
+    try:
+        regression_read_optimal_features(
+            training_log_paths, regression_method, discovery_algorithm, measure_name, selected_features)
+    except Exception as e:
+        return (e, "next ?")  # or handle it in some way
+
+
 if __name__ == "__main__":
 
-    globals.algorithm_portfolio = [
-        "alpha", "inductive", "heuristic", "split", "ILP"]
     feature_dict = get_total_feature_functions_dict()
-
-    input(len(get_fig4pm_feature_functions_dict().keys()))
-
     feature_list = list(feature_dict.keys())
-# Open a file in write mode
-    with open('feature_list.txt', 'w') as file:
-        # Write each item on a new line
-        for item in feature_list:
-            file.write("%s\n" % item)
-
-    all_logs = gather_all_xes("../logs/testing") + gather_all_xes(
-        "../logs/modified_eventlogs") + gather_all_xes("../logs/training")
 
     globals.selected_features = feature_list
-    globals.measures_list = [
-        "token_fitness", "token_precision",  "generalization", "pm4py_simplicity"]
-
-    globals.selected_features = [
-        "no_distinct_traces",
-        "no_total_traces",
-        "avg_trace_length",
-        "avg_event_repetition_intra_trace",
-        "no_distinct_events",
-        "no_events_total",
-        "no_distinct_start",
-        "no_distinct_end",
-        "percentage_concurrency",
-        "density",
-        "length_one_loops"
-
-    ]
-
-    globals.selected_features = list(get_mtl_feature_functions_dict().keys())
+    all_logs = gather_all_xes("../logs/testing") + gather_all_xes(
+        "../logs/modified_eventlogs") + gather_all_xes("../logs/training")
 
     training_log_paths = get_all_ready_logs(
         all_logs, globals.selected_features, globals.algorithm_portfolio, globals.measures_list)
 
-    top_correlated = top_n_correlated_features(
-        training_log_paths, globals.selected_features, 5)
-    plot_feature_correlation(
-        training_log_paths, top_correlated, "mtl_top10")
-    """"
-    for regression_method in globals.regression_methods:
-        for discovery_algorithm in globals.algorithm_portfolio:
-            for measure_name in globals.measures_list:
-                regression_read_optimal_features(
-                    training_log_paths, regression_method, discovery_algorithm, measure_name, globals.selected_features)
-    """
+    regression_method = sys.argv[1]
+    discovery_algorithm = sys.argv[2]
+    measure_name = sys.argv[3]
+
+    init_given_parameters(training_log_paths, [
+                          discovery_algorithm], globals.selected_features, [measure_name])
+
+    regression_read_optimal_features(
+        training_log_paths, regression_method, discovery_algorithm, measure_name, globals.selected_features)

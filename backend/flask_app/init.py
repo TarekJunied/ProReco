@@ -1,4 +1,4 @@
-from utils import read_logs, read_models, read_model, read_log, load_cache_variable, store_cache_variable, generate_log_id, generate_cache_file,  read_log
+from utils import read_model, read_log, load_cache_variable, store_cache_variable, generate_log_id, generate_cache_file,  read_log
 import logging
 
 from pm4py.objects.conversion.log import converter as log_converter
@@ -177,7 +177,19 @@ def try_init_log(log_path):
                 print(e)
 
 
+def reset_all_cached_predictors():
+    input("are you sure you want to clear regressors, explainers and optimal_features")
+    paths = [f"./cache/regressors", f"./cache/explainers",
+             f"./cache/optimal_features_lists"]
+    for path in paths:
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                if file != '.gitkeep':
+                    os.remove(os.path.join(root, file))
+
+
 if __name__ == "__main__":
+
     sys.setrecursionlimit(100000)
 
     globals.algorithm_portfolio = ["alpha", "alpha_plus", "inductive",
@@ -207,8 +219,14 @@ if __name__ == "__main__":
         logs_to_init += gather_all_xes(log_folder_path)
 
     logs_to_init = sort_files_by_size(logs_to_init)
+    logs_to_init = gather_all_xes("../logs/modified_eventlogs")
 
-    num_processes = 48
+    for log_path in logs_to_init:
+        for discovery_algorithm in globals.algorithm_portfolio:
+            for measure in globals.measures_list:
+                read_measure_entry(log_path, discovery_algorithm, measure)
+
+    num_processes = 48*2
     # sys.stdout = open('/dev/null', 'w')
 
     pool = multiprocessing.Pool(processes=num_processes)

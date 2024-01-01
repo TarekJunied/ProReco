@@ -101,6 +101,15 @@ def load_cache_variable(cache_file_path):
     return loaded_variable
 
 
+def delete_cache_variable(cache_file_path):
+    if os.path.exists(cache_file_path):
+        # Delete the file
+        os.remove(cache_file_path)
+        print(f"Cache file deleted: {cache_file_path}")
+    else:
+        print("Cache file does not exist.")
+
+
 def generate_cache_file(cache_filepath):
     # Extract the directory path from the full file path
     directory = os.path.dirname(cache_filepath)
@@ -138,17 +147,6 @@ def read_log(log_path):
         store_cache_variable(log, cache_file_path)
 
     return log
-
-
-def read_logs(log_paths):
-    for log_path in log_paths:
-        read_log(log_path)
-
-
-def read_models(log_paths):
-    for log_path in log_paths:
-        for discovery_algorithm in globals.algorithm_portfolio:
-            read_model(log_path, discovery_algorithm)
 
 
 def all_files_exist(file_paths):
@@ -262,10 +260,18 @@ discovery_functions = {
 
 
 if __name__ == "__main__":
-    log_paths = gather_all_xes("../logs/training")
-    for discovery_algorithm in globals.algorithm_portfolio:
-        if discovery_algorithm != "split":
-            net, im, fm = compute_model(log_paths[2], f"{discovery_algorithm}")
-            pm4py.vis.save_vis_petri_net(
-                net, im, fm, f"./{discovery_algorithm}.png")
-            input("done")
+    log_paths = gather_all_xes("../logs/modified_eventlogs")
+    failures = []
+    for log_path in log_paths:
+        log = read_log(log_path)
+        try:
+            var1 = read_model(log_path, "inductive")
+            var2 = read_model(log_path, "inductive_infrequent")
+            var3 = read_model(log_path, "inductive_direct")
+            (net, im, fm) = var1
+            (net, im, fm) = var2
+            (net, im, fm) = var2
+        except Exception as e:
+            failures += [log_path]
+
+    input(failures)

@@ -211,9 +211,10 @@ def get_all_ready_logs(log_paths, feature_portfolio, algorithm_portfolio, measur
         file_list += [log_cache]
         for discovery_algorithm in algorithm_portfolio:
             model_path = f"{globals.flask_app_path}/cache/models/{discovery_algorithm}_{log_id}.pkl"
+            file_list += [model_path]
             for measure_name in measures_list:
                 measure_cache = f"{globals.flask_app_path}/cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl"
-                file_list += [model_path, measure_cache]
+                file_list += [measure_cache]
         for feature in feature_portfolio:
             feature_path = f"{globals.flask_app_path}/cache/features/{feature}_{log_id}.pkl"
             file_list += [feature_path]

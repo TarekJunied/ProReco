@@ -142,7 +142,7 @@ if __name__ == "__main__":
     globals.measures_list = [
         "token_fitness", "token_precision", "generalization", "pm4py_simplicity"]
     globals.algorithm_portfolio = [
-        "alpha", "inductive", "heuristic", "split", "ILP"]
+        "alpha", "inductive", "heuristic", "split", "ILP", "inductive_direct", "inductive_infrequent"]
 
     feature_dict = get_total_feature_functions_dict()
 
@@ -152,10 +152,9 @@ if __name__ == "__main__":
 
     algorithm_portfolio = globals.algorithm_portfolio
 
-    log_paths = gather_all_xes("../logs/real_life_logs")
+    log_paths = get_all_ready_logs(gather_all_xes(
+        "../logs/"), globals.selected_features, globals.algorithm_portfolio, globals.measures_list)
 
-    log_path = log_paths[1]
-
-    progressed_read_log(log_path)
+    input(len(log_paths))
 
     # After the thread finishes, you can access the captured_stderr_output

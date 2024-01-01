@@ -7,7 +7,6 @@ import subprocess
 import os
 import pm4py
 from xgboost import XGBClassifier
-from utils import read_logs, read_models,  get_all_ready_logs
 from filehelper import gather_all_xes, get_all_ready_logs
 from feature_controller import read_feature_matrix, read_feature_vector
 from measures import read_measure_entry, read_regression_target_vector
@@ -22,6 +21,9 @@ from sklearn.tree import plot_tree
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.pipeline import make_pipeline
 from xgboost import XGBRegressor
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
 
 
 def extract_regression_method(s):
@@ -115,43 +117,98 @@ def get_regression_based_classification_methods():
     return [f"regression_based_{regression_method}" for regression_method in globals.regression_methods]
 
 
+def get_random_forest_optimal_parameters(all_log_paths, discovery_algorithm, measure_name):
+    X = read_feature_matrix(all_log_paths, globals.selected_features)
+    y = read_regression_target_vector(
+        all_log_paths, discovery_algorithm, measure_name)
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.3, random_state=42)
+    rf_default = RandomForestRegressor(random_state=42)
+    rf_default.fit(X_train, y_train)
+    y_pred_default = rf_default.predict(X_test)
+    mse_default = mean_squared_error(y_test, y_pred_default)
+    print("MSE (Before Optimization):", mse_default)
+
+    # 2. Hyperparameter Optimization Using GridSearchCV
+    # Ensuring a consistent random state for reproducibility
+    rf = RandomForestRegressor(random_state=42)
+    grid_search = GridSearchCV(
+        estimator=rf, param_grid=param_grid, cv=5, verbose=2, n_jobs=-1)
+    grid_search.fit(X_train, y_train)
+    print("Best parameters found: ", grid_search.best_params_)
+
+    # 3. RandomForestRegressor With Optimized Parameters (After Optimization)
+    rf_optimized = RandomForestRegressor(
+        **grid_search.best_params_, random_state=42)
+    rf_optimized.fit(X_train, y_train)
+    y_pred_optimized = rf_optimized.predict(X_test)
+    mse_optimized = mean_squared_error(y_test, y_pred_optimized)
+    print("MSE (After Optimization):", mse_optimized)
+
+    # 4. Compare the MSEs
+    print("MSE Improvement:", mse_default - mse_optimized)
+    return grid_search.best_params_
+
+
+def get_xgboost_optimal_parameters(all_log_paths, discovery_algorithm, measure_name):
+    X = read_feature_matrix(all_log_paths, globals.selected_features)
+    y = read_regression_target_vector(
+        all_log_paths, discovery_algorithm, measure_name)
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.3, random_state=42)
+
+    # 1. Baseline Model
+    xgb_reg = XGBRegressor(objective='reg:squarederror', random_state=42)
+    xgb_reg.fit(X_train, y_train)
+    y_pred_default = xgb_reg.predict(X_test)
+    mse_default = mean_squared_error(y_test, y_pred_default)
+    print("MSE (Before Optimization):", mse_default)
+
+    # 2. Hyperparameter Optimization
+    # Define a parameter grid to search through
+    param_grid = {
+        'n_estimators': [100, 500, 1000, 2000],
+        'learning_rate': [0.05, 0.1, 0.2],
+        'max_depth': [3, 5, 7],
+        'colsample_bytree': [0.7, 1],
+        # Add more parameters here
+    }
+
+    grid_search = GridSearchCV(
+        estimator=XGBRegressor(objective='reg:squarederror', random_state=42),
+        param_grid=param_grid,
+        cv=5,
+        verbose=2,
+        n_jobs=-1
+    )
+
+    grid_search.fit(X_train, y_train)
+    print("Best parameters found: ", grid_search.best_params_)
+
+    # 3. XGBoost Regressor With Optimized Parameters
+    xgb_optimized = XGBRegressor(
+        **grid_search.best_params_,
+        objective='reg:squarederror',
+        random_state=42
+    )
+    xgb_optimized.fit(X_train, y_train)
+    y_pred_optimized = xgb_optimized.predict(X_test)
+    mse_optimized = mean_squared_error(y_test, y_pred_optimized)
+    print("MSE (After Optimization):", mse_optimized)
+    print("MSE Improvement:", mse_default - mse_optimized)
+
+    return grid_search.best_params_
+
+
 if __name__ == "__main__":
-    globals.algorithm_portfolio = ["alpha", "heuristic",
-                                   "inductive", "ILP", "split"]
-
     feature_dict = get_total_feature_functions_dict()
-
     feature_list = list(feature_dict.keys())
-
     globals.selected_features = feature_list
-    globals.measures_list = ["token_fitness", "token_precision",
-                             "no_total_elements", "generalization", "pm4py_simplicity"]
 
-    globals.classification_methods = [
-        x for x in globals.classification_methods if x not in ["knn", "svm"]]
+    all_log_paths = get_all_ready_logs(gather_all_xes(
+        "../logs"), globals.selected_features, globals.algorithm_portfolio, globals.measures_list)
 
-    feature_list = []
-    for measure_name in globals.measures_list:
-        feature_list += read_optimal_features(
-            [], "xgboost", measure_name, feature_list, globals.algorithm_portfolio)
-
-    globals.selected_features = feature_list
-    all_logs = gather_all_xes("../logs/testing")
-    ready_logs = get_all_ready_logs_multiple(all_logs)[:50]
-
-    algorithm_portfolio = globals.algorithm_portfolio
-
-    classification_method = "xgboost"
-    measure_name1 = "token_fitness"
-    measure_name2 = "token_precision"
-
-    measure_weight_dict = {measure: 0 for measure in globals.measures_list}
-    measure_weight_dict[measure_name1] = 1
-    measure_weight_dict[measure_name2] = 1
-
-    for log_path in ready_logs:
-        for regression_method in globals.regression_methods:
-            for discovery_algorithm in globals.algorithm_portfolio:
-                for measure_name in globals.measures_list:
-                    val1 = regression_based_classification(
-                        log_path, f"regression_based_{regression_method}", measure_name, ready_logs, feature_list, algorithm_portfolio)
+    get_xgboost_optimal_parameters(all_log_paths, "split", "pm4py_simplicity")
+    # get_random_forest_optimal_parameters(X, y)

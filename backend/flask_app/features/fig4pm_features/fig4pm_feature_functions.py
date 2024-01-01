@@ -384,7 +384,10 @@ def feature_transition_profile_minimum_cosine_similarity(log_path):
 def feature_average_spatial_proximity(log_path):
     event_log = pm4py.format_dataframe(read_log(log_path))
     event_log = log_converter.apply(event_log)
-    return average_spatial_proximity(event_log)
+    ret = average_spatial_proximity(event_log)
+    if ret is None or math.isnan(ret) or np.isnan(ret):
+        ret = 0
+    return ret
 
 
 def feature_spatial_proximity_connectedness(log_path):
@@ -420,7 +423,11 @@ def feature_event_class_triple_abstraction_evaluation(log_path):
 def feature_number_of_graph_communities(log_path):
     event_log = pm4py.format_dataframe(read_log(log_path))
     event_log = log_converter.apply(event_log)
-    return number_of_graph_communities(event_log)
+    try:
+        ret = number_of_graph_communities(event_log)
+    except Exception:
+        ret = 0
+    return ret
 
 
 def feature_maximum_cut_vertex_outgoing_degree(log_path):
