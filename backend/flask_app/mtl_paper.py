@@ -106,7 +106,7 @@ def read_mtl_target_vector(all_log_paths):
 
 def get_mtl_X_feature_matrix(ready_logs, feature_portfolio):
     X = pd.DataFrame(read_feature_matrix(ready_logs, feature_portfolio),
-                     columns=globals.selected_features)
+                     columns=globals.feature_portfolio)
 
     X.index = [get_log_name(log_path) for log_path in ready_logs]
     return X
@@ -197,7 +197,7 @@ if __name__ == "__main__":
         "../logs/training") + gather_all_xes("../logs/testing"))
 
     init_given_parameters(log_paths, globals.algorithm_portfolio,
-                          globals.selected_features, globals.measures_list)
+                          globals.feature_portfolio, globals.measure_portfolio)
     algorithm_portfolio = copy.deepcopy(globals.algorithm_portfolio)
 
     do_mtl_evaluation_experiment(log_paths, "random_forest")

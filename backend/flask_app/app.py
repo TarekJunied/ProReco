@@ -14,11 +14,11 @@ from recommender import final_prediction, get_final_petri_net_dict, create_rando
 from feature_controller import get_total_feature_functions_dict
 
 
-globals.measures_list = ["token_precision",
-                         "token_fitness", "generalization", "pm4py_simplicity"]
+globals.measure_portfolio = ["token_precision",
+                             "token_fitness", "generalization", "pm4py_simplicity"]
 globals.algorithm_portfolio = [
     "alpha", "inductive", "heuristic", "split", "ILP"]
-globals.selected_features = list(get_total_feature_functions_dict().keys())
+globals.feature_portfolio = list(get_total_feature_functions_dict().keys())
 
 
 def generate_token(length=32):
@@ -42,7 +42,6 @@ allowed_origins = [
     "*"
     # Add more origins as neede
 ]
-import logging
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -54,6 +53,8 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 UPLOAD_FOLDER = '../logs/frontend'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+
 @app.before_request
 @app.before_request
 def log_request_info():
@@ -64,7 +65,8 @@ def log_request_info():
 
 @app.route("/api/submitWeights", methods=['POST'])
 def submit_weights():
-    app.logger.info(f"Received POST request at /api/submitWeights: {request.data}")
+    app.logger.info(
+        f"Received POST request at /api/submitWeights: {request.data}")
 
     if request.method == 'POST':
         print(request.data)
@@ -78,7 +80,7 @@ def submit_weights():
 
         measure_weight = {}
         i = 0
-        for measure in globals.measures_list:
+        for measure in globals.measure_portfolio:
             measure_weight[measure] = slider_values[i]
             i += 1
 
@@ -163,7 +165,8 @@ def get_progress():
 
 @app.route("/api/generateLog", methods=['POST'])
 def request_log_generation():
-    app.logger.info(f"Received POST request at /api/submitWeights: {request.data}")
+    app.logger.info(
+        f"Received POST request at /api/submitWeights: {request.data}")
 
     if request.method == 'POST':
         print(request.data)

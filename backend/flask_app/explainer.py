@@ -154,9 +154,9 @@ if __name__ == "__main__":
 
     feature_list = list(feature_dict.keys())
 
-    globals.selected_features = feature_list
-    globals.measures_list = ["token_fitness", "token_precision",
-                             "no_total_elements", "generalization", "pm4py_simplicity"]
+    globals.feature_portfolio = feature_list
+    globals.measure_portfolio = ["token_fitness", "token_precision",
+                                 "no_total_elements", "generalization", "pm4py_simplicity"]
 
     globals.classification_methods = [
         x for x in globals.classification_methods if x not in ["knn", "svm"]]
@@ -164,12 +164,12 @@ if __name__ == "__main__":
     all_logs = gather_all_xes("../logs/training") + gather_all_xes(
         "../logs/testing") + gather_all_xes("../logs/modified_eventlogs")
     ready_logs = get_all_ready_logs(
-        all_logs, globals.selected_features, globals.algorithm_portfolio, globals.measures_list)
+        all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
 
     init_given_parameters(ready_logs, globals.algorithm_portfolio,
-                          globals.selected_features, globals.measures_list)
+                          globals.feature_portfolio, globals.measure_portfolio)
 
     for discovery_algorithm in globals.algorithm_portfolio:
-        for measure in globals.measures_list:
+        for measure in globals.measure_portfolio:
             read_regression_shap_explainer(
-                globals.regression_method, discovery_algorithm, ready_logs, measure, globals.selected_features)
+                globals.regression_method, discovery_algorithm, ready_logs, measure, globals.feature_portfolio)

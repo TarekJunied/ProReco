@@ -99,5 +99,5 @@ tzdata==2023.3
 virtualenv==20.24.6
 wcwidth==0.2.12
 Werkzeug==3.0.1
-xgboost==0.90
+xgboost==2.03
 zipp==3.16.2

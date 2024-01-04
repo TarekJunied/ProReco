@@ -1,6 +1,6 @@
 
 import os
-
+import pickle
 
 flask_app_path = "/Users/tarekjunied/Documents/Universität/BachelorThesis/backend/flask_app"
 flask_app_path = "/home/qc261227/Recommender/RecommenderSystem/backend/flask_app"
@@ -11,15 +11,17 @@ classification_method = "xgboost"
 
 regression_method = "random_forest"
 
-selected_features = []
+feature_portfolio_file_path = "./constants/feature_portfolio.pk"
+with open(feature_portfolio_file_path, 'rb') as file:
+    feature_portfolio = pickle.load(file)
 
 
 # "alignment_precision": "max" "alignment_fitness": "max", used_memory": "min",
 measures_kind = {"token_fitness": "max", "token_precision": "max",
                  "no_total_elements": "min", "node_arc_degree": "min", "runtime": "min",  "generalization": "max", "pm4py_simplicity": "max", "log_runtime": "min"}
 # ,"log_runtime"
-measures_list = ["token_fitness",  "token_precision",
-                 "generalization", "pm4py_simplicity"]
+measure_portfolio = ["token_fitness",  "token_precision",
+                     "generalization", "pm4py_simplicity"]
 
 normalisierbare_measures = {"token_fitness": "max",  "token_precision": "max",
                             "generalization": "max", "pm4py_simplicity": "max"}
@@ -44,14 +46,10 @@ binary_classification_methods = [
 # "knn", "svm",
 classification_methods = ["decision_tree",
                           "random_forest", "logistic_regression", "gradient_boosting",  "xgboost"]
-
+#    "ridge_regression",    "lasso_regression",
 regression_methods = [
-    "decision_tree",
     "random_forest",
-    "gradient_boosting",
     "svm",
-    "knn",
-    "mlp",
     "xgboost"
 ]
 
@@ -61,7 +59,7 @@ testing_log_paths = {}
 log_paths = {}
 measures = {}
 models = {}
-
+regressors = {}
 
 progress_dict = {}
 
@@ -116,9 +114,9 @@ def set_progress_current_feature_name_and_percentage(log_path, feature_name):
     init_progress_dict(log_path)
     progress_dict[log_name]["current_feature_name"] = translate_feature_name(
         feature_name)
-    index_of_feature = selected_features.index(feature_name)
+    index_of_feature = feature_portfolio.index(feature_name)
     progress_dict[log_name]["feature_progress"] = round((
-        index_of_feature + 1) / len(selected_features), 2)*100
+        index_of_feature + 1) / len(feature_portfolio), 2)*100
 
 
 def set_parse_percentage(log_path, progress_percentage):

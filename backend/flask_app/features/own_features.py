@@ -1,5 +1,4 @@
 import pm4py
-import flask_app.globals as globals
 from flask_app.utils import read_log, get_log_name, load_cache_variable, store_cache_variable
 import networkx as nx
 import numpy as np
@@ -93,11 +92,11 @@ def read_networkx_graph_of_log(log_path):
     log_name = get_log_name(log_path)
     try:
         G = load_cache_variable(
-            f"{globals.flask_app_path}/cache/models/dfg_{log_name}.pkl")
+            f"./cache/models/dfg_{log_name}.pkl")
     except Exception:
         G = create_networkx_graph_from_dfg(log_path)
         store_cache_variable(
-            G, f"{globals.flask_app_path}/cache/models/dfg_{log_name}.pkl")
+            G, f"./cache/models/dfg_{log_name}.pkl")
     return G
 
 

@@ -35,12 +35,12 @@ def create_csv_from_list(data, filepath):
 
 
 def create_feature_csv(log_paths, filepath):
-    first_row = [""] + globals.selected_features
+    first_row = [""] + globals.feature_portfolio
     data = [first_row]
     i = 1
     for log_path in log_paths:
         cur_row = [f"inst{i}"]
-        for feature in globals.selected_features:
+        for feature in globals.feature_portfolio:
             cur_row += [read_single_feature(log_path, feature)]
         data += [cur_row]
         i += 1
@@ -182,5 +182,5 @@ def autofolio_classification(log_path, ready_training, measure_name):
 if __name__ == "__main__":
     ready_training = get_all_ready_logs_multiple(
         gather_all_xes("../logs/training"))
-    for measure in globals.measures_list:
+    for measure in globals.measure_portfolio:
         create_autofolio_predictor(ready_training, measure)

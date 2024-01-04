@@ -31,7 +31,7 @@ def algo_init(log_path):
 
 
 if __name__ == "__main__":
-    globals.selected_features = list(get_total_feature_functions_dict().keys())
+    globals.feature_portfolio = list(get_total_feature_functions_dict().keys())
 
     log_path = sys.argv[1]
 

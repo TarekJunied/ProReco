@@ -11,7 +11,7 @@ from flask_app.features.removed_features import get_removed_features_list
 from flask_app.features.fig4pm_features.fig4pm_interface import get_fig4pm_feature_functions_dict
 from flask_app.features.own_features import get_own_features_dict
 from flask_app.features.mtl_features.mtl_feature_interface import get_mtl_feature_functions_dict
-from flask_app.filehelper import gather_all_xes
+from flask_app.filehelper import gather_all_xes, get_all_ready_logs
 
 
 warnings.filterwarnings("ignore")
@@ -79,6 +79,8 @@ def get_total_feature_functions_dict():
     filtered_feature_dict = {key: feature_dict[key]
                              for key in feature_dict if key not in features_to_remove}
 
+    store_cache_variable(list(filtered_feature_dict.keys()),
+                         "./constants/feature_portfolio.pk")
     return filtered_feature_dict
 
 
@@ -89,19 +91,12 @@ if __name__ == "__main__":
 
     feature_list = list(feature_dict.keys())
 
-    log_paths = gather_all_xes(
-        "../logs/training") + gather_all_xes("../logs/testing") + gather_all_xes("../logs/modified_eventlogs")
-    evil_features = []
-    for log_path in log_paths:
-        for feature_name in globals.selected_features:
-            log_id = generate_log_id(log_path)
-            cache_file_path = generate_cache_file(
-                f"{globals.flask_app_path}/cache/features/{feature_name}_{log_id}.pkl")
-            if os.path.exists(cache_file_path):
-                feature = read_single_feature(log_path, feature_name)
-                if math.isnan(feature) or np.isnan(feature):
-                    evil_features += [feature_name]
+    directories = [os.path.join("../logs/real_life_logs", d) for d in os.listdir(
+        "../logs/real_life_logs") if os.path.isdir(os.path.join("../logs/real_life_logs", d))]
 
+    for log_dir in directories:
+        log_log_collection_info(log_dir)
+        input("next ?")
     """"
     mtl_dict = get_mtl_feature_functions_dict()
     fig4pm_dict = get_fig4pm_feature_functions_dict()
@@ -110,7 +105,7 @@ if __name__ == "__main__":
     globals.algorithm_portfolio = ["alpha", "inductive"]
     log_paths = gather_all_xes(
         "../logs/training") + gather_all_xes("../logs/testing") + gather_all_xes("../logs/modified_eventlogs")
-    #globals.selected_features = list(feature_functions.keys())
+    #globals.feature_portfolio = list(feature_functions.keys())
     for log_path in log_paths:
         failed_features = []
         for feature_name in own_features_dict:
