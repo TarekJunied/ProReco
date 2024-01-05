@@ -144,21 +144,9 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
 
 
 if __name__ == "__main__":
-    globals.algorithm_portfolio = [
-        "alpha", "inductive", "heuristic", "split", "ILP"]
-    feature_dict = get_total_feature_functions_dict()
-
-    feature_list = list(feature_dict.keys())
-
-    globals.feature_portfolio = feature_list
-    globals.measure_portfolio = ["token_fitness", "token_precision",
-                                 "no_total_elements", "generalization", "pm4py_simplicity"]
-
-    globals.classification_methods = [
-        x for x in globals.classification_methods if x not in ["knn", "svm"]]
-
     all_logs = gather_all_xes("../logs/training") + gather_all_xes(
         "../logs/testing") + gather_all_xes("../logs/modified_eventlogs")
+    all_logs = all_logs[:20]
     ready_logs = get_all_ready_logs(
         all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
 

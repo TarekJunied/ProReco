@@ -5,6 +5,7 @@ import warnings
 import math
 import globals
 import time
+import matplotlib.pyplot as plt
 import pm4py
 import sys
 from flask_app.init import init_log
@@ -88,8 +89,60 @@ def mo_min_max_single_point_accuracy(actual_dict, predicted_dict):
     return accuracy
 
 
+def A_dominates_B(log_path, A, B, measures):
+    for measure in measures:
+        if read_measure_entry(log_path, A, measure) < read_measure_entry(log_path, B, measure):
+            return False
+    return True
+
+
+def dominated_algos(measures, log_path):
+    dominated_list = set()
+    for i in range(len(globals.algorithm_portfolio)):
+        for j in range(i+1, len(globals.algorithm_portfolio)):
+            A = globals.algorithm_portfolio[i]
+            B = globals.algorithm_portfolio[j]
+            if A_dominates_B(log_path, A, B, measures):
+                dominated_list.add(B)
+    return dominated_list
+
+
+def create_pareto_plot(zweier_kombi, log_path):
+
+    plt.figure()
+
+    plt.axis([0, 1.1, 0, 1.1])
+
+    x_points = [read_measure_entry(log_path, discovery_algorithm, zweier_kombi[0])
+                for discovery_algorithm in globals.algorithm_portfolio]
+    y_points = [read_measure_entry(log_path, discovery_algorithm, zweier_kombi[1])
+                for discovery_algorithm in globals.algorithm_portfolio]
+
+    plt.xlabel(zweier_kombi[0])
+    plt.ylabel(zweier_kombi[1])
+
+    # Make the points smaller by adjusting the 's' parameter (size)
+    plt.scatter(x_points, y_points, marker='o', color='red', s=10)
+
+    # Add a grid to the plot with specific intervals
+    plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+    # setting x-ticks from 0 to 1 at 0.1 intervals
+    # setting x-ticks from 0 to 1.1 at 0.1 intervals
+    plt.xticks([i * 0.1 for i in range(12)])
+    plt.yticks([i * 0.1 for i in range(12)])
+
+    # Title of the plot
+    plt.title(f'Pareto front with {zweier_kombi[0]} and {zweier_kombi[1]}')
+
+    # Display the plot
+    plt.savefig(
+        f'./INTRODUCTION/{zweier_kombi[0]}_{zweier_kombi[1]}.png', format='png', dpi=300)
+
+    plt.clf()
+
+
 if __name__ == "__main__":
-    all_logs = gather_all_xes("../logs/real_life_logs")
+    all_logs = gather_all_xes("../logs/book_logs")
 
     measure_weights_dict_list = [
         # Checking each dictionary for exactly two measures with a value of 1
@@ -105,9 +158,29 @@ if __name__ == "__main__":
             "pm4py_simplicity": 0, "generalization": 1},
         {"token_fitness": 0, "token_precision": 0,
             "pm4py_simplicity": 1, "generalization": 1},
+        {"token_fitness": 1, "token_precision": 1,
+            "pm4py_simplicity": 0, "generalization": 1},
+        {"token_fitness": 1, "token_precision": 1,
+            "pm4py_simplicity": 1, "generalization": 0},
+        {"token_fitness": 0, "token_precision": 1,
+            "pm4py_simplicity": 1, "generalization": 1},
+        {"token_fitness": 1, "token_precision": 0,
+            "pm4py_simplicity": 1, "generalization": 1}
     ]
 
-    chosen_log_name = "Road_Traffic_Fine_Management_Process"
+    zweier_kombis = [
+        ['token_precision', 'pm4py_simplicity'],
+    ]
+
+    chosen_log_name = "repairExample"
+
+    for log_path in all_logs:
+        if get_log_name(log_path) == chosen_log_name:
+            for zweier_kombi in zweier_kombis:
+                for discovery_algorithm in globals.algorithm_portfolio:
+                    input(discovery_algorithm)
+                    input(
+                        f"{read_measure_entry(log_path, discovery_algorithm, zweier_kombi[0])} {read_measure_entry(log_path, discovery_algorithm, zweier_kombi[1])}")
 
     all_ready_logs = get_all_ready_logs(
         all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
@@ -123,10 +196,14 @@ if __name__ == "__main__":
                     log_path, measure_weights_dict, globals.algorithm_portfolio)
                 predicted_accuracy = mo_min_max_single_point_accuracy(
                     actual_scores_dict, predicted_scores_dict)
+
                 input([m for m in measure_weights_dict if measure_weights_dict[m] > 0])
+                input(predicted_scores_dict)
+                input(actual_scores_dict)
                 input(max(predicted_scores_dict, key=predicted_scores_dict.get))
                 input(max(actual_scores_dict, key=actual_scores_dict.get))
 
+    """
     discs = {}
     for log_path in all_ready_logs:
 
@@ -135,7 +212,10 @@ if __name__ == "__main__":
             log_name = get_log_name(log_path)
             parameters = {"format": "png"}
             gviz = pn_visualizer.apply(net, im, fm, parameters=parameters)
+            store_dir = f"./INTRODUCTION/{log_name}"
+            os.makedirs(store_dir, exist_ok=True)
             pn_visualizer.save(
-                gviz, f"./INTRODUCTION/{discovery_algorithm}_{log_name}.png")
+                gviz, f"{store_dir}/{discovery_algorithm}_{log_name}.png")
             discs[discovery_algorithm] = {measure: read_measure_entry(log_path, discovery_algorithm, measure)
                                           for measure in globals.measure_portfolio}
+"""

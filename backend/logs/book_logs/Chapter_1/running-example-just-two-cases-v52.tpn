@@ -1,0 +1,12 @@
+place "place_0";
+place "place_1";
+place "place_2";
+place "place_3";
+place "place_4";
+place "place_5" init 1;
+place "place_6";
+trans "t_8"~"register request\ncomplete" in "place_5" out "place_1" "place_0" ;
+trans "t_9"~"examine thoroughly\ncomplete" in "place_0" out "place_2" ;
+trans "t_10"~"check ticket\ncomplete" in "place_1" out "place_3" ;
+trans "t_11"~"decide\ncomplete" in "place_3" "place_2" out "place_4" ;
+trans "t_12"~"reject request\ncomplete" in "place_4" out "place_6" ;

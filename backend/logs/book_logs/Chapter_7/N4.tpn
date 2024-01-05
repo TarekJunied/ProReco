@@ -1,0 +1,11 @@
+place "start" init 1;
+place "p1";
+place "end";
+trans "a"~"a\ncomplete" in "start" out "p1" ;
+trans "b"~"b\ncomplete" in "p1" out "p1" ;
+trans "c"~"c\ncomplete" in "p1" out "p1" ;
+trans "d"~"d\ncomplete" in "p1" out "p1" ;
+trans "e"~"e\ncomplete" in "p1" out "p1" ;
+trans "f"~"f\ncomplete" in "p1" out "p1" ;
+trans "g"~"g\ncomplete" in "p1" out "end" ;
+trans "h"~"h\ncomplete" in "p1" out "end" ;

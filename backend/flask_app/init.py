@@ -121,8 +121,7 @@ def init():
     load_features()
 
 
-def init_log(log_path, feature_portfolio, algorithm_portfolio):
-    list_of_measure_names = globals.measures
+def init_log(log_path, feature_portfolio, algorithm_portfolio, measure_portfolio):
 
     read_log(log_path)
     for discovery_algorithm in algorithm_portfolio:
@@ -130,12 +129,9 @@ def init_log(log_path, feature_portfolio, algorithm_portfolio):
 
     read_feature_vector(log_path, feature_portfolio)
 
-    for measure in list_of_measure_names:
+    for measure in measure_portfolio:
         for discovery_algorithm in algorithm_portfolio:
-            try:
-                read_measure_entry(log_path, discovery_algorithm, measure)
-            except Exception as e:
-                print(e)
+            read_measure_entry(log_path, discovery_algorithm, measure)
 
 
 def get_file_size(file_path):
@@ -168,7 +164,7 @@ def try_init_log(log_path):
                 f"Could not discover model for {discovery_algorithm} on {log_path}")
             print(e)
 
-    for measure in list_of_measure_names:
+    for measure in globals.measure_portfolio:
         for discovery_algorithm in globals.algorithm_portfolio:
             try:
                 read_measure_entry(log_path, discovery_algorithm, measure)

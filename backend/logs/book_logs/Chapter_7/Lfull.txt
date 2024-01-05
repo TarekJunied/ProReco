@@ -1,0 +1,21 @@
+455x Case1 a c d e h
+191x Case2 a b d e g
+177x Case3 a d c e h
+144x Case4 a b d e h
+111x Case5 a c d e g
+82x Case6 a d c e g
+56x Case7 a d b e h
+47x Case8 a c d e f d b e h
+38x Case9 a d b e g
+33x Case10 a c d e f b d e h
+14x Case11 a c d e f b d e g
+11x Case12 a c d e f d b e g
+9x Case13 a d c e f c d e h
+8x Case14 a d c e f d b e h
+5x Case15 a d c e f b d e g
+3x Case16 a c d e f b d e f d b e g
+2x Case17 a d c e f d b e g
+2x Case18 a d c e f b d e f b d e g
+1x Case19 a d c e f d b e f b d e h
+1x Case20 a d b e f b d e f d b e g
+1x Case21 a d c e f d b e f c d e f d b e g
