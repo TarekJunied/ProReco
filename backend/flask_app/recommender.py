@@ -31,16 +31,8 @@ def final_prediction(log_path_to_predict, measure_weight):
     read_feature_vector(log_path_to_predict, globals.feature_portfolio)
     globals.set_progress_state(log_path_to_predict, "predicting")
 
-    if current_mode == "predicted_regression_based_scalarization":
-        dict = predicted_regression_based_scalarization(log_path_to_predict, globals.regression_method, measure_weight, [
-        ], globals.feature_portfolio, globals.algorithm_portfolio)
-
-    elif current_mode == "predicted_classification_based_scalarization":
-        dict = predicted_classification_based_scalarization(log_path_to_predict, globals.classification_method, measure_weight, [
-        ], globals.feature_portfolio, globals.algorithm_portfolio)
-
-    else:
-        print("invalid prediction mode")
+    dict = predicted_regression_based_scalarization(log_path_to_predict, globals.regression_method, measure_weight, [
+    ], globals.feature_portfolio, globals.algorithm_portfolio)
 
     globals.set_progress_state(log_path_to_predict, "done")
 
@@ -119,7 +111,7 @@ def get_regressed_algo_measure_dict(log_path):
     for measure in globals.measure_portfolio:
         for discovery_algorithm in globals.algorithm_portfolio:
             dict[f"{discovery_algorithm}-{measure}"] = round(regression(
-                log_path, globals.regression_method, discovery_algorithm, measure, [], globals.feature_portfolio), 2)
+                log_path, globals.regression_method, discovery_algorithm, measure, []), 2)
 
     return dict
 
@@ -136,25 +128,5 @@ def get_decision_plot_dict(log_path_to_explain):
 
 if __name__ == "__main__":
 
-    hi = {'andBranches': 4, 'xorBranches': 2, 'loopWeight': 0.42, 'singleActivityWeight': 0.64, 'skipWeight': 0.5,
-          'sequenceWeight': 0.41, 'andWeight': 0.37, 'xorWeight': 0.39, 'maxDepth': 2, 'dataObjectProbability': 0.55, 'numberOfTraces': 1868}
-
-    globals.measure_portfolio = [
-        "token_fitness", "token_precision", "generalization", "pm4py_simplicity"]
-    globals.algorithm_portfolio = [
-        "alpha", "inductive", "heuristic", "split", "ILP", "inductive_direct", "inductive_infrequent"]
-
-    feature_dict = get_total_feature_functions_dict()
-
-    feature_list = list(feature_dict.keys())
-
-    globals.feature_portfolio = feature_list
-
-    algorithm_portfolio = globals.algorithm_portfolio
-
-    log_paths = get_all_ready_logs(gather_all_xes(
-        "../logs/"), globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
-
-    input(len(log_paths))
-
-    # After the thread finishes, you can access the captured_stderr_output
+    log_paths = gather_all_xes("../logs/frontend")
+    log_path = log_paths[0]

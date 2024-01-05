@@ -9,7 +9,7 @@ algorithm_portfolio = ["alpha", "heuristic",
                        "inductive", "ILP", "split", "alpha_plus", "inductive_infrequent", "inductive_direct"]
 classification_method = "xgboost"
 
-regression_method = "random_forest"
+regression_method = "xgboost"
 
 feature_portfolio_file_path = "./constants/feature_portfolio.pk"
 with open(feature_portfolio_file_path, 'rb') as file:

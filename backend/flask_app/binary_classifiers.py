@@ -8,7 +8,6 @@ import pm4py
 from sklearn.metrics import accuracy_score
 from filehelper import gather_all_xes, get_all_ready_logs
 from feature_controller import read_feature_matrix, read_feature_vector
-from feature_selection import classification_read_optimal_features
 from measures import read_binary_classification_target_vector, read_target_entry
 from init import *
 from sklearn.preprocessing import LabelEncoder

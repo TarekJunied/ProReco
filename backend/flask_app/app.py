@@ -1,10 +1,12 @@
+from werkzeug.middleware.proxy_fix import ProxyFix
+import logging
 import sys
 import secrets
 import uuid
 import os
 import json
 import globals
-import logging
+# import logging
 
 from flask import Flask,  jsonify, session, redirect, render_template, Response, request, send_file
 from flask_cors import CORS
@@ -43,30 +45,22 @@ allowed_origins = [
     # Add more origins as neede
 ]
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
+
+# logging.getLogger('werkzeug').setLevel(logging.ERROR)
+
+# Optional: You can also configure the app's logger if you want to suppress or control logs within your application
 
 
 UPLOAD_FOLDER = '../logs/frontend'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
-@app.before_request
-@app.before_request
-def log_request_info():
-    logger.info(f"New request: {request.method} {request.path}")
-    logger.info(f"Headers: {request.headers}")
-    logger.info(f"Body: {request.get_data(as_text=True)}")
-
-
 @app.route("/api/submitWeights", methods=['POST'])
 def submit_weights():
-    app.logger.info(
-        f"Received POST request at /api/submitWeights: {request.data}")
 
     if request.method == 'POST':
         print(request.data)
@@ -91,9 +85,10 @@ def submit_weights():
             log_path_to_predict)
 
         print("returning the following string jsonified for the post request submitWeights")
-        print({'predictonDict': prediction_score_dict,
-              "algoMeasureDict": algo_measure_dict})
-        return jsonify({'predictonDict': prediction_score_dict, "algoMeasureDict": algo_measure_dict})
+        ret_dict = {'predictonDict': prediction_score_dict,
+                    "algoMeasureDict": algo_measure_dict}
+        print(ret_dict)
+        return jsonify(ret_dict)
     else:
         return "This route only accepts POST requests."
 
@@ -165,9 +160,6 @@ def get_progress():
 
 @app.route("/api/generateLog", methods=['POST'])
 def request_log_generation():
-    app.logger.info(
-        f"Received POST request at /api/submitWeights: {request.data}")
-
     if request.method == 'POST':
         print(request.data)
 

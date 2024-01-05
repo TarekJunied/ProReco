@@ -10,11 +10,7 @@ from classifiers import read_fitted_classifier
 from feature_controller import read_feature_matrix, get_total_feature_functions_dict, read_feature_vector
 from filehelper import gather_all_xes, get_all_ready_logs
 from init import init_given_parameters
-from feature_selection import classification_read_optimal_features
 from feature_controller import read_single_feature
-
-
-api_key = "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"
 
 
 def read_classification_shap_explainer(classification_method, ready_training, measure_name, feature_portfolio):
@@ -63,7 +59,7 @@ def compute_fitted_explainer(regression_method, discovery_algorithm, measure_nam
         ready_training, feature_portfolio), columns=feature_portfolio)
 
     model = compute_fitted_regressor(
-        regression_method, discovery_algorithm, measure_name, ready_training, feature_portfolio)
+        regression_method, discovery_algorithm, measure_name, ready_training)
 
     explainer = select_shap_explainer(regression_method, model, x_train)
 

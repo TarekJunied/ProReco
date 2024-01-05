@@ -31,11 +31,10 @@ from feature_controller import get_total_feature_functions_dict
 
 
 def read_optimal_features(regression_method, discovery_algorithm, measure_name):
-    file_path = f"{globals.flask_app_path}/cache/optimal_features_lists/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure_name}.pk"
+    file_path = f"./cache/optimal_features_lists/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure_name}.pk"
     try:
         optimal_features_list = load_cache_variable(file_path)
     except Exception:
-        print("no optimal feature list yet")
         optimal_features_list = globals.feature_portfolio
     return optimal_features_list
 
@@ -120,6 +119,7 @@ def compute_fitted_regressor(regression_method, discovery_algorithm, measure_nam
         regression_method, discovery_algorithm, measure_name)
 
     x_train = read_feature_matrix(ready_training, optimal_features)
+
     y_train = read_regression_target_vector(
         ready_training, discovery_algorithm, measure_name)
 
@@ -189,9 +189,11 @@ def regression(log_path, regression_method, discovery_algorithm, measure_name, r
     optimal_features = read_optimal_features(
         regression_method, discovery_algorithm, measure_name)
 
-    predictions = reg.predict(read_feature_vector(log_path, optimal_features))
+    feature_vector = read_feature_vector(log_path, optimal_features)
 
-    return max(min(predictions[0], 1), 0)
+    predictions = reg.predict(feature_vector)
+
+    return float(max(min(predictions[0], 1), 0))
 
 
 def regression_based_classification(log_path, classification_method, measure_name, ready_training):
