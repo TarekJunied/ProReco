@@ -210,5 +210,12 @@ def get_explaination_dict():
         return jsonify(ret_dict), 200
 
 
+@app.route('/api/getFeatureList', methods=['POST'])
+def get_total_feature_list():
+    if request.method == 'POST':
+
+        return jsonify(globals.feature_portfolio), 200
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
