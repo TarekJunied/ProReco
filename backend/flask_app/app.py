@@ -16,13 +16,6 @@ from recommender import final_prediction, get_final_petri_net_dict, create_rando
 from feature_controller import get_total_feature_functions_dict
 
 
-globals.measure_portfolio = ["token_precision",
-                             "token_fitness", "generalization", "pm4py_simplicity"]
-globals.algorithm_portfolio = [
-    "alpha", "inductive", "heuristic", "split", "ILP"]
-globals.feature_portfolio = list(get_total_feature_functions_dict().keys())
-
-
 def generate_token(length=32):
     # Generate a random token of the specified length
     return secrets.token_hex(length)

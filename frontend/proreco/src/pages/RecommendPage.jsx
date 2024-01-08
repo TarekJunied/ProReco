@@ -82,6 +82,27 @@ const RecommendPage = () => {
         marginBottom: "5vh"
     };
 
+    function translateAlgoName(algorithmName) {
+        let ret;
+        switch (algorithmName) {
+
+            case "inductive":
+                ret = "IM"
+                break;
+            case "inductive_direct":
+                ret = "IMd"
+                break;
+            case "inductive_infrequent":
+                ret = "IMf"
+                break;
+            case "alpha_plus":
+                ret = "ALPHA +"
+                break;
+            default:
+                ret = algorithmName.toUpperCase()
+        }
+        return ret;
+    }
 
     return (
         <ChooseLayout>
@@ -93,7 +114,7 @@ const RecommendPage = () => {
                     {AlgorithmPortfolio.map((DiscoveryAlgorithm, index) => (
                         <div key={index} style={{
                             marginTop: index === 0 ? "0" : "5vh",
-                            width: "50vw" // add top margin for all but the first item
+                            width: "55vw" // add top margin for all but the first item
                         }}>
                             <a
                                 data-tooltip-id={`${DiscoveryAlgorithm}sToolTip`}
@@ -103,7 +124,7 @@ const RecommendPage = () => {
                             >
                                 <AlgorithmScore
                                     placement={index + 1}
-                                    algorithmName={DiscoveryAlgorithm}
+                                    algorithmName={translateAlgoName(DiscoveryAlgorithm)}
                                     algorithmScore={recommendationData[DiscoveryAlgorithm]}
 
 
@@ -112,7 +133,7 @@ const RecommendPage = () => {
 
                             <Tooltip id={`${DiscoveryAlgorithm}sToolTip`}
                                 style={toolTipStyle}
-                                place="right" />
+                                place="top" />
                         </div>
                     ))}
 

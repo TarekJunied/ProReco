@@ -5,6 +5,10 @@ import alphaLogo from '../assets/alpha-logo.png';
 import ilpLogo from '../assets/ILP-logo.png';
 import heuristicLogo from '../assets/heuristic-logo.png';
 import inductiveLogo from '../assets/inductive-logo.png';
+import inductiveDirectLogo from '../assets/inductive_direct-logo.png';
+import inductiveInfrequentLogo from '../assets/inductive_infrequent-logo.png';
+import alphaPlusLogo from '../assets/alpha_plus-logo.png';
+
 import { Tooltip } from 'react-tooltip'
 
 
@@ -51,10 +55,6 @@ function getImageSize(algorithmName) {
     return style;
 }
 
-const capitalizeAlgorithmName = (algorithmName) => {
-    return algorithmName.charAt(0).toUpperCase() + algorithmName.slice(1);
-
-}
 
 function getAlgorithmLogo(algorithmName) {
     let logo;
@@ -74,11 +74,42 @@ function getAlgorithmLogo(algorithmName) {
         case "inductive":
             logo = inductiveLogo;
             break;
+        case "inductive_direct":
+            logo = inductiveDirectLogo;
+            break;
+        case "inductive_infrequent":
+            logo = inductiveInfrequentLogo;
+            break;
+        case "alpha_plus":
+            logo = alphaPlusLogo;
+            break;
         default:
             logo = null; // or a default logo if you have one
     }
     return logo;
 }
+function translateAlgoName(algorithmName) {
+    let ret;
+    switch (algorithmName) {
+
+        case "inductive":
+            ret = "IM"
+            break;
+        case "inductive_direct":
+            ret = "IMd"
+            break;
+        case "inductive_infrequent":
+            ret = "IMf"
+            break;
+        case "alpha_plus":
+            ret = "ALPHA +"
+            break;
+        default:
+            ret = algorithmName.toUpperCase()
+    }
+    return ret;
+}
+
 
 
 const boxStyle = {
@@ -141,7 +172,7 @@ const AlgorithmView = ({ algorithmName }) => {
             <div style={overlayStyle}></div> {/* Overlay Div */}
 
             <div style={textStyle}>
-                {capitalizeAlgorithmName(algorithmName)}
+                {translateAlgoName(algorithmName)}
             </div>
             <div style={scoreStyle}>
             </div>
