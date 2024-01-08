@@ -123,14 +123,14 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
     plt.savefig(
         f"shap_decision_plot_top10_{regression_method}.png", format='png', dpi=300)
     """
-    plot_values = [explainer.expected_value[0]]
+    plot_values = [float(explainer.expected_value)]
     i = 0
 
     top_shap_values_descendigly = list(top_shap_values)
     top_shap_values_descendigly.reverse()
 
     for shap_value in top_shap_values_descendigly:
-        plot_values += [plot_values[i] + shap_value]
+        plot_values += [float(plot_values[i] + shap_value)]
         i += 1
 
     ret_dict = {"plot_values": plot_values,

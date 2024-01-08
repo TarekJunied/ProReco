@@ -28,7 +28,7 @@ def final_prediction(log_path_to_predict, measure_weight):
     globals.set_parse_percentage(log_path_to_predict, 0)
     progressed_read_log(log_path_to_predict)
     globals.set_progress_state(log_path_to_predict, "featuring")
-    read_feature_vector(log_path_to_predict, globals.feature_portfolio)
+    read_feature_vector(log_path_to_predict, globals.used_feature_portfolio)
     globals.set_progress_state(log_path_to_predict, "predicting")
 
     dict = predicted_regression_based_scalarization(log_path_to_predict, globals.regression_method, measure_weight, [

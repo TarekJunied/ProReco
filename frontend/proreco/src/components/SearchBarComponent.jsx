@@ -8,7 +8,9 @@ const searchBarStyle = {
 }
 
 function SearchBarComponent(props) {
-    const { items } = props;
+
+    const { items, onItemSelect } = props; // Accept an onItemSelect prop
+
 
     const handleOnSearch = (string, results) => {
         console.log(string, results);
@@ -20,7 +22,11 @@ function SearchBarComponent(props) {
 
     const handleOnSelect = (item) => {
         console.log(item);
+        if (onItemSelect) {
+            onItemSelect(item.id); // Call the passed in onItemSelect function with the item id
+        }
     };
+
 
     const handleOnFocus = () => {
         console.log('Focused');
@@ -47,9 +53,11 @@ function SearchBarComponent(props) {
                 formatResult={formatResult}
                 styling={{
                     fontFamily: "outfit",
-                    fontSize: "1.2vw"
+                    fontSize: "1.5vw",
+                    zIndex: "1000"
                 }}
             />
+
         </div>
     );
 }

@@ -26,12 +26,17 @@ const MinePage = () => {
 
     }
     const tooltipTexts = {
-        "alpha": "know for its simplicity",
-        "inductive": "known for its fitness",
-        "ILP": "smart approach tbh",
-        "heuristic": "very diverse results ?",
-        "split": "strikes a nice balance <br/>between fitness and precision"
+        "alpha": "Usually produces simple models",
+        "alpha_plus": "Usually produces simple models",
+        "inductive": "Perfect Fitness, Medium Precision",
+        "ILP": "Perfect Fitness, Usually complex models",
+        "heuristic": "High Fitness High Precision",
+        "split": "High Fitness Perfect Precision",
+        "inductive_infrequent": "Perfect Fitness, Medium Precision",
+        "inductive_direct": "Perfect Fitness, Medium Precision"
     }
+
+
 
 
     return (
@@ -43,7 +48,7 @@ const MinePage = () => {
                     {AlgorithmPortfolio.map((DiscoveryAlgorithm, index) => (
                         <div key={index} style={{
                             marginTop: index === 0 ? "0" : "5vh",
-                            width: "45vw",
+                            width: "50vw",
                             cursor: "pointer" // add top margin for all but the first item
                         }}>
                             <a
@@ -59,7 +64,7 @@ const MinePage = () => {
 
                             <Tooltip id={`${DiscoveryAlgorithm}sToolTip`}
                                 style={toolTipStyle}
-                                place="right" />
+                                place="top" />
                         </div>
                     ))}
 

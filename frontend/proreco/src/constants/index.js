@@ -137,15 +137,14 @@ export const measures = [
 ];
 
 export const AlgorithmPortfolio = [
-    "alpha",
+    "alpha", "alpha_plus",
     "ILP",
     "split",
     "inductive",
+    "inductive_infrequent",
+    "inductive_direct",
     "heuristic",
-
 ];
 /*
-  "alpha_plus",
-    "inductive_infrequent",
-    "inductive_direct"
+ 
 */
