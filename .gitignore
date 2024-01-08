@@ -8,11 +8,10 @@ __MACOSX
 *.pnml
 *.xml
 *.mxml
-backend/flask_app/cache/features/*
-backend/flask_app/cache/measures/*
-backend/flask_app/cache/models/*
-backend/flask_app/cache/logs/*
-backend/flask_app/cache/explainers/*
+backend/flask_app/cache/features/
+backend/flask_app/cache/measures/
+backend/flask_app/cache/models/
+backend/flask_app/cache/logs/
 backend/flask_app/parallel
 backend/flask_app/INTRODUCTION
 backend/logs/book_logs

@@ -174,6 +174,7 @@ if __name__ == "__main__":
 
     chosen_log_name = "repairExample"
 
+    """"
     for log_path in all_logs:
         if get_log_name(log_path) == chosen_log_name:
             for zweier_kombi in zweier_kombis:
@@ -182,27 +183,20 @@ if __name__ == "__main__":
                     input(
                         f"{read_measure_entry(log_path, discovery_algorithm, zweier_kombi[0])} {read_measure_entry(log_path, discovery_algorithm, zweier_kombi[1])}")
 
+    """
+
     all_ready_logs = get_all_ready_logs(
         all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
-
-    correctly_predicted_logs = []
+    dict_of_dicts = {}
     for log_path in all_ready_logs:
-        for measure_weights_dict in measure_weights_dict_list:
-            if get_log_name(log_path) == chosen_log_name:
-                all_ready_logs = [log_path]
-                predicted_scores_dict = predicted_regression_based_scalarization(
-                    log_path, "xgboost", measure_weights_dict, [], globals.feature_portfolio, globals.algorithm_portfolio)
-                actual_scores_dict = actual_regression_based_scalarization(
-                    log_path, measure_weights_dict, globals.algorithm_portfolio)
-                predicted_accuracy = mo_min_max_single_point_accuracy(
-                    actual_scores_dict, predicted_scores_dict)
+        if get_log_name(log_path) == chosen_log_name:
+            for discovery_algorithm in globals.algorithm_portfolio:
+                dict_of_dicts[discovery_algorithm] = {measure: round(read_measure_entry(
+                    log_path, discovery_algorithm, measure), 3) for measure in globals.measure_portfolio}
 
-                input([m for m in measure_weights_dict if measure_weights_dict[m] > 0])
-                input(predicted_scores_dict)
-                input(actual_scores_dict)
-                input(max(predicted_scores_dict, key=predicted_scores_dict.get))
-                input(max(actual_scores_dict, key=actual_scores_dict.get))
-
+    for key in dict_of_dicts:
+        input(key)
+        input(dict_of_dicts[key])
     """
     discs = {}
     for log_path in all_ready_logs:
