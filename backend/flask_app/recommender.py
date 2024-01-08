@@ -126,6 +126,13 @@ def get_decision_plot_dict(log_path_to_explain):
     return ret_dict
 
 
+def get_feature_information_dict():
+    ret_dict = {}
+    for feature in globals.feature_portfolio:
+        ret_dict[feature] = read_single_feature_information_dict(feature)
+    return ret_dict
+
+
 if __name__ == "__main__":
 
     log_paths = gather_all_xes("../logs/frontend")

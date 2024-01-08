@@ -130,7 +130,6 @@ def regression_read_optimal_features(all_log_paths, regression_method, discovery
 
 
 def read_total_used_features(regression_method):
-
     total_used_features = []
     for discovery_algorithm in globals.algorithm_portfolio:
         for measure in globals.measure_portfolio:
