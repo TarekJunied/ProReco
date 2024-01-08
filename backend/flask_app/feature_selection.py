@@ -129,6 +129,16 @@ def regression_read_optimal_features(all_log_paths, regression_method, discovery
     return optimal_features_list
 
 
+def read_total_used_features(regression_method):
+
+    total_used_features = []
+    for discovery_algorithm in globals.algorithm_portfolio:
+        for measure in globals.measure_portfolio:
+            cache_file_path = f"{globals.flask_app_path}/cache/optimal_features_lists/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure}.pk"
+            total_used_features += load_cache_variable(cache_file_path)
+    store_cache_variable(total_used_features, "./constants/used_features.pk")
+
+
 def regression_compute_optimal_features(all_log_paths, regression_method, discovery_algorithm, measure_name, feature_portfolio, cv=5, scoring='r2'):
     """
     Selects the optimal set of features for R2 (or other scoring) using RFECV and returns the names of the selected features.

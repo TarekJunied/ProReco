@@ -18,6 +18,7 @@ import MinePage from './pages/MinePage.jsx';
 import PetriNetView from "./pages/PetriNetView.jsx"
 import GenerateLogPage from './pages/GenerateLogPage.jsx';
 import AfterGeneration from './pages/AfterGeneration.jsx';
+import FeaturerPage from './pages/FeaturerPage.jsx';
 const router = createBrowserRouter([
   {
     path: '', // Empty path for the default route
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
   {
     path: "/explain",
     element: <ErrorBoundary><ExplainPage /></ErrorBoundary>
+  },
+  {
+    path: "/featurer",
+    element: <ErrorBoundary><FeaturerPage></FeaturerPage></ErrorBoundary>
   },
   {
     // Add a wildcard route to catch all unknown paths

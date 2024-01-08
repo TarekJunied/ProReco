@@ -9,53 +9,147 @@ import os
 import numpy as np
 import globals
 from datetime import datetime
-from sklearn.metrics import accuracy_score, mean_squared_error, mean_absolute_error
-from utils import load_cache_variable, split_data, get_log_name, read_log
-from filehelper import gather_all_xes, get_all_ready_logs, clear_cached_classifiers, clear_cached_regressors, clear_cached_binary_classifiers
-from measures import read_measure_entry, read_target_entry, read_binary_classification_target_entry, read_regression_target_vector
-from feature_controller import read_feature_matrix, read_single_feature, get_total_feature_functions_dict
-from regressors import get_regression_based_classification_methods, regression, regression_based_classification, init_regressors
-from classifiers import classification
-from multiobjective import predicted_regression_based_scalarization, actual_regression_based_scalarization
+from utils import load_cache_variable, split_data, get_log_name, read_log, generate_cache_file, store_cache_variable
 from flask_app.features.removed_features import get_removed_features_list
-from init import init_given_parameters, filter_instances_with_nan, reset_all_cached_predictors
+from flask_app.features.removed_features import get_removed_features_list
+from flask_app.features.fig4pm_features.fig4pm_interface import get_fig4pm_feature_functions_dict
+from flask_app.features.own_features import get_own_features_dict
+from flask_app.features.mtl_features.mtl_feature_interface import get_mtl_feature_functions_dict
+from regressors import read_fitted_regressor
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import f1_score
 import matplotlib.pyplot as plt
 import os
 from datetime import datetime
 import time
 
 
-def plot_feature_importance(regression_method):
-    initial_features = globals.feature_portfolio
+def set_feature_descriptions(feature_list):
+    print("Write descriptions for the following features")
+    for feature in feature_list:
+        #        x = input(feature)
+        store_cache_variable(
+            "hi", f"./constants/feature_information/descriptions/{feature}.pk")
+
+
+def read_feature_description(feature):
+    return load_cache_variable(
+        f"./constants/feature_information/descriptions/{feature}.pk")
+
+
+def get_feature_source(feature):
+    removed_features = get_removed_features_list()
+    fig4pm_features = get_fig4pm_feature_functions_dict()
+    own_features = get_own_features_dict()
+    mtl_features = get_mtl_feature_functions_dict()
+
+    if feature in removed_features:
+        return "removed features"
+    if feature in fig4pm_features:
+        return "fig4pm"
+    if feature in own_features:
+        return "developed for proreco"
+    if feature in mtl_features:
+        return "mtl_features"
+    else:
+        return "unknown"
+
+
+def get_feature_importance_dict():
+    ret = {}
+    for feature in globals.feature_portfolio:
+        for discovery_algorithm in globals.algorithm_portfolio:
+            for measure in globals.measure_portfolio:
+                cache_file_path = f"{globals.flask_app_path}/cache/optimal_features_lists/regression/{globals.regression_method}/optimal_features_{discovery_algorithm}_{measure}.pk"
+                cur_optimal_feature_list = load_cache_variable(cache_file_path)
+                if feature in cur_optimal_feature_list:
+                    cur_regressor = read_fitted_regressor(
+                        globals.regression_method, discovery_algorithm, measure, [])
+                    cur_importance_dict = cur_regressor.get_score(
+                        importance_type='gain')
+                    cur_importance = cur_importance_dict.get(
+                        feature, "Feature not used")
+                    ret[discovery_algorithm, measure, feature] = cur_importance
+
+                else:
+                    ret[discovery_algorithm, measure, feature] = 0
+    return ret
+
+
+def get_most_important_regressor_string(feature):
+    feature_importance_dict = get_feature_importance_dict()
+    feature_specific_dict = {f"{discovery_algorithm}_{measure}_regressor": feature_importance_dict[discovery_algorithm, measure, feature]
+                             for discovery_algorithm in globals.algorithm_portfolio
+                             for measure in globals.measure_importfolio}
+    key_with_highest_value = max(
+        feature_specific_dict, key=feature_specific_dict.get)
+    return key_with_highest_value
+
+
+def get_number_of_regressors_string(feature):
+    feature_importance_dict = get_feature_importance_dict()
+    feature_specific_dict = {f"{discovery_algorithm}_{measure}_regressor": feature_importance_dict[discovery_algorithm, measure, feature]
+                             for discovery_algorithm in globals.algorithm_portfolio
+                             for measure in globals.measure_importfolio if feature_importance_dict[discovery_algorithm, measure, feature] > 0}
+    return len(feature_specific_dict)
+
+
+def read_feature_importance_across_all_regressors(feat):
+    feature_importance_dict = get_feature_importance_dict()
+    feature_specific_dict = {f"{discovery_algorithm}_{measure}_regressor": feature_importance_dict[discovery_algorithm, measure, feat]
+                             for discovery_algorithm in globals.algorithm_portfolio
+                             for measure in globals.measure_importfolio}
+    total_sum = 0
+    for key in feature_specific_dict:
+        total_sum += feature_specific_dict
+    return total_sum
+
+
+def get_total_feature_importance_ranking(feature):
+    feature_importance_vals = {feat: read_feature_importance_across_all_regressors(
+        feat) for feat in globals.feature_portfolio}
+    sorted_features = sorted(
+        feature_importance_vals.items(), key=lambda item: item[1], reverse=True)
+    for rank, (feat, _) in enumerate(sorted_features, start=1):
+        if feat == feature:
+            # Step 4: Format the rank alongside the total number of features
+            return f"{rank}/{len(globals.feature_portfolio)}"
+
+    # In case the feature is not found or another error occurs
+    return "Feature not found or error in calculation"
+
+
+def compute_single_feature_information_dict(feature):
+    ret_dict = {}
+    # short description:
+    # from :
+    # optional if used in any regressors
+    # used in how many regressors ?
+    # most_important_regressor: regressor this feature is most important for
+    # feature importance ranking in that regressor
+    # total feature ranking: out of all used features
+    ret_dict["description"] = read_feature_description(feature)
+    ret_dict["from"] = get_feature_source(feature)
+    ret_dict["no_regressors"] = get_number_of_regressors_string(feature)
+    ret_dict["most_important_regressor"] = get_most_important_regressor_string(
+        feature)
+    ret_dict["feature_ranking"] = get_total_feature_importance_ranking(feature)
+    ret_dict["feature_importance_points"] = read_feature_importance_across_all_regressors(
+        feature)
+    return ret_dict
+
+
+def read_single_feature_information_dict(feature):
+    cache_file_path = f"./constants/feature_information/{feature}_info.pk"
+    try:
+        ret = load_cache_variable(cache_file_path)
+    except Exception:
+        generate_cache_file(cache_file_path)
+        ret = compute_single_feature_information_dict(feature)
+        store_cache_variable(ret, cache_file_path)
 
 
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
-
-    all_logs = gather_all_xes("../logs")
-    ready_logs = get_all_ready_logs(
-        all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
-    ready_training, ready_testing = split_data(ready_logs)
-
-    init_given_parameters(ready_logs, globals.algorithm_portfolio,
-                          globals.feature_portfolio, globals.measure_portfolio)
-    # CHANGE IT TO ONLY LOAD NEEDED FEATURES, ONCE OPTIMAL FEATURE SETS ARE COMPUTED DO THAT
-    no_cv = 5
-    measure_weights_dict_list = [{"token_fitness": 0.5, "token_precision": 0.5, "pm4py_simplicity": 0, "generalization": 0},
-                                 {"token_fitness": 0.5, "token_precision": 0,
-                                  "pm4py_simplicity": 0.5, "generalization": 0},
-                                 {"token_fitness": 0.5, "token_precision": 0,
-                                  "pm4py_simplicity": 0, "generalization": 0.5},
-                                 {"token_fitness": 0, "token_precision": 0.5,
-                                  "pm4py_simplicity": 1, "generalization": 0},
-                                 {"token_fitness": 0, "token_precision": 1,
-                                  "pm4py_simplicity": 0.5, "generalization": 0},
-                                 {"token_fitness": 0, "token_precision": 0.75,
-                                  "pm4py_simplicity": 1, "generalization": 0},
-                                 {"token_fitness": 0, "token_precision": 1,
-                                  "pm4py_simplicity": 0, "generalization": 0.75},
-                                 {"token_fitness": 0, "token_precision": 0,
-                                  "pm4py_simplicity": 1, "generalization": 1}]
+    set_feature_descriptions(globals.feature_portfolio)
+    for feature in globals.feature_portfolio:
+        input(compute_single_feature_information_dict(feature))

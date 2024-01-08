@@ -1,16 +1,16 @@
-import InfoLayout from "../layout/InfoLayout"
+import ChooseLayout from "../layout/ChooseLayout";
 import InfoBox from "../components/InfoBox"
 import texts from "../constants/texts";
 const AboutPage = () => {
 
     return (
-        <InfoLayout>
+        <ChooseLayout>
 
             <InfoBox title="AI generated, will be removed soon">
                 {texts.about}
             </InfoBox>
 
-        </InfoLayout>
+        </ChooseLayout>
 
     );
 
