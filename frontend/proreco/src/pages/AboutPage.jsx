@@ -5,12 +5,9 @@ const AboutPage = () => {
 
     return (
         <InfoLayout>
-            <InfoBox title="About Process Mining">
-                {"who actually cares about process mining, let's discuss something more relevant"}
 
-            </InfoBox>
-            <InfoBox title="TAREK IS THE BEST">
-                {texts.tarekText}
+            <InfoBox title="AI generated, will be removed soon">
+                {texts.about}
             </InfoBox>
 
         </InfoLayout>
