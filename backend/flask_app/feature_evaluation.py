@@ -158,4 +158,4 @@ def read_single_feature_information_dict(feature):
 
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
-    compute_single_feature_information_dict(sys.argv[1])
+    read_single_feature_information_dict(sys.argv[1])

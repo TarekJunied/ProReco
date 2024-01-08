@@ -197,10 +197,15 @@ def compute_feature_information_dict(feature_name):
         # Create the directory
         os.makedirs(dir_name)
 
-    execution_command = f"/usr/bin/python3.9 regressors.py {regression_method} {discovery_algorithm} {measure_name}"
+    execution_command = f"/usr/bin/python3.9 feature_evaluation.py {feature_name}"
     jobscript = generate_job_script(
         job_name, f"{dir_name}/{job_name}.sh", "1", "1", dir_name, execution_command, "12:00:00")
     run_sbatch_script(jobscript)
+
+
+def compute_all_feature_information_dict(feature_name):
+    for feature in globals.feature_portfolio:
+        compute_feature_information_dict(feature_name)
 
 
 def compute_fited_regressors_in_parallel(regression_method):
