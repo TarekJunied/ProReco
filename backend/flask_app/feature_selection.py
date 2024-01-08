@@ -201,11 +201,7 @@ def process_combination(args):
 
 if __name__ == "__main__":
 
-    feature_dict = get_total_feature_functions_dict()
-    feature_list = list(feature_dict.keys())
-
-    globals.feature_portfolio = feature_list
-    all_logs = gather_all_xes("../logs/")[:20]
+    all_logs = gather_all_xes("../logs/")
 
     training_log_paths = get_all_ready_logs(
         all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)

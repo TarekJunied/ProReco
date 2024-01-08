@@ -168,12 +168,11 @@ def submit_optimal_featues_compuation_regressor(regression_method, discovery_alg
     run_sbatch_script(jobscript)
 
 
-def read_optimal_features_for_regressors_in_parallel():
-    for regression_method in globals.regression_methods:
-        for discovery_algorithm in globals.algorithm_portfolio:
-            for measure_name in globals.measure_portfolio:
-                submit_optimal_featues_compuation_regressor(
-                    regression_method, discovery_algorithm, measure_name)
+def read_optimal_features_for_regressors_in_parallel(regression_method):
+    for discovery_algorithm in globals.algorithm_portfolio:
+        for measure_name in globals.measure_portfolio:
+            submit_optimal_featues_compuation_regressor(
+                regression_method, discovery_algorithm, measure_name)
 
     input("done submitting all feature jobs")
 
@@ -201,7 +200,7 @@ def compute_fited_regressors_in_parallel(regression_method):
 if __name__ == "__main__":
     globals.feature_portfolio = list(get_total_feature_functions_dict().keys())
 
-    read_optimal_features_for_regressors_in_parallel()
+    read_optimal_features_for_regressors_in_parallel("xgboost")
 
     """"
         mode = "all"
