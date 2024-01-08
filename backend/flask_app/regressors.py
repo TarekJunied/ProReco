@@ -265,7 +265,7 @@ if __name__ == "__main__":
     all_log_paths = get_all_ready_logs(gather_all_xes(
         "../logs"), globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
 
-    ready_training, _ = split_data(all_log_paths)
+    ready_training = all_log_paths
 
     regression_method = sys.argv[1]
     discovery_algorithm = sys.argv[2]

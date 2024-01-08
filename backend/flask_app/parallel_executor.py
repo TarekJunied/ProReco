@@ -190,6 +190,19 @@ def computed_fitted_regressor_job(regression_method, discovery_algorithm, measur
     run_sbatch_script(jobscript)
 
 
+def compute_feature_information_dict(feature_name):
+    job_name = f"{feature_name}_dict"
+    dir_name = f"/home/qc261227/Recommender/RecommenderSystem/backend/flask_app/parallel/{job_name}"
+    if not os.path.exists(dir_name):
+        # Create the directory
+        os.makedirs(dir_name)
+
+    execution_command = f"/usr/bin/python3.9 regressors.py {regression_method} {discovery_algorithm} {measure_name}"
+    jobscript = generate_job_script(
+        job_name, f"{dir_name}/{job_name}.sh", "1", "1", dir_name, execution_command, "12:00:00")
+    run_sbatch_script(jobscript)
+
+
 def compute_fited_regressors_in_parallel(regression_method):
     for discovery_algorithm in globals.algorithm_portfolio:
         for measure_name in globals.measure_portfolio:
@@ -200,7 +213,7 @@ def compute_fited_regressors_in_parallel(regression_method):
 if __name__ == "__main__":
     globals.feature_portfolio = list(get_total_feature_functions_dict().keys())
 
-    read_optimal_features_for_regressors_in_parallel("xgboost")
+    compute_fited_regressors_in_parallel("xgboost")
 
     """"
         mode = "all"

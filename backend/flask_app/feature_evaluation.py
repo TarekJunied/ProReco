@@ -150,6 +150,4 @@ def read_single_feature_information_dict(feature):
 
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
-    set_feature_descriptions(globals.feature_portfolio)
-    for feature in globals.feature_portfolio:
-        input(compute_single_feature_information_dict(feature))
+    compute_single_feature_information_dict(sys.argv[1])
