@@ -15,6 +15,7 @@ from flask_app.features.removed_features import get_removed_features_list
 from flask_app.features.fig4pm_features.fig4pm_interface import get_fig4pm_feature_functions_dict
 from flask_app.features.own_features import get_own_features_dict
 from flask_app.features.mtl_features.mtl_feature_interface import get_mtl_feature_functions_dict
+from flask_app.feature_selection import regression_read_optimal_features
 from regressors import read_fitted_regressor
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -55,23 +56,30 @@ def get_feature_source(feature):
 
 
 def get_feature_importance_dict():
-    ret = {}
-    for feature in globals.feature_portfolio:
-        for discovery_algorithm in globals.algorithm_portfolio:
-            for measure in globals.measure_portfolio:
-                cache_file_path = f"{globals.flask_app_path}/cache/optimal_features_lists/regression/{globals.regression_method}/optimal_features_{discovery_algorithm}_{measure}.pk"
-                cur_optimal_feature_list = load_cache_variable(cache_file_path)
-                if feature in cur_optimal_feature_list:
-                    cur_regressor = read_fitted_regressor(
-                        globals.regression_method, discovery_algorithm, measure, [])
-                    cur_importance_dict = cur_regressor.get_score(
-                        importance_type='gain')
-                    cur_importance = cur_importance_dict.get(
-                        feature, "Feature not used")
-                    ret[discovery_algorithm, measure, feature] = cur_importance
+    cache_file_path = "./constants/feature_importance_dict.pk"
+    try:
+        ret = load_cache_variable(cache_file_path)
+    except Exception:
+        ret = {}
+        for feature in globals.feature_portfolio:
+            for discovery_algorithm in globals.algorithm_portfolio:
+                for measure in globals.measure_portfolio:
+                    cache_file_path = f"{globals.flask_app_path}/cache/optimal_features_lists/regression/{globals.regression_method}/optimal_features_{discovery_algorithm}_{measure}.pk"
+                    cur_optimal_feature_list = load_cache_variable(
+                        cache_file_path)
+                    if feature in cur_optimal_feature_list:
+                        cur_regressor = read_fitted_regressor(
+                            globals.regression_method, discovery_algorithm, measure, [])
+                        feature_importances = cur_regressor.feature_importances_
+                        feature_index = regression_read_optimal_features(
+                            [], "xgboost", discovery_algorithm, measure, []).index(feature)
+                        single_feature_importance = feature_importances[feature_index]
+                        ret[discovery_algorithm, measure,
+                            feature] = single_feature_importance
 
-                else:
-                    ret[discovery_algorithm, measure, feature] = 0
+                    else:
+                        ret[discovery_algorithm, measure, feature] = 0
+        store_cache_variable(ret, cache_file_path)
     return ret
 
 
@@ -79,7 +87,7 @@ def get_most_important_regressor_string(feature):
     feature_importance_dict = get_feature_importance_dict()
     feature_specific_dict = {f"{discovery_algorithm}_{measure}_regressor": feature_importance_dict[discovery_algorithm, measure, feature]
                              for discovery_algorithm in globals.algorithm_portfolio
-                             for measure in globals.measure_importfolio}
+                             for measure in globals.measure_portfolio}
     key_with_highest_value = max(
         feature_specific_dict, key=feature_specific_dict.get)
     return key_with_highest_value
@@ -89,7 +97,7 @@ def get_number_of_regressors_string(feature):
     feature_importance_dict = get_feature_importance_dict()
     feature_specific_dict = {f"{discovery_algorithm}_{measure}_regressor": feature_importance_dict[discovery_algorithm, measure, feature]
                              for discovery_algorithm in globals.algorithm_portfolio
-                             for measure in globals.measure_importfolio if feature_importance_dict[discovery_algorithm, measure, feature] > 0}
+                             for measure in globals.measure_portfolio if feature_importance_dict[discovery_algorithm, measure, feature] > 0}
     return len(feature_specific_dict)
 
 
@@ -97,10 +105,10 @@ def read_feature_importance_across_all_regressors(feat):
     feature_importance_dict = get_feature_importance_dict()
     feature_specific_dict = {f"{discovery_algorithm}_{measure}_regressor": feature_importance_dict[discovery_algorithm, measure, feat]
                              for discovery_algorithm in globals.algorithm_portfolio
-                             for measure in globals.measure_importfolio}
+                             for measure in globals.measure_portfolio}
     total_sum = 0
     for key in feature_specific_dict:
-        total_sum += feature_specific_dict
+        total_sum += feature_specific_dict[key]
     return total_sum
 
 
@@ -151,5 +159,10 @@ def read_single_feature_information_dict(feature):
 if __name__ == "__main__":
     sys.setrecursionlimit(5000)
     set_feature_descriptions(globals.feature_portfolio)
-    for feature in globals.feature_portfolio:
-        input(compute_single_feature_information_dict(feature))
+    total_list = []
+    for discovery_algorithm in globals.algorithm_portfolio:
+        for measure in globals.measure_portfolio:
+            cache_file_path = f"{globals.flask_app_path}/cache/optimal_features_lists/regression/{globals.regression_method}/optimal_features_{discovery_algorithm}_{measure}.pk"
+            total_list += load_cache_variable(cache_file_path)
+
+    store_cache_variable(total_list, "./constants/used_feature_portfolio.pk")

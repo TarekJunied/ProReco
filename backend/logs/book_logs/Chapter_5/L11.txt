@@ -1,2 +1,0 @@
-20x Case1 a b c
-30x Case2 a c

@@ -15,6 +15,10 @@ feature_portfolio_file_path = "./constants/feature_portfolio.pk"
 with open(feature_portfolio_file_path, 'rb') as file:
     feature_portfolio = pickle.load(file)
 
+used_feature_portfolio_file_path = "./constants/used_feature_portfolio.pk"
+with open(feature_portfolio_file_path, 'rb') as file:
+    used_feature_portfolio = pickle.load(file)
+
 
 # "alignment_precision": "max" "alignment_fitness": "max", used_memory": "min",
 measures_kind = {"token_fitness": "max", "token_precision": "max",
