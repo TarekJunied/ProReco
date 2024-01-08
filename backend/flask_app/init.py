@@ -1,6 +1,7 @@
 from utils import read_model, read_log, load_cache_variable, store_cache_variable, generate_log_id, generate_cache_file,  read_log
 import logging
-
+import math
+import numpy as np
 from pm4py.objects.conversion.log import converter as log_converter
 from pm4py.algo.discovery.inductive import algorithm as inductive_miner
 from tqdm.contrib.concurrent import process_map  # Use process_map from tqdm
@@ -90,7 +91,7 @@ def load_measures():
         list(globals.testing_log_paths.keys())
 
     load_measures_into_main_main_memory(
-        log_paths, globals.algorithm_portfolio, globals.measures_list)
+        log_paths, globals.algorithm_portfolio, globals.measure_portfolio)
 
 
 def load_models():
@@ -102,7 +103,7 @@ def load_models():
 def load_features():
     log_paths = list(globals.training_log_paths.keys()) + \
         list(globals.testing_log_paths.keys())
-    load_features_into_main_memory(log_paths, globals.selected_features)
+    load_features_into_main_memory(log_paths, globals.feature_portfolio)
 
 
 def init_given_parameters(log_paths, algorithm_portfolio, selected_features, selected_measures):
@@ -120,8 +121,7 @@ def init():
     load_features()
 
 
-def init_log(log_path, feature_portfolio, algorithm_portfolio):
-    list_of_measure_names = globals.measures
+def init_log(log_path, feature_portfolio, algorithm_portfolio, measure_portfolio):
 
     read_log(log_path)
     for discovery_algorithm in algorithm_portfolio:
@@ -129,12 +129,9 @@ def init_log(log_path, feature_portfolio, algorithm_portfolio):
 
     read_feature_vector(log_path, feature_portfolio)
 
-    for measure in list_of_measure_names:
+    for measure in measure_portfolio:
         for discovery_algorithm in algorithm_portfolio:
-            try:
-                read_measure_entry(log_path, discovery_algorithm, measure)
-            except Exception as e:
-                print(e)
+            read_measure_entry(log_path, discovery_algorithm, measure)
 
 
 def get_file_size(file_path):
@@ -154,7 +151,7 @@ def try_init_log(log_path):
         print(e)
 
     try:
-        read_feature_vector(log_path, globals.selected_features)
+        read_feature_vector(log_path, globals.feature_portfolio)
     except Exception as e:
         print("Couldn't compute feature vector")
         print(e)
@@ -167,7 +164,7 @@ def try_init_log(log_path):
                 f"Could not discover model for {discovery_algorithm} on {log_path}")
             print(e)
 
-    for measure in list_of_measure_names:
+    for measure in globals.measure_portfolio:
         for discovery_algorithm in globals.algorithm_portfolio:
             try:
                 read_measure_entry(log_path, discovery_algorithm, measure)
@@ -178,7 +175,6 @@ def try_init_log(log_path):
 
 
 def reset_all_cached_predictors():
-    input("are you sure you want to clear regressors, explainers and optimal_features")
     paths = [f"./cache/regressors", f"./cache/explainers",
              f"./cache/optimal_features_lists"]
     for path in paths:
@@ -186,58 +182,47 @@ def reset_all_cached_predictors():
             for file in files:
                 if file != '.gitkeep':
                     os.remove(os.path.join(root, file))
+    globals.regressors = {}
+    print("cleared regressors from cacehe and main memory")
+
+
+def filter_instances_with_nan(log_paths):
+    no_list = []
+    for log_path in log_paths:
+        for feature in globals.feature_portfolio:
+            val = read_single_feature(log_path, feature)
+            if val is None or math.isnan(val) or np.isnan(val):
+                no_list += [log_path]
+
+    return [lp for lp in log_paths if lp not in no_list]
+
+
+def clean_nan_features(all_ready_logs):
+    evil_features = set()
+    evil_logs = set()
+    for log_path in all_ready_logs:
+        for feature in globals.feature_portfolio:
+            val = read_single_feature(log_path, feature)
+            if val is None or math.isnan(val) or np.isnan(val):
+                evil_features.add(feature)
+                evil_logs.add(get_log_name(log_path))
+                yesno = input(
+                    f"do you want to delete the feature {feature} of {get_log_name(log_path)}")
+                if yesno == "y":
+                    os.remove(
+                        f"./cache/features/{globals.flask_app_path}/cache/features/{feature}_{get_log_name(log_path)}.pkl")
+    print("evil logs: ")
+    print(evil_logs)
+    print("evil features")
+    print(evil_features)
 
 
 if __name__ == "__main__":
-
     sys.setrecursionlimit(100000)
-
-    globals.algorithm_portfolio = ["alpha", "alpha_plus", "inductive",
-                                   "heuristic", "inductive_infrequent", "inductive_direct",  "split", "ILP"]
-
-    globals.algorithm_portfolio = ["alpha_plus",
-                                   "inductive_infrequent", "inductive_direct"]
-
-    log_folder_paths = []
-
-    # Check if at least one argument is provided
-    if len(sys.argv) > 1:
-        # sys.argv[1] is the first command line argument
-        for i in range(1, len(sys.argv)):
-            log_folder_paths += [sys.argv[i]]
-    else:
-        print("No input provided")
-        sys.exit(-1)
-
-    globals.measures_list = [
-        "token_fitness",  "token_precision", "generalization", "pm4py_simplicity"]
-
-    globals.selected_features = list(get_total_feature_functions_dict().keys())
-
-    logs_to_init = []
-    for log_folder_path in log_folder_paths:
-        logs_to_init += gather_all_xes(log_folder_path)
-
-    logs_to_init = sort_files_by_size(logs_to_init)
-    logs_to_init = gather_all_xes("../logs/modified_eventlogs")
-
-    for log_path in logs_to_init:
-        for discovery_algorithm in globals.algorithm_portfolio:
-            for measure in globals.measures_list:
-                read_measure_entry(log_path, discovery_algorithm, measure)
-
-    num_processes = 48*2
-    # sys.stdout = open('/dev/null', 'w')
-
-    pool = multiprocessing.Pool(processes=num_processes)
-
-    print("now mapping pool")
-    pool.map(try_init_log, logs_to_init)
-
-    print("pool map done")
-    pool.close()
-    print("pool closed")
-    pool.join()
-    print("pool joined")
-
-    print("done")
+    reset_all_cached_predictors()
+    all_logs = gather_all_xes("../logs")
+    all_ready_logs = get_all_ready_logs(
+        all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
+    input(len(all_ready_logs))
+    clean_nan_features(all_ready_logs)
+    globals.feature_portfolio = list(get_total_feature_functions_dict().keys())

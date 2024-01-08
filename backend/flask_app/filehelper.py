@@ -2,6 +2,7 @@ import os
 import globals
 import pickle
 import zipfile
+import gzip
 import pytz
 import re
 import numpy as np
@@ -302,8 +303,40 @@ def add_timestamps_to_log_path(file_path):
         file.writelines(updated_content)
 
 
+def recursive_extract(directory):
+    # List all files and directories in the current directory
+    file_list = os.listdir(directory)
+    # Loop through each file
+    for file in file_list:
+        # Get the full path
+        full_path = os.path.join(directory, file)
+        # Check if it is a file
+        if os.path.isfile(full_path):
+            # Check if the file is a zip file
+            if zipfile.is_zipfile(full_path):
+                with zipfile.ZipFile(full_path, 'r') as zip_ref:
+                    # Extract all the contents of zip file in the directory
+                    zip_ref.extractall(directory)
+                # Remove the zip file after extracting its contents
+                os.remove(full_path)
+                # Run the function again to check for more archives
+                recursive_extract(directory)
+            # Check if the file is a gzip file
+            elif full_path.endswith('.gz'):
+                # Create a new file name for the uncompressed file
+                # remove the '.gz' from the file name
+                new_file_name = full_path[:-3]
+                # Open the gzip file and the new file
+                with gzip.open(full_path, 'rb') as f_in:
+                    with open(new_file_name, 'wb') as f_out:
+                        # Copy the gzip file content to the new file
+                        shutil.copyfileobj(f_in, f_out)
+                # Remove the gzip file after extracting its contents
+                os.remove(full_path)
+                # Run the function again to check for more archives
+                recursive_extract(directory)
+
+
 if __name__ == "__main__":
-    log_paths = gather_all_xes("../logs/process_meta_learning_logs")
-    for log_path in log_paths:
-        print(log_path)
-        add_timestamps_to_log_path(log_path)
+    log_path_dir = "../logs/real_life_logs/BPI_Challenge_2018"
+    recursive_extract(log_path_dir)

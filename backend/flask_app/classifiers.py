@@ -26,6 +26,12 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.neural_network import MLPRegressor
 from lime import lime_tabular
 from sklearn.tree import plot_tree
+from regressors import regression_based_classification
+
+
+def is_regression_based_classification_method_string(classification_method):
+    s = classification_method
+    return s.startswith("regression_based_") and s.split("regression_based_", 1)[1] in globals.regression_methods
 
 
 def compute_fitted_classifier(classification_method, measure_name, ready_training, feature_portfolio):
@@ -71,3 +77,18 @@ def read_fitted_classifier(classification_method, measure_name, ready_training, 
         store_cache_variable(ret, classifier_filepath)
 
     return ret
+
+
+def classification(log_path, classification_method, measure_name, ready_training, feature_portfolio):
+
+    if is_regression_based_classification_method_string(classification_method):
+        return regression_based_classification(
+            log_path, classification_method, measure_name, ready_training)
+
+    ret = read_fitted_classifier(
+        classification_method, measure_name, ready_training, feature_portfolio)
+    clf = ret
+
+    predictions = clf.predict(read_feature_vector(log_path, feature_portfolio))
+
+    return predictions[0]

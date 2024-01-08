@@ -14,6 +14,9 @@ backend/flask_app/cache/models/*
 backend/flask_app/cache/logs/*
 backend/flask_app/cache/explainers/*
 backend/flask_app/parallel
+backend/flask_app/INTRODUCTION
+backend/logs/book_logs
+backend/evaluation
 misc/
 .metadata
 *.DS_Store

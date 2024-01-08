@@ -23,7 +23,7 @@ import os
 def get_number_of_not_ready_logs(log_paths_dir):
     total_logs = gather_all_xes(log_paths_dir)
     ready_logs = get_all_ready_logs(
-        log_paths, globals.selected_features, globals.algorithm_portfolio)
+        log_paths, globals.feature_portfolio, globals.algorithm_portfolio)
     return len(total_logs) - len(ready_logs)
 
 
@@ -82,7 +82,7 @@ def generate_job_array_script(job_name, jobscript_path, array_length, outputs_pa
 
 
 def feature_init(log_path):
-    feature_portfolio = globals.selected_features
+    feature_portfolio = globals.feature_portfolio
     for feature in feature_portfolio:
         print(feature)
         read_single_feature(log_path, feature)
@@ -140,17 +140,17 @@ def get_undone_logs(all_logs, mode):
     negative_list = []
     if mode == "feature":
         negative_list = get_all_ready_logs(
-            all_logs, globals.selected_features, [], [])
+            all_logs, globals.feature_portfolio, [], [])
     if mode == "algo":
         negative_list = get_all_ready_logs(
             all_logs, [], globals.algorithm_portfolio, [])
     if mode == "measure":
         negative_list = get_all_ready_logs(
-            all_logs, [], globals.algorithm_portfolio, globals.measures_list)
+            all_logs, [], globals.algorithm_portfolio, globals.measure_portfolio)
 
     if mode == "all":
         negative_list = get_all_ready_logs(
-            all_logs, globals.selected_features, globals.algorithm_portfolio, globals.measures_list)
+            all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
     print(f"we have {len(negative_list)} done logs")
     return [x for x in all_logs if x not in negative_list]
 
@@ -171,19 +171,48 @@ def submit_optimal_featues_compuation_regressor(regression_method, discovery_alg
 def read_optimal_features_for_regressors_in_parallel():
     for regression_method in globals.regression_methods:
         for discovery_algorithm in globals.algorithm_portfolio:
-            for measure_name in globals.measures_list:
+            for measure_name in globals.measure_portfolio:
                 submit_optimal_featues_compuation_regressor(
                     regression_method, discovery_algorithm, measure_name)
 
     input("done submitting all feature jobs")
 
 
+def computed_fitted_regressor_job(regression_method, discovery_algorithm, measure_name):
+    job_name = f"{regression_method}_{discovery_algorithm}_{measure_name}_regressor"
+    dir_name = f"/home/qc261227/Recommender/RecommenderSystem/backend/flask_app/parallel/{job_name}"
+    if not os.path.exists(dir_name):
+        # Create the directory
+        os.makedirs(dir_name)
+
+    execution_command = f"/usr/bin/python3.9 regressors.py {regression_method} {discovery_algorithm} {measure_name}"
+    jobscript = generate_job_script(
+        job_name, f"{dir_name}/{job_name}.sh", "1", "1", dir_name, execution_command, "12:00:00")
+    run_sbatch_script(jobscript)
+
+
+def compute_fited_regressors_in_parallel(regression_method):
+    for discovery_algorithm in globals.algorithm_portfolio:
+        for measure_name in globals.measure_portfolio:
+            computed_fitted_regressor_job(
+                regression_method, discovery_algorithm, measure_name)
+
+
 if __name__ == "__main__":
-    globals.selected_features = list(get_total_feature_functions_dict().keys())
-    globals.algorithm_portfolio = ["alpha", "heuristic",
-                                   "inductive", "ILP", "split", "alpha_plus", "inductive_infrequent", "inductive_direct"]
+    globals.feature_portfolio = list(get_total_feature_functions_dict().keys())
 
     read_optimal_features_for_regressors_in_parallel()
+
+    """"
+        mode = "all"
+    name = "real_life_logs"
+    all_logs = gather_all_xes("../logs/real_life_logs")
+    log_paths_list = get_undone_logs(all_logs, mode)[:900]
+    input(len(log_paths_list))
+    input(f"{mode}_{name}")
+    script_path = start_parallel_execution_job(
+        mode, log_paths_list, f"{mode}_{name}")
+    run_sbatch_script(script_path)
     modes = ["feature", "algo", "measure"]
     modes = ["all"]
     log_paths_dirs = [f"/rwthfs/rz/cluster/home/qc261227/Recommender/RecommenderSystem/backend/logs/{log_path}" for log_path in [
@@ -192,9 +221,9 @@ if __name__ == "__main__":
     all_logs = gather_all_xes("../logs/training") + gather_all_xes(
         "../logs/testing") + gather_all_xes("../logs/modified_eventlogs")
     ready_logs = get_all_ready_logs(
-        all_logs, globals.selected_features, globals.algorithm_portfolio, globals.measures_list)
+        all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
 
-    """"
+
     done = [(modes[0], log_paths_dirs[0])]
 
     name = "all_logs"

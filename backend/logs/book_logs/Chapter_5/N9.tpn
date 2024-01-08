@@ -1,0 +1,11 @@
+place "place_0" init 1;
+place "place_1";
+place "place_2";
+place "place_3";
+place "place_4";
+place "place_5";
+trans "t_7"~"b\ncomplete" in "place_0" out "place_5" "place_2" ;
+trans "t_8"~"c\ncomplete" in "place_2" out "place_3" ;
+trans "t_9"~"e\ncomplete" in "place_5" "place_3" out "place_1" ;
+trans "t_10"~"a\ncomplete" in "place_0" out "place_4" "place_2" ;
+trans "t_11"~"d\ncomplete" in "place_4" "place_3" out "place_1" ;

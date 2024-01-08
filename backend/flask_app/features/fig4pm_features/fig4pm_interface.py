@@ -1,8 +1,5 @@
 from flask_app.features.fig4pm_features.fig4pm_feature_functions import *
 import sys
-import globals
-sys.path.append(
-    f"{globals.flask_app_path}./features/fig4pm_features")
 
 
 def get_fig4pm_feature_functions_dict():

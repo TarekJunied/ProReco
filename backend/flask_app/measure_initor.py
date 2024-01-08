@@ -21,7 +21,7 @@ import os
 
 
 def measures_init(log_path):
-    for feature in globals.selected_features:
+    for feature in globals.feature_portfolio:
         try:
             read_single_feature(log_path, feature)
         except Exception as e:
@@ -34,7 +34,7 @@ def measures_init(log_path):
         except Exception as e:
             print(f"mining using {discovery_algorithm} on {log_path} failed")
         # Your existing code for algorithm initialization
-        for measure_name in globals.measures_list:
+        for measure_name in globals.measure_portfolio:
             try:
                 log_id = generate_log_id(log_path)
                 model_exists = load_cache_variable(
@@ -55,7 +55,7 @@ def measures_init(log_path):
 
 
 if __name__ == "__main__":
-    globals.selected_features = list(get_total_feature_functions_dict().keys())
+    globals.feature_portfolio = list(get_total_feature_functions_dict().keys())
     log_path = sys.argv[1]
 
     measures_init(log_path)

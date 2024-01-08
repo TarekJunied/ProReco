@@ -162,25 +162,6 @@ def all_files_exist(file_paths):
     return all(os.path.exists(file_path) for file_path in file_paths)
 
 
-def get_all_ready_logs(log_paths, measure_name):
-    ready_logs = []
-    for log_path in log_paths:
-        file_list = []
-        log_id = generate_log_id(log_path)
-        log_cache = f"./cache/logs/{log_id}.pkl"
-        features_cache = f"./cache/features/feature_{log_id}.pkl"
-        file_list += [log_cache, features_cache]
-        for discovery_algorithm in globals.algorithm_portfolio:
-            model_path = f"./cache/models/{discovery_algorithm}_{log_id}.pkl"
-            measure_cache = f"./cache/measures/{discovery_algorithm}_{measure_name}_{log_id}.pkl"
-            file_list += [model_path, measure_cache]
-
-        if all_files_exist(file_list):
-            ready_logs += [log_path]
-
-    return ready_logs
-
-
 def split_data(data, ratio=0.8, seed=None):
 
     if seed is not None:

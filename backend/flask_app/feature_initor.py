@@ -21,7 +21,7 @@ import os
 
 
 def feature_init(log_path):
-    feature_portfolio = globals.selected_features
+    feature_portfolio = globals.feature_portfolio
     for feature in feature_portfolio:
         try:
             read_single_feature(log_path, feature)
@@ -32,7 +32,7 @@ def feature_init(log_path):
 
 
 if __name__ == "__main__":
-    globals.selected_features = list(get_total_feature_functions_dict().keys())
+    globals.feature_portfolio = list(get_total_feature_functions_dict().keys())
 
     log_path = sys.argv[1]
 

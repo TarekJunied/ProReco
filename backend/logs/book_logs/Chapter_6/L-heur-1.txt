@@ -1,0 +1,8 @@
+5x Case1 a e
+10x Case2 a b c e
+10x Case3 a c b e
+1x Case4 a b e
+1x Case5 a c e
+10x Case6 a d e
+2x Case7 a d d e
+1x Case8 a d d d e

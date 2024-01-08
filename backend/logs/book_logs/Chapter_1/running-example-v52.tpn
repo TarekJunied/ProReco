@@ -1,0 +1,15 @@
+place "place_0";
+place "place_1";
+place "place_2";
+place "place_3";
+place "place_4";
+place "place_5" init 1;
+place "place_6";
+trans "t_8"~"register request\ncomplete" in "place_5" out "place_3" "place_2" ;
+trans "t_9"~"reinitiate request\ncomplete" in "place_1" out "place_3" "place_2" ;
+trans "t_10"~"examine casually\ncomplete" in "place_3" out "place_4" ;
+trans "t_11"~"examine thoroughly\ncomplete" in "place_3" out "place_4" ;
+trans "t_12"~"check ticket\ncomplete" in "place_2" out "place_0" ;
+trans "t_13"~"decide\ncomplete" in "place_4" "place_0" out "place_1" ;
+trans "t_14"~"pay compensation\ncomplete" in "place_1" out "place_6" ;
+trans "t_15"~"reject request\ncomplete" in "place_1" out "place_6" ;

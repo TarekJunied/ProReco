@@ -5,11 +5,9 @@ import numpy as np
 import subprocess
 import os
 import pm4py
-from utils import read_logs, read_models, get_all_ready_logs
 from sklearn.metrics import accuracy_score
 from filehelper import gather_all_xes, get_all_ready_logs
 from feature_controller import read_feature_matrix, read_feature_vector
-from feature_selection import classification_read_optimal_features
 from measures import read_binary_classification_target_vector, read_target_entry
 from init import *
 from sklearn.preprocessing import LabelEncoder
@@ -128,11 +126,11 @@ if __name__ == "__main__":
 
     feature_list = list(feature_dict.keys())
 
-    globals.selected_features = feature_list
-    globals.measures_list = ["token_fitness", "token_precision",
-                             "no_total_elements", "generalization", "pm4py_simplicity"]
+    globals.feature_portfolio = feature_list
+    globals.measure_portfolio = ["token_fitness", "token_precision",
+                                 "no_total_elements", "generalization", "pm4py_simplicity"]
 
-    globals.selected_features = feature_list
+    globals.feature_portfolio = feature_list
 
     algorithm_portfolio = globals.algorithm_portfolio
 
@@ -140,11 +138,11 @@ if __name__ == "__main__":
 
     all_logs = gather_all_xes("../logs/testing")
     ready_logs = get_all_ready_logs(
-        all_logs, feature_list, algorithm_portfolio, globals.measures_list)[:50]
+        all_logs, feature_list, algorithm_portfolio, globals.measure_portfolio)[:50]
 
     for log_path in ready_logs:
         for binary_classification_method in binary_classification_methods:
-            for measure in globals.measures_list:
+            for measure in globals.measure_portfolio:
                 for (algorithm_a, algorithm_b) in algorithm_pairs:
                     actual = actual_binary_classification(
                         log_path, algorithm_a, algorithm_b, measure)

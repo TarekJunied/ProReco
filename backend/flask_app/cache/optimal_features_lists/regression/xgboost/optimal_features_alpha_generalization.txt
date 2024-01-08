@@ -1,6 +1,0 @@
-trace_len_max
-trace_len_mode
-activities_min
-activities_iqr
-event_frequency_evaluation
-syntactic_node_similarity
