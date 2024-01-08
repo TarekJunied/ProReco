@@ -1,0 +1,13 @@
+n_traces
+ratio_most_common_variant
+n_unique_activities
+minimum_trace_length
+average_trace_size
+absolute_number_of_traces_with_self_loop
+average_size_of_self_loops_per_trace
+average_node_degree
+structure
+affinity
+number_of_graph_communities
+avg_event_repetition_intra_trace
+dfg_entropy_variable_degree

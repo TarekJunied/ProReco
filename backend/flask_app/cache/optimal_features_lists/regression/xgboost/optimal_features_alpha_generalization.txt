@@ -1,0 +1,15 @@
+trace_len_max
+trace_len_mode
+trace_len_std
+trace_len_hist2
+activities_min
+activities_max
+activities_mean
+activities_median
+activities_q1
+activities_q3
+activities_iqr
+activities_skewness
+end_activities_max
+event_frequency_evaluation
+syntactic_node_similarity
