@@ -321,6 +321,7 @@ if __name__ == "__main__":
     sys.setrecursionlimit(5000)
 
     all_logs = gather_all_xes("../logs")
+
     ready_logs = get_all_ready_logs(
         all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
     ready_training, ready_testing = split_data(ready_logs)

@@ -144,9 +144,7 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
 
 
 if __name__ == "__main__":
-    all_logs = gather_all_xes("../logs/training") + gather_all_xes(
-        "../logs/testing") + gather_all_xes("../logs/modified_eventlogs")
-    all_logs = all_logs[:20]
+    all_logs = gather_all_xes("../logs/")
     ready_logs = get_all_ready_logs(
         all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
 
