@@ -49,6 +49,11 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
     x_test = pd.DataFrame(read_feature_vector(
         log_path_to_explain, feature_portfolio).reshape(1, -1), columns=feature_portfolio)
 
+    regressor = read_fitted_regressor(
+        regression_method, discovery_algorithm, measure_name, [])
+
+    input(regressor.n_features_in_)
+
     shap_values_instance = explainer.shap_values(x_test)
 
     # Find the indices of the top 10 absolute SHAP values
@@ -106,8 +111,9 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
 
 
 if __name__ == "__main__":
+    log_paths = gather_all_xes("../logs/frontend")
 
     for discovery_algorithm in globals.algorithm_portfolio:
         for measure in globals.measure_portfolio:
-            read_regression_shap_explainer(
-                globals.regression_method, discovery_algorithm, measure)
+            get_decision_plot_dict_(
+                log_paths[0], "xgboost", discovery_algorithm, measure)
