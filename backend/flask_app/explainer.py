@@ -111,7 +111,7 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
 
 
 if __name__ == "__main__":
-    log_paths = gather_all_xes("../logs/frontend")
+    log_paths = gather_all_xes("../logs/")
 
     for discovery_algorithm in globals.algorithm_portfolio:
         for measure in globals.measure_portfolio:
