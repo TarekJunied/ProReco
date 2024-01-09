@@ -31,7 +31,7 @@ from feature_controller import get_total_feature_functions_dict
 
 
 def read_optimal_features(regression_method, discovery_algorithm, measure_name):
-    cache_file_path = f"{globals.flask_app_path}/constants/optimal_features_lists/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure_name}.pk"
+    cache_file_path = f"{globals.flask_app_path}/constants/optimal_features_list/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure_name}.pk"
     try:
         optimal_features_list = load_cache_variable(cache_file_path)
     except Exception:
@@ -258,6 +258,7 @@ def init_regressors(ready_training, regression_method):
 
 
 if __name__ == "__main__":
+
     log_paths = gather_all_xes("../logs/")
 
     all_log_paths = get_all_ready_logs(

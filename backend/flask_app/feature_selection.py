@@ -108,7 +108,7 @@ def regression_select_k_best_features(log_paths, model_portfolio, feature_portfo
 
 
 def regression_read_optimal_features(all_log_paths, regression_method, discovery_algorithm, measure_name, feature_portfolio, cv=5, scoring='r2'):
-    cache_file_path = f"{globals.flask_app_path}/cache/optimal_features_lists/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure_name}.pk"
+    cache_file_path = f"{globals.flask_app_path}/constants/optimal_features_list/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure_name}.pk"
     try:
         optimal_features_list = load_cache_variable(cache_file_path)
     except Exception:
@@ -119,7 +119,7 @@ def regression_read_optimal_features(all_log_paths, regression_method, discovery
         generate_cache_file(cache_file_path)
         store_cache_variable(optimal_features_list, cache_file_path)
 
-        file_path = f"{globals.flask_app_path}/cache/optimal_features_lists/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure_name}.txt"
+        file_path = f"{globals.flask_app_path}/constants/optimal_features_list/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure_name}.txt"
         with open(file_path, 'w') as file:
             for feature in optimal_features_list:
                 file.write("%s\n" % feature)
