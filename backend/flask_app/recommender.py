@@ -122,7 +122,7 @@ def get_decision_plot_dict(log_path_to_explain):
     for discovery_algorithm in globals.algorithm_portfolio:
         for measure in globals.measure_portfolio:
             ret_dict[f"{discovery_algorithm}-{measure}"] = get_decision_plot_dict_(
-                log_path_to_explain, regression_method, discovery_algorithm, [], measure, globals.feature_portfolio)
+                log_path_to_explain, regression_method, discovery_algorithm, [], measure)
     return ret_dict
 
 
@@ -137,3 +137,9 @@ if __name__ == "__main__":
 
     log_paths = gather_all_xes("../logs/frontend")
     log_path = log_paths[0]
+
+    for discovery_algorithm in globals.algorithm_portfolio:
+        for measure in globals.measure_portfolio:
+            x = regression(log_path, "xgboost",
+                           discovery_algorithm, measure, [])
+            input(x)

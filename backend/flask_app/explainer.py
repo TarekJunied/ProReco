@@ -8,62 +8,10 @@ from utils import load_cache_variable, store_cache_variable
 from regressors import read_fitted_regressor, regression, compute_fitted_regressor
 from classifiers import read_fitted_classifier
 from feature_controller import read_feature_matrix, get_total_feature_functions_dict, read_feature_vector
+from feature_selection import regression_read_optimal_features
 from filehelper import gather_all_xes, get_all_ready_logs
 from init import init_given_parameters
 from feature_controller import read_single_feature
-
-
-def read_classification_shap_explainer(classification_method, ready_training, measure_name, feature_portfolio):
-    cache_file_path = f"./cache/explainers/{classification_method}_{measure_name}.pkl"
-    x_train = read_feature_matrix(ready_logs, feature_portfolio)
-    try:
-        explainer = load_cache_variable(cache_file_path)
-    except Exception as e:
-        clf = read_fitted_classifier(
-            classification_method, measure_name, ready_training, feature_portfolio)
-
-        if classification_method in ["decision_tree", "random_forest", "xgboost"]:
-            explainer = shap.TreeExplainer(clf)
-        elif classification_method == "knn" or classification_method == "svm" or classification_method == "logistic_regression":
-            explainer = shap.KernelExplainer(clf.predict_proba, x_train)
-        elif classification_method == "svm":
-            explainer = shap.KernelExplainer(clf.predict_proba, x_train)
-        else:
-            print("no shap values possible for this classification method")
-            sys.exit(-1)
-
-        store_cache_variable(explainer, cache_file_path)
-
-    return explainer
-
-
-def select_shap_explainer(regression_method, model, X_train):
-    """
-    Selects and returns the appropriate SHAP explainer based on the model type.
-    """
-
-    if regression_method in ["decision_tree", "random_forest", "gradient_boosting", "xgboost"]:
-        return shap.TreeExplainer(model)
-    elif regression_method in ["linear_regression", "ridge_regression", "lasso_regression"]:
-        return shap.LinearExplainer(model, X_train)
-    # KernelExplainer can be slow and should be used if no better alternative
-    elif regression_method in ["svm", "knn", "mlp"]:
-        return shap.KernelExplainer(model.predict, X_train)
-    else:
-        raise ValueError(
-            f"No appropriate SHAP explainer for the specified model: {model}")
-
-
-def compute_fitted_explainer(regression_method, discovery_algorithm, measure_name, ready_training, feature_portfolio):
-    x_train = pd.DataFrame(read_feature_matrix(
-        ready_training, feature_portfolio), columns=feature_portfolio)
-
-    model = compute_fitted_regressor(
-        regression_method, discovery_algorithm, measure_name, ready_training)
-
-    explainer = select_shap_explainer(regression_method, model, x_train)
-
-    return explainer
 
 
 def read_regression_shap_explainer(regression_method, discovery_algorithm, ready_training, measure_name, feature_portfolio):
@@ -79,7 +27,10 @@ def read_regression_shap_explainer(regression_method, discovery_algorithm, ready
     return explainer
 
 
-def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_algorithm, ready_training, measure_name, feature_portfolio):
+def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_algorithm, ready_training, measure_name):
+
+    feature_portfolio = regression_read_optimal_features(
+        [], "xgboost", discovery_algorithm, measure_name, [])
 
     explainer = read_regression_shap_explainer(
         regression_method, discovery_algorithm, ready_training, measure_name, feature_portfolio)
