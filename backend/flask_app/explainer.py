@@ -107,7 +107,10 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
 
 if __name__ == "__main__":
 
+    log_paths = gather_all_xes("../logs/modified_eventlogs")
+
     for discovery_algorithm in globals.algorithm_portfolio:
         for measure in globals.measure_portfolio:
-            read_regression_shap_explainer(
-                globals.regression_method, discovery_algorithm, measure)
+            x = get_decision_plot_dict_(
+                log_paths[0], "xgboost", discovery_algorithm, measure)
+            input(x)
