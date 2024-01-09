@@ -258,10 +258,10 @@ def init_regressors(ready_training, regression_method):
 
 
 if __name__ == "__main__":
-    log_paths = gather_all_xes("../logs/frontend")
+    log_paths = gather_all_xes("../logs/")
 
-    all_log_paths = get_all_ready_logs(gather_all_xes(
-        "../logs"), globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
+    all_log_paths = get_all_ready_logs(
+        log_paths, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
 
     ready_training = all_log_paths
 
