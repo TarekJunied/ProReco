@@ -77,7 +77,7 @@ const ShapPlot = ({ labels, featureNames, plotValues, featureValues, predictedVa
                             max: maxVal,
                             title: {
                                 display: true,
-                                text: 'Impact on Token Precision'
+                                text: 'Impact on Measure'
                             }
                         },
                         y: {

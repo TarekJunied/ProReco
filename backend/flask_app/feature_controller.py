@@ -37,10 +37,11 @@ def read_single_feature(log_path, feature_name):
 
 def read_feature_vector(log_path, feature_portfolio):
     feature_vector = np.empty((1, len(feature_portfolio)))
-    for feature_index in range(len(feature_portfolio)):
-        feature_vector[0, feature_index] = read_single_feature(
-            log_path, feature_portfolio[feature_index])
-
+    i = 0
+    for feature in feature_portfolio:
+        feature_vector[0, i] = read_single_feature(
+            log_path, feature)
+        i += 1
     return feature_vector
 
 

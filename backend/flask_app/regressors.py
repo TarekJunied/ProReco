@@ -5,7 +5,7 @@ import math
 import globals
 import numpy as np
 import sys
-import subprocess
+import pickle
 import os
 import pm4py
 from xgboost import XGBClassifier
@@ -258,9 +258,7 @@ def init_regressors(ready_training, regression_method):
 
 
 if __name__ == "__main__":
-    feature_dict = get_total_feature_functions_dict()
-    feature_list = list(feature_dict.keys())
-    globals.feature_portfolio = feature_list
+    log_paths = gather_all_xes("../logs/frontend")
 
     all_log_paths = get_all_ready_logs(gather_all_xes(
         "../logs"), globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
