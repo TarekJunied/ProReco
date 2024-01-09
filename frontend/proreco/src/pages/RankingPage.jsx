@@ -59,9 +59,9 @@ const RankingPage = () => {
 
     const pollProgress = () => {
         const requestData = { sessionToken };
-
         axios.post(`${import.meta.env.VITE_API_URL}/api/progress`, { requestData })
             .then(response => {
+                console.log(response.data.feature_progress)
                 // Assuming response.data contains the progress information
                 console.log("received this data from the backend");
                 console.log(response.data)
@@ -70,9 +70,13 @@ const RankingPage = () => {
                     setParsePercentage(response.data.parse_progress)
                 }
                 if (response.data.state == "featuring") {
+
                     setParsePercentage(100)
+                    if (response.data.feature_progress >= 0 && response.data.feature_progress <= 100)
+                        setFeaturePrecentage(Math.round(response.data.feature_progress));
+
                     setFeatureName(response.data.current_feature_name);
-                    setFeaturePrecentage(response.data.feature_progress);
+
                 }
                 if (response.data.state == "predicting") {
                     setFeaturePrecentage(100);
@@ -82,7 +86,6 @@ const RankingPage = () => {
 
                 if (response.data.state == "done") {
                     clearInterval(pollingInterval); // Stop polling when task is complete
-                    setIsComputing(false); // Set isComputing to false when the task is done
 
                 }
             })
@@ -138,22 +141,12 @@ const RankingPage = () => {
         axios.post(`${import.meta.env.VITE_API_URL}/api/submitWeights`, { requestData })
             .then((response) => {
 
-                console.log('Successfully sent weights:');
+                setIsComputing(false); // Set isComputing to false when the task is done
+                clearInterval(pollingInterval)
                 console.log("this is what we got back, it should be a recommendation: ", response.data)
-                const relevantMeasures = measures.filter((measure, index) => sliderValues[index] > 0);
-                console.log("relevantMeasuresd")
-                console.log(relevantMeasures)
-                // Encode the filteredSliderValues object and other data into the URL
-                const urlParams = {
-                    recommendation: encodeURIComponent(JSON.stringify(response.data.predictonDict)),
-                    sessionToken: encodeURIComponent(sessionToken),
-                    algoMeasureDict: encodeURIComponent(JSON.stringify(response.data.algoMeasureDict)),
-                    // Add the filteredSliderValues to the URL
-                    relevantMeasures: encodeURIComponent(JSON.stringify(relevantMeasures)),
-                };
-                const queryParams = Object.keys(urlParams).map(key => `${key}=${urlParams[key]}`).join('&');
-                const finalUrl = `/recommend?${queryParams}`;
+
                 const imageUrl = "https://proreco.co/cuteIcon.png"
+
                 Swal.fire({
                     title: 'Success ! Recommendations Incoming.',
                     confirmButtonColor: '#BF3604',
@@ -164,8 +157,18 @@ const RankingPage = () => {
                     animation: true
 
                 }).then(() => {
-                    // This code will execute after Swal alert is closed
 
+                    const relevantMeasures = measures.filter((measure, index) => sliderValues[index] > 0);
+
+                    const urlParams = {
+                        recommendation: encodeURIComponent(JSON.stringify(response.data.predictonDict)),
+                        sessionToken: encodeURIComponent(sessionToken),
+                        algoMeasureDict: encodeURIComponent(JSON.stringify(response.data.algoMeasureDict)),
+                        // Add the filteredSliderValues to the URL
+                        relevantMeasures: encodeURIComponent(JSON.stringify(relevantMeasures)),
+                    };
+                    const queryParams = Object.keys(urlParams).map(key => `${key}=${urlParams[key]}`).join('&');
+                    const finalUrl = `/recommend?${queryParams}`;
                     navigate(finalUrl)
 
                 });
@@ -173,7 +176,7 @@ const RankingPage = () => {
             .catch((error) => {
                 console.error("Error sending data to the backend:", error);
                 setIsComputing(false); // Set isComputing to false after receiving the data
-
+                clearInterval(pollingInterval)
             });
 
     };
@@ -203,19 +206,20 @@ const RankingPage = () => {
     return (
         <ChooseLayout>
             <div style={{ mainDivStyle }}>
-                {isComputing && (
-                    <div style={overlayStyle}>
-                        <div style={{ ...progressWheelStyle, marginRight: "12vw" }}>
-                            <ProgressWheel percentage={parsePercentage} text="Parsing" />
+                {
+                    isComputing && (
+                        <div style={overlayStyle}>
+                            <div style={{ ...progressWheelStyle, marginRight: "12vw" }}>
+                                <ProgressWheel percentage={parsePercentage} text="Parsing" />
+                            </div>
+                            <div style={{ ...progressWheelStyle, marginRight: "12vw" }}>
+                                <ProgressWheel percentage={featurePercentage} text={featureName} />
+                            </div>
+                            <div style={progressWheelStyle}>
+                                <ProgressWheel percentage={predictPecentage} text="Predicting" />
+                            </div>
                         </div>
-                        <div style={{ ...progressWheelStyle, marginRight: "12vw" }}>
-                            <ProgressWheel percentage={featurePercentage} text={featureName} />
-                        </div>
-                        <div style={progressWheelStyle}>
-                            <ProgressWheel percentage={predictPecentage} text="Predicting" />
-                        </div>
-                    </div>
-                )}
+                    )}
 
 
 

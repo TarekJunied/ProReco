@@ -15,6 +15,7 @@ from filehelper import gather_all_xes, get_all_ready_logs, clear_cached_regresso
 from utils import read_model
 from explainer import get_decision_plot_dict_
 from init import init_given_parameters
+from feature_evaluation import read_single_feature_information_dict
 from petri_net import create_json_petri_net
 from output_manager import progressed_read_log
 from LogGenerator.log_generator import create_random_log, create_random_process, create_log_from_model
@@ -114,6 +115,13 @@ def get_regressed_algo_measure_dict(log_path):
                 log_path, globals.regression_method, discovery_algorithm, measure, []), 2)
 
     return dict
+# Function to get the sorted list
+
+
+def sort_features_by_no_regressors(feature_list):
+    sorted_list = sorted(
+        feature_list, key=lambda x: x['no_regressors'], reverse=True)
+    return sorted_list
 
 
 def get_decision_plot_dict(log_path_to_explain):
@@ -127,19 +135,15 @@ def get_decision_plot_dict(log_path_to_explain):
 
 
 def get_feature_information_dict():
-    ret_dict = {}
+    ret_list = []
     for feature in globals.feature_portfolio:
-        ret_dict[feature] = read_single_feature_information_dict(feature)
-    return ret_dict
+        ret_list += [read_single_feature_information_dict(feature)]
+
+    return sort_features_by_no_regressors(ret_list)
 
 
 if __name__ == "__main__":
 
     log_paths = gather_all_xes("../logs/frontend")
     log_path = log_paths[0]
-
-    for discovery_algorithm in globals.algorithm_portfolio:
-        for measure in globals.measure_portfolio:
-            x = regression(log_path, "xgboost",
-                           discovery_algorithm, measure, [])
-            input(x)
+    input(get_feature_information_dict())

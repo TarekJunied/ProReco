@@ -24,8 +24,8 @@ const FeaturerPage = () => {
                 const featureNames = response.data;
 
                 // Creating an array of objects with id and name from each feature
-                const formattedItems = featureNames.map((name, index) => {
-                    return { id: index, name: name };
+                const formattedItems = featureNames.map((featureObject, index) => {
+                    return { id: index, ...featureObject };
                 });
 
                 // Update the items state with the formatted items
@@ -97,14 +97,24 @@ const FeaturerPage = () => {
 
                 <SearchBarComponent items={items}
                     onItemSelect={handleButtonClick} />
-                <div>
+                <div style={{ marginTop: "2.5vh" }}>
                     {items.map((item) => (
                         <div key={item.id}
                             ref={(el) => itemRefs.current.set(item.id, el)} // Assign the div to the ref map
                         >
                             <button
                                 onClick={() => handleButtonClick(item.id)}
-                                style={{ display: 'block', margin: '10px 0' }}
+                                style={{
+                                    display: 'block',
+                                    margin: '0.2vw',
+                                    border: '1px solid transparent', // Adds a transparent border
+                                    padding: '2px', // Adjust as needed for spacing
+                                    backgroundColor: 'transparent', // Keeps the background transparent
+                                    textDecoration: 'none', // No underline initially
+                                    cursor: 'pointer' // Changes cursor on hover
+                                }}
+                                onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'} // Underline on hover
+                                onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'} // Remove underline after hover
                             >
                                 {item.name}
                             </button>

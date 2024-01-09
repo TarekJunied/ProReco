@@ -119,8 +119,10 @@ def set_progress_current_feature_name_and_percentage(log_path, feature_name):
     progress_dict[log_name]["current_feature_name"] = translate_feature_name(
         feature_name)
     index_of_feature = used_feature_portfolio.index(feature_name)
-    progress_dict[log_name]["feature_progress"] = round((
+    new_val = round((
         index_of_feature + 1) / len(used_feature_portfolio), 2)*100
+    if new_val >= 0 and new_val <= 100:
+        progress_dict[log_name]["feature_progress"] = new_val
 
 
 def set_parse_percentage(log_path, progress_percentage):

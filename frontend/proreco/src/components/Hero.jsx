@@ -64,10 +64,10 @@ const Hero = () => {
                     Discovery
                 </h1>
                 <p style={heroParagraphStyle}>
-                    The world&rsquo;s most sophisticated recommender
+                    One of the world&rsquo;s most sophisticated
                     <br />
-                    system for
-                    process discovery algorithms.
+                    recommender systems for
+                    discovery algorithms.
                 </p>
             </div>
             <div style={buttonDivStyle}>

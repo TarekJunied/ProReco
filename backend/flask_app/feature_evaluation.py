@@ -27,9 +27,11 @@ import time
 def set_feature_descriptions(feature_list):
     print("Write descriptions for the following features")
     for feature in feature_list:
-        #        x = input(feature)
+        print(feature)
+        x = input()
         store_cache_variable(
-            "hi", f"./constants/feature_information/descriptions/{feature}.pk")
+            x, f"./constants/feature_information/descriptions/{feature}.pk")
+        print("stored ", x)
 
 
 def read_feature_description(feature):
@@ -56,15 +58,16 @@ def get_feature_source(feature):
 
 
 def get_feature_importance_dict():
-    cache_file_path = "./constants/feature_importance_dict.pk"
+    feature_importance_dict_cache_file_path = "./constants/feature_importance_dict.pk"
     try:
-        ret = load_cache_variable(cache_file_path)
+        ret = load_cache_variable(feature_importance_dict_cache_file_path)
     except Exception:
+        input("wait computing now")
         ret = {}
         for feature in globals.feature_portfolio:
             for discovery_algorithm in globals.algorithm_portfolio:
                 for measure in globals.measure_portfolio:
-                    cache_file_path = f"{globals.flask_app_path}/cache/optimal_features_lists/regression/{globals.regression_method}/optimal_features_{discovery_algorithm}_{measure}.pk"
+                    cache_file_path = f"{globals.flask_app_path}/constants/optimal_features_list/regression/{globals.regression_method}/optimal_features_{discovery_algorithm}_{measure}.pk"
                     cur_optimal_feature_list = load_cache_variable(
                         cache_file_path)
                     if feature in cur_optimal_feature_list:
@@ -79,7 +82,7 @@ def get_feature_importance_dict():
 
                     else:
                         ret[discovery_algorithm, measure, feature] = 0
-        store_cache_variable(ret, cache_file_path)
+        store_cache_variable(ret, feature_importance_dict_cache_file_path)
     return ret
 
 
@@ -135,14 +138,15 @@ def compute_single_feature_information_dict(feature):
     # most_important_regressor: regressor this feature is most important for
     # feature importance ranking in that regressor
     # total feature ranking: out of all used features
+    ret_dict["name"] = feature
     ret_dict["description"] = read_feature_description(feature)
     ret_dict["from"] = get_feature_source(feature)
     ret_dict["no_regressors"] = get_number_of_regressors_string(feature)
     ret_dict["most_important_regressor"] = get_most_important_regressor_string(
         feature)
     ret_dict["feature_ranking"] = get_total_feature_importance_ranking(feature)
-    ret_dict["feature_importance_points"] = read_feature_importance_across_all_regressors(
-        feature)
+    ret_dict["feature_importance_points"] = round(read_feature_importance_across_all_regressors(
+        feature), 3)
     return ret_dict
 
 
@@ -154,8 +158,10 @@ def read_single_feature_information_dict(feature):
         generate_cache_file(cache_file_path)
         ret = compute_single_feature_information_dict(feature)
         store_cache_variable(ret, cache_file_path)
+    return ret
 
 
 if __name__ == "__main__":
-    sys.setrecursionlimit(5000)
-    read_single_feature_information_dict(sys.argv[1])
+    feature_list = list(get_own_features_dict().keys())
+    for feature in globals.feature_portfolio:
+        read_single_feature_information_dict(feature)

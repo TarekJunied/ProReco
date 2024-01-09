@@ -41,6 +41,8 @@ class NavBar extends Component {
                     </div>
 
                     <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
+                    <li><NavLink to="/featurer" activeClassName="active">Featurer</NavLink></li>
+
                     <li><NavLink to="/about" activeClassName="active">About</NavLink></li>
                     <li><NavLink to="/process-mining" activeClassName="active">Process Mining</NavLink></li>
                     <li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>

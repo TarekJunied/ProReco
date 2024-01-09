@@ -112,6 +112,7 @@ def regression_read_optimal_features(all_log_paths, regression_method, discovery
     try:
         optimal_features_list = load_cache_variable(cache_file_path)
     except Exception:
+        input("wait we are using global feautres")
         print(
             f"Optimal features list for {regression_method} {discovery_algorithm} {measure_name} does not exist yet, now computing")
         optimal_features_list = regression_compute_optimal_features(

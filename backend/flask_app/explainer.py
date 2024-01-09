@@ -52,8 +52,6 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
     regressor = read_fitted_regressor(
         regression_method, discovery_algorithm, measure_name, [])
 
-    input(regressor.n_features_in_)
-
     shap_values_instance = explainer.shap_values(x_test)
 
     # Find the indices of the top 10 absolute SHAP values
@@ -112,7 +110,6 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
 
 if __name__ == "__main__":
     log_paths = gather_all_xes("../logs/")
-
     for discovery_algorithm in globals.algorithm_portfolio:
         for measure in globals.measure_portfolio:
             get_decision_plot_dict_(

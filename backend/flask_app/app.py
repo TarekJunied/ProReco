@@ -12,7 +12,7 @@ from flask import Flask,  jsonify, session, redirect, render_template, Response,
 from flask_cors import CORS
 from flask_session import Session
 from utils import read_log
-from recommender import final_prediction, get_final_petri_net_dict, create_random_log_dict, get_regressed_algo_measure_dict, get_decision_plot_dict
+from recommender import final_prediction, get_final_petri_net_dict, create_random_log_dict, get_regressed_algo_measure_dict, get_decision_plot_dict, get_feature_information_dict
 from feature_controller import get_total_feature_functions_dict
 
 
@@ -206,8 +206,9 @@ def get_explaination_dict():
 @app.route('/api/getFeatureList', methods=['POST'])
 def get_total_feature_list():
     if request.method == 'POST':
-
-        return jsonify(globals.feature_portfolio), 200
+        feature_info_dict = get_feature_information_dict()
+        print(feature_info_dict)
+        return jsonify(feature_info_dict), 200
 
 
 if __name__ == '__main__':

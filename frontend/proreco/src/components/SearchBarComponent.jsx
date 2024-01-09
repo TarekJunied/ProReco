@@ -54,7 +54,8 @@ function SearchBarComponent(props) {
                 styling={{
                     fontFamily: "outfit",
                     fontSize: "1.5vw",
-                    zIndex: "1000"
+                    zIndex: "1000",
+                    marginBottom: "1vh"
                 }}
             />
 

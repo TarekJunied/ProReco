@@ -35,6 +35,7 @@ def read_optimal_features(regression_method, discovery_algorithm, measure_name):
     try:
         optimal_features_list = load_cache_variable(cache_file_path)
     except Exception:
+        input("wait we are using global feautres")
         optimal_features_list = globals.feature_portfolio
     return optimal_features_list
 

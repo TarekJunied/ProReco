@@ -1,47 +1,5 @@
-import { facebook, instagram, linkedin, twitter } from "../assets";
-
-export const navLinks = [
-    {
-        id: "home",
-        title: "Home",
-    },
-    {
-        id: "features",
-        title: "Features",
-    },
-    {
-        id: "product",
-        title: "Product",
-    },
-    {
-        id: "clients",
-        title: "Clients",
-    },
-];
-
-export const feedback = [
-    {
-        id: "feedback-1",
-        content:
-            "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
-        name: "Herman Jensen",
-        title: "Founder & Leader",
-    },
-    {
-        id: "feedback-2",
-        content:
-            "Money makes your life easier. If you're lucky to have it, you're lucky.",
-        name: "Steve Mark",
-        title: "Founder & Leader",
-    },
-    {
-        id: "feedback-3",
-        content:
-            "It is usually people in the money business, finance, and international trade that are really rich.",
-        name: "Kenn Gallagher",
-        title: "Founder & Leader",
-    },
-];
+import { instagram, linkedin } from "../assets";
+import github from '../assets/github.svg';
 
 
 
@@ -60,6 +18,10 @@ export const footerLinks = [
             {
                 name: "Generate Event Log",
                 link: "/generateLog",
+            },
+            {
+                name: "Featurer",
+                link: "/featurer",
             },
 
         ],
@@ -113,14 +75,9 @@ export const socialMedia = [
         link: "https://www.instagram.com/tarek.jnd",
     },
     {
-        id: "social-media-2",
-        icon: facebook,
-        link: "https://www.facebook.com/",
-    },
-    {
-        id: "social-media-3",
-        icon: twitter,
-        link: "https://www.twitter.com/",
+        id: "github",
+        icon: github,
+        link: "https://github.com/TarekJunied"
     },
     {
         id: "social-media-4",
@@ -137,7 +94,8 @@ export const measures = [
 ];
 
 export const AlgorithmPortfolio = [
-    "alpha", "alpha_plus",
+    "alpha",
+    "alpha_plus",
     "ILP",
     "split",
     "inductive",

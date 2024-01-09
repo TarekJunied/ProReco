@@ -159,8 +159,8 @@ function createPlaceObject(place, paperWidth, paperHeight, widthScalingFactor, h
 }
 
 
-const widthScalingFactor = 1.1
-const heightScalingFactor = 1.1
+const widthScalingFactor = 1.2
+const heightScalingFactor = 1.2
 const tokenColor = "#FF4F00"
 const placeStrokeColor = "#BF3604"
 const transitionStrokeColor = "red"

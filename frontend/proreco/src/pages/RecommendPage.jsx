@@ -119,7 +119,7 @@ const RecommendPage = () => {
                             <a
                                 data-tooltip-id={`${DiscoveryAlgorithm}sToolTip`}
                                 data-tooltip-html={tooltipTexts[DiscoveryAlgorithm]}
-                                data-tooltip-place="right"
+                                data-tooltip-place="top"
 
                             >
                                 <AlgorithmScore
