@@ -31,9 +31,9 @@ from feature_controller import get_total_feature_functions_dict
 
 
 def read_optimal_features(regression_method, discovery_algorithm, measure_name):
-    file_path = f"./cache/optimal_features_lists/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure_name}.pk"
+    cache_file_path = f"{globals.flask_app_path}/constants/optimal_features_lists/regression/{regression_method}/optimal_features_{discovery_algorithm}_{measure_name}.pk"
     try:
-        optimal_features_list = load_cache_variable(file_path)
+        optimal_features_list = load_cache_variable(cache_file_path)
     except Exception:
         optimal_features_list = globals.feature_portfolio
     return optimal_features_list
