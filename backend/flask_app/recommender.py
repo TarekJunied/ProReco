@@ -122,7 +122,7 @@ def get_decision_plot_dict(log_path_to_explain):
     for discovery_algorithm in globals.algorithm_portfolio:
         for measure in globals.measure_portfolio:
             ret_dict[f"{discovery_algorithm}-{measure}"] = get_decision_plot_dict_(
-                log_path_to_explain, regression_method, discovery_algorithm, [], measure)
+                log_path_to_explain, regression_method, discovery_algorithm, measure)
     return ret_dict
 
 

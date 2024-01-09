@@ -1,4 +1,5 @@
 import shap
+import os
 import sys
 import globals
 import pandas as pd
@@ -11,29 +12,39 @@ from feature_controller import read_feature_matrix, get_total_feature_functions_
 from feature_selection import regression_read_optimal_features
 from filehelper import gather_all_xes, get_all_ready_logs
 from init import init_given_parameters
-from feature_controller import read_single_feature
 
 
-def read_regression_shap_explainer(regression_method, discovery_algorithm, ready_training, measure_name, feature_portfolio):
-    cache_file_path = f"./cache/explainers/{regression_method}_{measure_name}.pkl"
+def compute_fitted_explainer(regression_method, discovery_algorithm, measure_name):
+    model = read_fitted_regressor(
+        regression_method, discovery_algorithm, measure_name, [])
+
+    explainer = shap.TreeExplainer(model)
+
+    return explainer
+
+
+def read_regression_shap_explainer(regression_method, discovery_algorithm, measure_name):
+
+    cache_file_path = f"./cache/explainers/{regression_method}_{discovery_algorithm}_{measure_name}.pkl"
     try:
         explainer = load_cache_variable(cache_file_path)
     except Exception as e:
-
+        store_dir = "./cache/explainers/"
+        os.makedirs(store_dir, exist_ok=True)
         explainer = compute_fitted_explainer(
-            regression_method, discovery_algorithm, measure_name, ready_training, feature_portfolio)
+            regression_method, discovery_algorithm, measure_name)
         store_cache_variable(explainer, cache_file_path)
 
     return explainer
 
 
-def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_algorithm, ready_training, measure_name):
+def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_algorithm,  measure_name):
 
     feature_portfolio = regression_read_optimal_features(
-        [], "xgboost", discovery_algorithm, measure_name, [])
+        [], regression_method, discovery_algorithm, measure_name, [])
 
     explainer = read_regression_shap_explainer(
-        regression_method, discovery_algorithm, ready_training, measure_name, feature_portfolio)
+        regression_method, discovery_algorithm, measure_name)
 
     x_test = pd.DataFrame(read_feature_vector(
         log_path_to_explain, feature_portfolio).reshape(1, -1), columns=feature_portfolio)
@@ -95,14 +106,8 @@ def get_decision_plot_dict_(log_path_to_explain, regression_method, discovery_al
 
 
 if __name__ == "__main__":
-    all_logs = gather_all_xes("../logs/")
-    ready_logs = get_all_ready_logs(
-        all_logs, globals.feature_portfolio, globals.algorithm_portfolio, globals.measure_portfolio)
-
-    init_given_parameters(ready_logs, globals.algorithm_portfolio,
-                          globals.feature_portfolio, globals.measure_portfolio)
 
     for discovery_algorithm in globals.algorithm_portfolio:
         for measure in globals.measure_portfolio:
             read_regression_shap_explainer(
-                globals.regression_method, discovery_algorithm, ready_logs, measure, globals.feature_portfolio)
+                globals.regression_method, discovery_algorithm, measure)
