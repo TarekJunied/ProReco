@@ -32,3 +32,4 @@ used_eventlogs
 cache copy
 temp
 */nohup.out
+!demo_eventlog.xes
