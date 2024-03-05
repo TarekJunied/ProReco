@@ -18,4 +18,11 @@ Paper: [coming soon]
 ```conda env create -f environment.yml```  
 ```cd ../frontend/proreco```  
 ```npm install```  
+```npm run dev```    
+
+
 # Features:
+Recommendation of process discovery algorithms    
+Mining process models  
+Explaination of predictions using shap plots  
+Artificial event log generation  
