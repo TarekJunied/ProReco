@@ -19,7 +19,13 @@ Paper: [coming soon]
 ```cd ../frontend/proreco```  
 ```npm install```  
 ```npm run dev```    
+Now start a new terminal to run the backend  
+```cd backend/flask_app``` 
+```conda activate proreco``` 
+```python app.py``` 
 
+
+Navigate to the root project folder  
 
 # Features:
 Recommendation of process discovery algorithms    
