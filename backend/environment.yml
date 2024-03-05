@@ -1,0 +1,66 @@
+name: proreco
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9 # Specify Python version here
+  - pip # Ensure pip is explicitly listed
+  - blinker
+  - cachelib
+  - catboost
+  - click
+  - cloudpickle
+  - contourpy
+  - cvxopt
+  - cycler
+  - deprecation
+  - editdistance
+  - Flask
+  - Flask-Cors
+  - Flask-Session
+  - fonttools
+  - graphviz
+  - imageio
+  - importlib-metadata
+  - importlib_resources
+  - intervaltree
+  - itsdangerous
+  - Jinja2
+  - joblib
+  - kiwisolver
+  - lazy_loader
+  - lime
+  - llvmlite
+  - lxml
+  - MarkupSafe
+  - matplotlib
+  - networkx
+  - numba
+  - numpy
+  - packaging
+  - pandas
+  - pillow
+  - plotly
+  - pydotplus
+  - pygraphviz
+  - pyparsing
+  - python-dateutil
+  - pytz
+  - scikit-image
+  - scikit-learn
+  - scipy
+  - seaborn
+  - shap
+  - six
+  - slicer
+  - sortedcontainers
+  - tenacity
+  - threadpoolctl
+  - tifffile
+  - tqdm
+  - tzdata
+  - Werkzeug
+  - xgboost
+  - zipp
+  - pip:
+      - stringdist
+      - pm4py # These pip packages will use the Python version specified above
