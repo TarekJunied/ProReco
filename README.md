@@ -72,6 +72,10 @@ ProReco is a sophisticated recommender system designed to optimize the selection
 
 - ProReco may experience slower performance on the first run. Subsequent runs should be significantly faster.
 
+## Final Step
+
+- Open the browser and input `http://localhost:3000/` and upload for e.g. `demo_eventlog.xes` from this repo.
+
 ## Screenshots
 ![ProReco Black Box Explanation](readme/ProRecoBlackBox.png)
 ![Hero Section of the Application](readme/HeroSection.png)
@@ -79,3 +83,9 @@ ProReco is a sophisticated recommender system designed to optimize the selection
 ![Rankings Preview](readme/rankingsPreview.png)
 ![Mined Model Visualization](readme/minedModel.png)
 ![SHAP Plots for Feature Importance](readme/shapPlots.png)
+
+## Credits
+
+### Author
+
+ProReco was developed by Tarek Junied. For assistance or to report any issues, please feel free to contact Tarek at tarekjunied@icloud.com. Your feedback and inquiries are highly appreciated, as they contribute to the improvement and evolution of ProReco.
