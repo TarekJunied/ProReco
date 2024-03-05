@@ -9,13 +9,13 @@ Additional features include mining the process models in an interactive petri ne
 ![Mined Model Visualization](readme/minedModel.png)
 There is also an explaination feature that allows users to get explainations for the predictions using shap plots.
 ![SHAP Plots for Feature Importance](readme/shapPlots.png)
-Additional Sources:
-Thesis Presentation Video: https://www.youtube.com/watch?v=mZ8ybOofWNk&feature=youtu.be
-Thesis: [coming soon]
-Paper: [coming soon]
+Additional Sources:  
+Thesis Presentation Video: https://www.youtube.com/watch?v=mZ8ybOofWNk&feature=youtu.be  
+Thesis: [coming soon]   
+Paper: [coming soon]  
 # INSTALLATION
-```cd backend```
-```conda env create -f environment.yml```
-```cd ../frontend/proreco```
-```npm install```
+```cd backend```  
+```conda env create -f environment.yml```  
+```cd ../frontend/proreco```  
+```npm install```  
 # Features:
