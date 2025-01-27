@@ -14,8 +14,8 @@ ProReco is a sophisticated recommender system designed to optimize the selection
 ## Additional Resources
 
 - **Thesis Presentation Video:** [Watch on YouTube](https://www.youtube.com/watch?v=mZ8ybOofWNk&feature=youtu.be)
-- **Thesis:** Coming soon
-- **Paper:** Coming soon
+- **Thesis:** https://jumpshare.com/v/6ltjIMerzEiNa6gPYNpu
+- **Paper:** https://link.springer.com/chapter/10.1007/978-3-031-61000-4_11
 
 ## Installation Guide
 
